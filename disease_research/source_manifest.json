@@ -1,0 +1,1262 @@
+{
+  "publication_date": "2026-10-29",
+  "scope": "Only the four numbered disease-research directories in the authorized workspace",
+  "source_policy": "Byte-identical source copies; no historical dates or results invented",
+  "included": [
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/README.md",
+      "source": "01_신생아황달_연합학습/GAN_research/README.md",
+      "bytes": 16163,
+      "sha256": "747a3670df0a9fb2b33df71a88592023e837c5f2e088a011a2216c14bd2c344e"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/check_generation.py",
+      "source": "01_신생아황달_연합학습/GAN_research/check_generation.py",
+      "bytes": 4550,
+      "sha256": "5afb18ee1738e28c86bf7b3833f1aa1f9dfc565e76c0b8833c9916a792f81d91"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/federated_algorithms.py",
+      "source": "01_신생아황달_연합학습/GAN_research/federated_algorithms.py",
+      "bytes": 1477,
+      "sha256": "74e3475b77134807546f5100e80c5a7d75854f1cba400ac539fe318d323dd7a8"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/gan_models.py",
+      "source": "01_신생아황달_연합학습/GAN_research/gan_models.py",
+      "bytes": 2213,
+      "sha256": "15e2764347296de2217dd4311101da7e21a2ef6a06a4350b0de2ecfb873b6d13"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/network_check.py",
+      "source": "01_신생아황달_연합학습/GAN_research/network_check.py",
+      "bytes": 5173,
+      "sha256": "0387195a3ba9c947a20c09a1ac406c4f59892014d7b9e8e6efad89d56cc8cc40"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/prepare_data.py",
+      "source": "01_신생아황달_연합학습/GAN_research/prepare_data.py",
+      "bytes": 7600,
+      "sha256": "94179a9c4a18da2ccbcaf286a87434524fc8e91e04388e78d175244ba798595f"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/requirements-cuda.txt",
+      "source": "01_신생아황달_연합학습/GAN_research/requirements-cuda.txt",
+      "bytes": 48,
+      "sha256": "f53ab0a68bda0d55c11c0091864eb594882cc81680725ba443bbc7bbaead9918"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/requirements-runtime.lock.txt",
+      "source": "01_신생아황달_연합학습/GAN_research/requirements-runtime.lock.txt",
+      "bytes": 571,
+      "sha256": "eafc789b5d4f25bcdf523e4bbde3de883510bd47c0f0c2ac2efffec6afd8c77c"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/requirements-used.txt",
+      "source": "01_신생아황달_연합학습/GAN_research/requirements-used.txt",
+      "bytes": 164,
+      "sha256": "66d744ed25eaf49d0bd031f9af8b6e99c77e990456d9382ee1713d9f420ddaa0"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_parallel.py",
+      "source": "01_신생아황달_연합학습/GAN_research/run_algorithm_parallel.py",
+      "bytes": 1969,
+      "sha256": "a868918839ff62829c5a08754899ed0e5bae6f19d2d793ee825894487ef05e70"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_study.py",
+      "source": "01_신생아황달_연합학습/GAN_research/run_algorithm_study.py",
+      "bytes": 18088,
+      "sha256": "4b1ffe9919ab37567e21ddd9e8fb4dcca79ebecb90fcfab3a932be79412d8c9e"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_federated_study.py",
+      "source": "01_신생아황달_연합학습/GAN_research/run_federated_study.py",
+      "bytes": 15026,
+      "sha256": "631141dfd01025b15c098a295d3d2e8f7896fa574bc1450642a3f01daff3d303"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_skin_bias_study.py",
+      "source": "01_신생아황달_연합학습/GAN_research/run_skin_bias_study.py",
+      "bytes": 9583,
+      "sha256": "d12f438e58fcc0c9fbba424561a38dd8b1418d8c957bf2fa4ee961507d8edfe9"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/skin_bias.py",
+      "source": "01_신생아황달_연합학습/GAN_research/skin_bias.py",
+      "bytes": 1347,
+      "sha256": "6917e163b31c609d50976f6e56b54f3eaf8461b98f2b7a2845c10f3958022fde"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/summarize_algorithm_study.py",
+      "source": "01_신생아황달_연합학습/GAN_research/summarize_algorithm_study.py",
+      "bytes": 27599,
+      "sha256": "9bbbf4cee373f8340b45025174820d62146b8878502acf412be460502ed2b456"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/summarize_skin_bias.py",
+      "source": "01_신생아황달_연합학습/GAN_research/summarize_skin_bias.py",
+      "bytes": 23668,
+      "sha256": "8124bc76f2cf0099f9a5707177da9c6e59ff6b5df9132ae4e89b42dcedd9607c"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_algorithm_report.py",
+      "source": "01_신생아황달_연합학습/GAN_research/tests/test_algorithm_report.py",
+      "bytes": 3617,
+      "sha256": "e89e617e18e436c51d630fc9183232a31408715da4470356b3d6b3c3f3cb2a41"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_federated_algorithms.py",
+      "source": "01_신생아황달_연합학습/GAN_research/tests/test_federated_algorithms.py",
+      "bytes": 4080,
+      "sha256": "56fdde1097587b6dd0d78fe87fb4d337230641cfcc1b78a94719e03f71acc8b1"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_research.py",
+      "source": "01_신생아황달_연합학습/GAN_research/tests/test_research.py",
+      "bytes": 4922,
+      "sha256": "c61b48fa75dacc87e65b17066984e18b4bae0237e6ebd5b36d1bbc5611d0759c"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_skin_bias.py",
+      "source": "01_신생아황달_연합학습/GAN_research/tests/test_skin_bias.py",
+      "bytes": 2090,
+      "sha256": "f8d59df34644bde231081f9d7916181e0466c68eb76b24d7db5469aa3f82b4b2"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_algorithm_context.py",
+      "source": "01_신생아황달_연합학습/GAN_research/train_algorithm_context.py",
+      "bytes": 2653,
+      "sha256": "75392395784742ea7d781da866493c69f3f50943789f6711dcb716e62ced268b"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_gan.py",
+      "source": "01_신생아황달_연합학습/GAN_research/train_gan.py",
+      "bytes": 6799,
+      "sha256": "5f36f975f75bae32315bb1fc057bbf9e5d69727a5ad44d13625d5386b8f42de2"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_paired_gan.py",
+      "source": "01_신생아황달_연합학습/GAN_research/train_paired_gan.py",
+      "bytes": 6800,
+      "sha256": "9c4a42a2b5e5a815a77212e2980a5d9f4337427d3435cf5de3856d1782611b58"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/write_report.py",
+      "source": "01_신생아황달_연합학습/GAN_research/write_report.py",
+      "bytes": 20219,
+      "sha256": "235519c1d7a987b90b9b90b5dff4bbde73c3beec772c9f88057c947e4fc80826"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/__init__.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_centralized.py).py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/run_centralized.py).py",
+      "bytes": 5124,
+      "sha256": "bf1088efe35846f37b3f694005e78b15119e75b38ad69abd5c24c40a6577af09"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_federated.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/run_federated.py",
+      "bytes": 1055,
+      "sha256": "10132bc7e5aeac0b6f2c89adfd3089980d42c2503317c1ef5dc5165b9a9519cb"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/client.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/src/client.py",
+      "bytes": 4889,
+      "sha256": "3682d1a18360f121064d921ebbfcbce9288d488bf8c3adf46572971da0ccd685"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/dataset.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/src/dataset.py",
+      "bytes": 3588,
+      "sha256": "b54d8973b9d305d10ff621889f180b5e01e08eb44c6bb3c7f128b759b14d991b"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/model.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/src/model.py",
+      "bytes": 1778,
+      "sha256": "4d3d51d778fdbeab5ecd50dc2a101a11f2e26e97cfa480efd7a175bd4ae8f7b6"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/server.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/src/server.py",
+      "bytes": 934,
+      "sha256": "b59144d0a0e4aba0697544465c0144d7cdf8fdf1bcbbd05b0bbfcf94c6da6bb0"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/utils.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice-virtual/src/utils.py",
+      "bytes": 2762,
+      "sha256": "aa22b06c63514318d83a1f02ebd98a2da087cee5943fdfca815a89f03bd80105"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/__init__.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/check_input.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/check_input.py",
+      "bytes": 2063,
+      "sha256": "d5a7b90122835395a8bfa04621786827cc7ea444f1f9b92697a5baf44cfdca23"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/run_centralized.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/run_centralized.py",
+      "bytes": 6573,
+      "sha256": "56748b65f5e6a423f61d0f35070e74b0e075e4645371f9b14a08c259ea34ecf8"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/run_federated.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/run_federated.py",
+      "bytes": 1284,
+      "sha256": "fcc8258914852c69bb7c5741755299d1f5e73f02b741965722e7a1ee221eb7f9"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/client.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/client.py",
+      "bytes": 5694,
+      "sha256": "a5eb091e723cffc62b7ced03d07d618e00b273f2db353f265ee12cb66330f22d"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/dataset.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/dataset.py",
+      "bytes": 6071,
+      "sha256": "d195b54faf19bda3e9c92b2e69e8da33b06b35816d8abf9a9ff9fd23319ec0da"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/federated.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/federated.py",
+      "bytes": 1285,
+      "sha256": "a7ba3e7c3637f94c50eaa872fce7fefd990f786b29ea994cdd9ee6d5f73c4797"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/model.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/model.py",
+      "bytes": 2113,
+      "sha256": "6d40604183f7759e178ab04992ac2c23bbb827da3fb11732f828ed713ae789c1"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/server.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/server.py",
+      "bytes": 2263,
+      "sha256": "44507cd19520c6b099e017a475bd56d45f35483c5c10223b3fed4efe7565c857"
+    },
+    {
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/utils.py",
+      "source": "01_신생아황달_연합학습/NeoJaundice/src/utils.py",
+      "bytes": 4692,
+      "sha256": "126671172f11e4d01b7434a6107acce97294bf2ec387c1966b3970d4f51ba8d0"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier0_covid.py",
+      "source": "02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier0_covid.py",
+      "bytes": 13137,
+      "sha256": "eb349866b574490b0f5af492dfb5c47026f44d64bf9c8434600e764af765c63c"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier1_covid.py",
+      "source": "02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier1_covid.py",
+      "bytes": 7758,
+      "sha256": "58eed098773c313ccd2c31a20040735198ad2a6d0c466cd5244148269e2e6e5a"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier2_covid.py",
+      "source": "02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier2_covid.py",
+      "bytes": 10767,
+      "sha256": "417ee64e684b381933cbfceff01605508c6670d3f87ab34b1a042f2b041a6007"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/algo_advanced.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/algo_advanced.py",
+      "bytes": 7228,
+      "sha256": "6fea78a1eb6d82fd9ea945dccb9b098e2193fcac6b8f15bd34d9446b4ebf08d4"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/comm_overhead.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/comm_overhead.py",
+      "bytes": 6860,
+      "sha256": "0d8a1f0d702b7632403dad9edea13578901bb08a43d819c3bc8a4945140973c0"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/fl_benefit_demo.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/fl_benefit_demo.py",
+      "bytes": 11904,
+      "sha256": "c11d21bc51fd3907f3470c6f6a205ed987a4fa558993a32070e8a002eadfd053"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/gen_data21.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/gen_data21.py",
+      "bytes": 4416,
+      "sha256": "3b384c18fb37a3fcb6be576e464e83efe73a01e7f513fa9a9cf050dd102742be"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/imbalance_analysis.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/imbalance_analysis.py",
+      "bytes": 5830,
+      "sha256": "ed4c0b087a38ecb5ad50b88b5c554d152b24e2718badfdcb1a5c954d568dc418"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/security_defense.py",
+      "source": "02_감염병정책_및_중증도_연합학습/experiments/security_defense.py",
+      "bytes": 9249,
+      "sha256": "edf2e55fa0b89d8db819d8ee77b659705192d24388f2c1a9260792d5fd8e0ce5"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CES_2026_DEMO_COMPLETE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CES_2026_DEMO_COMPLETE.md",
+      "bytes": 11399,
+      "sha256": "6c5b3575edae66ce2726e5553915aafb86f96e61e80a98050e6ecdfe9f24d805"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CONNECTION_FIX.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CONNECTION_FIX.md",
+      "bytes": 7136,
+      "sha256": "e1eeedf962ce49779e4a678a8d213d0f8ce82779a75afac83d8e81e49d2be05c"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DATA_CLARIFICATION.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DATA_CLARIFICATION.md",
+      "bytes": 1299,
+      "sha256": "1ad1bba3c820677daf2b681fc5831f099a7b1ca1ff3c721a756f39ec50422d4d"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_RECORDING_GUIDE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_RECORDING_GUIDE.md",
+      "bytes": 11552,
+      "sha256": "5c50dd69fd5c3ea6b4d7e4c64ab5f63e9e6978ae5b29c7a3293da029a1ddee53"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_TIMING_UPDATE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_TIMING_UPDATE.md",
+      "bytes": 10945,
+      "sha256": "47442f86265a52181e173cd06fac4910ee6ddef90f9e31ce21762d7747810443"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/FINAL_SUMMARY.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/FINAL_SUMMARY.md",
+      "bytes": 10523,
+      "sha256": "84ca968fdfa1cb32ac6a14a97b536a79a22e7fa0a2cfb69b4bde862eac0e9f4a"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_ENGLISH.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_ENGLISH.md",
+      "bytes": 10972,
+      "sha256": "8693ddb84a449950fa7ec80ac1e63f706ea41ea8890b3353ac936ec4d3c45607"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPT.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPT.md",
+      "bytes": 8764,
+      "sha256": "8d4f24985f305d9a82878b0e77d98c6a5d8ca9f27ce79959249ac6eba164685d"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPTS_ONLY.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPTS_ONLY.md",
+      "bytes": 6623,
+      "sha256": "1647cc3764150552d971172995eac08b7bc382380db868a42766f410f763be00"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICKSTART.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICKSTART.md",
+      "bytes": 904,
+      "sha256": "4da180d1724f021fc040af1c8afbd46500cb6b042a47e1ef237ef8c25576ec87"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICK_START.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICK_START.md",
+      "bytes": 4622,
+      "sha256": "1e7d2c4b1f6d100dd927109264dcd83437f08101a8d2b2822de87711cfd1ceb0"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README.md",
+      "bytes": 14127,
+      "sha256": "94610a8804ebd2d84f0be944d0b3ae3e5bdb2179a1eaaf3d9785172a4cdd2f52"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README_DEMO.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README_DEMO.md",
+      "bytes": 2696,
+      "sha256": "fc4847bbc3e09edad66eddeea895d81ec55e5baa2f12dd9f9fa9e9e783dae058"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/SETUP_DEMO.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/SETUP_DEMO.md",
+      "bytes": 3467,
+      "sha256": "a7f45460d32af8e3129b7a4d5d5de613f631f7be18b35461e4076ba7f2569ec9"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_BUGFIX.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_BUGFIX.md",
+      "bytes": 11181,
+      "sha256": "d271edc41131b596bb91ef7fe056b8e4ecbda4816e6fd20270a17d6dafbe9db4"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_CES_UPDATE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_CES_UPDATE.md",
+      "bytes": 11042,
+      "sha256": "ffb758883f46e685590a0749b63b0a65a862a6ca1aa86445e162b512d799cadf"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_FINAL.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_FINAL.md",
+      "bytes": 9008,
+      "sha256": "7d9d822a5b3f5e916d42671b512f0d44ebb8372b195ed5387db59e5ec68a2145"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_GUIDE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_GUIDE.md",
+      "bytes": 8383,
+      "sha256": "cdc55fcad0162b695c871a2dbd1365d7fdbcc433ab022ab15d48fdd5bbca3e99"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_SUMMARY.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_SUMMARY.md",
+      "bytes": 8411,
+      "sha256": "200a8be863a4ec90aa9b32fbee6d805aa06ae765c0de8a1d3da18fe0288d6c21"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_UPDATE.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_UPDATE.md",
+      "bytes": 8778,
+      "sha256": "1fb212b1a219ea554dbaafd0a1c083df3878dc8775e314e5e286ca3c79e48b73"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WARNING_SUPPRESSION.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WARNING_SUPPRESSION.md",
+      "bytes": 8120,
+      "sha256": "48c69cff5044dc1b577771b64f909442320e65017c2f75c9b829027d6c87dbd1"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WHICH_LAUNCHER.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WHICH_LAUNCHER.md",
+      "bytes": 2956,
+      "sha256": "b3d4a3d6a8e2730d4f813a308d02e3fb9d0bace8023672ec1c76303d4e303133"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/__init__.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/__init__.py",
+      "bytes": 14,
+      "sha256": "6b2e4e30ee3be4f95c67f15bba7f666875bb63a3014e4d145cbe33b47c7722e8"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py",
+      "bytes": 10908,
+      "sha256": "d329f003c054bef33795caecd5f499607f27b2ca48d78e542b0d2a5615f19f01"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_transport.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_transport.py",
+      "bytes": 2133,
+      "sha256": "f762190e1e542b1725da3a172d0be49e2c2604ccabe71435aed2d0a05ecf01de"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/synthetic_regions.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/synthetic_regions.py",
+      "bytes": 7103,
+      "sha256": "caeeb5e40dd6d1f48a45b1a0a7c76b9c747c76613e103cc1a866c1d9c02bde6f"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/data_gen_hierarchical.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/data_gen_hierarchical.py",
+      "bytes": 8749,
+      "sha256": "17b9521160f126e9be2e09bb742bdad1dcee5615d530cf6048c441ffd8190e35"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo1_hierarchical_visualization.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo1_hierarchical_visualization.py",
+      "bytes": 18836,
+      "sha256": "3901ca8bc6d272a265145ffb3c60996b57e93e420c237e32e1fb4ef422240439"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_launcher.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_launcher.py",
+      "bytes": 14093,
+      "sha256": "b77b115cf996ada542a14c142f8dbf1c9ac596064bf53486ba019cc40e101872"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_simple.bat",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_simple.bat",
+      "bytes": 5389,
+      "sha256": "26b83fce528164b4121c77b5fe9b9c5c768b42fb5f1ca8b607234c23ab5a0a20"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/launch_demo.bat",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/launch_demo.bat",
+      "bytes": 442,
+      "sha256": "90f1b60679947f5e5af6cbcc05bff35b3b1b037c8c3276a58ef9d5c247a5a78e"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/requirements-policy-research.lock.txt",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/requirements-policy-research.lock.txt",
+      "bytes": 787,
+      "sha256": "2a407dec2a9bfaf197650c122c3a3d6e9d4977f7467467478fee0d53685a8a30"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_policy_validation.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_policy_validation.py",
+      "bytes": 17036,
+      "sha256": "0fdf7932e6caa26c6ea5c94d5573e001befbc3b2018c179513c981b3ab00ca5f"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_region_validation.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_region_validation.py",
+      "bytes": 18218,
+      "sha256": "0d2d0273a35b72355d3efe9852290338a46a732ca23f55b935d8931bf9436253"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier0.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier0.py",
+      "bytes": 3376,
+      "sha256": "26e8f5a68c7a62df088205eca5972842c764e95263c7d8ff6dd397c13c2098ea"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier1.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier1.py",
+      "bytes": 5060,
+      "sha256": "65761f6b7591bcacface841d8aff60a39ffbbf9564588ac2ebeeb90d2dab5dc9"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier2.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier2.py",
+      "bytes": 2834,
+      "sha256": "9f9d33a5430d7fc544436de9275b8a70a32bdcb334066e9f5f186f5acde624ea"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/setup_hierarchical.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/setup_hierarchical.py",
+      "bytes": 4330,
+      "sha256": "2d5550dd2c4bd22904d7ef0256cd6103b3d1dfd6b58936c2c2665858456502ac"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_policy_stats.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_policy_stats.py",
+      "bytes": 7833,
+      "sha256": "ca329e24778f7537b01bc297f4b9d4c107f8d00ff990fa42b641c086816d9ef3"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_region_expansion.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_region_expansion.py",
+      "bytes": 4005,
+      "sha256": "c9d4a72386b98802f0844efdd7bc1ac664c085eb27ded5a7891795c4982e8cbe"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/verify_hierarchical_data.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/verify_hierarchical_data.py",
+      "bytes": 1045,
+      "sha256": "5b69f873dbfef919865f679d94267c1a79380236e90bc91372dc2317f97bb4ac"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/write_policy_report.py",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/write_policy_report.py",
+      "bytes": 12117,
+      "sha256": "763a6df7a068ec2b5e174babc0222d29fbcae0af3640516c38a6c93027bc25da"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/계층형_구조_안내.md",
+      "source": "02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/계층형_구조_안내.md",
+      "bytes": 7324,
+      "sha256": "a2061a554c3109c946533c7224fdea61e49706d145ab22a19750fdb53cab7f11"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/he_key_bug_demo.py",
+      "source": "02_감염병정책_및_중증도_연합학습/he_key_bug_demo.py",
+      "bytes": 6140,
+      "sha256": "ffb79fd88f8fc978802c63e3532dc526e328ddb0facae411a3f09bc88aa65642"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/client.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/client.py",
+      "bytes": 2619,
+      "sha256": "6bf418ad9fa79b365be72d457021acc7dac99f2758c8c9254642e4d510017689"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/crypto.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/crypto.py",
+      "bytes": 1329,
+      "sha256": "1a8992893cf1fa4b88227042457d9975662dd0d3220252877eda3316e4027a76"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/serialization.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/serialization.py",
+      "bytes": 663,
+      "sha256": "a854eeb2d7552eba99545111e9a9c62d7c14c367a78c5ebae101061d85ed8fd1"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/strategy.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/strategy.py",
+      "bytes": 2820,
+      "sha256": "bbc460a3634fa31fd01c2a335ec52898e8ce877d41545cc6f661016a99c2c169"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen-v2.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen-v2.py",
+      "bytes": 5389,
+      "sha256": "bc7d3c5ee469346f45314089fdeb8d7897d2531bd4e292d5317ea759fa7ad04d"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen.py",
+      "bytes": 6163,
+      "sha256": "3f17e01fc4e87c0f1a19a236d5ed62b5800762539a1574b45a880efb224edca2"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/dataloader.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/dataloader.py",
+      "bytes": 1907,
+      "sha256": "0c67c11649dee77ff52d0f90f672543d3a4a0f61200a13a098fac2efe255db17"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/ipw.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/ipw.py",
+      "bytes": 1157,
+      "sha256": "57b34457dc62f3d6697c3850533f239c3887dc4ea6c5a3adfd3e427c0cb43c30"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification-v2.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification-v2.py",
+      "bytes": 3024,
+      "sha256": "601d08a85b2f74b4e9377b9d9de4594921b549463d65ea5eb1048e9c886e070a"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification.py",
+      "bytes": 2694,
+      "sha256": "0fe6938e9084dcbef99b1f38aed2615dbaad350e7a67d0924ef1757d34ae94b4"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_client.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_client.py",
+      "bytes": 1145,
+      "sha256": "499e80c074dd800a5d095cb6472d7f579bcd283ee7b8aba6f3445f9bbd932ceb"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_server.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_server.py",
+      "bytes": 1156,
+      "sha256": "0d3d3bd65e51f5ec7fdb189d58b5801d61e217de07754d4cb8c9b67e5762cb10"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_hierarchical.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_hierarchical.py",
+      "bytes": 1812,
+      "sha256": "02ff6c8ba441629ce0d2f9eeacaf0d1c6469989755bcb54065f53d0365a59dbc"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_keys.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_keys.py",
+      "bytes": 1278,
+      "sha256": "7f1745b008328c7bba1918a1248c4465abf58ac8904fdb46bae5844fbd71bf77"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase1.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase1.py",
+      "bytes": 423,
+      "sha256": "3447fe7f18fa231bff46c73ef92eca12705c09006753aaf8ede7e87dbc422783"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase2.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase2.py",
+      "bytes": 1406,
+      "sha256": "50006c8d0fca1cc93db5285b41abe4f1e6862391d15d543cc16e506e1ea826c0"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase3.py",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase3.py",
+      "bytes": 1955,
+      "sha256": "095ab8ddcbf21d591d11ea5e59a7b3be7239d75c74fc6a2c2382d12f2f7402fb"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/계층형_구조_안내.md",
+      "source": "02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/계층형_구조_안내.md",
+      "bytes": 7324,
+      "sha256": "a2061a554c3109c946533c7224fdea61e49706d145ab22a19750fdb53cab7f11"
+    },
+    {
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/슬라이드 작성/build_kist_ppt.py",
+      "source": "02_감염병정책_및_중증도_연합학습/슬라이드 작성/build_kist_ppt.py",
+      "bytes": 18202,
+      "sha256": "80b4a4979c5d8181a1415ac3f081e880ccb182d7b259d13d1df29201286babba"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/abm_simulation_rev31_timescale.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/abm_simulation_rev31_timescale.py",
+      "bytes": 120198,
+      "sha256": "69412d5c16110592cbc6683a72b1a72cc46818e8c97e2d3d8c2230390099acde"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/fit_abm_simulation.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/fit_abm_simulation.py",
+      "bytes": 4880,
+      "sha256": "cb2dca1b07f24077191b7ce5c03b96302270b44821fb2b18370d03f50f61f513"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/disease_params.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/disease_params.xml",
+      "bytes": 37739,
+      "sha256": "766f893fefd938ea38478435356d412b8ff3af02ee544a36170654cd921184cf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_fatality_coefficients.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_fatality_coefficients.xml",
+      "bytes": 393,
+      "sha256": "67d254313fb5eed3f89b0b918dfddb4925f95cd1256908f649260d80ed284f84"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_severity_coefficients.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_severity_coefficients.xml",
+      "bytes": 393,
+      "sha256": "bf16f9c111e045a1eebc8bda1be3bff92d6b02468fa0defd78a2aca032e11053"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy.xml",
+      "bytes": 1326,
+      "sha256": "9fd4193953742657396a22590467125d0fe56626ef43bb04896d0fcae485d61a"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoOFF.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoOFF.xml",
+      "bytes": 1377,
+      "sha256": "85700caca7b0d42489227a9d62cf9bc73939b6807624b55f32679600ed34de11"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoON.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoON.xml",
+      "bytes": 1326,
+      "sha256": "415c4649d0c070c609cdba28bbb984f37fb4d3b9809837ff23c63e1327242652"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_fatality_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_fatality_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_severity_rates_by_age.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_severity_rates_by_age.xml",
+      "bytes": 4278,
+      "sha256": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/selected_sigungu_initial_infected_v2.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/selected_sigungu_initial_infected_v2.xml",
+      "bytes": 16919,
+      "sha256": "83b37e538e607b762754b366babc18cdc7b984e0f45ecf2c60e41015ed433191"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/travel_config.xml",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/travel_config.xml",
+      "bytes": 414,
+      "sha256": "eada28e7d395cecc34aea042221d5a96255483c7faffc481bc95ced570e60916"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/smoke_test_integration.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/abm_core/smoke_test_integration.py",
+      "bytes": 3579,
+      "sha256": "a51f63ea21e3848c3429a7fadbe17f828942ef40ca5c1a35a693cd35898b8f3d"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/docs/README.md",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/docs/README.md",
+      "bytes": 5049,
+      "sha256": "67d7ef2d77c28ce72f087584fc0cc983fe3438913ebd746350830d53cff03433"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/calibrate_nonsat.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/calibrate_nonsat.py",
+      "bytes": 8643,
+      "sha256": "9f9384e2d49fa428f7c80b75f68040b28816086bce55b2b2b083e23b43833c22"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e1_correctness.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/e1_correctness.py",
+      "bytes": 2374,
+      "sha256": "8c531a4a8327446f50712c9220437b00a5e31179931e1b12b76cdc60ee88c202"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e2_blind_topology.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/e2_blind_topology.py",
+      "bytes": 4975,
+      "sha256": "73a4055c45b80f8f2cdb35d0490a8868e7ab5b9f4d786408c8df71381bb994d2"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e3_benefit.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/e3_benefit.py",
+      "bytes": 4097,
+      "sha256": "0bd29c8c1383bf068ad2eb5a4dfffdf8a6879b7ae1d750976c7a2f053d49cf6b"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/replicate_seeds.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/replicate_seeds.py",
+      "bytes": 5122,
+      "sha256": "ed33360550150e4fe61c1f07953dd9b072052a30c175f5b23371ed88a19451a7"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/run_abm_district_pairs.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/experiments/run_abm_district_pairs.py",
+      "bytes": 4476,
+      "sha256": "d770a104965b00721642af3f3df2d5297e55f0544a6c7fa25803c1717c02bd41"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py",
+      "bytes": 6682,
+      "sha256": "4274e91a020515c3c931290e335447c6cf559b86a20782fe03c56ed94bb1e37d"
+    },
+    {
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py",
+      "source": "03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py",
+      "bytes": 3108,
+      "sha256": "e2151c78494db27220c192bb7dc52870327b2ac769ec6b525c25c5776d1261ac"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/README.md",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/README.md",
+      "bytes": 3205,
+      "sha256": "a48914ecb6c347c53cbf7bbd1ca5a236ca23c505d0e5deed236bd5dc87ddc031"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/build.gradle.kts",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/build.gradle.kts",
+      "bytes": 1589,
+      "sha256": "74ac3938f2173482f961a93974680b6df8507aed2523461e9a7a0bcfb1906508"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/AndroidManifest.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/AndroidManifest.xml",
+      "bytes": 972,
+      "sha256": "d1c2167935bd942b8d8d8470ed864a7840e614ca5271757380c3e54064825926"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/MainActivity.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/MainActivity.kt",
+      "bytes": 3248,
+      "sha256": "4663c6c6c8854a37fd53bf6664218cddde1b095e23383c0779ccc89c64edd029"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+      "bytes": 12904,
+      "sha256": "41c402a12b8ff9b7ed9e68be67210b886b0fe467e2a2650d3511fab6de1894cb"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "bytes": 428,
+      "sha256": "8d772fc74332af228d21d882891dfad487d025b60eb3ae1f938e9fa2fe8c381e"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/layout/activity_main.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/layout/activity_main.xml",
+      "bytes": 3102,
+      "sha256": "47c35565367ad53c6b33c7fe96740449a9f70257f7c03c7fd441cc57a19b07fe"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "bytes": 256,
+      "sha256": "e43db58d21b823933f043b9d322e410b4741129bec28ef79c8ca525d3064b94d"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "bytes": 256,
+      "sha256": "e43db58d21b823933f043b9d322e410b4741129bec28ef79c8ca525d3064b94d"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values-night/themes.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values-night/themes.xml",
+      "bytes": 815,
+      "sha256": "26fb6a9951d2c2951fdeb41e171cd881fe04c12366626aa509138de1b35fc666"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/colors.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/colors.xml",
+      "bytes": 387,
+      "sha256": "31e0230ab2d96fa128a11705e85e590f3462745dc3c04bc851bc724a445921c1"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/strings.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/strings.xml",
+      "bytes": 109,
+      "sha256": "d75b0927d5df34b5712f5907bb477f5df7d031721cbcc216b4aee4e825be2c51"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/themes.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/themes.xml",
+      "bytes": 815,
+      "sha256": "4334935678e38852f415f27a337aff1bcc3eef86735df5d3d5b38d25b803a734"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/build.gradle.kts",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/build.gradle.kts",
+      "bytes": 241,
+      "sha256": "ac3cceebc8b28f8c2382ce3fefa26ec25bcbb26c46650192fd508a58b756a843"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle.properties",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle.properties",
+      "bytes": 55,
+      "sha256": "3db3dae6dbd5caf385470b0345bc517eab19b7319026d909132fe852b4b3850f"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.properties",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.properties",
+      "bytes": 253,
+      "sha256": "97e38c4092036e177d1d31ebb454332a61a1d1313fc76aefe34b35e88211715d"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew",
+      "bytes": 8733,
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew.bat",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew.bat",
+      "bytes": 2937,
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/proguard-rules.pro",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/proguard-rules.pro",
+      "bytes": 166,
+      "sha256": "6d0d54826b4114d865b5bf8aafaec95c5b4a501a9ef556fa598e69b4b3593a0a"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_client.sh",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/run_client.sh",
+      "bytes": 346,
+      "sha256": "cf26477cc1b2bb78c65cd0ec1c3ab777dbeb3fe3aa45ee7664a9ea4d29a644c5"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_server.sh",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/run_server.sh",
+      "bytes": 521,
+      "sha256": "c16a820c38fa7275b859239c3a68ca5799448aa7702b16604c1bc0a2a7bc2754"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/server.py",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/server.py",
+      "bytes": 20242,
+      "sha256": "48793bedb90f6b082446f41a2386a3f954da8bbd3022e39574d9f24741085571"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/settings.gradle.kts",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/settings.gradle.kts",
+      "bytes": 351,
+      "sha256": "caf15fd48e9e5d11fa6ef5664a7c5324ef5df92f36e58994dae1936b07781b1f"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/AndroidManifest.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/AndroidManifest.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/MainActivity.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/MainActivity.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain_copy.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain_copy.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClient.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClient.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain copy.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain copy.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain.kt",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain.kt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/drawable/ic_launcher_foreground.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/drawable/ic_launcher_foreground.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/layout/activity_main.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/layout/activity_main.xml",
+      "bytes": 1515,
+      "sha256": "a53ba72d2e99cc4bbf07445eb0d2f159eabd655dd769041558bf6e4dc6078741"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values-night/themes.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values-night/themes.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/colors.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/colors.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/strings.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/strings.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/themes.xml",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/themes.xml",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai_server_python/server.py",
+      "source": "04_당화혈색소_모바일연합학습/deFai_federated/defai_server_python/server.py",
+      "bytes": 20241,
+      "sha256": "bf70101c83d1f154063c93a0a684154cbfc2adc97fde077c1d2c89af318fc95f"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/README.txt",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/README.txt",
+      "bytes": 4070,
+      "sha256": "c330598b4e4857dcb6645a8a2a69a176ff587bc647d467427fa0d206371376f8"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/compute_capacity.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/compute_capacity.py",
+      "bytes": 5608,
+      "sha256": "ae7298977ea7fa7ec4a56c8f65ccebb7b06c1b46be368a698bd7dac5abff3ece"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/verify_design_html.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/verify_design_html.py",
+      "bytes": 9448,
+      "sha256": "6cf9b890dc45e46607085ae89dab0196b046a031dda2466aab97cbe8429345d4"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/README_SYNTHETIC.md",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/README_SYNTHETIC.md",
+      "bytes": 533,
+      "sha256": "96f8405af3994852542345df29f9fde7e4636b81c60309fe34b9407c8fec84fe"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/generate_synthetic.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/generate_synthetic.py",
+      "bytes": 915,
+      "sha256": "30c27d160517d96a3e69330c5869f916c11f8ddde23ff8db803e94b6f5a09888"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/audit_worlds.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/audit_worlds.py",
+      "bytes": 3535,
+      "sha256": "62e30dfda7d32d500824b6d8472912f1175e9939090e85af9a882c3ec2b25e30"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py",
+      "bytes": 14191,
+      "sha256": "bd93b2f19ba53289394f679d1fb51b7e2c1b9b2f2ad91ad7bdb117a3b607c186"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cpu_worker.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cpu_worker.py",
+      "bytes": 3611,
+      "sha256": "57023a56f56005b037621a8b18932144804c2643095b29a7dbd8d0b7ef5050c9"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/generate_pending_worlds.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/generate_pending_worlds.py",
+      "bytes": 581,
+      "sha256": "521c129117b1f47500b8a99f4e4abf25ee0b36124a934895a64cd1e448b5984f"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_execute.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_execute.py",
+      "bytes": 4624,
+      "sha256": "6d294af0b5376882dafce85e5f67639e0a0c942bc96f1ef74594a1fa14a6e99c"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_resume_worker.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_resume_worker.py",
+      "bytes": 1665,
+      "sha256": "6bab4df131b70a30d26d34c984440adb415925ac1e0a7e1ab52d917947648373"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py",
+      "bytes": 12344,
+      "sha256": "80d7fe1ff2dd1d6c1f941d034938413c553639ea1e054577128fc4a30e344252"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/record_environment.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/record_environment.py",
+      "bytes": 2060,
+      "sha256": "6b6e90c81b9d1fc4e7d8763dfab40a37cbf855564c697cd7ddb94585dc8f81c9"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/report_results.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/report_results.py",
+      "bytes": 45677,
+      "sha256": "6d52f6e4bdfa7e9899a4a58cf81b03a51fdbe45661cb6094df9d5416fb9e15c3"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/run_comparison.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/run_comparison.py",
+      "bytes": 8421,
+      "sha256": "71657bdf881512dfffa80a7aa930aa6e53bc73a6fac53d59fba9589e54051c85"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/test_learning.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/test_learning.py",
+      "bytes": 4844,
+      "sha256": "f32d131a31aa0140b1e2b178f5e2031fbc52aab0216703e47a329875041eaff8"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/verify_results.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/verify_results.py",
+      "bytes": 4183,
+      "sha256": "3e87a4a803bedc328c30c13dffb8122923fad07550ab30f0683e3abb8cb5e854"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/report/HbA1c_FL_데이터확보_연구설계.md",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/report/HbA1c_FL_데이터확보_연구설계.md",
+      "bytes": 47605,
+      "sha256": "c69551d642c76f1ee16a88e5edb70dbb948e74891c070b9a63c901f4ab022104"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/build_xlsx.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/build_xlsx.py",
+      "bytes": 10817,
+      "sha256": "0dabd213220baa0477fbb8e5469c652ecd38a01efd500b64583322b2cf5a4144"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/candidates.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/candidates.py",
+      "bytes": 37480,
+      "sha256": "0470f36033c01b4428ca1d121dd511718f1a5c2878553f4595fb59f80be013ea"
+    },
+    {
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/nhanes_linkage.py",
+      "source": "04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/nhanes_linkage.py",
+      "bytes": 5272,
+      "sha256": "d346c4ea7be30640d68f64f7ef7879461efcfc7e705a9be1594b1065d65fca45"
+    }
+  ],
+  "python_syntax_errors": []
+}

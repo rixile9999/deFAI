@@ -1,0 +1,2324 @@
+{
+  "schema": 1,
+  "resources": [
+    ".gitattributes",
+    ".gitignore",
+    "LICENSE",
+    "README.md",
+    "defai/__init__.py",
+    "defai/__main__.py",
+    "defai/aggregation.py",
+    "defai/android.py",
+    "defai/attacks.py",
+    "defai/cli.py",
+    "defai/client_app.py",
+    "defai/compression.py",
+    "defai/config.py",
+    "defai/data.py",
+    "defai/demo.py",
+    "defai/io.py",
+    "defai/mirror.py",
+    "defai/mobile.py",
+    "defai/privacy/__init__.py",
+    "defai/privacy/accountant.py",
+    "defai/privacy/dp.py",
+    "defai/records.py",
+    "defai/research/__init__.py",
+    "defai/research/generation.py",
+    "defai/research/hba1c.py",
+    "defai/research/neonatal.py",
+    "defai/research/policy.py",
+    "defai/research/resources.py",
+    "defai/research/workspace.py",
+    "defai/results.py",
+    "defai/server_app.py",
+    "defai/simulation.py",
+    "defai/strategies/__init__.py",
+    "defai/strategies/base.py",
+    "defai/strategies/fedopt.py",
+    "defai/strategies/heterogeneity.py",
+    "defai/strategies/robust.py",
+    "defai/task.py",
+    "disease_research/.gitignore",
+    "disease_research/01_신생아황달_연합학습/GAN_research/README.md",
+    "disease_research/01_신생아황달_연합학습/GAN_research/check_generation.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/federated_algorithms.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/gan_models.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/network_check.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/prepare_data.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-cuda.txt",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-runtime.lock.txt",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-used.txt",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_parallel.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_study.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_federated_study.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_skin_bias_study.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/runtime.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/skin_bias.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/summarize_algorithm_study.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/summarize_skin_bias.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_algorithm_report.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_federated_algorithms.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_research.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_skin_bias.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_algorithm_context.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_gan.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_paired_gan.py",
+    "disease_research/01_신생아황달_연합학습/GAN_research/write_report.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/__init__.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_centralized.py).py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_federated.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/client.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/dataset.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/model.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/server.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/utils.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/__init__.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/check_input.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/run_centralized.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/run_federated.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/client.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/dataset.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/federated.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/model.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/server.py",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/utils.py",
+    "disease_research/01_신생아황달_연합학습/PUBLICATION.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/PUBLICATION.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier0_covid.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier1_covid.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier2_covid.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/algo_advanced.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/comm_overhead.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/fl_benefit_demo.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/gen_data21.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/imbalance_analysis.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/security_defense.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CES_2026_DEMO_COMPLETE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CONNECTION_FIX.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DATA_CLARIFICATION.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_RECORDING_GUIDE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_TIMING_UPDATE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/FINAL_SUMMARY.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_ENGLISH.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPT.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPTS_ONLY.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICKSTART.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICK_START.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README_DEMO.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/SETUP_DEMO.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_BUGFIX.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_CES_UPDATE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_FINAL.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_GUIDE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_SUMMARY.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_UPDATE.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WARNING_SUPPRESSION.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WHICH_LAUNCHER.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/__init__.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_transport.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/synthetic_regions.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/data_gen_hierarchical.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo1_hierarchical_visualization.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_launcher.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_simple.bat",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/launch_demo.bat",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/requirements-policy-research.lock.txt",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_policy_validation.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_region_validation.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier0.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier1.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier2.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/setup_hierarchical.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_policy_stats.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_region_expansion.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/verify_hierarchical_data.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/write_policy_report.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/계층형_구조_안내.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/he_key_bug_demo.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/client.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/crypto.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/serialization.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/strategy.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen-v2.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/dataloader.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/ipw.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification-v2.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_client.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_server.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_hierarchical.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_keys.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase1.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase2.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase3.py",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/계층형_구조_안내.md",
+    "disease_research/02_감염병정책_및_중증도_연합학습/슬라이드 작성/build_kist_ppt.py",
+    "disease_research/03_감염세대간격_연합추정/PUBLICATION.md",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/abm_simulation_rev31_timescale.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/fit_abm_simulation.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/disease_params.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_fatality_coefficients.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_severity_coefficients.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoOFF.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoON.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_fatality_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_severity_rates_by_age.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/selected_sigungu_initial_infected_v2.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/travel_config.xml",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/smoke_test_integration.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/docs/README.md",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/calibrate_nonsat.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e1_correctness.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e2_blind_topology.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e3_benefit.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/replicate_seeds.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/run_abm_district_pairs.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py",
+    "disease_research/04_당화혈색소_모바일연합학습/PUBLICATION.md",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/README.md",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/build.gradle.kts",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/AndroidManifest.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/MainActivity.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/drawable/ic_launcher_foreground.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/layout/activity_main.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values-night/themes.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/colors.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/strings.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/themes.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/build.gradle.kts",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle.properties",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.jar",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.properties",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew.bat",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/proguard-rules.pro",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_client.sh",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_server.sh",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/server.py",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/settings.gradle.kts",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/AndroidManifest.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/MainActivity.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClient.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain_copy.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClient.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain copy.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain.kt",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/drawable/ic_launcher_foreground.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/layout/activity_main.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values-night/themes.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/colors.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/strings.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/themes.xml",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai_server_python/server.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/README.txt",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/compute_capacity.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/verify_design_html.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/README_SYNTHETIC.md",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/generate_synthetic.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/audit_worlds.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cpu_worker.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/generate_pending_worlds.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_execute.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_resume_worker.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/record_environment.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/report_results.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/run_comparison.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/test_learning.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/verify_results.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/report/HbA1c_FL_데이터확보_연구설계.md",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/build_xlsx.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/candidates.py",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/nhanes_linkage.py",
+    "disease_research/README.md",
+    "disease_research/VALIDATION.md",
+    "disease_research/references/README.md",
+    "disease_research/references/hall_calibration.md",
+    "disease_research/references/neojaundice.md",
+    "disease_research/references/nhanes_calibration.md",
+    "disease_research/references/public_inventory_01.csv",
+    "disease_research/references/public_inventory_02.csv",
+    "disease_research/references/public_inventory_03.csv",
+    "disease_research/references/public_inventory_04.csv",
+    "disease_research/references/public_inventory_05.csv",
+    "disease_research/references/public_inventory_06.csv",
+    "disease_research/references/public_inventory_07.csv",
+    "disease_research/references/public_inventory_08.csv",
+    "disease_research/references/public_inventory_09.csv",
+    "disease_research/source_manifest.json",
+    "docs/experiments.md",
+    "docs/report.md",
+    "docs/user_guide_ko.md",
+    "hatch_build.py",
+    "pyproject.toml",
+    "scripts/benchmark_aggregation.py",
+    "scripts/build_catalog.py",
+    "scripts/check_research.py",
+    "scripts/compare.py",
+    "scripts/partition_stats.py",
+    "scripts/plot.py",
+    "scripts/run_grid.py"
+  ],
+  "api_modules": {
+    "generation": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py",
+    "paillier": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py",
+    "policy": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py",
+    "hba1c": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py",
+    "cohort": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py",
+    "neonatal_data": "disease_research/01_신생아황달_연합학습/GAN_research/prepare_data.py",
+    "neonatal_model": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/model.py",
+    "neonatal_aggregation": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/federated.py",
+    "gan": "disease_research/01_신생아황달_연합학습/GAN_research/gan_models.py",
+    "neonatal_algorithms": "disease_research/01_신생아황달_연합학습/GAN_research/federated_algorithms.py"
+  },
+  "modules": [
+    {
+      "id": "neonatal.gan_research.check_generation",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/check_generation.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Descriptive held-out-validation image checks; no clinical validity claim.",
+      "symbols": [
+        "features",
+        "kid",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.federated_algorithms",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/federated_algorithms.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "FedProx objective, SCAFFOLD option II, and local BN state handling.",
+      "symbols": [
+        "bn_keys",
+        "train_mode",
+        "proximal_penalty",
+        "scaffold_correct",
+        "scaffold_control",
+        "personalized_state"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.gan_models",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/gan_models.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Conditional skin-patch GAN: resize-convolution G, projection/auxiliary D.",
+      "symbols": [
+        "Generator",
+        "Discriminator",
+        "augment"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.network_check",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/network_check.py",
+      "role": "script",
+      "arguments": [
+        "--role",
+        "--port",
+        "--client"
+      ],
+      "has_main_guard": true,
+      "description": "Two-round, three-client Flower smoke test using training patients only.",
+      "symbols": [
+        "CheckClient",
+        "CheckStrategy",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.prepare_data",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/prepare_data.py",
+      "role": "script",
+      "arguments": [
+        "--output",
+        "--seed",
+        "--source"
+      ],
+      "has_main_guard": true,
+      "description": "Audit sources and freeze patient-disjoint train/validation/test partitions.",
+      "symbols": [
+        "prepare"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.run_algorithm_parallel",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_parallel.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Run independent data/bias experiments concurrently, then unlock test once.",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.run_algorithm_study",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_study.py",
+      "role": "script",
+      "arguments": [
+        "--rounds",
+        "--plan-only"
+      ],
+      "has_main_guard": true,
+      "description": "Validation-only tuning then locked test evaluation of federated optimizers.",
+      "symbols": [
+        "cpu_state",
+        "cache",
+        "local_update",
+        "evaluate",
+        "evaluate_state",
+        "train_one",
+        "run"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.run_federated_study",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_federated_study.py",
+      "role": "script",
+      "arguments": [
+        "--rounds",
+        "--local-epochs",
+        "--seeds",
+        "--batch-size",
+        "--paired",
+        "--procedural-half"
+      ],
+      "has_main_guard": true,
+      "description": "Patient-disjoint actual-GPU comparison using three sequential FL clients.",
+      "symbols": [
+        "seed_all",
+        "patients_table",
+        "metrics",
+        "evaluate",
+        "local_update",
+        "make_tensors",
+        "extras",
+        "run"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.run_skin_bias_study",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/run_skin_bias_study.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Prespecified brightness-proxy and counterfactual study on fixed patient split.",
+      "symbols": [
+        "patient_groups",
+        "local_update",
+        "inputs",
+        "run"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.runtime",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/runtime.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Explicit, portable device selection; CPU is the default.",
+      "symbols": [
+        "require_device",
+        "device_name"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.skin_bias",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/skin_bias.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Brightness-nuisance suppression, not a biological melanin measurement.",
+      "symbols": [
+        "normalize",
+        "denormalize",
+        "suppress_brightness",
+        "attenuate"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.summarize_algorithm_study",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/summarize_algorithm_study.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Report all validation candidates and locked federated-optimizer comparisons.",
+      "symbols": [
+        "context_label",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.summarize_skin_bias",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/summarize_skin_bias.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Patient-paired uncertainty; disclose every method and subgroup.",
+      "symbols": [
+        "table",
+        "error_metrics",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.tests.test_algorithm_report",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_algorithm_report.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "The reported winner must remain validation-selected even if test disagrees.",
+      "symbols": [
+        "test_report_keeps_validation_winner_and_discloses_all_methods"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.tests.test_federated_algorithms",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_federated_algorithms.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_federated_algorithms",
+      "symbols": [
+        "test_proximal_gradient_is_mu_times_distance_not_parameter_mean",
+        "test_scaffold_option_two_and_gradient_sign_on_known_steps",
+        "test_scaffold_global_control_is_mean_for_full_participation",
+        "test_fedbn_reactivates_statistics_and_retains_all_local_bn_keys",
+        "test_weighted_scaffold_converges_to_weighted_quadratic_solution"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.tests.test_research",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_research.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_research",
+      "symbols": [
+        "test_patient_and_image_split_disjointness",
+        "test_known_weighted_average_and_integer_buffer",
+        "test_nonfinite_client_update_rejected",
+        "test_singleton_batch_and_common_bn_statistics",
+        "test_gan_output_and_differentiable_augmentation",
+        "test_synthetic_test_or_other_client_provenance_rejected",
+        "test_patient_predictions_are_not_three_independent_patients",
+        "test_generated_data_only_from_local_training_patients",
+        "test_original_loader_now_splits_patients_not_photographs",
+        "test_paired_generator_retains_bounded_source_structure"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.tests.test_skin_bias",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_skin_bias.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_skin_bias",
+      "symbols": [
+        "test_gain_retains_yellow_relative_channel_signal",
+        "test_chromaticity_is_gain_invariant_and_finite_at_black",
+        "test_group_cutoffs_never_fit_on_test_images",
+        "test_bootstrap_gap_is_recomputed_not_mean_patient_difference"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.train_algorithm_context",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_algorithm_context.py",
+      "role": "script",
+      "arguments": [
+        "--context-index"
+      ],
+      "has_main_guard": true,
+      "description": "Independent experiment worker; each FL run still trains clients sequentially.",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.train_gan",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_gan.py",
+      "role": "script",
+      "arguments": [
+        "--steps",
+        "--seed",
+        "--batch-size"
+      ],
+      "has_main_guard": true,
+      "description": "Train separate client-local conditional GANs on RTX 4080, then generate.",
+      "symbols": [
+        "image_grid",
+        "train"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.train_paired_gan",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/train_paired_gan.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Local image-conditioned residual GAN learned from same-patient photo pairs.",
+      "symbols": [
+        "PairedGenerator",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.gan_research.write_report",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/GAN_research/write_report.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Summarize all recorded arms without hiding unsuccessful generators.",
+      "symbols": [
+        "table",
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.init",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/__init__.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "__init__",
+      "symbols": []
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.run_centralized_py",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_centralized.py).py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "run_centralized.py)",
+      "symbols": [
+        "load_split_data",
+        "train_centralized"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.run_federated",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_federated.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "run_federated",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.src.client",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/client.py",
+      "role": "script",
+      "arguments": [
+        "--client_id",
+        "--num_clients"
+      ],
+      "has_main_guard": true,
+      "description": "client",
+      "symbols": [
+        "NeonatalClient"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.src.dataset",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/dataset.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "dataset",
+      "symbols": [
+        "ImagePreprocessor",
+        "JaundiceDataset",
+        "get_transforms"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.src.model",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/model.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "model",
+      "symbols": [
+        "MultiModalNet"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.src.server",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/server.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "server",
+      "symbols": [
+        "weighted_average"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice_virtual.src.utils",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/utils.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "utils",
+      "symbols": [
+        "generate_dummy_data",
+        "load_partition"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.init",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/__init__.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "__init__",
+      "symbols": []
+    },
+    {
+      "id": "neonatal.neojaundice.check_input",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/check_input.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "check_input",
+      "symbols": [
+        "debug_skin_crop"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.run_centralized",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/run_centralized.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "run_centralized",
+      "symbols": [
+        "filter_valid_data",
+        "train_centralized"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.run_federated",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/run_federated.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "run_federated",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.client",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/client.py",
+      "role": "script",
+      "arguments": [
+        "--client_id",
+        "--num_clients"
+      ],
+      "has_main_guard": true,
+      "description": "client",
+      "symbols": [
+        "NeonatalClient"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.dataset",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/dataset.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "dataset",
+      "symbols": [
+        "ImagePreprocessor",
+        "JaundiceDataset",
+        "get_transforms"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.federated",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/federated.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Fail-closed weighted aggregation with integer buffers kept as integers.",
+      "symbols": [
+        "average_states"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.model",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/model.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "model",
+      "symbols": [
+        "MultiModalNet"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.server",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/server.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "server",
+      "symbols": [
+        "NeonatalFedAvg",
+        "weighted_average"
+      ]
+    },
+    {
+      "id": "neonatal.neojaundice.src.utils",
+      "domain": "neonatal",
+      "path": "disease_research/01_신생아황달_연합학습/NeoJaundice/src/utils.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "utils",
+      "symbols": [
+        "verify_and_split_data",
+        "load_client_data_from_debug"
+      ]
+    },
+    {
+      "id": "policy.edited_from_external_source.run_tier0_covid",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier0_covid.py",
+      "role": "script",
+      "arguments": [
+        "--rounds",
+        "--num-cities",
+        "--data-dir",
+        "--plaintext"
+      ],
+      "has_main_guard": true,
+      "description": "run_tier0_covid",
+      "symbols": [
+        "MLP",
+        "weights_to_array",
+        "array_to_weights",
+        "safe_auc",
+        "load_all_districts",
+        "CentralStrategy",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.edited_from_external_source.run_tier1_covid",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier1_covid.py",
+      "role": "script",
+      "arguments": [
+        "--port",
+        "--city",
+        "--min-districts",
+        "--plaintext"
+      ],
+      "has_main_guard": true,
+      "description": "run_tier1_covid",
+      "symbols": [
+        "CityStrategy",
+        "CityClient",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.edited_from_external_source.run_tier2_covid",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier2_covid.py",
+      "role": "script",
+      "arguments": [
+        "--data",
+        "--target",
+        "--plaintext"
+      ],
+      "has_main_guard": true,
+      "description": "run_tier2_covid",
+      "symbols": [
+        "MLP",
+        "weights_to_array",
+        "array_to_weights",
+        "DistrictClient",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.experiments.algo_advanced",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/algo_advanced.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "[챕터5 추가연구] 연합학습 알고리즘 고도화 — 클라이언트 선택 · FedCurv",
+      "symbols": [
+        "client_loss",
+        "diag_fisher",
+        "train_fedcurv",
+        "setup",
+        "run_selection",
+        "auc_at_updates",
+        "run_fed",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.experiments.comm_overhead",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/comm_overhead.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "[챕터1 + 챕터2 HE오버헤드] 통신 페이로드·압축·동형암호 오버헤드 실측",
+      "symbols": [
+        "fmt",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.experiments.fl_benefit_demo",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/fl_benefit_demo.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "연합학습 이점 실측 비교 실험 (정책 리포트용 사실 근거)",
+      "symbols": [
+        "load_districts",
+        "inject_signal",
+        "split",
+        "MLP",
+        "get_w",
+        "set_w",
+        "smote_lite",
+        "train_local",
+        "evaluate",
+        "run_centralized",
+        "run_isolated",
+        "run_federated",
+        "run_at_cap",
+        "run_smote_imbalance"
+      ]
+    },
+    {
+      "id": "policy.experiments.gen_data21",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/gen_data21.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "새 규모 합성데이터 생성 — 외부 팀 보고 규모(8시도·21시군구·~51k행) 재현",
+      "symbols": [
+        "gen_district",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.experiments.imbalance_analysis",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/imbalance_analysis.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "[챕터4 추가연구] 불균형 데이터 분석 — 엔트로피·상호정보량·F1 가중집계",
+      "symbols": [
+        "label_entropy",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.experiments.security_defense",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/experiments/security_defense.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "[챕터3] 외부공격·내부방어 실증 — 변조공격+강건집계 / 멤버십추론 / 워터마킹",
+      "symbols": [
+        "setup",
+        "flatten",
+        "aggregate",
+        "run_poison",
+        "mia_auc",
+        "make_trigger",
+        "fed_global",
+        "embed_watermark",
+        "wm_hit",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.core.init",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/__init__.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "__init__",
+      "symbols": []
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.core.policy_stats",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py",
+      "role": "script",
+      "arguments": [
+        "--start",
+        "--policy",
+        "--end",
+        "--date-column"
+      ],
+      "has_main_guard": false,
+      "description": "Additive statistics for a balanced district-day difference-in-differences panel.",
+      "symbols": [
+        "AnalysisConfig",
+        "add_analysis_arguments",
+        "config_from_args",
+        "daily_counts",
+        "read_district_file",
+        "district_treatment",
+        "district_identity",
+        "district_vector",
+        "validate_vector",
+        "moments",
+        "province_summary",
+        "_contrast",
+        "analyze",
+        "print_analysis"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.core.policy_transport",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_transport.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Version/configuration checks shared by the three Flower tiers.",
+      "symbols": [
+        "normalize_region",
+        "load_context",
+        "metadata",
+        "validate_metadata",
+        "encode",
+        "decode"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.core.synthetic_regions",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/synthetic_regions.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Scalable version of the Poisson/thinned-case generator used by the demo.",
+      "symbols": [
+        "RegionGeneration",
+        "generate_regions",
+        "export_regions"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.data_gen_hierarchical",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/data_gen_hierarchical.py",
+      "role": "script",
+      "arguments": [
+        "--expanded",
+        "--output",
+        "--n-provinces",
+        "--n-treated",
+        "--districts-per-province",
+        "--unequal-districts",
+        "--policy-ratio",
+        "--ramp-days",
+        "--base-cases",
+        "--baseline-sigma",
+        "--serial-correlation",
+        "--province-shock-sd",
+        "--differential-trend",
+        "--reporting-ratio",
+        "--seed"
+      ],
+      "has_main_guard": true,
+      "description": "data_gen_hierarchical",
+      "symbols": [
+        "generate_hierarchical_data"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.demo1_hierarchical_visualization",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo1_hierarchical_visualization.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "계층형 F-Causal 시각화 (3-Tier Hierarchical Structure)",
+      "symbols": [
+        "create_demo1_hierarchical"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.demo_launcher",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_launcher.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "CES 2026 데모 녹화용 통합 런처",
+      "symbols": [
+        "DemoLauncher",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.run_policy_validation",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_policy_validation.py",
+      "role": "script",
+      "arguments": [
+        "--replications",
+        "--network"
+      ],
+      "has_main_guard": true,
+      "description": "Reproduce pooled/three-tier/CKKS agreement and inference simulations.",
+      "symbols": [
+        "make_contexts",
+        "fit_response",
+        "load_records",
+        "reference_analysis",
+        "run_strategies",
+        "legacy_effect",
+        "validate_datasets",
+        "simulate",
+        "free_port",
+        "wait_port",
+        "validate_network",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.run_region_validation",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_region_validation.py",
+      "role": "script",
+      "arguments": [
+        "--replications",
+        "--data-output",
+        "--results-output",
+        "--network"
+      ],
+      "has_main_guard": true,
+      "description": "Generate more provinces and test the real count-data analysis pipeline.",
+      "symbols": [
+        "scenarios",
+        "summary_from_records",
+        "independent_regression",
+        "validate_dataset",
+        "repeat_validation",
+        "write_report",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.run_tier0",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier0.py",
+      "role": "script",
+      "arguments": [
+        "--address",
+        "--min-provinces",
+        "--plaintext",
+        "--key-dir",
+        "--output"
+      ],
+      "has_main_guard": true,
+      "description": "Tier 0: decrypt province moments and compute a defined policy contrast.",
+      "symbols": [
+        "CentralStrategy",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.run_tier1",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier1.py",
+      "role": "script",
+      "arguments": [
+        "--port",
+        "--region",
+        "--treated",
+        "--min-districts",
+        "--target",
+        "--plaintext",
+        "--key-dir"
+      ],
+      "has_main_guard": true,
+      "description": "Tier 1: sum additive statistics without a secret key, then forward once.",
+      "symbols": [
+        "ProvinceStrategy",
+        "ProvinceClient",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.run_tier2",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier2.py",
+      "role": "script",
+      "arguments": [
+        "--data",
+        "--target",
+        "--plaintext",
+        "--key-dir",
+        "--treated"
+      ],
+      "has_main_guard": true,
+      "description": "Tier 2: build additive moments on a complete calendar, then encrypt.",
+      "symbols": [
+        "DistrictClient",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.setup_hierarchical",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/setup_hierarchical.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "계층형 F-Causal 설정 스크립트",
+      "symbols": [
+        "generate_pki",
+        "verify_setup",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.tests.test_policy_stats",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_policy_stats.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_policy_stats",
+      "symbols": [
+        "config",
+        "contexts",
+        "response",
+        "test_zero_days_and_explicit_calendar",
+        "test_moments_match_pooled_data_with_unequal_district_values",
+        "test_district_identity_rejects_mixed_regions",
+        "test_invalid_stats_rejected",
+        "test_config_and_key_mismatches_rejected",
+        "test_federated_effect_and_cluster_se_match_independent_ols",
+        "test_one_treated_province_does_not_create_significance",
+        "test_actual_tier_strategies_and_encrypted_addition",
+        "test_missing_duplicate_and_mixed_districts_rejected",
+        "test_secret_key_rejected_at_province",
+        "test_known_effect_survives_district_duplication"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.tests.test_region_expansion",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_region_expansion.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_region_expansion",
+      "symbols": [
+        "test_explicit_randomized_assignment_and_reproducibility",
+        "test_null_and_separate_reporting_confounding",
+        "test_panel_roundtrip_matches_the_tier2_client",
+        "test_bad_panel_fails_instead_of_recounting_rows",
+        "test_treatment_not_guessed_from_region_name"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.verify_hierarchical_data",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/verify_hierarchical_data.py",
+      "role": "script",
+      "arguments": [
+        "--data-dir"
+      ],
+      "has_main_guard": true,
+      "description": "Inspect all district workbooks with the same definition used by all tiers.",
+      "symbols": [
+        "verify_hierarchical_data"
+      ]
+    },
+    {
+      "id": "policy.fcausal_hierarchical.fcausal_hierarchical.write_policy_report",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/write_policy_report.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Render the measured evidence as a standalone Korean HTML research report.",
+      "symbols": [
+        "table",
+        "main"
+      ]
+    },
+    {
+      "id": "policy.he_key_bug_demo",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/he_key_bug_demo.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "동형암호 '키 분리 결함' 재현 & 수정 데모",
+      "symbols": [
+        "_is_prime",
+        "_gen_prime",
+        "create_context",
+        "encrypt",
+        "he_add",
+        "decrypt",
+        "enc_vec",
+        "add_vec",
+        "dec_vec",
+        "show",
+        "scenario_bug",
+        "scenario_fix"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.core.client",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/client.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "client",
+      "symbols": [
+        "FCausalClient"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.core.crypto",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/crypto.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "crypto",
+      "symbols": [
+        "create_context",
+        "encrypt_vector",
+        "decrypt_vector",
+        "save_context",
+        "load_context"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.core.serialization",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/serialization.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "serialization",
+      "symbols": [
+        "pack_payload",
+        "unpack_payload"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.core.strategy",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/strategy.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "strategy",
+      "symbols": [
+        "FCausalStrategy"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.data_gen_v2",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen-v2.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "data_gen-v2",
+      "symbols": [
+        "generate_f_causal_data_v2"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.data_gen",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "data_gen",
+      "symbols": [
+        "generate_f_causal_data"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.epi.dataloader",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/dataloader.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "dataloader",
+      "symbols": [
+        "load_data_and_preprocess",
+        "prepare_xy"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.epi.ipw",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/ipw.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "ipw",
+      "symbols": [
+        "calculate_sa_ipw"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.gen_data_verification_v2",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification-v2.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "gen_data_verification-v2",
+      "symbols": [
+        "verify_data_v2"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.gen_data_verification",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "gen_data_verification",
+      "symbols": [
+        "verify_data"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.run_client",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_client.py",
+      "role": "script",
+      "arguments": [
+        "--data"
+      ],
+      "has_main_guard": true,
+      "description": "run_client",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.run_server",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_server.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "run_server",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.setup_hierarchical",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_hierarchical.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "setup_hierarchical",
+      "symbols": [
+        "generate_pki",
+        "split_data"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.setup_keys",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_keys.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "[키 결함 수정] 공유 암호화 키 생성 스크립트",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.tests.test_phase1",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase1.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "test_phase1",
+      "symbols": [
+        "test_serialization_logic"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.tests.test_phase2",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase2.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "test_phase2",
+      "symbols": [
+        "test_phase2"
+      ]
+    },
+    {
+      "id": "policy.pandemic_policy_defai.tests.test_phase3",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase3.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "test_phase3",
+      "symbols": [
+        "test_phase3_simulation"
+      ]
+    },
+    {
+      "id": "policy..build_kist_ppt",
+      "domain": "policy",
+      "path": "disease_research/02_감염병정책_및_중증도_연합학습/슬라이드 작성/build_kist_ppt.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "KIST 연차보고서 → 발표 PPT (소스 deFAI워크샵 포맷 재현).",
+      "symbols": [
+        "slide",
+        "_setfont",
+        "tb",
+        "rect",
+        "running_title",
+        "boxrow",
+        "tag",
+        "stat"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.abm_core.abm_simulation_rev31_timescale",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/abm_simulation_rev31_timescale.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "abm_simulation_rev31_timescale",
+      "symbols": [
+        "Scheduler",
+        "DummyScheduler",
+        "load_scheduler",
+        "prepare_schedule_map",
+        "load_travel_config",
+        "load_and_prepare_data",
+        "load_disease_params",
+        "_parse_duration_param",
+        "_interpolate_share",
+        "load_policy_params",
+        "load_rates_by_age",
+        "set_initial_infections",
+        "_set_initial_infections_random",
+        "_setup_initial_infected_status",
+        "update_agents_locations",
+        "assign_individual_durations",
+        "determine_future_outcome",
+        "update_disease_progression",
+        "run_transmission",
+        "set_initial_vaccination_status",
+        "apply_dynamic_policies",
+        "apply_vaccination_campaign",
+        "apply_health_policies",
+        "calculate_time_dependent_trf",
+        "initialize_log_files",
+        "save_population_data",
+        "log_step_stats",
+        "log_daily_regional_cases",
+        "log_daily_movements",
+        "save_gen_interval",
+        "save_daily_seihr_graph",
+        "Simulation",
+        "run_simulation",
+        "prettify_xml",
+        "load_multipliers_from_disease_params",
+        "generate_modified_rates",
+        "generate_scenario_rates_for_disease",
+        "get_disease_names_from_xml",
+        "main"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.abm_core.fit_abm_simulation",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/fit_abm_simulation.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "ABM 시뮬레이션의 sim_gen_interval.csv에 5모형 적합 (한국 데이터 분석과 동일 절차).",
+      "symbols": [
+        "aic",
+        "bic"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.abm_core.smoke_test_integration",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/smoke_test_integration.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Integration smoke test: M1+M2+M3+M4 + 4-step/transport 복원 통합 회귀.",
+      "symbols": []
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.calibrate_nonsat",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/calibrate_nonsat.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E4] 비포화 레짐 재보정 (논문 §5.6 처방 이행)",
+      "symbols": [
+        "_ga_toff",
+        "_cached_load",
+        "ensure_scenario",
+        "run_once",
+        "measure",
+        "count_pairs"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.e1_correctness",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e1_correctness.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E1] 정합성: 연합 추정 == 중앙집중 풀링 적합",
+      "symbols": []
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.e2_blind_topology",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e2_blind_topology.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E2] 3-tier blind aggregation: 시도(Tier 1)가 내용을 못 본 채 합산해도 결과 동일",
+      "symbols": [
+        "blind_round",
+        "nll_he"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.e3_benefit",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e3_benefit.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E3] 연합의 이득: 시군구 단독(격리) 적합 vs 연합 적합",
+      "symbols": []
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.replicate_seeds",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/replicate_seeds.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E5] 비포화 다회 seed 반복 — \"한국 시그니처 재현\"의 통계적 안정성 검증",
+      "symbols": [
+        "_ga_toff",
+        "_cached_load"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.experiments.run_abm_district_pairs",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/run_abm_district_pairs.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "[E0] ABM 실행 → 시군구별 감염쌍(GI pair) 데이터 생성",
+      "symbols": []
+    },
+    {
+      "id": "generation.abm_fl_simulation.fl_pipeline.federated_burr",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "연합 세대간격(GI) Burr XII 최대우도 추정 (Federated Fisher/L-BFGS)",
+      "symbols": [
+        "burr_ll_grad",
+        "DistrictNode",
+        "ProvinceNode",
+        "federated_fit",
+        "pooled_reference",
+        "load_district_pairs",
+        "build_hierarchy"
+      ]
+    },
+    {
+      "id": "generation.abm_fl_simulation.fl_pipeline.paillier",
+      "domain": "generation",
+      "path": "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "최소 Paillier 가산 동형암호 (의존성 0) — blind aggregation 데모용",
+      "symbols": [
+        "_is_prime",
+        "_gen_prime",
+        "keygen",
+        "encrypt",
+        "he_add",
+        "decrypt"
+      ]
+    },
+    {
+      "id": "hba1c.defai_federated.defai.server",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/server.py",
+      "role": "script",
+      "arguments": [
+        "--output",
+        "--host",
+        "--port",
+        "--clients"
+      ],
+      "has_main_guard": true,
+      "description": "Compatibility entry point for the packaged round-safe mobile coordinator.",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "hba1c.defai_federated.defai_server_python.server",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai_server_python/server.py",
+      "role": "script",
+      "arguments": [
+        "--output",
+        "--host",
+        "--port",
+        "--clients"
+      ],
+      "has_main_guard": true,
+      "description": "Compatibility entry point for the packaged round-safe mobile coordinator.",
+      "symbols": [
+        "main"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.benchmarks.compute_capacity",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/compute_capacity.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Measure isolated per-client training kernels; not a clinical/FL benchmark.",
+      "symbols": [
+        "local_linear"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.benchmarks.verify_design_html",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/verify_design_html.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Inspect the offline design document in a dedicated headless Edge instance.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.data.synthetic.generate_synthetic",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/generate_synthetic.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "SYNTHETIC data for FL communication/training-flow smoke tests ONLY.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.audit_worlds",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/audit_worlds.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Audit time eligibility, source separation and denominators after generation.",
+      "symbols": [
+        "audit"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.cohort",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Daily synthetic cohort calibrated to local public files, not clinical validation.",
+      "symbols": [
+        "sha256",
+        "calibrate",
+        "World",
+        "make_world",
+        "training_schedule"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.cpu_worker",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cpu_worker.py",
+      "role": "script",
+      "arguments": [
+        "--export-initial",
+        "--seeds"
+      ],
+      "has_main_guard": false,
+      "description": "Compute two disjoint seeds on CPU while the main process uses the shared GPU.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.generate_pending_worlds",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/generate_pending_worlds.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Precompute disjoint later worlds on CPU; train only in the main runner.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.gpu_execute",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_execute.py",
+      "role": "script",
+      "arguments": [
+        "--fraction",
+        "--check",
+        "command"
+      ],
+      "has_main_guard": true,
+      "description": "Run existing experiments on CUDA with an explicit, recorded memory budget.",
+      "symbols": [
+        "check_cuda",
+        "main"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.gpu_resume_worker",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_resume_worker.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Resume only cached seeds 19/20 when the shared GPU becomes available.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.learning",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py",
+      "role": "library",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Independent batched local SGD, FedProx, SCAFFOLD option II and local BN.",
+      "symbols": [
+        "initial_parameters",
+        "local_fit",
+        "Learner",
+        "evaluate",
+        "run_training"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.record_environment",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/record_environment.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Record reproducibility metadata without allocating model tensors.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.report_results",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/report_results.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": true,
+      "description": "Append measured experiments to the existing standalone design HTML.",
+      "symbols": [
+        "report_base",
+        "Baseline",
+        "number",
+        "difference_number",
+        "mean",
+        "sd",
+        "figure_artifact",
+        "error_chart",
+        "convergence_chart",
+        "main"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.run_comparison",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/run_comparison.py",
+      "role": "script",
+      "arguments": [
+        "--n",
+        "--seeds",
+        "--all-worlds",
+        "--cpu-seeds",
+        "--out"
+      ],
+      "has_main_guard": true,
+      "description": "Run real optimization experiments; all output files distinguish simulated from real data.",
+      "symbols": [
+        "log",
+        "config_id",
+        "candidates",
+        "read_json",
+        "write_json",
+        "main"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.test_learning",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/test_learning.py",
+      "role": "test",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "test_learning",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.experiments.fl_comparison.verify_results",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/verify_results.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "Independent artifact checks: saved errors, selected scores, complete scope.",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.scripts.build_xlsx",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/build_xlsx.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "build_xlsx",
+      "symbols": []
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.scripts.candidates",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/candidates.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "candidates",
+      "symbols": [
+        "add"
+      ]
+    },
+    {
+      "id": "hba1c.hba1c_fl_research.scripts.nhanes_linkage",
+      "domain": "hba1c",
+      "path": "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/nhanes_linkage.py",
+      "role": "script",
+      "arguments": [],
+      "has_main_guard": false,
+      "description": "nhanes_linkage",
+      "symbols": []
+    }
+  ],
+  "resource_hashes": {
+    ".gitattributes": "7e7093bcf396e91d1daf163779465b850c14743a74efbcfcf63c4ef18bd05735",
+    ".gitignore": "7aac621f3f6b20129b6d52209cdfb158c58873d3d7882de3a95f45ea2f3aac19",
+    "LICENSE": "b2a92f1931c4d3b4f50df62b56d10468f98645c775e5aa613f65cc2541d31fe3",
+    "README.md": "adacc7a0f8a0f699fc943d266c17072f2be3efd548b26d996ea3150f84312a4c",
+    "defai/__init__.py": "dea59cfdc74159b00399be2bec5a94f57b888b3e7c20b6d0d2c7f1c77c1ef3d8",
+    "defai/__main__.py": "9681560d8d1c9e439f0541d5a5a8aac48652caa19145e5cae62959276c2a9141",
+    "defai/aggregation.py": "e0e0c5f8869e4ac2ec1b3f4b1982923c28acbda0e260578a2456d9367b617d74",
+    "defai/android.py": "b1b23d1aa125edae07587f27cd3dc201542f6f3b7a6b9a0d1b6743507ac96e1f",
+    "defai/attacks.py": "1a76597d6ff8cc62e267781380e643d1254e0eef32c7a3cf1be4ef4963fff4e0",
+    "defai/cli.py": "be7ef897d32220c6bd7f5f8614d4010ba9d4131ee790d70327652961143e3bc8",
+    "defai/client_app.py": "b18dcd7b8b29a1d09679b249ae19565e5c522326b1709a06f840b87f4e738cbd",
+    "defai/compression.py": "53ba9648cc500aff57ed47761fc23f59ccd2d7edefe413353c576fb589b4d17a",
+    "defai/config.py": "350aeaceff2ee53520911ad9c01c179715cd486d6034e22e7c6eb1b2fe26f787",
+    "defai/data.py": "41c92ecadeb647696c2ba1ab0f8d1179e1102f8d9f10441bfc3e322aa12954f5",
+    "defai/demo.py": "899c962d94eec3951213c26e975c530c7f2b0ba20807943bcbf045ef3900d047",
+    "defai/io.py": "3c3b4d0990c2c9340d28d970e078dfac9cc14a60cc7a0160716f96dcbbbf763e",
+    "defai/mirror.py": "b683e612d06036ed91603e7031dabdc350355a4d663b369b0bd14166fa8d6923",
+    "defai/mobile.py": "e1959c679e3f61427a1038a2579f40b541d79e3bc8b407266b1800b2a26283dd",
+    "defai/privacy/__init__.py": "403cc8e60ed91c3e3a29ea0975567d2f5cdd031a29102a675948a21c7e1c3f4d",
+    "defai/privacy/accountant.py": "13b4f7acc4ee7420ec8424019e115b5121f7d7c375a4b41f592ef66be9d6c213",
+    "defai/privacy/dp.py": "ae8c75089e4ea6b7a2bc390fa8b3c871b449cdd21a043ccdc6f2a69fa56e39a2",
+    "defai/records.py": "dad1213e657d4e97f0bb4e057c9d983410ffd516675cf80109114dcc9d4a4de6",
+    "defai/research/__init__.py": "05587303efd6bd5fdf206513de505361eb12e3c348010b5dbcf1914f47d0c3b5",
+    "defai/research/generation.py": "8f75a5723e25232989321b577eb6b11a712d299f015be69fecb709c16c7c9403",
+    "defai/research/hba1c.py": "a9fbd92c4f1fe218bee34e439840cd6e0c35a90b9190305a0a183ab34aa44215",
+    "defai/research/neonatal.py": "1d6e00b376236830edef4765068495cccc05a6e3cf3abf7caa26e26d6c863b9c",
+    "defai/research/policy.py": "4f79cf1f67724d4af940bebccadad710bfeb1268471301a76043e28403ae5c5b",
+    "defai/research/resources.py": "4deb480456cf8e24679de6925ea1ce3ae999b4dfbf6594d292d927af78c2448e",
+    "defai/research/workspace.py": "4538ccfae040ae999ae680d10efffa0e14e1137e17906b1eb2ffcf25a884b7c7",
+    "defai/results.py": "3b9f4b67c7579059bb72e3e26a41e4f18eb7e4b17cc3520d03e799c0956d3252",
+    "defai/server_app.py": "3b4a9b1e74582c9d43b106972a1a967585c5a346040487a84205f3f6bd19d174",
+    "defai/simulation.py": "43b10f648c04aa8ece8f1b74bc2855e58fd2f767014f2c3ae6e15d47a08cb04b",
+    "defai/strategies/__init__.py": "dd0c4fab2c3bbc8247c4a32bfdb937fef3ef8abe587eebe49ff849ce9aec56f3",
+    "defai/strategies/base.py": "a1421fccb4a9b847f33b1ecb25593ed61741153b6729b13d0a62f9684d42d335",
+    "defai/strategies/fedopt.py": "3da0c36b952e2bd8051faefb4143985b737576e4eb0d2cc97bfea53afff02550",
+    "defai/strategies/heterogeneity.py": "23af0c71ce392670c8e5286a6a9a98fd8ee8b59312050d06e866d1665c4c5bad",
+    "defai/strategies/robust.py": "a95612799a25e889566f11337399bd8a89d612461eb9383b33bc4cb9acbcf52f",
+    "defai/task.py": "7667120e6743b7e6938aebabc8afb26a164aaa2b63ab456e557c25e4a555bf8e",
+    "disease_research/.gitignore": "4010304faeb650819bfa78fcfee548493c14dfcf6aac1d5b8b9221d55833bfc3",
+    "disease_research/01_신생아황달_연합학습/GAN_research/README.md": "747a3670df0a9fb2b33df71a88592023e837c5f2e088a011a2216c14bd2c344e",
+    "disease_research/01_신생아황달_연합학습/GAN_research/check_generation.py": "0b62fb537c2b5fe1f57f9cf7a591b7bc9f92179f7741d0ea8f342aa5a8e5bb47",
+    "disease_research/01_신생아황달_연합학습/GAN_research/federated_algorithms.py": "74e3475b77134807546f5100e80c5a7d75854f1cba400ac539fe318d323dd7a8",
+    "disease_research/01_신생아황달_연합학습/GAN_research/gan_models.py": "15e2764347296de2217dd4311101da7e21a2ef6a06a4350b0de2ecfb873b6d13",
+    "disease_research/01_신생아황달_연합학습/GAN_research/network_check.py": "8349c826e70677ebda1eaafb9cec92951fb68b985609442f9e7d927b49a0ba68",
+    "disease_research/01_신생아황달_연합학습/GAN_research/prepare_data.py": "23793e9acb3cfdf153d86724f7a6201b6484d39b303287fb722adfb4944c48e3",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-cuda.txt": "f53ab0a68bda0d55c11c0091864eb594882cc81680725ba443bbc7bbaead9918",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-runtime.lock.txt": "eafc789b5d4f25bcdf523e4bbde3de883510bd47c0f0c2ac2efffec6afd8c77c",
+    "disease_research/01_신생아황달_연합학습/GAN_research/requirements-used.txt": "66d744ed25eaf49d0bd031f9af8b6e99c77e990456d9382ee1713d9f420ddaa0",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_parallel.py": "a868918839ff62829c5a08754899ed0e5bae6f19d2d793ee825894487ef05e70",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_algorithm_study.py": "8fc72df745c4aa2064214a433b49de2837137d379d60cc08ade3a42d5e08f6f5",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_federated_study.py": "611877198bab4a390573c4ee8de66b08097536702ad72b30cb9e4bd446c64577",
+    "disease_research/01_신생아황달_연합학습/GAN_research/run_skin_bias_study.py": "46454482e98e36b3347cdedc0adefdf169e06eac97a74640e335d71e3e44b5cc",
+    "disease_research/01_신생아황달_연합학습/GAN_research/runtime.py": "f5a26c4593e44b1d413a30b9ecb7fd525b0549d286c6925d8700b64a129eab23",
+    "disease_research/01_신생아황달_연합학습/GAN_research/skin_bias.py": "6917e163b31c609d50976f6e56b54f3eaf8461b98f2b7a2845c10f3958022fde",
+    "disease_research/01_신생아황달_연합학습/GAN_research/summarize_algorithm_study.py": "9bbbf4cee373f8340b45025174820d62146b8878502acf412be460502ed2b456",
+    "disease_research/01_신생아황달_연합학습/GAN_research/summarize_skin_bias.py": "8124bc76f2cf0099f9a5707177da9c6e59ff6b5df9132ae4e89b42dcedd9607c",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_algorithm_report.py": "e89e617e18e436c51d630fc9183232a31408715da4470356b3d6b3c3f3cb2a41",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_federated_algorithms.py": "56fdde1097587b6dd0d78fe87fb4d337230641cfcc1b78a94719e03f71acc8b1",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_research.py": "c61b48fa75dacc87e65b17066984e18b4bae0237e6ebd5b36d1bbc5611d0759c",
+    "disease_research/01_신생아황달_연합학습/GAN_research/tests/test_skin_bias.py": "f8d59df34644bde231081f9d7916181e0466c68eb76b24d7db5469aa3f82b4b2",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_algorithm_context.py": "d76d2387b5dc5c6ae8c4fc4d4bdb5dbc7f759ad1367e411e2abf486d0d67259c",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_gan.py": "82f92c230359177c1bb35fbde08b57c97952f3516e0d9483ca5d3ced6e683f47",
+    "disease_research/01_신생아황달_연합학습/GAN_research/train_paired_gan.py": "822694368dee9160f004f98afa0dbf54dc8a47843b2e434df9545594eb93854f",
+    "disease_research/01_신생아황달_연합학습/GAN_research/write_report.py": "235519c1d7a987b90b9b90b5dff4bbde73c3beec772c9f88057c947e4fc80826",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_centralized.py).py": "bf1088efe35846f37b3f694005e78b15119e75b38ad69abd5c24c40a6577af09",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/run_federated.py": "10132bc7e5aeac0b6f2c89adfd3089980d42c2503317c1ef5dc5165b9a9519cb",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/client.py": "3682d1a18360f121064d921ebbfcbce9288d488bf8c3adf46572971da0ccd685",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/dataset.py": "b54d8973b9d305d10ff621889f180b5e01e08eb44c6bb3c7f128b759b14d991b",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/model.py": "4d3d51d778fdbeab5ecd50dc2a101a11f2e26e97cfa480efd7a175bd4ae8f7b6",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/server.py": "b59144d0a0e4aba0697544465c0144d7cdf8fdf1bcbbd05b0bbfcf94c6da6bb0",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice-virtual/src/utils.py": "aa22b06c63514318d83a1f02ebd98a2da087cee5943fdfca815a89f03bd80105",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/check_input.py": "d5a7b90122835395a8bfa04621786827cc7ea444f1f9b92697a5baf44cfdca23",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/run_centralized.py": "56748b65f5e6a423f61d0f35070e74b0e075e4645371f9b14a08c259ea34ecf8",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/run_federated.py": "fcc8258914852c69bb7c5741755299d1f5e73f02b741965722e7a1ee221eb7f9",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/client.py": "a5eb091e723cffc62b7ced03d07d618e00b273f2db353f265ee12cb66330f22d",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/dataset.py": "d195b54faf19bda3e9c92b2e69e8da33b06b35816d8abf9a9ff9fd23319ec0da",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/federated.py": "a7ba3e7c3637f94c50eaa872fce7fefd990f786b29ea994cdd9ee6d5f73c4797",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/model.py": "6d40604183f7759e178ab04992ac2c23bbb827da3fb11732f828ed713ae789c1",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/server.py": "44507cd19520c6b099e017a475bd56d45f35483c5c10223b3fed4efe7565c857",
+    "disease_research/01_신생아황달_연합학습/NeoJaundice/src/utils.py": "126671172f11e4d01b7434a6107acce97294bf2ec387c1966b3970d4f51ba8d0",
+    "disease_research/01_신생아황달_연합학습/PUBLICATION.md": "afefa219a57c8d4f5898167ab2a6e9d17d5ecefb89f8f9af9f92518b11834bc7",
+    "disease_research/02_감염병정책_및_중증도_연합학습/PUBLICATION.md": "6b31287868ee4e389ea2889f1a164f228f379d1dc6e9c52758637509d7527ff9",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier0_covid.py": "eb349866b574490b0f5af492dfb5c47026f44d64bf9c8434600e764af765c63c",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier1_covid.py": "58eed098773c313ccd2c31a20040735198ad2a6d0c466cd5244148269e2e6e5a",
+    "disease_research/02_감염병정책_및_중증도_연합학습/edited_from_external_source/run_tier2_covid.py": "417ee64e684b381933cbfceff01605508c6670d3f87ab34b1a042f2b041a6007",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/algo_advanced.py": "6fea78a1eb6d82fd9ea945dccb9b098e2193fcac6b8f15bd34d9446b4ebf08d4",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/comm_overhead.py": "0d8a1f0d702b7632403dad9edea13578901bb08a43d819c3bc8a4945140973c0",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/fl_benefit_demo.py": "c11d21bc51fd3907f3470c6f6a205ed987a4fa558993a32070e8a002eadfd053",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/gen_data21.py": "3b384c18fb37a3fcb6be576e464e83efe73a01e7f513fa9a9cf050dd102742be",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/imbalance_analysis.py": "ed4c0b087a38ecb5ad50b88b5c554d152b24e2718badfdcb1a5c954d568dc418",
+    "disease_research/02_감염병정책_및_중증도_연합학습/experiments/security_defense.py": "edf2e55fa0b89d8db819d8ee77b659705192d24388f2c1a9260792d5fd8e0ce5",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CES_2026_DEMO_COMPLETE.md": "6c5b3575edae66ce2726e5553915aafb86f96e61e80a98050e6ecdfe9f24d805",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/CONNECTION_FIX.md": "e1eeedf962ce49779e4a678a8d213d0f8ce82779a75afac83d8e81e49d2be05c",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DATA_CLARIFICATION.md": "1ad1bba3c820677daf2b681fc5831f099a7b1ca1ff3c721a756f39ec50422d4d",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_RECORDING_GUIDE.md": "5c50dd69fd5c3ea6b4d7e4c64ab5f63e9e6978ae5b29c7a3293da029a1ddee53",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/DEMO_TIMING_UPDATE.md": "47442f86265a52181e173cd06fac4910ee6ddef90f9e31ce21762d7747810443",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/FINAL_SUMMARY.md": "84ca968fdfa1cb32ac6a14a97b536a79a22e7fa0a2cfb69b4bde862eac0e9f4a",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_ENGLISH.md": "8693ddb84a449950fa7ec80ac1e63f706ea41ea8890b3353ac936ec4d3c45607",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPT.md": "8d4f24985f305d9a82878b0e77d98c6a5d8ca9f27ce79959249ac6eba164685d",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/NARRATION_SCRIPTS_ONLY.md": "1647cc3764150552d971172995eac08b7bc382380db868a42766f410f763be00",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICKSTART.md": "4da180d1724f021fc040af1c8afbd46500cb6b042a47e1ef237ef8c25576ec87",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/QUICK_START.md": "1e7d2c4b1f6d100dd927109264dcd83437f08101a8d2b2822de87711cfd1ceb0",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README.md": "94610a8804ebd2d84f0be944d0b3ae3e5bdb2179a1eaaf3d9785172a4cdd2f52",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/README_DEMO.md": "fc4847bbc3e09edad66eddeea895d81ec55e5baa2f12dd9f9fa9e9e783dae058",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/SETUP_DEMO.md": "a7f45460d32af8e3129b7a4d5d5de613f631f7be18b35461e4076ba7f2569ec9",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_BUGFIX.md": "d271edc41131b596bb91ef7fe056b8e4ecbda4816e6fd20270a17d6dafbe9db4",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_CES_UPDATE.md": "ffb758883f46e685590a0749b63b0a65a862a6ca1aa86445e162b512d799cadf",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_FINAL.md": "7d9d822a5b3f5e916d42671b512f0d44ebb8372b195ed5387db59e5ec68a2145",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_GUIDE.md": "cdc55fcad0162b695c871a2dbd1365d7fdbcc433ab022ab15d48fdd5bbca3e99",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_SUMMARY.md": "200a8be863a4ec90aa9b32fbee6d805aa06ae765c0de8a1d3da18fe0288d6c21",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/VISUALIZATION_UPDATE.md": "1fb212b1a219ea554dbaafd0a1c083df3878dc8775e314e5e286ca3c79e48b73",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WARNING_SUPPRESSION.md": "48c69cff5044dc1b577771b64f909442320e65017c2f75c9b829027d6c87dbd1",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/WHICH_LAUNCHER.md": "b3d4a3d6a8e2730d4f813a308d02e3fb9d0bace8023672ec1c76303d4e303133",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/__init__.py": "6b2e4e30ee3be4f95c67f15bba7f666875bb63a3014e4d145cbe33b47c7722e8",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_stats.py": "d329f003c054bef33795caecd5f499607f27b2ca48d78e542b0d2a5615f19f01",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/policy_transport.py": "f762190e1e542b1725da3a172d0be49e2c2604ccabe71435aed2d0a05ecf01de",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/core/synthetic_regions.py": "caeeb5e40dd6d1f48a45b1a0a7c76b9c747c76613e103cc1a866c1d9c02bde6f",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/data_gen_hierarchical.py": "17b9521160f126e9be2e09bb742bdad1dcee5615d530cf6048c441ffd8190e35",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo1_hierarchical_visualization.py": "3901ca8bc6d272a265145ffb3c60996b57e93e420c237e32e1fb4ef422240439",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_launcher.py": "b77b115cf996ada542a14c142f8dbf1c9ac596064bf53486ba019cc40e101872",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/demo_simple.bat": "26b83fce528164b4121c77b5fe9b9c5c768b42fb5f1ca8b607234c23ab5a0a20",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/launch_demo.bat": "90f1b60679947f5e5af6cbcc05bff35b3b1b037c8c3276a58ef9d5c247a5a78e",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/requirements-policy-research.lock.txt": "2a407dec2a9bfaf197650c122c3a3d6e9d4977f7467467478fee0d53685a8a30",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_policy_validation.py": "0fdf7932e6caa26c6ea5c94d5573e001befbc3b2018c179513c981b3ab00ca5f",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_region_validation.py": "0d2d0273a35b72355d3efe9852290338a46a732ca23f55b935d8931bf9436253",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier0.py": "26e8f5a68c7a62df088205eca5972842c764e95263c7d8ff6dd397c13c2098ea",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier1.py": "65761f6b7591bcacface841d8aff60a39ffbbf9564588ac2ebeeb90d2dab5dc9",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/run_tier2.py": "9f9d33a5430d7fc544436de9275b8a70a32bdcb334066e9f5f186f5acde624ea",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/setup_hierarchical.py": "2d5550dd2c4bd22904d7ef0256cd6103b3d1dfd6b58936c2c2665858456502ac",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_policy_stats.py": "ca329e24778f7537b01bc297f4b9d4c107f8d00ff990fa42b641c086816d9ef3",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/tests/test_region_expansion.py": "c9d4a72386b98802f0844efdd7bc1ac664c085eb27ded5a7891795c4982e8cbe",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/verify_hierarchical_data.py": "5b69f873dbfef919865f679d94267c1a79380236e90bc91372dc2317f97bb4ac",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/write_policy_report.py": "763a6df7a068ec2b5e174babc0222d29fbcae0af3640516c38a6c93027bc25da",
+    "disease_research/02_감염병정책_및_중증도_연합학습/fcausal_HIERARCHICAL/fcausal_hierarchical/계층형_구조_안내.md": "a2061a554c3109c946533c7224fdea61e49706d145ab22a19750fdb53cab7f11",
+    "disease_research/02_감염병정책_및_중증도_연합학습/he_key_bug_demo.py": "ffb79fd88f8fc978802c63e3532dc526e328ddb0facae411a3f09bc88aa65642",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/client.py": "6bf418ad9fa79b365be72d457021acc7dac99f2758c8c9254642e4d510017689",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/crypto.py": "1a8992893cf1fa4b88227042457d9975662dd0d3220252877eda3316e4027a76",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/serialization.py": "a854eeb2d7552eba99545111e9a9c62d7c14c367a78c5ebae101061d85ed8fd1",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/core/strategy.py": "bbc460a3634fa31fd01c2a335ec52898e8ce877d41545cc6f661016a99c2c169",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen-v2.py": "bc7d3c5ee469346f45314089fdeb8d7897d2531bd4e292d5317ea759fa7ad04d",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/data_gen.py": "3f17e01fc4e87c0f1a19a236d5ed62b5800762539a1574b45a880efb224edca2",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/dataloader.py": "0c67c11649dee77ff52d0f90f672543d3a4a0f61200a13a098fac2efe255db17",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/epi/ipw.py": "57b34457dc62f3d6697c3850533f239c3887dc4ea6c5a3adfd3e427c0cb43c30",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification-v2.py": "601d08a85b2f74b4e9377b9d9de4594921b549463d65ea5eb1048e9c886e070a",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/gen_data_verification.py": "0fe6938e9084dcbef99b1f38aed2615dbaad350e7a67d0924ef1757d34ae94b4",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_client.py": "499e80c074dd800a5d095cb6472d7f579bcd283ee7b8aba6f3445f9bbd932ceb",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/run_server.py": "0d3d3bd65e51f5ec7fdb189d58b5801d61e217de07754d4cb8c9b67e5762cb10",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_hierarchical.py": "02ff6c8ba441629ce0d2f9eeacaf0d1c6469989755bcb54065f53d0365a59dbc",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/setup_keys.py": "7f1745b008328c7bba1918a1248c4465abf58ac8904fdb46bae5844fbd71bf77",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase1.py": "3447fe7f18fa231bff46c73ef92eca12705c09006753aaf8ede7e87dbc422783",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase2.py": "50006c8d0fca1cc93db5285b41abe4f1e6862391d15d543cc16e506e1ea826c0",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/tests/test_phase3.py": "095ab8ddcbf21d591d11ea5e59a7b3be7239d75c74fc6a2c2382d12f2f7402fb",
+    "disease_research/02_감염병정책_및_중증도_연합학습/pandemic_policy_deFAI/계층형_구조_안내.md": "a2061a554c3109c946533c7224fdea61e49706d145ab22a19750fdb53cab7f11",
+    "disease_research/02_감염병정책_및_중증도_연합학습/슬라이드 작성/build_kist_ppt.py": "80b4a4979c5d8181a1415ac3f081e880ccb182d7b259d13d1df29201286babba",
+    "disease_research/03_감염세대간격_연합추정/PUBLICATION.md": "e74e66200de0f7e5e7ebf7544f2bc301198995977fae8f80eb5c41cd410527a0",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/abm_simulation_rev31_timescale.py": "69412d5c16110592cbc6683a72b1a72cc46818e8c97e2d3d8c2230390099acde",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/fit_abm_simulation.py": "cb2dca1b07f24077191b7ce5c03b96302270b44821fb2b18370d03f50f61f513",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/disease_params.xml": "766f893fefd938ea38478435356d412b8ff3af02ee544a36170654cd921184cf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_fatality_coefficients.xml": "67d254313fb5eed3f89b0b918dfddb4925f95cd1256908f649260d80ed284f84",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/fitted_severity_coefficients.xml": "bf16f9c111e045a1eebc8bda1be3bff92d6b02468fa0defd78a2aca032e11053",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy.xml": "9fd4193953742657396a22590467125d0fe56626ef43bb04896d0fcae485d61a",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoOFF.xml": "85700caca7b0d42489227a9d62cf9bc73939b6807624b55f32679600ed34de11",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/policy_isoON.xml": "415c4649d0c070c609cdba28bbb984f37fb4d3b9809837ff23c63e1327242652",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000424/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000618/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p000894/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p001891/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p002751/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_ns_b0p003317/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_fatality_rates_by_age.xml": "49cdb7b705dfd4b8ee219a0f5abafaf618f2ac909c05a2fd624e3b1a63b16f58",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/scenarios/K_target/scenario_severity_rates_by_age.xml": "fea9d39f53480a1c8647ec207c976e9bbc44d0a04b363afc203c270447a024bf",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/selected_sigungu_initial_infected_v2.xml": "83b37e538e607b762754b366babc18cdc7b984e0f45ecf2c60e41015ed433191",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/inputs/travel_config.xml": "eada28e7d395cecc34aea042221d5a96255483c7faffc481bc95ced570e60916",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/abm_core/smoke_test_integration.py": "a51f63ea21e3848c3429a7fadbe17f828942ef40ca5c1a35a693cd35898b8f3d",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/docs/README.md": "67d7ef2d77c28ce72f087584fc0cc983fe3438913ebd746350830d53cff03433",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/calibrate_nonsat.py": "9f9384e2d49fa428f7c80b75f68040b28816086bce55b2b2b083e23b43833c22",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e1_correctness.py": "8c531a4a8327446f50712c9220437b00a5e31179931e1b12b76cdc60ee88c202",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e2_blind_topology.py": "73a4055c45b80f8f2cdb35d0490a8868e7ab5b9f4d786408c8df71381bb994d2",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/e3_benefit.py": "0bd29c8c1383bf068ad2eb5a4dfffdf8a6879b7ae1d750976c7a2f053d49cf6b",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/replicate_seeds.py": "ed33360550150e4fe61c1f07953dd9b072052a30c175f5b23371ed88a19451a7",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/experiments/run_abm_district_pairs.py": "d770a104965b00721642af3f3df2d5297e55f0544a6c7fa25803c1717c02bd41",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/federated_burr.py": "0796e8bfcce8de126927435181512a23a459262df90045bbe7aefbd21ab3333c",
+    "disease_research/03_감염세대간격_연합추정/abm_fl_simulation/fl_pipeline/paillier.py": "e2151c78494db27220c192bb7dc52870327b2ac769ec6b525c25c5776d1261ac",
+    "disease_research/04_당화혈색소_모바일연합학습/PUBLICATION.md": "143117662e3b5ae6dc92b716a296dc12500882b4c05fd63802cb52184ff42844",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/README.md": "a48914ecb6c347c53cbf7bbd1ca5a236ca23c505d0e5deed236bd5dc87ddc031",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/build.gradle.kts": "74ac3938f2173482f961a93974680b6df8507aed2523461e9a7a0bcfb1906508",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/AndroidManifest.xml": "d1c2167935bd942b8d8d8470ed864a7840e614ca5271757380c3e54064825926",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/MainActivity.kt": "a0e74173cf5209bca0b9f7d61c4644b431dc5cf394abe4b01b0daafff17f2888",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/java/dev/flower/SimpleSingleLayerClient.kt": "bf9e56f3bf49fe2d0cdefcb988904e76a164628b6be3c7e1a5de291630de9049",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/drawable/ic_launcher_foreground.xml": "8d772fc74332af228d21d882891dfad487d025b60eb3ae1f938e9fa2fe8c381e",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/layout/activity_main.xml": "59ca4b751e13f80e94196eae9adf639de5030deb900ccf809a47496a0e265a26",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": "e43db58d21b823933f043b9d322e410b4741129bec28ef79c8ca525d3064b94d",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": "e43db58d21b823933f043b9d322e410b4741129bec28ef79c8ca525d3064b94d",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values-night/themes.xml": "26fb6a9951d2c2951fdeb41e171cd881fe04c12366626aa509138de1b35fc666",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/colors.xml": "31e0230ab2d96fa128a11705e85e590f3462745dc3c04bc851bc724a445921c1",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/strings.xml": "d75b0927d5df34b5712f5907bb477f5df7d031721cbcc216b4aee4e825be2c51",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/app/src/main/res/values/themes.xml": "4334935678e38852f415f27a337aff1bcc3eef86735df5d3d5b38d25b803a734",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/build.gradle.kts": "ac3cceebc8b28f8c2382ce3fefa26ec25bcbb26c46650192fd508a58b756a843",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle.properties": "3db3dae6dbd5caf385470b0345bc517eab19b7319026d909132fe852b4b3850f",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.jar": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradle/wrapper/gradle-wrapper.properties": "97e38c4092036e177d1d31ebb454332a61a1d1313fc76aefe34b35e88211715d",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/gradlew.bat": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/proguard-rules.pro": "6d0d54826b4114d865b5bf8aafaec95c5b4a501a9ef556fa598e69b4b3593a0a",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_client.sh": "cf26477cc1b2bb78c65cd0ec1c3ab777dbeb3fe3aa45ee7664a9ea4d29a644c5",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/run_server.sh": "c16a820c38fa7275b859239c3a68ca5799448aa7702b16604c1bc0a2a7bc2754",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/server.py": "e5e9f41a2e7f144a79537716d211a7056bb94a242aa028a83ea610578fc8d815",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/settings.gradle.kts": "caf15fd48e9e5d11fa6ef5664a7c5324ef5df92f36e58994dae1936b07781b1f",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/AndroidManifest.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/MainActivity.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClient.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/java/dev/flower/SimpleSingleLayerClientMain_copy.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClient.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain copy.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/kotlin/dev/flower/SimpleSingleLayerClientMain.kt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/drawable/ic_launcher_foreground.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/layout/activity_main.xml": "a53ba72d2e99cc4bbf07445eb0d2f159eabd655dd769041558bf6e4dc6078741",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values-night/themes.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/colors.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/strings.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai/src/main/res/values/themes.xml": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disease_research/04_당화혈색소_모바일연합학습/deFai_federated/defai_server_python/server.py": "e5e9f41a2e7f144a79537716d211a7056bb94a242aa028a83ea610578fc8d815",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/README.txt": "c330598b4e4857dcb6645a8a2a69a176ff587bc647d467427fa0d206371376f8",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/compute_capacity.py": "ae7298977ea7fa7ec4a56c8f65ccebb7b06c1b46be368a698bd7dac5abff3ece",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/benchmarks/verify_design_html.py": "6cf9b890dc45e46607085ae89dab0196b046a031dda2466aab97cbe8429345d4",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/README_SYNTHETIC.md": "96f8405af3994852542345df29f9fde7e4636b81c60309fe34b9407c8fec84fe",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/data/synthetic/generate_synthetic.py": "30c27d160517d96a3e69330c5869f916c11f8ddde23ff8db803e94b6f5a09888",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/audit_worlds.py": "62e30dfda7d32d500824b6d8472912f1175e9939090e85af9a882c3ec2b25e30",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cohort.py": "b79afa62b56331829e5a22ab7ae20594b018224d9bfda221f7b1c2ad02ee0b16",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/cpu_worker.py": "57023a56f56005b037621a8b18932144804c2643095b29a7dbd8d0b7ef5050c9",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/generate_pending_worlds.py": "521c129117b1f47500b8a99f4e4abf25ee0b36124a934895a64cd1e448b5984f",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_execute.py": "6d294af0b5376882dafce85e5f67639e0a0c942bc96f1ef74594a1fa14a6e99c",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/gpu_resume_worker.py": "6bab4df131b70a30d26d34c984440adb415925ac1e0a7e1ab52d917947648373",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/learning.py": "1fbff94fa717b969fe1361591365a60eba88d4cb23ac888be99fc09dbdf8fc42",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/record_environment.py": "6b6e90c81b9d1fc4e7d8763dfab40a37cbf855564c697cd7ddb94585dc8f81c9",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/report_results.py": "83c56ab7deb47895ac82ee5764d1348e44660e1684cb6c8ea81274e8b2ff5bf5",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/run_comparison.py": "71657bdf881512dfffa80a7aa930aa6e53bc73a6fac53d59fba9589e54051c85",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/test_learning.py": "f32d131a31aa0140b1e2b178f5e2031fbc52aab0216703e47a329875041eaff8",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/experiments/fl_comparison/verify_results.py": "3e87a4a803bedc328c30c13dffb8122923fad07550ab30f0683e3abb8cb5e854",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/report/HbA1c_FL_데이터확보_연구설계.md": "c69551d642c76f1ee16a88e5edb70dbb948e74891c070b9a63c901f4ab022104",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/build_xlsx.py": "4aec923012483ba2ba3762b762ca2406a0e1cf076224c7b98c14c7732f84bc9f",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/candidates.py": "0470f36033c01b4428ca1d121dd511718f1a5c2878553f4595fb59f80be013ea",
+    "disease_research/04_당화혈색소_모바일연합학습/hba1c_fl_research/scripts/nhanes_linkage.py": "f74be3fc59dd87407577fd90893cc0c25354ae5c5627311826e6cfa832899dd8",
+    "disease_research/README.md": "669b3170a3cd3f04e96d9adacd93b22a51dd6af339ff2d81d54512ff2b51bc24",
+    "disease_research/VALIDATION.md": "0677078955e55b18aea18dcfce98a7f78231f82434c3db2e74b0eee8eedd0fcc",
+    "disease_research/references/README.md": "55b34b1f14c16fbfa785902b21601628a91cebe7961d4926cc17e095a28d0ff8",
+    "disease_research/references/hall_calibration.md": "b72a507360e46c946e60befb9a74253ac1da74e13f670f1d9cd2c203dcf99bb1",
+    "disease_research/references/neojaundice.md": "9cad83de289360b3f258eae6e09f758f1d25e124eeaa479903195809f3b6d00c",
+    "disease_research/references/nhanes_calibration.md": "de203ff7efb8ac976a145730eccf3bdf0c67a9163ff7616f6ed386bd2fbfde9b",
+    "disease_research/references/public_inventory_01.csv": "0473b38b61ea28851fd3478ad44aa61d1a5a99d55c7c5b34391d92881d2fd4b9",
+    "disease_research/references/public_inventory_02.csv": "d8ba99919296b380d3b30173ea53f0651f1acb9d7ab778dea4937f071011484c",
+    "disease_research/references/public_inventory_03.csv": "24c3127f91a0d1b1ac5307402194bf252b2d795e82d2a39a789503c2a7ac2deb",
+    "disease_research/references/public_inventory_04.csv": "354642da40444cc6d26fb7221bdd52bec702f2cc89e496353dbfef21866658dc",
+    "disease_research/references/public_inventory_05.csv": "37972dfb1c2d0a2b0807f8f816b0bcf39ee7fa3b58623c46a064d9b8286888fd",
+    "disease_research/references/public_inventory_06.csv": "298d002ac7fb2ef53023b0d6a3531b5c648761b20fb8d4a9f7ea1c612b102810",
+    "disease_research/references/public_inventory_07.csv": "c232e45a689066715a1431ee19337d7df59e2c16b86ac9bde18aa74482e993f0",
+    "disease_research/references/public_inventory_08.csv": "daf4b14c977ec9e6b2e5376633ba312d29d603564295a28cf369d590958b1c3e",
+    "disease_research/references/public_inventory_09.csv": "357242c008fb2e62527d7a5569dcc90d80e7e761aacbba253c744be347130767",
+    "disease_research/source_manifest.json": "613b4149e260eabca0ca4d885bcd596d2e38e0bf424743d33f65e396b58369be",
+    "docs/experiments.md": "fb2e5aef78d174dc46c4e950188b1e533b3efac7c444f56b40699ed0a0bbda60",
+    "docs/report.md": "f30ce3a6a3eeb0afac5dea8f506b53a50d00618ebfd4a55ad070e154776f86a2",
+    "docs/user_guide_ko.md": "60a6242d51d4528edf57a9d817c8580b3c31f9036b69a6009e780113c4d1da91",
+    "hatch_build.py": "50eec038cf59546f65660d53acb8acc1cbe505084c24b8a9232ecc82b80cba31",
+    "pyproject.toml": "83c5d1ac214569cd94574bf04123b1ad7da1c0360b383a1faf1d91a8d80da796",
+    "scripts/benchmark_aggregation.py": "15224b255dfff518a45bb708ec454af6f263004e2ee75c407f00f05ae23456ea",
+    "scripts/build_catalog.py": "af8e4608b6a6b9bc792389c44e599886dddde782cbd295acc0c0296b6d07825f",
+    "scripts/check_research.py": "5e70fbb052b692614f26c29384ab821d9e06b32e176118b9560ea8bd1cfd0a37",
+    "scripts/compare.py": "e7ed3e153759cfcf35d3bad6586dc68741bcfc83684fe4751822c653542e98e6",
+    "scripts/partition_stats.py": "c3b9b6f4dadeda1343174716c420b3adb57772d0855533af5044c85db496567b",
+    "scripts/plot.py": "c2e395e9e4108ccccce9bd80e73f0b98fb555ad112e346b5417edb58077d5863",
+    "scripts/run_grid.py": "ba029d4a94fd9832301758ed5fe8887f5d0665b79706e10a998b14c29d008f08"
+  }
+}

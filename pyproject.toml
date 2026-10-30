@@ -4,22 +4,37 @@ build-backend = "hatchling.build"
 
 [project]
 name = "defai"
-version = "0.1.0"
-description = "Federated learning assignment template built on Flower"
+version = "0.2.0"
+description = "Federated learning algorithms and reproducible disease-research workflows"
+readme = "README.md"
 license = {file = "LICENSE"}
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"
 dependencies = [
-    "flwr[simulation]>=1.40.0",
-    "flwr-datasets[vision]>=0.6.1",
-    "torch>=2.1",
-    "torchvision>=0.16",
+    "numpy>=1.26,<3",
 ]
 
+[project.scripts]
+defai = "defai.cli:main"
+
 [project.optional-dependencies]
-plot = ["matplotlib"]
+analysis = ["scipy>=1.14,<2", "pandas>=2.2,<4", "openpyxl>=3.1,<4"]
+learning = ["torch>=2.6,<2.7", "torchvision>=0.21,<0.22", "scikit-learn>=1.5,<2", "pillow>=10,<13", "psutil>=6,<8", "opencv-python-headless>=4.10,<6", "tqdm>=4.66,<5"]
+flower = ["flwr==1.42.0", "flwr-datasets[vision]==0.6.1", "defai[learning]"]
+simulation = ["flwr[simulation]==1.42.0", "defai[flower]"]
+plot = ["matplotlib>=3.9,<4", "python-pptx>=1,<2"]
+research = ["defai[analysis,learning,flower,plot]", "tenseal==0.3.18", "statsmodels>=0.14,<0.16"]
+mobile = ["flask>=3.1,<4", "waitress>=3,<4"]
+all = ["defai[research,mobile,simulation]"]
+test = ["pytest>=8,<10", "pytest-cov", "dp-accounting>=0.5,<0.7", "ruff", "build", "hatchling"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["."]
+packages = ["defai"]
+
+[tool.hatch.build.hooks.custom]
+
+[tool.hatch.build.targets.sdist]
+include = ["/defai", "/disease_research", "/scripts", "/tests", "/docs", "/pyproject.toml", "/hatch_build.py", "/LICENSE", "/README.md", "/.gitattributes"]
+exclude = ["**/__pycache__", "**/.pytest_cache", "**/*.pyc"]
 
 [tool.flwr.app]
 publisher = "rixile9999"
@@ -34,12 +49,13 @@ clientapp = "defai.client_app:app"
 [tool.flwr.app.config]
 # federation
 num-server-rounds = 10
-strategy = "fedavg"         # fedavg | fedprox
-proximal-mu = 0.01          # FedProx only
+# fedavg | fedprox | moon | scaffold | fednova | qfedavg | fedavgm | fedadagrad | fedadam | fedyogi
+# | fedmedian | fedtrimmedavg | krum | multikrum | bulyan
+strategy = "fedavg"
 fraction-train = 0.5        # fraction of SuperNodes sampled per round
 fraction-evaluate = 0.5
 # data
-dataset = "mnist"           # mnist | cifar10
+dataset = "mnist"           # mnist | cifar10 | mnist-mirror | fashion-mnist-mirror | synthetic (offline, for smoke tests)
 partitioner = "iid"         # iid | dirichlet
 dirichlet-alpha = 0.5       # smaller = more non-IID
 seed = 42
@@ -47,6 +63,55 @@ seed = 42
 local-epochs = 1
 batch-size = 32
 learning-rate = 0.01
+lr-decay = 1.0             # client lr in round t = learning-rate * lr-decay^(t-1)
+# non-IID algorithms
+proximal-mu = 0.01          # fedprox: weight of the proximal term
+moon-mu = 1.0               # moon: weight of the contrastive loss
+moon-temperature = 0.5      # moon: softmax temperature
+qfedavg-q = 0.1             # qfedavg: fairness exponent (0 = uniform average, larger = favour the worst clients)
+qfedavg-lipschitz = 0.0     # qfedavg: L in the step-size normalisation (0 = 1 / client learning rate; smaller = larger steps)
+# server optimisation
+server-learning-rate = 1.0  # fedavg / fedprox / moon / scaffold / robust rules: scales the aggregated update
+server-momentum = 0.9       # fedavgm
+fedopt-learning-rate = 0.01 # fedadagrad / fedadam / fedyogi: server step size (eta)
+beta-1 = 0.9                # fedopt first-moment decay
+beta-2 = 0.99               # fedopt second-moment decay (fedadam / fedyogi)
+tau = 1e-3                  # fedopt adaptivity
+# robust aggregation
+trim-ratio = 0.2            # fedtrimmedavg: fraction trimmed from each side
+num-byzantine = 1           # krum / multikrum / bulyan: assumed number f of malicious clients per round (bulyan needs 4f+3 replies)
+multikrum-select = 3        # multikrum: number of updates averaged
+# malicious-client simulation (clients with partition-id < num-malicious misbehave)
+attack = "none"             # none | label-flip | sign-flip | gaussian
+num-malicious = 0
+attack-scale = 1.0          # sign-flip: multiplier; gaussian: std of the replacement update
+# personalisation (evaluation only): fine-tune the received model locally, then report eval_acc_personalized
+personalize-epochs = 0      # local epochs of fine-tuning before evaluating (0 = off)
+# communication: lossy compression of the client update (simulated; the cost is reported in comm-mb-up)
+compression = "none"        # none | topk | quantize
+compression-ratio = 0.1     # topk: fraction of the update entries that are kept
+compression-bits = 8        # quantize: bits per entry (2..16), stochastic rounding
+error-feedback = false      # carry what compression lost into the client's next update
+# client failures
+dropout-rate = 0.0          # probability that a sampled client does not answer a train message
+# differential privacy (mean-based strategies only)
+dp = "none"                 # none | fixed | adaptive
+dp-side = "server"          # server: server clips | client: clients clip (server still enforces the bound)
+dp-noise-multiplier = 1.0   # z: noise std = z * clip-norm / clients-per-round
+dp-clip-norm = 1.0          # C (initial value for adaptive clipping)
+dp-delta = 1e-5
+dp-max-epsilon = 0.0        # stop training before epsilon would exceed this (0 = no limit)
+dp-target-quantile = 0.5    # adaptive: fraction of updates that should be unclipped
+dp-clip-lr = 0.2            # adaptive: learning rate of the clip-norm update
+dp-clipped-count-stddev = 0.0  # adaptive: noise std on the clipped count (0 = max(clients-per-round / 20, dp-noise-multiplier))
 # output
 output-dir = "results"
 save-model = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint]
+# Bug-finding rules only; the code base does not enforce a formatter or import order.
+select = ["F", "E9", "B", "UP", "SIM"]
+ignore = ["E501", "B905"]  # long lines are tolerated; zip(strict=) is not required

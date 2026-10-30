@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<FittedCoefficients type="fatality" best_fit_function="exponential" best_fit_r_squared="0.999941">
+  <Exponential r_squared="0.999941" a="0.00000948" b="0.14587283"/>
+  <Logistic r_squared="-999.000000" L="538.01940000" k="0.11490000" x0="130.22110000"/>
+  <Gompertz r_squared="-999.000000" a="2653.66170000" b="24.66530000" c="0.01520000"/>
+</FittedCoefficients>

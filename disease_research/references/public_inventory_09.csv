@@ -1,0 +1,2 @@
+dataset,relative_path,source_url,version,license_terms,access_date,size_bytes,sha256,checksum_verification,note
+ShanghaiT1DM/T2DM (figshare),data\public\Shanghai_T1DM_T2DM\data.zip,https://ndownloader.figshare.com/files/38259264 (doi:10.6084/m9.figshare.20444397.v3),v3 (2022-11-20),CC BY 4.0,2026-10-16 (KST),3418039,5ea3d97d189edc38de69a73ab5a7b653085c5cda4691b2eabe2a474295e0d05e,MATCH figshare MD5 ecadc819dd20aeb92d60ce41ceb16fd2,"figshare blocks box IP; downloaded on user PC directly to R:, copied to box for analysis"

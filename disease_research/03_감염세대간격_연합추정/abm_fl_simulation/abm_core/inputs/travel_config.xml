@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TravelConfig>
+    <Schedule>
+        <Mode name="LongWeekend" start_day="30" end_day="32" override_probability="0.01" />
+
+        <Mode name="VacationSeason" start_day="100" end_day="105" override_probability="0.01" />
+    </Schedule>
+
+    <Destinations>
+        <Destination sigungu_id="50110" /> <Destination sigungu_id="50130" /> </Destinations>
+</TravelConfig>

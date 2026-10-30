@@ -1,0 +1,22 @@
+{
+  "scope": "weighted_mean_kernel_synthetic_arrays",
+  "python": "3.13.3",
+  "numpy": "2.5.4",
+  "clients": 32,
+  "parameters_per_client": 200000,
+  "dtype": "float32",
+  "repeats": 5,
+  "max_abs_difference": 0.0,
+  "measurements": {
+    "stacked": {
+      "median_seconds": 0.034600900020450354,
+      "peak_traced_bytes": 76800472
+    },
+    "streaming": {
+      "median_seconds": 0.00936319981701672,
+      "peak_traced_bytes": 4001016
+    }
+  },
+  "order": "alternating_interleaved",
+  "peak_allocation_reduction_percent": 94.79037576748226
+}

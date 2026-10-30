@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PolicySchedules>
+
+  <InitialVaccineStatus>
+    <Coverage>0.10</Coverage> <EfficacyInfection>0.50</EfficacyInfection>
+    <EfficacySeverity>0.80</EfficacySeverity>
+  </InitialVaccineStatus>
+
+  <VaccineCampaign start_day="15" duration_days="28" target_coverage="0.70">
+      <EfficacyInfection>0.60</EfficacyInfection>
+      <EfficacySeverity>0.90</EfficacySeverity>
+  </VaccineCampaign>
+
+  <VaccineCampaign start_day="100" duration_days="20" target_coverage="0.85">
+      <EfficacyInfection>0.80</EfficacyInfection>
+      <EfficacySeverity>0.95</EfficacySeverity>
+  </VaccineCampaign>
+
+  <DiagnosisAndIsolationPolicy start_day="0">
+    <DiagnosisDelayDays>2.0</DiagnosisDelayDays>
+    <DiagnosisCoverageRate>0.60</DiagnosisCoverageRate>
+    <IsolationComplianceRate>0.80</IsolationComplianceRate>
+  </DiagnosisAndIsolationPolicy>
+
+  <DiagnosisAndIsolationPolicy start_day="50">
+    <DiagnosisDelayDays>1.0</DiagnosisDelayDays> <DiagnosisCoverageRate>0.85</DiagnosisCoverageRate> </DiagnosisAndIsolationPolicy>
+
+  <TreatmentPolicy start_day="0">
+    <TreatmentCoverageRate>0.75</TreatmentCoverageRate>
+    <TreatmentMaxTRF>0.80</TreatmentMaxTRF>
+    <TreatmentTimeToMaxEffectDays>2.0</TreatmentTimeToMaxEffectDays>
+  </TreatmentPolicy>
+
+</PolicySchedules>

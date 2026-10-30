@@ -16,3 +16,7 @@ results/*
 *.pth
 wandb/
 runs/
+
+# coverage
+.coverage
+htmlcov/

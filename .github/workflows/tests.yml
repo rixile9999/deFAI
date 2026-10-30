@@ -1,0 +1,49 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.12"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - name: Install (CPU-only torch keeps the download small)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e ".[research,mobile,test]"
+      - name: Lint
+        run: ruff check defai scripts tests hatch_build.py
+      - name: Check resource inventory
+        run: |
+          python scripts/build_catalog.py
+          git diff --exit-code -- defai/research/catalog.json
+      - name: Tests (offline, no dataset is downloaded)
+        run: python -m pytest -q --junitxml=test-results.xml
+      - name: Build distributions
+        run: python -m build
+      - name: Research domain component checks
+        run: python scripts/check_research.py
+      - name: Exercise all workflow families with synthetic data
+        run: python -m defai demo --output smoke-results
+      - name: Keep test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.os }}-${{ matrix.python }}
+          path: |
+            test-results.xml
+            smoke-results/demo.json
+            dist/*

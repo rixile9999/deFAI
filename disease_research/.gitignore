@@ -1,0 +1,17 @@
+__pycache__/
+.pytest_cache/
+.venv*/
+venv/
+build/
+.gradle/
+local.properties
+*.ctx
+*.pt
+*.pth
+*.npz
+*.npy
+*.xpt
+*.sqlite
+*.zip
+*.apk
+*.log

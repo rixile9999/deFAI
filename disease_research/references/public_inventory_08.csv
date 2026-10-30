@@ -1,0 +1,4 @@
+dataset,relative_path,source_url,version,license_terms,access_date,size_bytes,sha256,checksum_verification,note
+SYNTHETIC smoke-test data (generated here; NOT real),data\synthetic\README_SYNTHETIC.md,local generate_synthetic.py,seed 20261016,Synthetic,2026-10-16 (KST),533,96f8405af3994852542345df29f9fde7e4636b81c60309fe34b9407c8fec84fe,,
+SYNTHETIC smoke-test data (generated here; NOT real),data\synthetic\generate_synthetic.py,local generate_synthetic.py,seed 20261016,Synthetic,2026-10-16 (KST),915,30c27d160517d96a3e69330c5869f916c11f8ddde23ff8db803e94b6f5a09888,,
+SYNTHETIC smoke-test data (generated here; NOT real),data\synthetic\synthetic_fl_smoketest.csv,local generate_synthetic.py,seed 20261016,Synthetic,2026-10-16 (KST),10325,e02e437f932d930351fc5804745e31375a713afd97dd89ade8b153cb36beb8be,,
