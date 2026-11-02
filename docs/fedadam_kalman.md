@@ -39,7 +39,7 @@ Source SHA-256: `713ba382ac153251e84d15be40ad7c37686f8ec358720532258e33bee5af2cb
 Python 3.11/3.12, using the existing optional learning runtime; no new dependencies:
 
 ```sh
-python -m pip install 'defai[flower]'
+python -m pip install '.[flower]'
 defai run --strategy fedadam-kalman --dataset synthetic --clients 4 --rounds 5 --output kf-run
 defai run --strategy fedadam-kalman --set kf-blend=0.0 --output ema-control
 defai run --strategy fedadam-kalman --set kf-process-adaptation=0.2 --set kf-max-step-norm=0.1 --output adaptive-run
@@ -112,3 +112,43 @@ Metrics include gain bounds, mean variance, mean innovation squared error,
 next-round Q/R, effective server learning rate and pre-rounding step norm.
 `optimizer_state_bytes()` counts unique numeric array payloads and scalar values,
 excluding Python containers, global models, clients and privacy-accountant state.
+
+## Synthetic comparison and interpretation
+
+The complete preset contains 270 condition/seed combinations per method (810
+training runs): alpha 0.1/0.5/10; local steps 1/5/20; participation 0.1/0.5/1.0;
+stationary or a label-reversal shift; seeds 0–4. Each run uses 40 rounds, 10
+clients and 7 logistic parameters. Training and test samples are independent.
+The synthetic data has no external dataset license or clinical interpretation.
+
+At the predeclared 75% test-accuracy target, adaptive Kalman reached the target
+in fewer rounds than the EMA control in 60 paired cases, more rounds in 28,
+and the same number in 182. Fixed Kalman was earlier in 20, later in 54 and
+tied in 196. All methods reached the target before the shift/end at least once;
+first attainment is not sustained accuracy. Of the 135 shifted cases per method,
+52 adaptive cases recovered to the target within the following 20 rounds,
+versus 0 for the fixed Kalman and EMA controls under these settings.
+
+These are descriptive results for this data and these fixed hyperparameters.
+There is no general or statistically established acceleration claim. Different
+methods have different tuning needs; the comparison does not establish optimal
+tuned performance. The condition grid also includes identical pre-shift prefixes;
+810 runs must not be treated as 810 independent scientific replications.
+No settings were selected using held-out scores.
+
+Measured wall times include client learning, server operations and evaluation,
+but exclude setup/imports and real communication. They are local diagnostics;
+concurrent host workloads and fixed method order prevent a controlled wall-time
+speedup conclusion. Training/evaluation payload counters represent numeric
+payloads, not network protocol bytes or latency. Numeric optimizer payloads are
+112 bytes for EMA and 152 bytes for Kalman on this 7-parameter example.
+
+| Completed | Not completed |
+|---|---|
+| Exact EMA equivalence, equations, finite checks, trust radius and rollback | A convergence theorem for the modified optimizer |
+| Factory/CLI, real neural-client smoke training, optimizer restart tests | Full distributed-training/DP checkpoint resume |
+| Paired synthetic grid and explicit unsuccessful outcomes | Real-data benchmark, tuning study, clinical or institutional validation |
+| Package and test checks recorded in the validation receipt | Bayesian optimization or state-space Gaussian-process extension |
+
+The implementation is available for experiments; the evidence supports only
+the numerical and synthetic behaviors described above.
