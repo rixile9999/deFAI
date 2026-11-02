@@ -17,6 +17,8 @@ class KalmanConfig:
     observation_noise: float = 1e-2
     initial_variance: float = 0.0
     variance_floor: float = 1e-12
+    gain_min: float = 0.0
+    gain_max: float = 1.0
 
     def __post_init__(self):
         for name, value in vars(self).items():
@@ -30,6 +32,8 @@ class KalmanConfig:
         for name in ("observation_noise", "variance_floor"):
             if getattr(self, name) <= 0:
                 raise ValueError(f"{name} must be positive")
+        if not 0 <= self.gain_min <= self.gain_max <= 1:
+            raise ValueError("gain_min/gain_max must satisfy 0 <= min <= max <= 1")
 
 
 @dataclass(frozen=True)
@@ -58,7 +62,7 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
         with np.errstate(over="raise", invalid="raise", divide="raise"):
             predicted = config.rho * previous.mean
             prior = config.rho**2 * previous.variance + previous.process_noise
-            gain = prior / (prior + previous.observation_noise)
+            gain = float(np.clip(prior / (prior + previous.observation_noise), config.gain_min, config.gain_max))
             mean = (1 - gain) * predicted + gain * d
             # Joseph form remains valid when gain constraints are added.
             variance = max((1 - gain)**2 * prior + gain**2 * previous.observation_noise,
