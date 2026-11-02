@@ -1,5 +1,6 @@
 """FedAdam research extension replacing its first moment with a Kalman mean."""
 import math
+from dataclasses import asdict
 
 import numpy as np
 
@@ -94,6 +95,27 @@ class FedAdamKalman(FedAdam):
         arrays += [s.mean for s in self._layers.values()]
         unique = {id(a): a for a in arrays}
         return sum(a.nbytes for a in unique.values()) + 6 * 8 * len(self._layers)
+
+    def _optimizer_config(self):
+        return {"kalman": asdict(self.kalman), "blend": self.kalman_blend,
+                "max_step_norm": self.max_step_norm, "beta_1": self.beta_1,
+                "beta_2": self.beta_2, "tau": self.tau, "learning_rate": self.server_learning_rate}
+
+    def state_dict(self):
+        """Copy optimizer-only state. Restore the global model separately first.
+
+        This is not a full distributed-training checkpoint: client/sampler and
+        privacy-accountant states are not included. DP checkpointing is rejected.
+        """
+        from copy import deepcopy
+        if self.dp is not None:
+            raise ValueError("DP resume requires the separate privacy accountant; optimizer-only checkpoint is unsupported")
+        if self._global is None:
+            raise ValueError("configure the global model before exporting optimizer state")
+        return deepcopy({"version": 1, "config": self._optimizer_config(),
+                         "schema": {k: (v.shape, v.dtype.str) for k, v in self._global.items()},
+                         "last_round": self._last_round, "m": self._m, "v": self._v,
+                         "ema": self._ema, "layers": {k: asdict(v) for k, v in self._layers.items()}})
 
     def summary(self):
         from logging import INFO
