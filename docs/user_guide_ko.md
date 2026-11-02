@@ -55,6 +55,12 @@ defai run --strategy fedavg --set "compression='topk'" --set "error-feedback=tru
 
 제공 전략은 `fedavg`, `fedprox`, `moon`, `scaffold`, `fednova`, `qfedavg`, `fedavgm`,
 `fedadagrad`, `fedadam`, `fedyogi`, `fedmedian`, `fedtrimmedavg`, `krum`, `multikrum`, `bulyan`입니다.
+추가 연구 확장 `fedadam-kalman`은 FedAdam의 1차 모멘트만 칼만 추정으로 대체하며,
+2차 모멘트는 원래 집계 업데이트로 계산합니다. `--set kf-blend=0.0`은 기존 FedAdam
+대조군이고, `--set kf-process-adaptation=0.2`는 잔차 기반 적응을 켭니다.
+`defai kalman-benchmark --full --output paired.json`으로 동일 조건의 810회 합성데이터
+비교를 재현할 수 있습니다. 가속은 보장하지 않으며 실제 데이터와 분산 환경의 검증이
+필요합니다. [수식·전체 설정·재시작 범위](fedadam_kalman.md)를 확인하세요.
 서버 최적화, 악성 갱신 모의실험, 압축, 개인화 평가, 클라이언트 이탈, 차등 개인정보보호는
 동일한 `--set KEY=TOML_VALUE` 형식으로 설정합니다. 전체 키는 작업 폴더의
 `pyproject.toml`에 있습니다. 잘못된 키·형식·비정상 수치는 실행 전에 거부합니다.
