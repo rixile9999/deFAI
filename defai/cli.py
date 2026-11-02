@@ -25,6 +25,10 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List the workflow families and optional install groups")
+    profile = commands.add_parser("kalman-profile", help="Measure local estimator latency and traced allocations")
+    profile.add_argument("--sizes", type=int, nargs="+", default=[16, 10000, 1000000])
+    profile.add_argument("--repeats", type=int, default=20)
+    profile.add_argument("--output", type=Path, required=True)
     kalman = commands.add_parser("kalman-benchmark", help="Paired synthetic FedAdam first-moment comparison")
     kalman.add_argument("--full", action="store_true", help="Run all 810 method/condition/seed combinations")
     kalman.add_argument("--rounds", type=int, default=40)
@@ -113,7 +117,13 @@ def parser():
 def dispatch(args, forwarded):
     if forwarded and (args.command != "research" or args.action != "run"):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
-    if args.command == "kalman-benchmark":
+    if args.command == "kalman-profile":
+        if args.output.exists(): raise FileExistsError(args.output)
+        from defai.kalman_profile import profile_estimator
+        result = profile_estimator(sizes=args.sizes, repeats=args.repeats)
+        _output(args.output, result)
+        _json({"output": str(args.output.resolve()), "results": result["results"]})
+    elif args.command == "kalman-benchmark":
         if args.output.exists(): raise FileExistsError(args.output)
         if args.dataset == "synthetic":
             if args.calibrated or args.seed_offset: raise ValueError("calibrated/seed-offset apply to public datasets")
