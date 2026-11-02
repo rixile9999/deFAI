@@ -41,6 +41,8 @@ def load_checkpoint(trainer, path):
     model_copies = [copy.deepcopy(p.model) for p in trainer.parties] + [copy.deepcopy(trainer.top)]
     for model, saved in zip(model_copies, state['bottoms']+[state['top']]):
         model.load_state_dict(saved, strict=True)
+        if any(not torch.isfinite(value).all() for value in saved.values()):
+            raise ValueError('Checkpoint contains non-finite model state')
     for party, saved in zip(trainer.parties, state['bottom_optimizers']):
         if (party.optimizer is None) != (saved is None):
             raise ValueError('Checkpoint trainable-party configuration differs')
@@ -49,6 +51,7 @@ def load_checkpoint(trainer, path):
     copy.deepcopy(trainer.optimizer).load_state_dict(state['optimizer'])
     if not isinstance(state['steps'], int) or state['steps'] < 0:
         raise ValueError('Invalid checkpoint step count')
+    torch.Generator().set_state(state['cpu_rng'])
     for party, saved, optimizer in zip(trainer.parties, state['bottoms'], state['bottom_optimizers']):
         party.model.load_state_dict(saved)
         if party.optimizer:
