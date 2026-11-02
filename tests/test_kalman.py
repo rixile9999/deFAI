@@ -78,3 +78,33 @@ def test_forced_constant_gain_matches_ema_and_joseph_covariance(gain):
 def test_invalid_gain_bounds(kwargs):
     with pytest.raises(ValueError, match="gain"):
         KalmanConfig(**kwargs)
+
+
+def test_adaptation_is_next_round_and_bounded():
+    cfg = KalmanConfig(process_adaptation=1, observation_adaptation=.5, noise_ceiling=.1)
+    fixed = layer_step(np.array([100.]), None, KalmanConfig())
+    adapted = layer_step(np.array([100.]), None, cfg)
+    assert adapted.gain == fixed.gain
+    assert adapted.process_noise == .1
+    assert adapted.observation_noise == pytest.approx(.055)
+    assert np.isfinite(layer_step(np.array([0.]), adapted, cfg).mean).all()
+
+
+def test_process_adaptation_responds_faster_after_sustained_direction_change():
+    fixed_cfg = KalmanConfig()
+    adaptive_cfg = KalmanConfig(process_adaptation=.5)
+    fixed = adaptive = None
+    for _ in range(20):
+        fixed = layer_step(np.array([0.]), fixed, fixed_cfg)
+        adaptive = layer_step(np.array([0.]), adaptive, adaptive_cfg)
+    for _ in range(4):
+        fixed = layer_step(np.array([1.]), fixed, fixed_cfg)
+        adaptive = layer_step(np.array([1.]), adaptive, adaptive_cfg)
+    assert abs(1 - adaptive.mean[0]) < abs(1 - fixed.mean[0])
+
+
+@pytest.mark.parametrize("kwargs", [{"process_adaptation": -1}, {"observation_adaptation": 1.1},
+                                    {"noise_ceiling": 1e-15}, {"noise_ceiling": .001}])
+def test_invalid_adaptation(kwargs):
+    with pytest.raises(ValueError):
+        KalmanConfig(**kwargs)
