@@ -124,3 +124,15 @@ def test_large_finite_covariances_do_not_overflow_the_gain_denominator():
     assert result.gain == pytest.approx(.5)
     assert result.mean[0] == pytest.approx(.5)
     assert result.variance == pytest.approx(5e307)
+
+
+def test_representable_innovation_mean_square_does_not_overflow_its_sum():
+    result = layer_step(np.full(2, 1e154), None, KalmanConfig())
+    assert result.innovation_mse == pytest.approx(1e308)
+
+
+def test_sparse_large_residual_can_have_a_representable_mean_square():
+    observation = np.zeros(1000)
+    observation[0] = 1e155
+    result = layer_step(observation, None, KalmanConfig())
+    assert result.innovation_mse == pytest.approx(1e307)
