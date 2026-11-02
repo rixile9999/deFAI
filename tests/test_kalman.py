@@ -108,3 +108,10 @@ def test_process_adaptation_responds_faster_after_sustained_direction_change():
 def test_invalid_adaptation(kwargs):
     with pytest.raises(ValueError):
         KalmanConfig(**kwargs)
+
+
+@pytest.mark.parametrize("variance,q,r", [(-1, .01, .01), (np.nan, .01, .01), (0, -1, .01), (0, .01, 0)])
+def test_invalid_prior_uncertainty_is_rejected(variance, q, r):
+    prior = LayerState(np.zeros(2), variance, q, r)
+    with pytest.raises(ValueError, match="previous"):
+        layer_step(np.ones(2), prior, KalmanConfig())
