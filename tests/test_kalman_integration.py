@@ -53,3 +53,26 @@ def test_privacy_pipeline_exposes_only_the_noised_aggregate_to_filter():
     for a, b in zip(seen, released):
         np.testing.assert_array_equal(a["w"], b["w"])
     assert "dp-epsilon" in result.train_metrics_clientapp[2]
+
+
+def test_real_client_training_cli_saves_kalman_history(tmp_path):
+    import json
+    from defai.cli import main
+    output = tmp_path / "kalman run with spaces"
+    assert main(["run", "--strategy", "fedadam-kalman", "--clients", "2", "--rounds", "2",
+                 "--set", "kf-process-adaptation=0.2", "--output", str(output)]) == 0
+    history = json.loads((output / "history.json").read_text())
+    assert history["config"]["strategy"] == "fedadam-kalman"
+    assert history["research_only"] is True
+    assert "kf-gain-min" in json.dumps(history)
+
+
+def test_benchmark_cli_creates_strict_json_and_rejects_overwrite(tmp_path):
+    import json
+    from defai.cli import main
+    output = tmp_path / "paired.json"
+    args = ["kalman-benchmark", "--rounds", "4", "--output", str(output)]
+    assert main(args) == 0
+    result = json.loads(output.read_text())
+    assert len(result["results"]) == 12
+    assert main(args) == 2
