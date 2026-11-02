@@ -78,7 +78,11 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
         with np.errstate(over="raise", invalid="raise", divide="raise"):
             predicted = config.rho * previous.mean
             prior = config.rho**2 * previous.variance + previous.process_noise
-            gain = float(np.clip(prior / (prior + previous.observation_noise), config.gain_min, config.gain_max))
+            # Normalize the two variances before summing: finite P and R can
+            # otherwise overflow P+R and incorrectly produce a zero gain.
+            scale = max(prior, previous.observation_noise)
+            gain = (prior / scale) / (prior / scale + previous.observation_noise / scale)
+            gain = float(np.clip(gain, config.gain_min, config.gain_max))
             mean = (1 - gain) * predicted + gain * d
             # Joseph form remains valid when gain constraints are added.
             variance = max((1 - gain)**2 * prior + gain**2 * previous.observation_noise,
