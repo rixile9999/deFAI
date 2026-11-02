@@ -142,3 +142,21 @@ def test_stable_norm_handles_large_values_and_multiple_layers():
     assert stable_l2([np.array([1e200, 1e200]), np.array(1e200)]) == pytest.approx(np.sqrt(3)*1e200)
     assert stable_l2([np.array([0.]), np.zeros(3)]) == 0
     assert stable_l2([np.array([3., 4.]), np.array(12.)]) == 13
+
+
+@pytest.mark.parametrize("beta", [0., .5, .9, .99, 1-1e-15])
+def test_ema_calibration_matches_the_existing_first_moment(beta):
+    cfg = KalmanConfig.from_ema(beta)
+    state, mean = None, np.zeros(3)
+    for d in np.random.default_rng(8).normal(size=(30, 3)):
+        state = layer_step(d, state, cfg)
+        mean = beta*mean+(1-beta)*d
+        np.testing.assert_allclose(state.mean, mean, atol=1e-14, rtol=1e-12)
+
+
+def test_adaptive_calibration_gain_cannot_fall_below_original_ema_weight():
+    cfg = KalmanConfig.from_ema(.9, process_adaptation=.2, gain_floor=True)
+    state = None
+    for _ in range(100):
+        state = layer_step(np.zeros(3), state, cfg)
+        assert state.gain >= 1-.9

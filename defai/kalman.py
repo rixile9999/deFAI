@@ -37,8 +37,10 @@ class KalmanConfig:
         if beta_1 == 0:
             return cls(process_noise=0., observation_noise=observation_noise, gain_min=1., gain_max=1.,
                        process_adaptation=process_adaptation)
+        initial = gain*observation_noise
+        if initial <= 0: raise ValueError("calibrated variance must remain positive")
         return cls(process_noise=gain**2*observation_noise/beta_1, observation_noise=observation_noise,
-                   initial_variance=gain*observation_noise, process_adaptation=process_adaptation,
+                   initial_variance=initial, variance_floor=min(1e-12, initial), process_adaptation=process_adaptation,
                    gain_min=gain if gain_floor else 0.)
 
     def __post_init__(self):
