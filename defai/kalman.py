@@ -82,7 +82,7 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
             # otherwise overflow P+R and incorrectly produce a zero gain.
             scale = max(prior, previous.observation_noise)
             gain = (prior / scale) / (prior / scale + previous.observation_noise / scale)
-            gain = float(np.clip(gain, config.gain_min, config.gain_max))
+            gain = float(min(config.gain_max, max(config.gain_min, gain)))
             mean = (1 - gain) * predicted + gain * d
             # Joseph form remains valid when gain constraints are added.
             variance = max((1 - gain)**2 * prior + gain**2 * previous.observation_noise,
@@ -98,9 +98,12 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
         raise ValueError("non-finite Kalman state")
     # Innovation matching is a bounded proxy, not an identification of the true
     # process/observation noise. New values apply only to the NEXT round.
-    q_target = float(np.clip(innovation_mse - config.rho**2 * previous.variance - previous.observation_noise,
-                             config.variance_floor, config.noise_ceiling))
-    r_target = float(np.clip(innovation_mse - prior, config.variance_floor, config.noise_ceiling))
-    q = (1 - config.process_adaptation) * previous.process_noise + config.process_adaptation * q_target
-    r = (1 - config.observation_adaptation) * previous.observation_noise + config.observation_adaptation * r_target
+    q, r = previous.process_noise, previous.observation_noise
+    if config.process_adaptation:
+        q_target = min(config.noise_ceiling, max(config.variance_floor,
+                       innovation_mse - config.rho**2 * previous.variance - previous.observation_noise))
+        q = (1 - config.process_adaptation) * q + config.process_adaptation * q_target
+    if config.observation_adaptation:
+        r_target = min(config.noise_ceiling, max(config.variance_floor, innovation_mse - prior))
+        r = (1 - config.observation_adaptation) * r + config.observation_adaptation * r_target
     return LayerState(mean, variance, q, r, gain, innovation_mse)
