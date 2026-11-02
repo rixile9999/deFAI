@@ -44,7 +44,7 @@ def read_manifest(path, *, alignment='plain'):
 
 def run_tabular(data, *, method='split', epochs=30, batch_size=32, lr=.05, seed=42,
                 q=3, test_fraction=.25, key_bits=2048, insecure_test_key=False):
-    if method not in {'split', 'fedbcd-p', 'fedbcd-s', 'secureboost'}:
+    if method not in {'split', 'fedbcd-p', 'fedbcd-s', 'neural-bcd-p', 'neural-bcd-s', 'secureboost'}:
         raise ValueError('Unknown vertical method')
     if isinstance(epochs, bool) or not isinstance(epochs, int) or epochs < 1 or isinstance(batch_size, bool) or not isinstance(batch_size, int) or batch_size < 1:
         raise ValueError('epochs and batch_size must be positive integers')
@@ -63,7 +63,7 @@ def run_tabular(data, *, method='split', epochs=30, batch_size=32, lr=.05, seed=
         arrays[name] = (value-mean)/std
         normalization[name] = {'fitted_on': 'train_only', 'feature_count': value.shape[1]}
     history, traffic = [], None
-    if method == 'split':
+    if method in {'split', 'neural-bcd-p', 'neural-bcd-s'}:
         import torch
         from torch import nn
         from .models import mlp
@@ -72,7 +72,13 @@ def run_tabular(data, *, method='split', epochs=30, batch_size=32, lr=.05, seed=
         with torch.random.fork_rng(devices=[]):
             torch.manual_seed(seed)
             parties = [FeatureParty(name, mlp(x.shape[1], 8), torch.tensor(x, dtype=torch.float32), lr=lr) for name, x in arrays.items()]
-            trainer = SplitTrainer(parties, nn.Linear(len(parties)*8, 2), torch.tensor(data.labels, dtype=torch.long), lr=lr)
+            top, labels = nn.Linear(len(parties)*8, 2), torch.tensor(data.labels, dtype=torch.long)
+            if method == 'split':
+                trainer = SplitTrainer(parties, top, labels, lr=lr)
+            else:
+                from .neural_bcd import NeuralFedBCD
+                trainer = NeuralFedBCD(parties, top, labels, label_owner=data.label_owner, q=q,
+                                       mode='parallel' if method == 'neural-bcd-p' else 'sequential', lr=lr)
             for _ in range(epochs):
                 batch_order = rng.permutation(train)
                 losses = [trainer.step(batch_order[i:i+batch_size]) for i in range(0, len(train), batch_size)]
@@ -80,6 +86,8 @@ def run_tabular(data, *, method='split', epochs=30, batch_size=32, lr=.05, seed=
             probabilities = trainer.predict(test).softmax(-1)[:, 1].numpy()
             traffic = {'embedding_bytes': trainer.traffic.forward_bytes, 'gradient_bytes': trainer.traffic.backward_bytes,
                        'batch_exchanges': trainer.traffic.exchanges, 'measured_network': False}
+            if method != 'split':
+                traffic['local_steps'] = trainer.local_steps
     elif method.startswith('fedbcd'):
         from .bcd import LinearParty, FedBCD
         local = [LinearParty(name, x) for name, x in arrays.items()]

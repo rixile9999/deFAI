@@ -36,7 +36,7 @@ def parser():
     vertical_demo.add_argument("--insecure-test-key", action="store_true")
     vertical_run = vertical_actions.add_parser("run")
     vertical_run.add_argument("manifest", type=Path)
-    vertical_run.add_argument("--method", choices=["split", "fedbcd-p", "fedbcd-s", "secureboost"], default="split")
+    vertical_run.add_argument("--method", choices=["split", "fedbcd-p", "fedbcd-s", "neural-bcd-p", "neural-bcd-s", "secureboost"], default="split")
     vertical_run.add_argument("--alignment", choices=["plain", "dh-psi"], default="plain")
     vertical_run.add_argument("--epochs", type=int, default=30)
     vertical_run.add_argument("--batch-size", type=int, default=32)
@@ -108,7 +108,7 @@ def dispatch(args, forwarded):
     if args.command == "vertical":
         from defai.vertical.demo import FAMILIES, init_example, run_demo
         if args.vertical_action == "list":
-            _json({"families": FAMILIES, "methods": ["split", "fedbcd-p", "fedbcd-s", "secureboost"],
+            _json({"families": FAMILIES, "methods": ["split", "fedbcd-p", "fedbcd-s", "neural-bcd-p", "neural-bcd-s", "secureboost"],
                    "status": "research_local_simulation"})
         elif args.vertical_action == "init":
             _json({"manifest": str(init_example(args.directory).resolve())})

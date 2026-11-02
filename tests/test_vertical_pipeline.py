@@ -15,7 +15,7 @@ def cpu_threads():
     torch.set_num_threads(previous)
 
 
-@pytest.mark.parametrize('method', ['split', 'fedbcd-p', 'fedbcd-s', 'secureboost'])
+@pytest.mark.parametrize('method', ['split', 'fedbcd-p', 'fedbcd-s', 'neural-bcd-p', 'neural-bcd-s', 'secureboost'])
 def test_heldout_pipeline_runs_every_core_method(method):
     rng = np.random.default_rng(2)
     a, b = rng.normal(size=(40, 2)), rng.normal(size=(40, 3))
