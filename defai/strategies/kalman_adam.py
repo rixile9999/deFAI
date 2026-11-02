@@ -77,4 +77,27 @@ class FedAdamKalman(FedAdam):
         self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
         self._last_round = server_round
         self._round_metrics.update({"kf-effective-lr": scale, "kf-step-norm": scale * norm})
+        if layers:
+            self._round_metrics.update({
+                "kf-gain-min": min(s.gain for s in layers.values()),
+                "kf-gain-max": max(s.gain for s in layers.values()),
+                "kf-variance-mean": float(np.mean([s.variance for s in layers.values()])),
+                "kf-innovation-mse": float(np.mean([s.innovation_mse for s in layers.values()])),
+                "kf-process-noise-mean": float(np.mean([s.process_noise for s in layers.values()])),
+                "kf-observation-noise-mean": float(np.mean([s.observation_noise for s in layers.values()])),
+            })
         return result
+
+    def optimizer_state_bytes(self):
+        """Numeric payload bytes, excluding model, Python containers and DP state."""
+        arrays = [a for group in (self._m, self._v, self._ema) if group for a in group.values()]
+        arrays += [s.mean for s in self._layers.values()]
+        unique = {id(a): a for a in arrays}
+        return sum(a.nbytes for a in unique.values()) + 6 * 8 * len(self._layers)
+
+    def summary(self):
+        from logging import INFO
+        from flwr.supercore import log
+        super().summary()
+        log(INFO, "\t└──> Kalman first moment: blend=%s config=%s max_step_norm=%s (research)",
+            self.kalman_blend, self.kalman, self.max_step_norm)
