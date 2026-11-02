@@ -72,6 +72,11 @@ commit; the standalone `kalman-profile` command works in installed packages.
 Use fresh output names. Profiling reports seconds and traced allocation bytes,
 not whole-process memory or physical network costs.
 
+For Python training, an explicitly calibrated strategy is constructed with
+`FedAdamKalman(kalman=KalmanConfig.from_ema(.9, process_adaptation=.2, gain_floor=True))`.
+The ordinary run-config defaults are retained; this option is not silently
+enabled for an existing experiment.
+
 `strategy.save_checkpoint(path, model=latest_arrays)` explicitly takes the
 latest returned model, since the strategy's cached broadcast can precede the
 last update. `restored_model = strategy.load_checkpoint(path)` restores numeric

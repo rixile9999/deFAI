@@ -29,8 +29,8 @@ def parser():
     profile.add_argument("--sizes", type=int, nargs="+", default=[16, 10000, 1000000])
     profile.add_argument("--repeats", type=int, default=20)
     profile.add_argument("--output", type=Path, required=True)
-    kalman = commands.add_parser("kalman-benchmark", help="Paired synthetic FedAdam first-moment comparison")
-    kalman.add_argument("--full", action="store_true", help="Run all 810 method/condition/seed combinations")
+    kalman = commands.add_parser("kalman-benchmark", help="Paired FedAdam comparison with synthetic or offline public data")
+    kalman.add_argument("--full", action="store_true", help="Run the complete grid (810 synthetic/both-public runs; 405 for one public dataset)")
     kalman.add_argument("--rounds", type=int, default=40)
     kalman.add_argument("--dataset", choices=("synthetic", "digits", "breast-cancer", "public"), default="synthetic")
     kalman.add_argument("--calibrated", action="store_true", help="Use EMA-matched public-data initialization and adaptive gain floor")
@@ -160,7 +160,7 @@ def dispatch(args, forwarded):
     elif args.command == "list":
         _json({"version": __version__, "workflows": {
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
-            "kalman": "defai run --strategy fedadam-kalman | defai kalman-benchmark [flower]",
+            "kalman": "defai run --strategy fedadam-kalman --optimizer-checkpoint FILE | defai kalman-benchmark --dataset public --calibrated | defai kalman-profile [flower]",
             "vertical": "defai vertical list | init | run | demo [vertical]",
             "neonatal": "defai research list --domain neonatal [research]",
             "policy": "defai policy --input DIRECTORY --output result.json [analysis]",

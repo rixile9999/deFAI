@@ -61,6 +61,11 @@ defai run --strategy fedavg --set "compression='topk'" --set "error-feedback=tru
 `defai kalman-benchmark --full --output paired.json`으로 동일 조건의 810회 합성데이터
 비교를 재현할 수 있습니다. 가속은 보장하지 않으며 실제 데이터와 분산 환경의 검증이
 필요합니다. [수식·전체 설정·재시작 범위](fedadam_kalman.md)를 확인하세요.
+추가 개선판은 `--optimizer-checkpoint final.npz`로 최종 모델·최적화 상태를 저장하며,
+`defai kalman-benchmark --dataset public --calibrated --seed-offset 100 --rounds 60 --full --output public.json`으로
+공개 데이터 비교를 재현합니다. `defai kalman-profile --output profile.json`은 추정기 계산 비용을 측정합니다.
+보정된 비교는 성능 저하를 줄였지만 전체 학습 가속이 입증된 것은 아닙니다.
+[추가 개선·출처·실패 사례·저장 파일의 범위](fedadam_followup.md)를 함께 확인하세요.
 서버 최적화, 악성 갱신 모의실험, 압축, 개인화 평가, 클라이언트 이탈, 차등 개인정보보호는
 동일한 `--set KEY=TOML_VALUE` 형식으로 설정합니다. 전체 키는 작업 폴더의
 `pyproject.toml`에 있습니다. 잘못된 키·형식·비정상 수치는 실행 전에 거부합니다.
