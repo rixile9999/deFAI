@@ -1,5 +1,6 @@
 """Paired public-data FedAdam benchmark with held-out test evaluation only at end."""
 import hashlib
+from dataclasses import asdict
 from itertools import product
 import math
 import time
@@ -28,7 +29,7 @@ def evaluate(data, arrays, split):
             "client_accuracy_p10": float(np.quantile(client_acc, .1))}
 
 
-def run_public_case(data, *, method, local_steps=5, participation=.5, rounds=60):
+def run_public_case(data, *, method, local_steps=5, participation=.5, rounds=60, calibrated=False):
     """No test score is computed until training and target tracking finish."""
     from defai.strategies import FedAdam, FedAdamKalman
     if method not in METHODS:
@@ -38,9 +39,12 @@ def run_public_case(data, *, method, local_steps=5, participation=.5, rounds=60)
             isinstance(participation, bool) or not isinstance(participation, (int, float)) or
             not math.isfinite(participation) or not 0 < participation <= 1):
         raise ValueError("invalid public benchmark condition")
+    if not isinstance(calibrated, bool): raise ValueError("calibrated must be boolean")
+    adaptation = .2 if method == "adaptive-kalman" else 0
+    kalman = (KalmanConfig.from_ema(.9, process_adaptation=adaptation, gain_floor=bool(adaptation))
+              if calibrated else KalmanConfig(process_adaptation=adaptation))
     strategy = (FedAdam(server_learning_rate=.03) if method == "ema" else
-                FedAdamKalman(server_learning_rate=.03, kalman=KalmanConfig(
-                    process_adaptation=.2 if method == "adaptive-kalman" else 0)))
+                FedAdamKalman(server_learning_rate=.03, kalman=kalman))
     strategy._global = {"w": np.zeros((data.x.shape[1], data.metadata["classes"])),
                         "bias": np.zeros(data.metadata["classes"])}
     local_data = [(data.x[node], data.y[node]) for node in data.clients["train"]]
@@ -88,21 +92,25 @@ def run_public_case(data, *, method, local_steps=5, participation=.5, rounds=60)
     memory = (strategy.optimizer_state_bytes() if method != "ema" else
               sum(a.nbytes for group in (strategy._m, strategy._v) for a in group.values()))
     return {"condition": {"dataset": data.name, "alpha": data.metadata["alpha"], "seed": data.metadata["seed"],
-                          "local_steps": local_steps, "participation": participation, "drift": False},
+                          "local_steps": local_steps, "participation": participation, "drift": False, "calibrated": calibrated},
             "method": method, "target": target, "target_metric": "validation_accuracy",
             "target_reached": first, "sustained_target": sustained, "post_shift_recovery": None,
             "heldout_test": final_test, "test_evaluations": 1, "history": history,
-            "optimizer_numeric_bytes": memory, "dataset_sha256": data.metadata["dataset_sha256"],
+            "optimizer_numeric_bytes": memory, "kalman_config": asdict(kalman) if method != "ema" else None,
+            "dataset_sha256": data.metadata["dataset_sha256"],
             "split_sha256": data.metadata["split_sha256"],
             "schedule_sha256": hashlib.sha256(np.asarray(schedule, dtype="<i8").tobytes()).hexdigest()}
 
 
-def run_public_benchmark(*, dataset="public", full=False, rounds=60):
+def run_public_benchmark(*, dataset="public", full=False, rounds=60, calibrated=False, seed_offset=0):
     from threadpoolctl import threadpool_limits
     names = ("digits", "breast-cancer") if dataset == "public" else (dataset,)
     if any(name not in ("digits", "breast-cancer") for name in names):
         raise ValueError("unknown public dataset")
-    axes = ((.1, .5, 10.), (1, 5, 20), (.1, .5, 1.), range(5)) if full else ((.5,), (5,), (.5,), range(2))
+    if not isinstance(full, bool) or not isinstance(calibrated, bool): raise ValueError("full/calibrated must be boolean")
+    if isinstance(seed_offset, bool) or not isinstance(seed_offset, int) or seed_offset < 0:
+        raise ValueError("seed_offset must be a nonnegative integer")
+    axes = ((.1, .5, 10.), (1, 5, 20), (.1, .5, 1.), range(seed_offset, seed_offset+5)) if full else ((.5,), (5,), (.5,), range(seed_offset, seed_offset+2))
     results, metadata = [], []
     with threadpool_limits(limits=1):
         for name, alpha, seed in product(names, axes[0], axes[3]):
@@ -113,12 +121,14 @@ def run_public_benchmark(*, dataset="public", full=False, rounds=60):
                 offset = (seed+index)%len(METHODS)
                 for method in METHODS[offset:]+METHODS[:offset]:
                     results.append(run_public_case(data, method=method, local_steps=steps,
-                                                   participation=fraction, rounds=rounds))
+                                                   participation=fraction, rounds=rounds, calibrated=calibrated))
     return {"status": "research_public_data_benchmark", "network_transport_measured": False,
             "privacy_enabled": False, "blas_threads": 1, "rounds": rounds,
             "axes": {"datasets": list(names), "alpha": list(axes[0]), "local_steps": list(axes[1]),
                      "participation": list(axes[2]), "seeds": list(axes[3])},
             "method_order": "counterbalanced by seed and condition; no test-based tuning",
+            "hyperparameters": {"server_learning_rate": .03, "local_learning_rate": .05, "weight_l2": .001,
+                                "beta_1": .9, "beta_2": .99, "tau": .001, "ema_calibrated": calibrated},
             "datasets": metadata, "summary": summarize_public(results), "results": results,
             "excluded": ["clinical validation", "real institution splits", "network timing", "hyperparameter tuning"]}
 
