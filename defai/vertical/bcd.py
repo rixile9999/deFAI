@@ -94,13 +94,14 @@ class FedBCD:
         self.rounds += 1
         self.local_steps += self.q
         self.batch_history.append({'indices': batch.tolist(), 'reused_steps': self.q})
-        return self.loss()
+        return self.loss(batch)
 
     def predict(self):
         score = sum(p.contribution(np.arange(len(self.labels))) for p in self.parties)
         return np.exp(-np.logaddexp(0, -score)) if self.task == 'logistic' else score
 
-    def loss(self):
-        score = sum(p.contribution(np.arange(len(self.labels))) for p in self.parties)
-        data = np.mean(np.logaddexp(0, score) - self.labels * score) if self.task == 'logistic' else np.mean((score - self.labels)**2) / 2
+    def loss(self, indices=None):
+        indices = np.arange(len(self.labels)) if indices is None else np.asarray(indices)
+        score = sum(p.contribution(indices) for p in self.parties)
+        data = np.mean(np.logaddexp(0, score) - self.labels[indices] * score) if self.task == 'logistic' else np.mean((score - self.labels[indices])**2) / 2
         return float(data + self.l2 * sum(p.weight @ p.weight for p in self.parties) / 2)
