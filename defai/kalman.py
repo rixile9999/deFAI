@@ -45,8 +45,14 @@ class KalmanConfig:
 
     def __post_init__(self):
         for name, value in vars(self).items():
-            if isinstance(value, bool) or not isinstance(value, Real) or not math.isfinite(value):
+            if isinstance(value, bool) or not isinstance(value, Real):
                 raise ValueError(f"{name} must be a finite real number")
+            try:
+                numeric = float(value)
+            except (OverflowError, ValueError) as exc:
+                raise ValueError(f"{name} must be a finite real number") from exc
+            if not math.isfinite(numeric): raise ValueError(f"{name} must be a finite real number")
+            object.__setattr__(self, name, numeric)
         if not 0 <= self.rho <= 1:
             raise ValueError("rho must be in [0, 1]")
         for name in ("process_noise", "initial_variance"):
