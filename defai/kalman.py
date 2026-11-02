@@ -60,7 +60,7 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
     """Return a proposed next state without mutating observations or prior state."""
     if not isinstance(observation, np.ndarray) or observation.dtype.kind not in "fiu" or not observation.size:
         raise ValueError("observation must be a nonempty real numeric array")
-    d = observation.astype(np.float64)
+    d = observation.astype(np.float64, copy=False)
     if not np.isfinite(d).all():
         raise ValueError("observation must be finite")
     if previous is None:
@@ -87,7 +87,11 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
             # Joseph form remains valid when gain constraints are added.
             variance = max((1 - gain)**2 * prior + gain**2 * previous.observation_noise,
                            config.variance_floor)
-            innovation_mse = float(np.mean(np.square(d - predicted)))
+            # Divide the fresh residual before squaring so a representable
+            # mean square does not overflow an intermediate square or sum.
+            residual = (d - predicted) / math.sqrt(d.size)
+            np.square(residual, out=residual)
+            innovation_mse = float(np.sum(residual))
     except (FloatingPointError, OverflowError) as exc:
         raise ValueError("non-finite Kalman arithmetic") from exc
     if not np.isfinite(mean).all() or not all(math.isfinite(v) for v in (prior, gain, variance, innovation_mse)):
