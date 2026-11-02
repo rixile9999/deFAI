@@ -1,6 +1,5 @@
 from dataclasses import replace
 
-import numpy as np
 import pytest
 
 from defai.kalman_benchmark import METHODS

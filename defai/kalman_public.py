@@ -81,7 +81,7 @@ def run_public_case(data, *, method, local_steps=5, participation=.5, rounds=60)
         payload = sum(a.nbytes for a in output.values())
         history.append({"round": rnd, **metrics, "elapsed_seconds": elapsed, "server_seconds": server_seconds,
                         "training_payload_bytes": int(2*len(selected)*payload), "evaluation_payload_bytes": 0,
-                        "update_oscillation_l2": stable_l2((move[k]-previous_move[k] for k in move)),
+                        "update_oscillation_l2": stable_l2(move[k]-previous_move[k] for k in move),
                         **strategy._round_metrics})
         previous_move = move
     final_test = evaluate(data, strategy._global, "test")
