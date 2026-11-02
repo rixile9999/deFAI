@@ -4,6 +4,7 @@ In-process research runtime, not network isolation or encrypted neural computati
 """
 from dataclasses import dataclass, field
 import math
+import secrets
 import torch
 from torch import nn
 
@@ -25,12 +26,13 @@ class Traffic:
 
 
 class FeatureParty:
-    def __init__(self, name, model, features, *, lr=.01):
+    def __init__(self, name, model, features, *, lr=.01, embedding_transform=None):
         if not name or not math.isfinite(lr) or lr <= 0:
             raise ValueError('A name and positive finite learning rate are required')
         if not isinstance(features, torch.Tensor) or features.ndim < 2 or not len(features) or not torch.isfinite(features).all():
             raise ValueError('Expected finite local tensor [samples,...]')
         self.name, self.model, self.features = name, model, features
+        self.embedding_transform = embedding_transform
         parameters = [p for p in model.parameters() if p.requires_grad]
         self.optimizer = torch.optim.SGD(parameters, lr=lr) if parameters else None
         self._pending = None
@@ -44,6 +46,8 @@ class FeatureParty:
             local = self.model(self.features)[indices]
         else:
             local = self.model(self.features[indices])
+        if self.embedding_transform is not None:
+            local = self.embedding_transform(local)
         if not torch.isfinite(local).all():
             raise FloatingPointError('Non-finite local embedding')
         self._pending = (token, local)
@@ -102,7 +106,7 @@ class SplitTrainer:
 
     def step(self, indices):
         indices = self._indices(indices)
-        token = self.steps
+        token = (self.steps, secrets.token_hex(16))
         self.optimizer.zero_grad(set_to_none=True)
         try:
             sent = [p.embedding(indices, token) for p in self.parties]
