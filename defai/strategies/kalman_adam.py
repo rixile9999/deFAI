@@ -31,4 +31,42 @@ class FedAdamKalman(FedAdam):
         self._last_round = 0
 
     def update_global(self, server_round, delta):
-        raise NotImplementedError("First-moment integration is the next milestone")
+        if isinstance(server_round, bool) or not isinstance(server_round, int) or server_round <= self._last_round:
+            raise ValueError("server_round must increase strictly from a positive integer")
+        if self._global is None or not delta or delta.keys() != self._global.keys():
+            raise ValueError("delta must match the configured global model")
+        for k, d in delta.items():
+            if not isinstance(d, np.ndarray) or d.dtype.kind != "f" or not d.size or d.shape != self._global[k].shape:
+                raise ValueError(f"invalid floating update shape/dtype: {k}")
+            if not np.isfinite(d).all() or not np.isfinite(self._global[k]).all():
+                raise ValueError(f"non-finite model or update: {k}")
+            if self._m is not None and (k not in self._m or self._m[k].shape != d.shape):
+                raise ValueError("optimizer model schema changed; create a new strategy")
+        if self._m is not None and self._m.keys() != delta.keys():
+            raise ValueError("optimizer model schema changed; create a new strategy")
+        try:
+            with np.errstate(over="raise", invalid="raise", divide="raise"):
+                ema = None
+                if self.kalman_blend < 1:
+                    previous = self._ema or {k: np.zeros_like(d) for k, d in delta.items()}
+                    ema = {k: self.beta_1 * previous[k] + (1 - self.beta_1) * d for k, d in delta.items()}
+                layers = ({k: layer_step(d, self._layers.get(k), self.kalman) for k, d in delta.items()}
+                          if self.kalman_blend > 0 else {})
+                if self.kalman_blend == 0:
+                    moment = ema
+                elif self.kalman_blend == 1:
+                    moment = {k: s.mean for k, s in layers.items()}
+                else:
+                    moment = {k: (1 - self.kalman_blend) * ema[k] + self.kalman_blend * layers[k].mean for k in delta}
+                old_v = self._v or {k: np.full_like(d, self.tau**2) for k, d in delta.items()}
+                variance = {k: self._second_moment(old_v[k], np.square(d)) for k, d in delta.items()}
+                step = {k: moment[k] / (np.sqrt(variance[k]) + self.tau) for k in delta}
+                result = self._step(self.server_learning_rate, step)
+        except (FloatingPointError, OverflowError) as exc:
+            raise ValueError("non-finite FedAdam Kalman arithmetic") from exc
+        if any(not np.isfinite(a).all() for group in (moment, variance, result) for a in group.values()):
+            raise ValueError("non-finite FedAdam Kalman result")
+        # Commit only after every layer and output dtype has passed validation.
+        self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
+        self._last_round = server_round
+        return result
