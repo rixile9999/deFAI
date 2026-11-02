@@ -637,6 +637,7 @@ all = [
     { name = "pandas" },
     { name = "pillow" },
     { name = "psutil" },
+    { name = "pycryptodome" },
     { name = "python-pptx" },
     { name = "scikit-learn" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
@@ -720,6 +721,12 @@ test = [
     { name = "pytest-cov" },
     { name = "ruff" },
 ]
+vertical = [
+    { name = "pycryptodome" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "torch" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -727,7 +734,7 @@ requires-dist = [
     { name = "defai", extras = ["analysis", "learning", "flower", "plot"], marker = "extra == 'research'" },
     { name = "defai", extras = ["flower"], marker = "extra == 'simulation'" },
     { name = "defai", extras = ["learning"], marker = "extra == 'flower'" },
-    { name = "defai", extras = ["research", "mobile", "simulation"], marker = "extra == 'all'" },
+    { name = "defai", extras = ["research", "mobile", "simulation", "vertical"], marker = "extra == 'all'" },
     { name = "dp-accounting", marker = "extra == 'test'", specifier = ">=0.5,<0.7" },
     { name = "flask", marker = "extra == 'mobile'", specifier = ">=3.1,<4" },
     { name = "flwr", marker = "extra == 'flower'", specifier = "==1.42.0" },
@@ -741,20 +748,23 @@ requires-dist = [
     { name = "pandas", marker = "extra == 'analysis'", specifier = ">=2.2,<4" },
     { name = "pillow", marker = "extra == 'learning'", specifier = ">=10,<13" },
     { name = "psutil", marker = "extra == 'learning'", specifier = ">=6,<8" },
+    { name = "pycryptodome", marker = "extra == 'vertical'", specifier = ">=3.21,<4" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=8,<10" },
     { name = "pytest-cov", marker = "extra == 'test'" },
     { name = "python-pptx", marker = "extra == 'plot'", specifier = ">=1,<2" },
     { name = "ruff", marker = "extra == 'test'" },
     { name = "scikit-learn", marker = "extra == 'learning'", specifier = ">=1.5,<2" },
     { name = "scipy", marker = "extra == 'analysis'", specifier = ">=1.14,<2" },
+    { name = "scipy", marker = "extra == 'vertical'", specifier = ">=1.14,<2" },
     { name = "statsmodels", marker = "extra == 'research'", specifier = ">=0.14,<0.16" },
     { name = "tenseal", marker = "extra == 'research'", specifier = "==0.3.18" },
     { name = "torch", marker = "extra == 'learning'", specifier = ">=2.6,<2.7" },
+    { name = "torch", marker = "extra == 'vertical'", specifier = ">=2.6,<2.7" },
     { name = "torchvision", marker = "extra == 'learning'", specifier = ">=0.21,<0.22" },
     { name = "tqdm", marker = "extra == 'learning'", specifier = ">=4.66,<5" },
     { name = "waitress", marker = "extra == 'mobile'", specifier = ">=3,<4" },
 ]
-provides-extras = ["analysis", "learning", "flower", "simulation", "plot", "research", "mobile", "all", "test"]
+provides-extras = ["vertical", "analysis", "learning", "flower", "simulation", "plot", "research", "mobile", "all", "test"]
 
 [[package]]
 name = "dill"
