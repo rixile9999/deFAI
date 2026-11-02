@@ -35,3 +35,24 @@ def test_wrong_shape_does_not_partially_restore_live_parameters(tmp_path):
     with pytest.raises(RuntimeError):
         load_checkpoint(b, path)
     assert torch.equal(before, b.parties[0].model.weight)
+
+
+def test_graph_topology_is_not_serialized_as_model_parameters(tmp_path):
+    from defai.vertical.models import GraphEncoder
+    m = SplitTrainer([FeatureParty(str(i), GraphEncoder(2, torch.eye(6), 3), torch.ones(6, 2)) for i in range(2)],
+                     torch.nn.Linear(6, 2), torch.zeros(6, dtype=torch.long))
+    path = tmp_path/'graph.pt'
+    save_checkpoint(m, path)
+    state = torch.load(path, weights_only=True)
+    assert all('adjacency' not in local for local in state['bottoms'])
+
+
+def test_invalid_optimizer_rate_is_rejected_before_restoring(tmp_path):
+    a, b = trainer(), trainer()
+    path = tmp_path/'optimizer.pt'
+    save_checkpoint(a, path)
+    state = torch.load(path, weights_only=True)
+    state['optimizer']['param_groups'][0]['lr'] = float('nan')
+    torch.save(state, path)
+    with pytest.raises(ValueError, match='learning rate'):
+        load_checkpoint(b, path)

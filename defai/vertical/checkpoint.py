@@ -1,5 +1,6 @@
 """Save model/optimizer state without serializing participant features or labels."""
 import copy
+import math
 import os
 from pathlib import Path
 import tempfile
@@ -38,6 +39,9 @@ def load_checkpoint(trainer, path):
     if len(state['bottoms']) != len(trainer.parties) or len(state['bottom_optimizers']) != len(trainer.parties):
         raise ValueError('Checkpoint party count differs')
     # Validate the entire state on copies before touching the live trainer.
+    for saved in [state['optimizer'], *state['bottom_optimizers']]:
+        if saved is not None and any(not math.isfinite(group['lr']) or group['lr'] <= 0 for group in saved['param_groups']):
+            raise ValueError('Checkpoint contains an invalid optimizer learning rate')
     model_copies = [copy.deepcopy(p.model) for p in trainer.parties] + [copy.deepcopy(trainer.top)]
     for model, saved in zip(model_copies, state['bottoms']+[state['top']]):
         model.load_state_dict(saved, strict=True)

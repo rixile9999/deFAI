@@ -107,7 +107,7 @@ class GraphEncoder(nn.Module):
             raise ValueError('Expected a finite nonnegative square adjacency matrix')
         a = a + torch.eye(len(a))
         degree = a.sum(1).rsqrt()
-        self.register_buffer('adjacency', degree[:, None] * a * degree[None, :])
+        self.register_buffer('adjacency', degree[:, None] * a * degree[None, :], persistent=False)
         self.first, self.second = nn.Linear(features, embedding), nn.Linear(embedding, embedding)
 
     def forward(self, x):
