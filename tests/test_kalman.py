@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from defai.kalman import KalmanConfig, LayerState, layer_step
+from defai.kalman import KalmanConfig, LayerState, layer_step, stable_l2
 
 
 @pytest.mark.parametrize("key,value", [
@@ -136,3 +136,9 @@ def test_sparse_large_residual_can_have_a_representable_mean_square():
     observation[0] = 1e155
     result = layer_step(observation, None, KalmanConfig())
     assert result.innovation_mse == pytest.approx(1e307)
+
+
+def test_stable_norm_handles_large_values_and_multiple_layers():
+    assert stable_l2([np.array([1e200, 1e200]), np.array(1e200)]) == pytest.approx(np.sqrt(3)*1e200)
+    assert stable_l2([np.array([0.]), np.zeros(3)]) == 0
+    assert stable_l2([np.array([3., 4.]), np.array(12.)]) == 13
