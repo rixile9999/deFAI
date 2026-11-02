@@ -91,3 +91,18 @@ def test_duplicate_rounds_rejected_but_skipped_rounds_allowed():
     s.update_global(3, delta)
     with pytest.raises(ValueError, match="increase"): s.update_global(3, delta)
     s.update_global(5, delta)
+
+
+def test_trust_radius_is_shared_across_all_layers():
+    s = initialized(max_step_norm=.001)
+    before = {k: v.copy() for k, v in s._global.items()}
+    out = s.update_global(1, {"w": np.ones(3), "bias": np.array(2.)})
+    displacement = np.sqrt(sum(np.sum((out[k] - before[k])**2) for k in out))
+    assert displacement == pytest.approx(.001, rel=1e-6)
+    assert 0 < s._round_metrics["kf-effective-lr"] < s.server_learning_rate
+
+
+@pytest.mark.parametrize("kwargs", [{"kalman_blend": np.nan}, {"kalman_blend": True}, {"kalman_blend": 1.1},
+                                    {"max_step_norm": -1}, {"max_step_norm": np.inf}, {"tau": np.inf}])
+def test_invalid_strategy_options(kwargs):
+    with pytest.raises(ValueError): initialized(**kwargs)
