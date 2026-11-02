@@ -53,6 +53,15 @@ class HistogramParty:
         rows = np.asarray(rows, dtype=int)
         return rows[self.x[rows, feature] <= threshold]
 
+    def with_features(self, features):
+        """A local inference view retaining TRAINING thresholds, not refitted bins."""
+        x = np.asarray(features, dtype=float)
+        if x.ndim != 2 or x.shape[1] != self.x.shape[1] or not len(x) or not np.isfinite(x).all():
+            raise ValueError('Inference columns must match the training owner schema')
+        view = object.__new__(type(self))
+        view.name, view.x, view._lookup = self.name, x, self._lookup.copy()
+        return view
+
 
 @dataclass
 class Node:
