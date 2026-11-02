@@ -16,7 +16,7 @@ class FedAdamKalman(FedAdam):
     """
     name = "fedadam-kalman"
 
-    def __init__(self, *, kalman=None, kalman_blend=1.0, **kwargs):
+    def __init__(self, *, kalman=None, kalman_blend=1.0, max_step_norm=0.0, **kwargs):
         super().__init__(**kwargs)
         if isinstance(kalman_blend, bool) or not isinstance(kalman_blend, (int, float)) or not math.isfinite(kalman_blend) or not 0 <= kalman_blend <= 1:
             raise ValueError("kalman_blend must be finite and in [0, 1]")
@@ -26,6 +26,9 @@ class FedAdamKalman(FedAdam):
             raise ValueError("tau and server_learning_rate must be finite and positive")
         self.kalman = kalman or KalmanConfig()
         self.kalman_blend = kalman_blend
+        if isinstance(max_step_norm, bool) or not isinstance(max_step_norm, (int, float)) or not math.isfinite(max_step_norm) or max_step_norm < 0:
+            raise ValueError("max_step_norm must be finite and nonnegative (0 disables)")
+        self.max_step_norm = max_step_norm
         self._layers = {}
         self._ema = None
         self._last_round = 0
@@ -61,7 +64,11 @@ class FedAdamKalman(FedAdam):
                 old_v = self._v or {k: np.full_like(d, self.tau**2) for k, d in delta.items()}
                 variance = {k: self._second_moment(old_v[k], np.square(d)) for k, d in delta.items()}
                 step = {k: moment[k] / (np.sqrt(variance[k]) + self.tau) for k in delta}
-                result = self._step(self.server_learning_rate, step)
+                norm = float(np.sqrt(sum(float(np.sum(np.square(a))) for a in step.values())))
+                scale = self.server_learning_rate
+                if self.max_step_norm and norm:
+                    scale = min(scale, self.max_step_norm / norm)
+                result = self._step(scale, step)
         except (FloatingPointError, OverflowError) as exc:
             raise ValueError("non-finite FedAdam Kalman arithmetic") from exc
         if any(not np.isfinite(a).all() for group in (moment, variance, result) for a in group.values()):
@@ -69,4 +76,5 @@ class FedAdamKalman(FedAdam):
         # Commit only after every layer and output dtype has passed validation.
         self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
         self._last_round = server_round
+        self._round_metrics.update({"kf-effective-lr": scale, "kf-step-norm": scale * norm})
         return result
