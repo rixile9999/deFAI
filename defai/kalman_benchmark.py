@@ -5,6 +5,7 @@ participation rates x 2 drift conditions x 5 seeds x 3 first-moment methods.
 """
 from itertools import product
 import hashlib
+import json
 import math
 import time
 
@@ -119,11 +120,10 @@ def run_benchmark(*, full=False, rounds=40):
 
 def summarize(results):
     """Report every method and paired outcome, including non-attainment."""
+    aligned = paired_runs(results)
     summary = {}
     for method in METHODS:
-        rows = [r for r in results if r["method"] == method]
-        paired = [r for r in results if r["method"] == "ema"]
-        if not rows: continue
+        rows, paired = aligned[method], aligned["ema"]
         comparisons = []
         for row, baseline in zip(rows, paired):
             if row["condition"] != baseline["condition"] or row["schedule_sha256"] != baseline["schedule_sha256"]:
@@ -148,3 +148,23 @@ def summarize(results):
             "evaluation_payload_bytes": sum(h["evaluation_payload_bytes"] for r in rows for h in r["history"]),
             "post_shift_recovered_runs": sum(r["post_shift_recovery"] is not None for r in rows if r["condition"]["drift"])}
     return summary
+
+
+def paired_runs(results):
+    """Align by conditions, reject missing/duplicate/unmatched comparisons."""
+    indexed = {method: {} for method in METHODS}
+    for row in results:
+        method = row["method"]
+        if method not in indexed: raise ValueError("unknown paired method")
+        key = json.dumps(row["condition"], sort_keys=True, allow_nan=False)
+        if key in indexed[method]: raise ValueError("duplicate paired condition")
+        indexed[method][key] = row
+    expected = set(indexed["ema"])
+    if not expected or any(set(rows) != expected for rows in indexed.values()):
+        raise ValueError("incomplete paired conditions")
+    aligned = {method: [rows[k] for k in sorted(expected)] for method, rows in indexed.items()}
+    for method in METHODS:
+        for row, base in zip(aligned[method], aligned["ema"]):
+            for field in ("schedule_sha256", "dataset_sha256", "split_sha256"):
+                if row.get(field) != base.get(field): raise ValueError(f"unmatched paired {field}")
+    return aligned
