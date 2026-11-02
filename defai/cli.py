@@ -28,6 +28,7 @@ def parser():
     kalman = commands.add_parser("kalman-benchmark", help="Paired synthetic FedAdam first-moment comparison")
     kalman.add_argument("--full", action="store_true", help="Run all 810 method/condition/seed combinations")
     kalman.add_argument("--rounds", type=int, default=40)
+    kalman.add_argument("--dataset", choices=("synthetic", "digits", "breast-cancer", "public"), default="synthetic")
     kalman.add_argument("--output", type=Path, required=True)
     vertical = commands.add_parser("vertical", help="Feature-partitioned learning (local research protocols)")
     vertical_actions = vertical.add_subparsers(dest="vertical_action", required=True)
@@ -111,10 +112,15 @@ def dispatch(args, forwarded):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
     if args.command == "kalman-benchmark":
         if args.output.exists(): raise FileExistsError(args.output)
-        from defai.kalman_benchmark import run_benchmark
-        result = run_benchmark(full=args.full, rounds=args.rounds)
+        if args.dataset == "synthetic":
+            from defai.kalman_benchmark import run_benchmark
+            result = run_benchmark(full=args.full, rounds=args.rounds)
+        else:
+            from defai.kalman_public import run_public_benchmark
+            result = run_public_benchmark(dataset=args.dataset, full=args.full, rounds=args.rounds)
         _output(args.output, result)
-        _json({"output": str(args.output.resolve()), "status": result["status"], "summary": result["summary"]})
+        _json({"output": str(args.output.resolve()), "status": result["status"], "runs": len(result["results"]),
+               "summary": result["summary"].get("datasets", result["summary"])})
     elif args.command == "vertical":
         from defai.vertical.demo import FAMILIES, init_example, run_demo
         if args.vertical_action == "list":
