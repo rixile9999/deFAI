@@ -138,7 +138,8 @@ Q번 재사용하고 다른 기관에서 받은 중간값을 캐시합니다. �
 예제와 체크포인트는 원본 기관 데이터를 재배포하는 수단이 아닙니다.
 
 ```powershell
-python -m pytest -q tests/test_vertical*.py
+python -m pip install ".[research,mobile,test,vertical]"
+python -m pytest -q -k vertical
 python -m pytest -q
 python -m build
 ```
