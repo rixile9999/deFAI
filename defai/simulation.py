@@ -38,6 +38,8 @@ def run_simulation(output, *, overrides=None, clients=4, device="cpu", threads=1
     validate_config(cfg)
     if optimizer_checkpoint is not None:
         optimizer_checkpoint = Path(optimizer_checkpoint).resolve()
+        if optimizer_checkpoint == Path(output).resolve():
+            raise ValueError("optimizer checkpoint must be a file distinct from the run directory")
         if cfg["strategy"] != "fedadam-kalman" or cfg["dp"] != "none":
             raise ValueError("optimizer snapshots require fedadam-kalman with dp='none'")
         if optimizer_checkpoint.exists(): raise FileExistsError(optimizer_checkpoint)

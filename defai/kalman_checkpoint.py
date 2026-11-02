@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import tempfile
+import zipfile
 
 import numpy as np
 
@@ -12,7 +13,7 @@ def save_checkpoint(strategy, path, *, model, overwrite=False):
     """Caller supplies the latest returned model, not the last broadcast model."""
     if not isinstance(overwrite, bool): raise ValueError("overwrite must be a boolean")
     state = strategy.state_dict()
-    if not isinstance(model, dict) or set(model) != set(state["schema"]):
+    if not isinstance(model, dict) or set(model) != set(state["schema"]) or any(not isinstance(k, str) for k in model):
         raise ValueError("checkpoint model keys must match optimizer schema")
     arrays, descriptors = {}, {}
 
@@ -51,10 +52,7 @@ def save_checkpoint(strategy, path, *, model, overwrite=False):
     return path.resolve()
 
 
-def load_checkpoint(strategy, path):
-    """Verify numeric payloads and optimizer consistency before replacing state."""
-    if strategy.dp is not None:
-        raise ValueError("DP training resume is unsupported by optimizer snapshots")
+def _read_checkpoint(path):
     with np.load(path, allow_pickle=False) as archive:
         raw = archive["metadata"]
         if raw.shape != () or raw.dtype.kind != "U": raise ValueError("invalid checkpoint metadata")
@@ -89,6 +87,17 @@ def load_checkpoint(strategy, path):
             any(not isinstance(k, str) or not isinstance(a, np.ndarray) or a.dtype.kind not in "fiu" or
                 not a.size or not np.isfinite(a).all() for k,a in model.items())):
         raise ValueError("checkpoint model schema mismatch")
+    return model, state
+
+
+def load_checkpoint(strategy, path):
+    """Verify numeric payloads and optimizer consistency before replacing state."""
+    if strategy.dp is not None:
+        raise ValueError("DP training resume is unsupported by optimizer snapshots")
+    try:
+        model, state = _read_checkpoint(path)
+    except (KeyError, TypeError, ValueError, EOFError, zipfile.BadZipFile) as exc:
+        raise ValueError("invalid numeric Kalman checkpoint: " + str(exc)) from exc
     old_global = strategy._global
     try:
         strategy._global = model
