@@ -119,6 +119,6 @@ def test_large_finite_variance_metrics_do_not_overflow_across_layers():
 
 def test_unrepresentable_metric_does_not_commit_even_when_output_layers_are_finite():
     s = FedAdamKalman(server_learning_rate=1e308)
-    s._global = {"w": np.zeros(16)}
-    with pytest.raises(ValueError): s.update_global(1, {"w": np.ones(16)})
+    s._global = {"w": np.zeros(1024)}
+    with pytest.raises(ValueError): s.update_global(1, {"w": np.ones(1024)})
     assert s._last_round == 0 and s._m is None and s._round_metrics == {}
