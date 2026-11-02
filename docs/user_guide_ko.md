@@ -34,7 +34,7 @@ CPU가 기본값입니다. CUDA용 PyTorch 설치는 [공식 호환 안내](http
 | 기본 설치 | 기능 탐색, 작업 폴더 생성, NumPy 집계, 공공 데이터 참조·확인 |
 | `[analysis]` | 감염세대간격 추정, 정책 통계, CSV/XLSX 처리 |
 | `[learning]` | PyTorch 영상·개인별 학습 구성요소 |
-| `[flower]` | 공통 15개 알고리즘과 실제 ClientApp 순차 실행 |
+| `[flower]` | 공통 15개 알고리즘·FedAdam 칼만 확장과 실제 ClientApp 순차 실행 |
 | `[research]` | 네 질병 연구의 Python 의존성, 그림·보고서·동형암호 |
 | `[mobile]` | Android용 모델 집계 서버 |
 | `[simulation]` | Ray 기반 엔진 시뮬레이션 |
