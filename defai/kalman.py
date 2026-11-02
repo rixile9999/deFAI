@@ -19,6 +19,9 @@ class KalmanConfig:
     variance_floor: float = 1e-12
     gain_min: float = 0.0
     gain_max: float = 1.0
+    process_adaptation: float = 0.0
+    observation_adaptation: float = 0.0
+    noise_ceiling: float = 1e6
 
     def __post_init__(self):
         for name, value in vars(self).items():
@@ -34,6 +37,13 @@ class KalmanConfig:
                 raise ValueError(f"{name} must be positive")
         if not 0 <= self.gain_min <= self.gain_max <= 1:
             raise ValueError("gain_min/gain_max must satisfy 0 <= min <= max <= 1")
+        for name in ("process_adaptation", "observation_adaptation"):
+            if not 0 <= getattr(self, name) <= 1:
+                raise ValueError(f"{name} must be in [0, 1]")
+        if self.noise_ceiling < self.variance_floor:
+            raise ValueError("noise_ceiling must be >= variance_floor")
+        if max(self.process_noise, self.observation_noise) > self.noise_ceiling:
+            raise ValueError("noise_ceiling must cover configured process_noise and observation_noise")
 
 
 @dataclass(frozen=True)
@@ -72,4 +82,11 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
         raise ValueError("non-finite Kalman arithmetic") from exc
     if not np.isfinite(mean).all() or not all(math.isfinite(v) for v in (prior, gain, variance, innovation_mse)):
         raise ValueError("non-finite Kalman state")
-    return LayerState(mean, variance, previous.process_noise, previous.observation_noise, gain, innovation_mse)
+    # Innovation matching is a bounded proxy, not an identification of the true
+    # process/observation noise. New values apply only to the NEXT round.
+    q_target = float(np.clip(innovation_mse - config.rho**2 * previous.variance - previous.observation_noise,
+                             config.variance_floor, config.noise_ceiling))
+    r_target = float(np.clip(innovation_mse - prior, config.variance_floor, config.noise_ceiling))
+    q = (1 - config.process_adaptation) * previous.process_noise + config.process_adaptation * q_target
+    r = (1 - config.observation_adaptation) * previous.observation_noise + config.observation_adaptation * r_target
+    return LayerState(mean, variance, q, r, gain, innovation_mse)
