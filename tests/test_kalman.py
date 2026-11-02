@@ -115,3 +115,12 @@ def test_invalid_prior_uncertainty_is_rejected(variance, q, r):
     prior = LayerState(np.zeros(2), variance, q, r)
     with pytest.raises(ValueError, match="previous"):
         layer_step(np.ones(2), prior, KalmanConfig())
+
+
+def test_large_finite_covariances_do_not_overflow_the_gain_denominator():
+    cfg = KalmanConfig(process_noise=0, initial_variance=1e308,
+                       observation_noise=1e308, noise_ceiling=1e308)
+    result = layer_step(np.array([1.]), None, cfg)
+    assert result.gain == pytest.approx(.5)
+    assert result.mean[0] == pytest.approx(.5)
+    assert result.variance == pytest.approx(5e307)
