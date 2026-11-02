@@ -32,6 +32,7 @@ defai vertical list
 defai vertical init studies/vertical01
 defai vertical run studies/vertical01/manifest.json --method split --epochs 30 --output results/vfl-split01.json
 defai vertical run studies/vertical01/manifest.json --method fedbcd-p --q 3 --output results/vfl-bcd01.json
+defai vertical run studies/vertical01/manifest.json --method neural-bcd-p --q 3 --output results/vfl-neural-bcd01.json
 defai vertical run studies/vertical01/manifest.json --method secureboost --epochs 3 --output results/vfl-tree01.json
 defai vertical demo --family all --output results/vfl-families01.json
 ```
@@ -102,7 +103,11 @@ LLM 모델 블록을 앞/뒤로 자르는 방식 자체는 데이터 수직 분�
 `bcd.LinearParty`와 `FedBCD`는 가산 선형/로지스틱 예측기의 FedBCD-p/s입니다.
 `q=1`, 병렬 설정은 중앙의 같은 미니배치 SGD와 비교합니다. `q>1`은 같은 배치를
 Q번 재사용하고 다른 기관에서 받은 중간값을 캐시합니다. 수동적인 특징 보유자에게
-라벨 대신 미분값을 전달합니다. 임의의 심층 상위 모델에 적용하는 신경망 FedBCD는 별도입니다.
+라벨 대신 미분값을 전달합니다.
+`neural_bcd.NeuralFedBCD`는 신경망 경계에서 받은 기울기를 캐시하고 로컬 Jacobian을
+Q번 다시 계산하는 변형입니다. 라벨 보유자는 캐시한 상대 임베딩으로 자기 하위·상위 모델을
+갱신합니다. 병렬·순차 모드를 제공하며 `q=1` 병렬은 일반 분할 신경망과 동일합니다.
+실패하면 블록 갱신을 복원합니다. 논문의 임의 신경망 전체 수렴 보장이나 원 실험 재현을 주장하지 않습니다.
 병렬·순차 모드의 통신량 정의는 다르며, Q를 키워도 성능이 보존된다고 보장하지 않습니다.
 
 트리는 라벨 보유자가 샘플별 기울기·헤시안을 Paillier 암호화하고, 특징 보유자는
