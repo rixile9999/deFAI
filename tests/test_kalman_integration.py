@@ -76,3 +76,24 @@ def test_benchmark_cli_creates_strict_json_and_rejects_overwrite(tmp_path):
     result = json.loads(output.read_text())
     assert len(result["results"]) == 12
     assert main(args) == 2
+
+
+def test_real_training_snapshot_contains_final_model_and_valid_optimizer(tmp_path):
+    import json
+    from defai.cli import main
+    output, snapshot = tmp_path/"run", tmp_path/"optimizer.npz"
+    assert main(["run", "--strategy", "fedadam-kalman", "--clients", "2", "--rounds", "2",
+                 "--optimizer-checkpoint", str(snapshot), "--output", str(output)]) == 0
+    resumed = build_strategy({**default_config(), "strategy": "fedadam-kalman"})
+    model = resumed.load_checkpoint(snapshot)
+    assert resumed._last_round == 2 and model
+    assert json.loads((output/"history.json").read_text())["optimizer_snapshot"] == str(snapshot.resolve())
+    assert all(np.isfinite(a).all() for a in model.values())
+
+
+def test_unsupported_snapshot_request_fails_before_training_creates_output(tmp_path):
+    from defai.cli import main
+    output = tmp_path/"invalid"
+    assert main(["run", "--strategy", "fedavg", "--optimizer-checkpoint", str(tmp_path/"bad.npz"),
+                 "--output", str(output)]) == 2
+    assert not output.exists()
