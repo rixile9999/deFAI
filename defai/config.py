@@ -14,6 +14,7 @@ from defai.attacks import ATTACKS
 from defai.compression import METHODS
 from defai.strategies import STRATEGIES
 from defai.task import DATASETS
+from defai.kalman import KalmanConfig
 
 CHOICES = {
     "strategy": tuple(STRATEGIES),
@@ -87,6 +88,16 @@ def validate_config(cfg) -> None:
     strategy = STRATEGIES.get(name) if isinstance(name, str) else None
     if cfg.get("dp", "none") != "none" and strategy is not None and not strategy.supports_dp:
         errors.append(f"dp={cfg['dp']!r} cannot be combined with strategy={cfg['strategy']!r} (needs a mean-based strategy)")
+    if name == "fedadam-kalman":
+        try:
+            KalmanConfig(**{field: cfg.get("kf-" + field.replace("_", "-"), default)
+                            for field, default in vars(KalmanConfig()).items()})
+        except ValueError as exc:
+            errors.append("kf configuration: " + str(exc))
+        for key, maximum in (("kf-blend", 1), ("kf-max-step-norm", math.inf)):
+            value = cfg.get(key, 1. if key == "kf-blend" else 0.)
+            if isinstance(value, bool) or not isinstance(value, Real) or not math.isfinite(value) or not 0 <= value <= maximum:
+                errors.append(f"{key} must be finite and in [0, {maximum}]")
     if errors:
         raise ValueError("invalid run config:\n  - " + "\n  - ".join(errors))
 
