@@ -1,5 +1,9 @@
 # FedAdam with a Kalman first moment
 
+For subsequent stability, profiling, numeric snapshot and public-data work, see
+[the follow-up guide](fedadam_followup.md). Original synthetic results below
+remain recorded as the initial validation stage.
+
 Research implementation; acceleration is a hypothesis, not a guaranteed outcome.
 
 The user-supplied `FL_Kalman_Bayesian_Acceleration_Design_20261102.html`

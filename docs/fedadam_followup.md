@@ -56,3 +56,72 @@ The new splits reuse the same public datasets, so this is not an independent
 external validation cohort. Target tracking uses validation scores only and each
 model sees its held-out test labels only for the final evaluation. The first
 phase's unfavorable results remain visible alongside the calibrated phase.
+
+## Run and inspect
+
+```sh
+defai kalman-benchmark --dataset public --full --rounds 60 --output original-public.json
+defai kalman-benchmark --dataset public --full --calibrated --seed-offset 100 --rounds 60 --output calibrated-public.json
+defai kalman-profile --sizes 16 10000 1000000 --repeats 20 --output estimator-profile.json
+python scripts/compare_kalman_profile.py --output paired-profile.json
+defai run --strategy fedadam-kalman --dataset synthetic --clients 2 --rounds 3 --optimizer-checkpoint final.npz --output training-run
+```
+
+The paired profile script requires this Git checkout and the recorded reference
+commit; the standalone `kalman-profile` command works in installed packages.
+Use fresh output names. Profiling reports seconds and traced allocation bytes,
+not whole-process memory or physical network costs.
+
+`strategy.save_checkpoint(path, model=latest_arrays)` explicitly takes the
+latest returned model, since the strategy's cached broadcast can precede the
+last update. `restored_model = strategy.load_checkpoint(path)` restores numeric
+model/optimizer state and returns model arrays. Continue with the round driver
+at `strategy.state_dict()['last_round']+1`. Client state, RNG scheduling,
+communication counters and privacy accounts are not restored. A new
+`Strategy.start()` call is not a complete training-resume protocol.
+
+Snapshots use numeric NPZ arrays and JSON metadata with dtype/shape/content
+checks. Loading disables pickle. Content hashes detect damage, not authenticity.
+Writes publish a complete temporary file atomically and refuse overwrite unless
+explicitly requested. Failed loads validate on an isolated strategy shell.
+`reset_optimizer()` clears moment/filter history and diagnostics while keeping
+the configured model and existing privacy mechanism/accountant.
+
+## Results and limits
+
+Both 810-run phases, dataset fingerprints, condition-level paired seed
+intervals and all six profile conditions are retained in
+[the machine-readable receipt](fedadam_followup_results.json).
+
+In the original public-data phase, adaptive Kalman reached the validation target
+earlier in 18 paired cases and later in 136; two digits cases failed to reach
+the target although EMA reached it. Its average held-out accuracy was 93.77%
+on digits versus EMA's 95.59%, and 97.41% on the diagnostic dataset versus
+EMA's 97.66%. These are descriptive means across a reused condition grid.
+
+In the separately seeded calibrated phase, fixed Kalman reproduced EMA's
+validation/test scores. Bounded adaptive Kalman had the same target round in
+258 jointly attained cases, an earlier round in 3 and a later round in 1;
+both methods missed the diagnostic target in 8 cases. Average held-out scores
+were 95.63% on digits for both methods, and 97.41% adaptive versus 97.43% EMA
+on the diagnostic dataset. Calibration mitigated degradation but does not
+establish general training acceleration on these data/settings.
+
+The two phases use different splits/seeds; comparing their absolute accuracy
+means is not a paired estimate of the calibration's effect. The useful checks
+are each phase's paired EMA comparison and the fixed-filter equivalence test.
+The normalizer is fit centrally on training rows for this simulation; secure
+distributed estimation of normalization statistics is not implemented.
+Small repaired client partitions make lower-decile client accuracy noisy.
+Intervals use five paired seeds within a fixed condition and have no correction
+for the many comparisons; they are descriptive, not an overall superiority test.
+
+| Completed | Not evaluated / unsupported |
+|---|---|
+| Numerical overflow, scalar state and diagnostic rollback fixes | A convergence theorem or calibrated uncertainty guarantee |
+| Reduced copies/disabled work, reproducible latency and allocation profiles | General end-to-end training or network acceleration |
+| Numeric snapshots, exact continuation and final-weight equality | Client/sampler/DP complete training resume |
+| 1,620 public-data runs with train-only fitting and final test isolation | Other datasets, nonstationary real streams, parameter search, independent external cohorts |
+
+The package is improved for controlled experiments; real institution deployment
+and clinical use remain outside the validation scope.
