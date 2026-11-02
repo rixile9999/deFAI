@@ -4,7 +4,7 @@ from dataclasses import asdict
 
 import numpy as np
 
-from defai.kalman import KalmanConfig, LayerState, layer_step
+from defai.kalman import KalmanConfig, LayerState, layer_step, stable_l2
 from defai.strategies.fedopt import FedAdam
 
 
@@ -65,7 +65,9 @@ class FedAdamKalman(FedAdam):
                 old_v = self._v or {k: np.full_like(d, self.tau**2) for k, d in delta.items()}
                 variance = {k: self._second_moment(old_v[k], np.square(d)) for k, d in delta.items()}
                 step = {k: moment[k] / (np.sqrt(variance[k]) + self.tau) for k in delta}
-                norm = float(np.sqrt(sum(float(np.sum(np.square(a))) for a in step.values())))
+                norm = stable_l2(step.values())
+                if not math.isfinite(norm):
+                    raise ValueError("non-finite combined server update norm")
                 scale = self.server_learning_rate
                 if self.max_step_norm and norm:
                     scale = min(scale, self.max_step_norm / norm)
@@ -74,19 +76,24 @@ class FedAdamKalman(FedAdam):
             raise ValueError("non-finite FedAdam Kalman arithmetic") from exc
         if any(not np.isfinite(a).all() for group in (moment, variance, result) for a in group.values()):
             raise ValueError("non-finite FedAdam Kalman result")
-        # Commit only after every layer and output dtype has passed validation.
-        self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
-        self._last_round = server_round
-        self._round_metrics.update({"kf-effective-lr": scale, "kf-step-norm": scale * norm})
+        metrics = {"kf-effective-lr": scale, "kf-step-norm": scale * norm}
         if layers:
-            self._round_metrics.update({
+            def mean_attribute(name):
+                return sum(getattr(s, name) / len(layers) for s in layers.values())
+            metrics.update({
                 "kf-gain-min": min(s.gain for s in layers.values()),
                 "kf-gain-max": max(s.gain for s in layers.values()),
-                "kf-variance-mean": float(np.mean([s.variance for s in layers.values()])),
-                "kf-innovation-mse": float(np.mean([s.innovation_mse for s in layers.values()])),
-                "kf-process-noise-mean": float(np.mean([s.process_noise for s in layers.values()])),
-                "kf-observation-noise-mean": float(np.mean([s.observation_noise for s in layers.values()])),
+                "kf-variance-mean": mean_attribute("variance"),
+                "kf-innovation-mse": mean_attribute("innovation_mse"),
+                "kf-process-noise-mean": mean_attribute("process_noise"),
+                "kf-observation-noise-mean": mean_attribute("observation_noise"),
             })
+        if not all(math.isfinite(v) for v in metrics.values()):
+            raise ValueError("non-finite FedAdam Kalman diagnostics")
+        # Diagnostics are part of a successful round, not a post-commit failure.
+        self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
+        self._last_round = server_round
+        self._round_metrics.update(metrics)
         return result
 
     def optimizer_state_bytes(self):
