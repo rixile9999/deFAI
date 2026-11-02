@@ -83,12 +83,17 @@ def test_real_training_snapshot_contains_final_model_and_valid_optimizer(tmp_pat
     from defai.cli import main
     output, snapshot = tmp_path/"run", tmp_path/"optimizer.npz"
     assert main(["run", "--strategy", "fedadam-kalman", "--clients", "2", "--rounds", "2",
+                 "--set", "save-model=true",
                  "--optimizer-checkpoint", str(snapshot), "--output", str(output)]) == 0
     resumed = build_strategy({**default_config(), "strategy": "fedadam-kalman"})
     model = resumed.load_checkpoint(snapshot)
     assert resumed._last_round == 2 and model
     assert json.loads((output/"history.json").read_text())["optimizer_snapshot"] == str(snapshot.resolve())
     assert all(np.isfinite(a).all() for a in model.values())
+    import torch
+    final_model = torch.load(output/"final_model.pt", weights_only=True)
+    for key in model:
+        np.testing.assert_array_equal(model[key], final_model[key].numpy())
 
 
 def test_unsupported_snapshot_request_fails_before_training_creates_output(tmp_path):
