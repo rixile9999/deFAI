@@ -27,6 +27,13 @@ def test_attack_auc_handles_ties_and_perfect_separation():
         binary_auc([1, 1], [1, 2])
 
 
+def test_max_norm_handles_zero_and_tiny_gradient_rows():
+    g = torch.tensor([[0., 0.], [1e-8, 0.], [0., 2e-8]])
+    out = max_norm(g, generator=torch.Generator().manual_seed(1))
+    assert torch.isfinite(out).all() and torch.equal(out[0], g[0])
+    assert not torch.equal(out[1], g[1])
+
+
 def test_marvell_respects_covariance_power_budget_and_is_finite():
     generator = torch.Generator().manual_seed(7)
     g = torch.randn(40, 4, generator=generator) * .2

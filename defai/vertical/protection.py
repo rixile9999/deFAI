@@ -24,7 +24,9 @@ def max_norm(gradient, *, generator=None):
     """
     flat = gradient.flatten(1)
     squared = flat.square().sum(1, keepdim=True)
-    variance = (squared.max() / squared.clamp_min(torch.finfo(flat.dtype).eps) - 1).clamp_min(0)
+    variance = torch.where(squared > 0,
+                           squared.max() / squared.clamp_min(torch.finfo(flat.dtype).tiny) - 1,
+                           torch.zeros_like(squared)).clamp_min(0)
     scale = 1 + torch.randn((len(flat), 1), device=flat.device, dtype=flat.dtype, generator=generator) * variance.sqrt()
     return (flat * scale).reshape_as(gradient)
 
