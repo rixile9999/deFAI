@@ -94,7 +94,7 @@ class FedAdamKalman(FedAdam):
         arrays = [a for group in (self._m, self._v, self._ema) if group for a in group.values()]
         arrays += [s.mean for s in self._layers.values()]
         unique = {id(a): a for a in arrays}
-        return sum(a.nbytes for a in unique.values()) + 6 * 8 * len(self._layers)
+        return sum(a.nbytes for a in unique.values()) + 5 * 8 * len(self._layers)
 
     def _optimizer_config(self):
         return {"kalman": asdict(self.kalman), "blend": self.kalman_blend,
