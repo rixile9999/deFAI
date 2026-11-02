@@ -102,7 +102,8 @@ def run_demo(*, family='all', seed=42, insecure_test_key=False):
                         else:
                             x, factory = torch.randn(8, 3), lambda: GraphEncoder(3, torch.eye(8), 4)
                         labels = torch.zeros((8, 5) if kind == 'tokens' else (8,), dtype=torch.long)
-                        m = SplitTrainer([FeatureParty(str(i), factory(), x.clone()) for i in range(2)], nn.Linear(8, 2), labels)
+                        local_views = [x.clone(), torch.randn_like(x)]
+                        m = SplitTrainer([FeatureParty(str(i), factory(), view) for i, view in enumerate(local_views)], nn.Linear(8, 2), labels)
                         losses = [m.step(list(range(8))) for _ in range(3)]
                         variants.append({'variant': kind, 'losses': losses,
                                          'embedding_bytes': m.traffic.forward_bytes, 'gradient_bytes': m.traffic.backward_bytes})

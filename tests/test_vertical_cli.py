@@ -35,6 +35,19 @@ def test_all_families_demo_records_limits_and_restores_global_state():
     assert torch.get_num_threads() == before_threads
 
 
+def test_neural_demo_uses_distinct_local_feature_views(monkeypatch):
+    import defai.vertical.split as split
+    original, observed = split.FeatureParty, []
+
+    def capture(name, model, features, **kwargs):
+        observed.append(features.clone())
+        return original(name, model, features, **kwargs)
+
+    monkeypatch.setattr(split, 'FeatureParty', capture)
+    run_demo(family='dnn')
+    assert len(observed) == 2 and not torch.equal(observed[0], observed[1])
+
+
 @pytest.mark.parametrize('family', ['../invalid', 'not-a-model'])
 def test_unknown_family_is_rejected_without_creating_result(tmp_path, family):
     output = tmp_path/'result.json'
