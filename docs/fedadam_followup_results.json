@@ -1,0 +1,4678 @@
+{
+  "status": "research_public_data_and_kernel_validation",
+  "base": "35e202718400ebfe61569d893768d79762b2ff7e",
+  "public_runs": 1620,
+  "phases": [
+    {
+      "phase": "original",
+      "runtime_commit": "ea07a712279299cf3fb969eef1fe44a6613c9c27",
+      "raw_sha256": "86667aecc88e348a4570f296e874a71595b683c15ea6213b64c7fc05ed3d57c9",
+      "run_count": 810,
+      "axes": {
+        "datasets": [
+          "digits",
+          "breast-cancer"
+        ],
+        "alpha": [
+          0.1,
+          0.5,
+          10.0
+        ],
+        "local_steps": [
+          1,
+          5,
+          20
+        ],
+        "participation": [
+          0.1,
+          0.5,
+          1.0
+        ],
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "summary": {
+        "datasets": {
+          "breast-cancer": {
+            "ema": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9753357753357755,
+              "final_accuracy_std": 0.013473127447261271,
+              "final_loss_mean": 0.08880707499072542,
+              "final_client_p10_mean": 0.9344443129942015,
+              "total_seconds": 19.840704400034156,
+              "server_seconds": 0.3024052016553469,
+              "mean_numeric_state_bytes": 992.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9766081871345029,
+              "final_test_loss_mean": 0.07498984975862015,
+              "sustained_target_runs": 135
+            },
+            "kalman": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 11,
+              "paired_more_rounds": 78,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9750915750915751,
+              "final_accuracy_std": 0.012632495390844998,
+              "final_loss_mean": 0.08408646340492949,
+              "final_client_p10_mean": 0.9322211041584195,
+              "total_seconds": 21.247716700076126,
+              "server_seconds": 1.6718344002147205,
+              "mean_numeric_state_bytes": 1072.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9776478232618582,
+              "final_test_loss_mean": 0.07134527764378397,
+              "sustained_target_runs": 135
+            },
+            "adaptive-kalman": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 13,
+              "paired_more_rounds": 75,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.978103378103378,
+              "final_accuracy_std": 0.008821305451620076,
+              "final_loss_mean": 0.09302218734178991,
+              "final_client_p10_mean": 0.9392567420128533,
+              "total_seconds": 21.5469431997044,
+              "server_seconds": 1.6623605027562007,
+              "mean_numeric_state_bytes": 1072.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9741390513320337,
+              "final_test_loss_mean": 0.09081925335277333,
+              "sustained_target_runs": 135
+            }
+          },
+          "digits": {
+            "ema": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9579475308641975,
+              "final_accuracy_std": 0.009826987947489494,
+              "final_loss_mean": 0.15734214851362413,
+              "final_client_p10_mean": 0.9122259535342507,
+              "total_seconds": 38.99999460001709,
+              "server_seconds": 0.38321390381315723,
+              "mean_numeric_state_bytes": 10400.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9559053497942387,
+              "final_test_loss_mean": 0.14830230503276842,
+              "sustained_target_runs": 135
+            },
+            "kalman": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 11,
+              "paired_more_rounds": 55,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9550154320987655,
+              "final_accuracy_std": 0.009700765073525708,
+              "final_loss_mean": 0.16302518030463373,
+              "final_client_p10_mean": 0.9068962339460026,
+              "total_seconds": 41.071514899958856,
+              "server_seconds": 1.925007498182822,
+              "mean_numeric_state_bytes": 10480.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9562551440329218,
+              "final_test_loss_mean": 0.15619880772880984,
+              "sustained_target_runs": 135
+            },
+            "adaptive-kalman": {
+              "runs": 135,
+              "target_reached_runs": 133,
+              "paired_both_reached": 133,
+              "paired_fewer_rounds": 5,
+              "paired_more_rounds": 61,
+              "only_method_reached": 0,
+              "only_baseline_reached": 2,
+              "final_accuracy_mean": 0.9361368312757202,
+              "final_accuracy_std": 0.022411489432699844,
+              "final_loss_mean": 0.2275219266104926,
+              "final_client_p10_mean": 0.8765818471666772,
+              "total_seconds": 40.655840099963825,
+              "server_seconds": 1.9706538982572965,
+              "mean_numeric_state_bytes": 10480.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.937716049382716,
+              "final_test_loss_mean": 0.21925649430715388,
+              "sustained_target_runs": 132
+            }
+          }
+        },
+        "condition_strata": [
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.005263157894736836,
+            "paired_t_interval_95": [
+              -0.017681708570019952,
+              0.007155392780546279
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.013250684579641299,
+              0.006233140719992199
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.005263157894736814,
+            "paired_t_interval_95": [
+              -0.011228836672440779,
+              0.0007025208829671507
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -2.2204460492503132e-17,
+            "paired_t_interval_95": [
+              -0.007701658184956865,
+              0.00770165818495682
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.007017543859649145,
+            "paired_t_interval_95": [
+              -0.016130268716522574,
+              0.0020951809972242844
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.006625342289820627,
+              0.0031165703599960984
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.010867110821785658,
+              0.007358338891961131
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.015955541971128945,
+              0.012446770041304374
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.007017543859649122,
+            "paired_t_interval_95": [
+              -0.011888500184557532,
+              -0.002146587534740713
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 2.2204460492503132e-17,
+            "paired_t_interval_95": [
+              -0.010891789457927663,
+              0.010891789457927709
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.009474450707528528,
+              0.0024569068478794277
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.0024569068478794286,
+              0.00947445070752853
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.009474450707528528,
+              0.0024569068478794277
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.01086711082178563,
+              0.007358338891961058
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.005263157894736814,
+            "paired_t_interval_95": [
+              -0.011228836672440779,
+              0.0007025208829671507
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.00662534228982071,
+              0.003116570359996138
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 4.4408920985006264e-17,
+            "paired_t_interval_95": [
+              -0.010891789457927676,
+              0.010891789457927766
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.010867110821785658,
+              0.007358338891961131
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.015955541971128945,
+              0.012446770041304374
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 2.2204460492503132e-17,
+            "paired_t_interval_95": [
+              -0.00770165818495682,
+              0.007701658184956865
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0052631578947368585,
+            "paired_t_interval_95": [
+              -0.007155392780546176,
+              0.017681708570019893
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.00947445070752853,
+              0.0024569068478794286
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.013250684579641299,
+              0.006233140719992199
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.00350877192982455,
+            "paired_t_interval_95": [
+              -0.006233140719992239,
+              0.013250684579641339
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              -0.00770165818495689,
+              0.00770165818495689
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.006625342289820627,
+              0.0031165703599960984
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.005263157894736814,
+            "paired_t_interval_95": [
+              -0.011228836672440779,
+              0.0007025208829671507
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.010867110821785715,
+              0.007358338891961143
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649123083,
+            "paired_t_interval_95": [
+              -0.00735833889196107,
+              0.010867110821785687
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.010867110821785658,
+              0.007358338891961131
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.003116570359996138,
+              0.00662534228982071
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.015955541971128945,
+              0.012446770041304374
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.007358338891961049,
+              0.010867110821785576
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -2.2204460492503132e-17,
+            "paired_t_interval_95": [
+              -0.020376672240220935,
+              0.020376672240220894
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.00662534228982071,
+              0.003116570359996138
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.001754385964912264,
+            "paired_t_interval_95": [
+              -0.0031165703599960984,
+              0.006625342289820627
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.01086711082178563,
+              0.007358338891961058
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0005555555555555314,
+            "paired_t_interval_95": [
+              -0.004560237036088895,
+              0.005671348147199958
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.053333333333333344,
+            "paired_t_interval_95": [
+              -0.07600291268860859,
+              -0.03066375397805809
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0022222222222222586,
+            "paired_t_interval_95": [
+              0.0006797527193345703,
+              0.003764691725109947
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.018888888888888844,
+            "paired_t_interval_95": [
+              -0.020431358391776518,
+              -0.01734641938600117
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              -0.004224226704976834,
+              0.004224226704976834
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.016666666666666653,
+            "paired_t_interval_95": [
+              -0.02546009577245363,
+              -0.007873237560879673
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.003333333333333366,
+            "paired_t_interval_95": [
+              -0.009967745522500019,
+              0.003301078855833286
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.03833333333333331,
+            "paired_t_interval_95": [
+              -0.0782889507642296,
+              0.001622284097562987
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0022222222222222144,
+            "paired_t_interval_95": [
+              -0.00788961706104099,
+              0.0034451726165965614
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.01888888888888891,
+            "paired_t_interval_95": [
+              -0.03476958439437236,
+              -0.003008193383405456
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0044444444444444505,
+            "paired_t_interval_95": [
+              0.0013595054386690815,
+              0.0075293834502198195
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.006111111111111134,
+            "paired_t_interval_95": [
+              -0.018158183046135465,
+              0.005935960823913196
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0011111111111111517,
+            "paired_t_interval_95": [
+              -0.009417563594140078,
+              0.007195341371917775
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.03777777777777778,
+            "paired_t_interval_95": [
+              -0.06690146466072887,
+              -0.008654090894826685
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              -0.00689813332335422,
+              0.00689813332335422
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.020555555555555594,
+            "paired_t_interval_95": [
+              -0.034265324380001225,
+              -0.0068457867311099655
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0011111111111111072,
+            "paired_t_interval_95": [
+              -0.002821429936061857,
+              0.005043652158284071
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.00833333333333337,
+            "paired_t_interval_95": [
+              -0.0239496468276315,
+              0.00728298016096476
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.005555555555555536,
+            "paired_t_interval_95": [
+              -0.009779782260532286,
+              -0.001331328850578786
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.03166666666666666,
+            "paired_t_interval_95": [
+              -0.041898251849955506,
+              -0.02143508148337782
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0011111111111110849,
+            "paired_t_interval_95": [
+              -0.005043652158284092,
+              0.0028214299360619214
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.01944444444444442,
+            "paired_t_interval_95": [
+              -0.027156791958882723,
+              -0.011732096930006118
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              -0.004224226704976834,
+              0.004224226704976834
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.016666666666666653,
+            "paired_t_interval_95": [
+              -0.02546009577245363,
+              -0.007873237560879673
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0033333333333333435,
+            "paired_t_interval_95": [
+              -0.0004449298925458347,
+              0.007111596559212521
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.018333333333333313,
+            "paired_t_interval_95": [
+              -0.042916252006753294,
+              0.006249585340086669
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -4.4408920985006264e-17,
+            "paired_t_interval_95": [
+              -0.005453453226326637,
+              0.005453453226326548
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.014444444444444482,
+            "paired_t_interval_95": [
+              -0.02461772952249207,
+              -0.004271159366396897
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.004444444444444473,
+            "paired_t_interval_95": [
+              0.0005119033972714555,
+              0.00837698549161749
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.009444444444444432,
+            "paired_t_interval_95": [
+              -0.022487207570588565,
+              0.0035983186816997
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0005555555555555758,
+            "paired_t_interval_95": [
+              -0.00622295039437437,
+              0.005111839283263218
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.015555555555555567,
+            "paired_t_interval_95": [
+              -0.033576722577746604,
+              0.0024656114666354676
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0005555555555555536,
+            "paired_t_interval_95": [
+              -0.00344125176023212,
+              0.002330140649121013
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.01666666666666672,
+            "paired_t_interval_95": [
+              -0.032282980160964786,
+              -0.0010503531723686475
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0005555555555555536,
+            "paired_t_interval_95": [
+              -0.00622295039437433,
+              0.005111839283263222
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.010555555555555585,
+            "paired_t_interval_95": [
+              -0.026806480162314884,
+              0.005695369051203714
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0011111111111111072,
+            "paired_t_interval_95": [
+              -0.006882503520464239,
+              0.004660281298242025
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.02055555555555555,
+            "paired_t_interval_95": [
+              -0.027279024242136247,
+              -0.013832086868974853
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0005555555555555536,
+            "paired_t_interval_95": [
+              -0.0032227076703236312,
+              0.004333818781434739
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.01777777777777778,
+            "paired_t_interval_95": [
+              -0.026434866391807435,
+              -0.009120689163748126
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              -0.004224226704976834,
+              0.004224226704976834
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.016666666666666653,
+            "paired_t_interval_95": [
+              -0.02546009577245363,
+              -0.007873237560879673
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0016666666666666607,
+            "paired_t_interval_95": [
+              -0.005599207713839625,
+              0.002265874380506303
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.008333333333333326,
+            "paired_t_interval_95": [
+              -0.02169151107396802,
+              0.005024844407301367
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0038888888888888975,
+            "paired_t_interval_95": [
+              -0.0013418796898567818,
+              0.009119657467634577
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.01444444444444446,
+            "paired_t_interval_95": [
+              -0.025186501515411762,
+              -0.003702387373477157
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0033333333333333435,
+            "paired_t_interval_95": [
+              -0.0004449298925458976,
+              0.007111596559212585
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.011666666666666669,
+            "paired_t_interval_95": [
+              -0.025970940377383827,
+              0.002637607044050489
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0005555555555555536,
+            "paired_t_interval_95": [
+              -0.0023301406491210127,
+              0.0034412517602321196
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.011666666666666648,
+            "paired_t_interval_95": [
+              -0.026975239378805544,
+              0.003641906045472248
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0022222222222222144,
+            "paired_t_interval_95": [
+              -0.0015560410036569703,
+              0.0060004854481014
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0094444444444445,
+            "paired_t_interval_95": [
+              -0.020513745534302574,
+              0.0016248566454135742
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0005555555555555536,
+            "paired_t_interval_95": [
+              -0.003941477179746384,
+              0.005052588290857492
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.008888888888888924,
+            "paired_t_interval_95": [
+              -0.021419970368328052,
+              0.003642192590550205
+            ]
+          }
+        ],
+        "accuracy_unit": "fraction; multiply differences by 100 for percentage points",
+        "interval_note": "descriptive paired t intervals within fixed conditions; few seeds, no multiple-comparison correction"
+      },
+      "source_metadata": [
+        {
+          "dataset": "digits",
+          "source": {
+            "url": "https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits",
+            "authors": "E. Alpaydin and C. Kaynak",
+            "license": "CC BY 4.0",
+            "subset": "scikit-learn 1797-row copy of the UCI test subset"
+          },
+          "dataset_sha256": "f6d9e39f37dc45d327f6db33428ee58970ccceabb2535a5c179de35886b70443"
+        }
+      ]
+    },
+    {
+      "phase": "ema-calibrated",
+      "runtime_commit": "38df787a4c785128c695b414f6ebd00e81e2efd7",
+      "raw_sha256": "269f1118de14340b74d6b1313c88a8af9a62abf1115e40ed034a20910418b242",
+      "run_count": 810,
+      "axes": {
+        "datasets": [
+          "digits",
+          "breast-cancer"
+        ],
+        "alpha": [
+          0.1,
+          0.5,
+          10.0
+        ],
+        "local_steps": [
+          1,
+          5,
+          20
+        ],
+        "participation": [
+          0.1,
+          0.5,
+          1.0
+        ],
+        "seeds": [
+          100,
+          101,
+          102,
+          103,
+          104
+        ]
+      },
+      "summary": {
+        "datasets": {
+          "breast-cancer": {
+            "ema": {
+              "runs": 135,
+              "target_reached_runs": 127,
+              "paired_both_reached": 127,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9592185592185591,
+              "final_accuracy_std": 0.017226072858166932,
+              "final_loss_mean": 0.12491509349064832,
+              "final_client_p10_mean": 0.8953690335931951,
+              "total_seconds": 20.19922819995554,
+              "server_seconds": 0.3061716993106529,
+              "mean_numeric_state_bytes": 992.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9743339831059129,
+              "final_test_loss_mean": 0.0953953476278157,
+              "sustained_target_runs": 122
+            },
+            "kalman": {
+              "runs": 135,
+              "target_reached_runs": 127,
+              "paired_both_reached": 127,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9592185592185591,
+              "final_accuracy_std": 0.017226072858166932,
+              "final_loss_mean": 0.12491509349064832,
+              "final_client_p10_mean": 0.8953690335931951,
+              "total_seconds": 21.921665599977132,
+              "server_seconds": 1.7172398995608091,
+              "mean_numeric_state_bytes": 1072.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9743339831059129,
+              "final_test_loss_mean": 0.0953953476278157,
+              "sustained_target_runs": 122
+            },
+            "adaptive-kalman": {
+              "runs": 135,
+              "target_reached_runs": 127,
+              "paired_both_reached": 127,
+              "paired_fewer_rounds": 3,
+              "paired_more_rounds": 1,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9593813593813593,
+              "final_accuracy_std": 0.01688026521493138,
+              "final_loss_mean": 0.12469149796051845,
+              "final_client_p10_mean": 0.8955139611294269,
+              "total_seconds": 22.004074600408785,
+              "server_seconds": 1.6932438015355729,
+              "mean_numeric_state_bytes": 1072.0,
+              "training_payload_bytes": 42854400,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9741390513320337,
+              "final_test_loss_mean": 0.09507972560686537,
+              "sustained_target_runs": 122
+            }
+          },
+          "digits": {
+            "ema": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9604423868312758,
+              "final_accuracy_std": 0.014646860312989639,
+              "final_loss_mean": 0.1448995942346177,
+              "final_client_p10_mean": 0.9100118001051052,
+              "total_seconds": 43.33576480014017,
+              "server_seconds": 0.41621180082438514,
+              "mean_numeric_state_bytes": 10400.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9562962962962962,
+              "final_test_loss_mean": 0.15257671653361657,
+              "sustained_target_runs": 135
+            },
+            "kalman": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9604423868312758,
+              "final_accuracy_std": 0.014646860312989639,
+              "final_loss_mean": 0.1448995942346177,
+              "final_client_p10_mean": 0.9100118001051052,
+              "total_seconds": 44.28639320022194,
+              "server_seconds": 2.0702767020557076,
+              "mean_numeric_state_bytes": 10480.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9562962962962962,
+              "final_test_loss_mean": 0.15257671653361657,
+              "sustained_target_runs": 135
+            },
+            "adaptive-kalman": {
+              "runs": 135,
+              "target_reached_runs": 135,
+              "paired_both_reached": 135,
+              "paired_fewer_rounds": 0,
+              "paired_more_rounds": 0,
+              "only_method_reached": 0,
+              "only_baseline_reached": 0,
+              "final_accuracy_mean": 0.9604423868312758,
+              "final_accuracy_std": 0.014646860312989639,
+              "final_loss_mean": 0.14490875444610993,
+              "final_client_p10_mean": 0.9100118001051052,
+              "total_seconds": 44.102239500090946,
+              "server_seconds": 2.07321170065552,
+              "mean_numeric_state_bytes": 10480.0,
+              "training_payload_bytes": 449280000,
+              "evaluation_payload_bytes": 0,
+              "post_shift_recovered_runs": 0,
+              "final_test_accuracy_mean": 0.9562962962962962,
+              "final_test_loss_mean": 0.15258104355949517,
+              "sustained_target_runs": 135
+            }
+          }
+        },
+        "condition_strata": [
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 2.2204460492503132e-17,
+            "paired_t_interval_95": [
+              -0.00770165818495682,
+              0.007701658184956865
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0035087719298245723,
+            "paired_t_interval_95": [
+              -0.009474450707528587,
+              0.002456906847879443
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": -0.0017543859649122862,
+            "paired_t_interval_95": [
+              -0.00662534228982071,
+              0.003116570359996138
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "breast-cancer",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.1,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 0.5,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 1,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 5,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.1,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 0.5,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "ema",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "dataset": "digits",
+            "alpha": 10.0,
+            "local_steps": 20,
+            "participation": 1.0,
+            "method": "adaptive-kalman",
+            "seeds": 5,
+            "paired_test_accuracy_delta": 0.0,
+            "paired_t_interval_95": [
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "accuracy_unit": "fraction; multiply differences by 100 for percentage points",
+        "interval_note": "descriptive paired t intervals within fixed conditions; few seeds, no multiple-comparison correction"
+      },
+      "source_metadata": [
+        {
+          "dataset": "digits",
+          "source": {
+            "url": "https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits",
+            "authors": "E. Alpaydin and C. Kaynak",
+            "license": "CC BY 4.0",
+            "subset": "scikit-learn 1797-row copy of the UCI test subset"
+          },
+          "dataset_sha256": "f6d9e39f37dc45d327f6db33428ee58970ccceabb2535a5c179de35886b70443"
+        }
+      ]
+    }
+  ],
+  "paired_kernel_profile": {
+    "reference": "35e202718400ebfe61569d893768d79762b2ff7e",
+    "numpy": "2.4.6",
+    "python": "3.11.15",
+    "results": [
+      {
+        "elements": 16,
+        "mode": "fixed",
+        "paired_repeats": 40,
+        "reference_median_seconds": 4.680000711232424e-05,
+        "current_median_seconds": 3.065000055357814e-05,
+        "latency_reduction_percent": 34.508555778601966,
+        "reference_traced_peak_bytes": 2696,
+        "current_traced_peak_bytes": 2048
+      },
+      {
+        "elements": 16,
+        "mode": "adaptive",
+        "paired_repeats": 40,
+        "reference_median_seconds": 4.630000330507755e-05,
+        "current_median_seconds": 3.0750001315027475e-05,
+        "latency_reduction_percent": 33.585315075657384,
+        "reference_traced_peak_bytes": 2504,
+        "current_traced_peak_bytes": 2048
+      },
+      {
+        "elements": 10000,
+        "mode": "fixed",
+        "paired_repeats": 40,
+        "reference_median_seconds": 7.605002610944211e-05,
+        "current_median_seconds": 5.9450016124174e-05,
+        "latency_reduction_percent": 21.82775054064987,
+        "reference_traced_peak_bytes": 401128,
+        "current_traced_peak_bytes": 320896
+      },
+      {
+        "elements": 10000,
+        "mode": "adaptive",
+        "paired_repeats": 40,
+        "reference_median_seconds": 7.910002022981644e-05,
+        "current_median_seconds": 6.079999729990959e-05,
+        "latency_reduction_percent": 23.13529487949325,
+        "reference_traced_peak_bytes": 401128,
+        "current_traced_peak_bytes": 320896
+      },
+      {
+        "elements": 1000000,
+        "mode": "fixed",
+        "paired_repeats": 40,
+        "reference_median_seconds": 0.01544365001609549,
+        "current_median_seconds": 0.01395059996866621,
+        "latency_reduction_percent": 9.667727809638338,
+        "reference_traced_peak_bytes": 40001128,
+        "current_traced_peak_bytes": 32000896
+      },
+      {
+        "elements": 1000000,
+        "mode": "adaptive",
+        "paired_repeats": 40,
+        "reference_median_seconds": 0.015786950010806322,
+        "current_median_seconds": 0.013805099995806813,
+        "latency_reduction_percent": 12.553723256505611,
+        "reference_traced_peak_bytes": 40001128,
+        "current_traced_peak_bytes": 32000896
+      }
+    ],
+    "limits": "Counterbalanced kernel calls in one process; not training/network acceleration or total RSS"
+  },
+  "profile_raw_sha256": "498956ff31317c130d9fb321725ecce80754468a6273570e40fe3eef06749385",
+  "conclusion": "Calibrated initialization mitigates the original degradation; general convergence/training acceleration is not established on these data and settings",
+  "not_evaluated": [
+    "other datasets",
+    "nonstationary real-world streams",
+    "hyperparameter search",
+    "independent external cohorts",
+    "institution networks",
+    "clinical deployment",
+    "complete DP training resume"
+  ]
+}
