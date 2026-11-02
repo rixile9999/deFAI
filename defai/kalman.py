@@ -83,13 +83,13 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
             scale = max(prior, previous.observation_noise)
             gain = (prior / scale) / (prior / scale + previous.observation_noise / scale)
             gain = float(min(config.gain_max, max(config.gain_min, gain)))
-            mean = (1 - gain) * predicted + gain * d
+            mean = np.asarray((1 - gain) * predicted + gain * d)
             # Joseph form remains valid when gain constraints are added.
             variance = max((1 - gain)**2 * prior + gain**2 * previous.observation_noise,
                            config.variance_floor)
             # Divide the fresh residual before squaring so a representable
             # mean square does not overflow an intermediate square or sum.
-            residual = (d - predicted) / math.sqrt(d.size)
+            residual = np.asarray((d - predicted) / math.sqrt(d.size))
             np.square(residual, out=residual)
             innovation_mse = float(np.sum(residual))
     except (FloatingPointError, OverflowError) as exc:
