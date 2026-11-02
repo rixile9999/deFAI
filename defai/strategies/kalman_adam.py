@@ -65,7 +65,7 @@ class FedAdamKalman(FedAdam):
                 ema = None
                 if self.kalman_blend < 1:
                     previous = self._ema or {k: np.zeros_like(d) for k, d in delta.items()}
-                    ema = {k: self.beta_1 * previous[k] + (1 - self.beta_1) * d for k, d in delta.items()}
+                    ema = {k: np.asarray(self.beta_1 * previous[k] + (1 - self.beta_1) * d) for k, d in delta.items()}
                 layers = ({k: layer_step(d, self._layers.get(k), self.kalman) for k, d in delta.items()}
                           if self.kalman_blend > 0 else {})
                 if self.kalman_blend == 0:
@@ -73,9 +73,9 @@ class FedAdamKalman(FedAdam):
                 elif self.kalman_blend == 1:
                     moment = {k: s.mean for k, s in layers.items()}
                 else:
-                    moment = {k: (1 - self.kalman_blend) * ema[k] + self.kalman_blend * layers[k].mean for k in delta}
+                    moment = {k: np.asarray((1 - self.kalman_blend) * ema[k] + self.kalman_blend * layers[k].mean) for k in delta}
                 old_v = self._v or {k: np.full_like(d, self.tau**2) for k, d in delta.items()}
-                variance = {k: self._second_moment(old_v[k], np.square(d)) for k, d in delta.items()}
+                variance = {k: np.asarray(self._second_moment(old_v[k], np.square(d))) for k, d in delta.items()}
                 step = {k: moment[k] / (np.sqrt(variance[k]) + self.tau) for k in delta}
                 norm = stable_l2(step.values())
                 if not math.isfinite(norm):
@@ -127,15 +127,17 @@ class FedAdamKalman(FedAdam):
         This is not a full distributed-training checkpoint: client/sampler and
         privacy-accountant states are not included. DP checkpointing is rejected.
         """
-        from copy import deepcopy
         if self.dp is not None:
             raise ValueError("DP resume requires the separate privacy accountant; optimizer-only checkpoint is unsupported")
         if self._global is None:
             raise ValueError("configure the global model before exporting optimizer state")
-        return deepcopy({"version": 1, "config": self._optimizer_config(),
+        def copy_group(group):
+            return {k: a.copy() for k, a in group.items()} if group is not None else None
+        return {"version": 1, "config": self._optimizer_config(),
                          "schema": {k: (v.shape, v.dtype.str) for k, v in self._global.items()},
-                         "last_round": self._last_round, "m": self._m, "v": self._v,
-                         "ema": self._ema, "layers": {k: vars(v) for k, v in self._layers.items()}})
+                         "last_round": self._last_round, "m": copy_group(self._m), "v": copy_group(self._v),
+                         "ema": copy_group(self._ema),
+                         "layers": {k: {**vars(v), "mean": v.mean.copy()} for k, v in self._layers.items()}}
 
     def load_state_dict(self, state):
         """Validate the entire optimizer checkpoint before changing live state."""
