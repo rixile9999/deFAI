@@ -25,6 +25,26 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List the workflow families and optional install groups")
+    vertical = commands.add_parser("vertical", help="Feature-partitioned learning (local research protocols)")
+    vertical_actions = vertical.add_subparsers(dest="vertical_action", required=True)
+    vertical_actions.add_parser("list")
+    vertical_init = vertical_actions.add_parser("init")
+    vertical_init.add_argument("directory", type=Path)
+    vertical_demo = vertical_actions.add_parser("demo")
+    vertical_demo.add_argument("--family", default="all")
+    vertical_demo.add_argument("--output", type=Path, required=True)
+    vertical_demo.add_argument("--insecure-test-key", action="store_true")
+    vertical_run = vertical_actions.add_parser("run")
+    vertical_run.add_argument("manifest", type=Path)
+    vertical_run.add_argument("--method", choices=["split", "fedbcd-p", "fedbcd-s", "secureboost"], default="split")
+    vertical_run.add_argument("--alignment", choices=["plain", "dh-psi"], default="plain")
+    vertical_run.add_argument("--epochs", type=int, default=30)
+    vertical_run.add_argument("--batch-size", type=int, default=32)
+    vertical_run.add_argument("--lr", type=float, default=.05)
+    vertical_run.add_argument("--q", type=int, default=3)
+    vertical_run.add_argument("--seed", type=int, default=42)
+    vertical_run.add_argument("--insecure-test-key", action="store_true")
+    vertical_run.add_argument("--output", type=Path, required=True)
     doctor = commands.add_parser("doctor", help="Inspect dependencies without initializing GPU libraries")
     doctor.add_argument("--probe-gpu", action="store_true")
     init = commands.add_parser("init", help="Create a writable workspace with all code and source references")
@@ -85,7 +105,28 @@ def parser():
 def dispatch(args, forwarded):
     if forwarded and (args.command != "research" or args.action != "run"):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
-    if args.command == "list":
+    if args.command == "vertical":
+        from defai.vertical.demo import FAMILIES, init_example, run_demo
+        if args.vertical_action == "list":
+            _json({"families": FAMILIES, "methods": ["split", "fedbcd-p", "fedbcd-s", "secureboost"],
+                   "status": "research_local_simulation"})
+        elif args.vertical_action == "init":
+            _json({"manifest": str(init_example(args.directory).resolve())})
+        else:
+            if args.output.exists():
+                raise FileExistsError(args.output)
+            if args.vertical_action == "demo":
+                result = run_demo(family=args.family, insecure_test_key=args.insecure_test_key)
+            else:
+                from defai.vertical.pipeline import read_manifest, run_tabular
+                data, sources = read_manifest(args.manifest, alignment=args.alignment)
+                result = run_tabular(data, method=args.method, epochs=args.epochs, batch_size=args.batch_size,
+                                     lr=args.lr, q=args.q, seed=args.seed,
+                                     key_bits=256 if args.insecure_test_key else 2048, insecure_test_key=args.insecure_test_key)
+                result["sources"] = sources
+            _output(args.output, result)
+            _json({"output": str(args.output.resolve()), "status": result["status"]})
+    elif args.command == "list":
         _json({"version": __version__, "workflows": {
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
             "neonatal": "defai research list --domain neonatal [research]",
