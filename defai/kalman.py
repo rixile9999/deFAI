@@ -68,6 +68,12 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
                               config.process_noise, config.observation_noise)
     if previous.mean.shape != d.shape:
         raise ValueError("observation shape changed")
+    if (previous.mean.dtype.kind != "f" or not np.isfinite(previous.mean).all() or
+            any(isinstance(v, bool) or not isinstance(v, Real) or not math.isfinite(v)
+                for v in (previous.variance, previous.process_noise, previous.observation_noise)) or
+            previous.variance < 0 or not 0 <= previous.process_noise <= config.noise_ceiling or
+            not 0 < previous.observation_noise <= config.noise_ceiling):
+        raise ValueError("invalid previous Kalman state")
     try:
         with np.errstate(over="raise", invalid="raise", divide="raise"):
             predicted = config.rho * previous.mean
