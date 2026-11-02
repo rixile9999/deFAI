@@ -54,3 +54,14 @@ def test_object_arrays_are_not_unpickled(tmp_path):
     path = tmp_path/"objects.npz"
     np.savez(path, metadata=np.array({"arbitrary": "object"}, dtype=object))
     with pytest.raises(ValueError): FedAdamKalman().load_checkpoint(path)
+
+
+@pytest.mark.parametrize("kind", ["missing-metadata", "bad-json", "truncated"])
+def test_malformed_snapshot_has_an_actionable_error_without_state_changes(tmp_path, kind):
+    path = tmp_path/"bad.npz"
+    if kind == "missing-metadata": np.savez(path, x=np.zeros(1))
+    if kind == "bad-json": np.savez(path, metadata=np.array("{"))
+    if kind == "truncated": path.write_bytes(b"PK\x03\x04")
+    s = FedAdamKalman()
+    with pytest.raises(ValueError, match="checkpoint"): s.load_checkpoint(path)
+    assert s._global is None and s._last_round == 0
