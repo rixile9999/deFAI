@@ -81,6 +81,8 @@ def layer_step(observation: np.ndarray, previous: LayerState | None, config: Kal
     if previous is None:
         previous = LayerState(np.zeros_like(d), config.initial_variance,
                               config.process_noise, config.observation_noise)
+    if not isinstance(previous, LayerState) or not isinstance(previous.mean, np.ndarray):
+        raise ValueError("previous must contain a NumPy layer mean")
     if previous.mean.shape != d.shape:
         raise ValueError("observation shape changed")
     if (previous.mean.dtype.kind != "f" or not np.isfinite(previous.mean).all() or
