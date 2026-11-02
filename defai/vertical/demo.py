@@ -92,11 +92,11 @@ def run_demo(*, family='all', seed=42, insecure_test_key=False):
                         elif name == 'cnn':
                             x, factory = torch.randn(8, 1, 8, 8), lambda: ImageEncoder(1, 4)
                         elif name == 'rnn':
-                            x, factory = torch.randn(8, 5, 3), lambda: RecurrentEncoder(3, 4, cell=kind)
+                            x, factory = torch.randn(8, 5, 3), lambda kind=kind: RecurrentEncoder(3, 4, cell=kind)
                         elif name == 'tcn':
                             x, factory = torch.randn(8, 5, 3), lambda: TemporalEncoder(3, 4)
                         elif name == 'transformer':
-                            x, factory = torch.randn(8, 5, 3), lambda: TransformerEncoder(3, 4, tokens=kind == 'tokens')
+                            x, factory = torch.randn(8, 5, 3), lambda kind=kind: TransformerEncoder(3, 4, tokens=kind == 'tokens')
                         elif name == 'llm':
                             x, factory = torch.randn(8, 5, 3), lambda: FrozenEncoder(TransformerEncoder(3, 4))
                         else:

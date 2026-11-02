@@ -100,7 +100,7 @@ class SecureBoostClassifier:
             gradients = [public.encrypt(v) for v in g] if public else g
             hessians = [public.encrypt(v) for v in h] if public else h
 
-            def grow(rows, level):
+            def grow(rows, level, g=g, h=h, gradients=gradients, hessians=hessians, tree=tree):
                 total_g, total_h = g[rows].sum(), h[rows].sum()
                 node = Node(float(-total_g / (total_h + self.l2)))
                 if level >= self.depth or len(rows) < 2*self.min_leaf:
