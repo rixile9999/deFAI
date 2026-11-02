@@ -51,3 +51,43 @@ def test_global_dtype_is_preserved_and_inputs_are_not_mutated():
         assert output[k].dtype == s._global[k].dtype
         np.testing.assert_array_equal(delta[k], 1)
         np.testing.assert_array_equal(s._global[k], 0)
+
+
+@pytest.mark.parametrize("blend", [0., .5, 1.])
+def test_failed_late_layer_does_not_advance_any_state(blend):
+    from copy import deepcopy
+    s = initialized(kalman_blend=blend)
+    valid = {"w": np.ones(3), "bias": np.array(.1)}
+    s.update_global(1, valid)
+    before = deepcopy((s._m, s._v, s._ema, s._layers, s._last_round))
+    with pytest.raises(ValueError):
+        s.update_global(2, {**valid, "bias": np.array(1e308)})
+    assert s._last_round == before[-1]
+    for group, saved in zip((s._m, s._v), before[:2]):
+        for k in group:
+            np.testing.assert_array_equal(group[k], saved[k])
+    for k in s._layers:
+        np.testing.assert_array_equal(s._layers[k].mean, before[3][k].mean)
+        assert s._layers[k].variance == before[3][k].variance
+    # The rejected round can be retried.
+    assert all(np.isfinite(x).all() for x in s.update_global(2, valid).values())
+
+
+@pytest.mark.parametrize("change", ["missing", "shape", "nan", "integer"])
+def test_bad_schema_or_input_is_rejected_before_state_changes(change):
+    s = initialized()
+    delta = {"w": np.ones(3), "bias": np.array(.1)}
+    if change == "missing": delta.pop("bias")
+    if change == "shape": delta["w"] = np.ones(4)
+    if change == "nan": delta["w"][0] = np.nan
+    if change == "integer": delta["w"] = np.ones(3, dtype=int)
+    with pytest.raises(ValueError): s.update_global(1, delta)
+    assert s._last_round == 0 and s._m is None and not s._layers
+
+
+def test_duplicate_rounds_rejected_but_skipped_rounds_allowed():
+    s = initialized()
+    delta = {"w": np.ones(3), "bias": np.array(.1)}
+    s.update_global(3, delta)
+    with pytest.raises(ValueError, match="increase"): s.update_global(3, delta)
+    s.update_global(5, delta)
