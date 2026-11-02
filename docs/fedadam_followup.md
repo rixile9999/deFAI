@@ -36,3 +36,23 @@ Kalman = 810 runs. Stationary public labels are retained; synthetic label
 reversal remains in the separate existing benchmark. A linear softmax model
 tests the server optimizer without an external pretrained model. Fixed settings
 and held-out performance must be disclosed even if a method is slower or worse.
+
+## Additional calibrated phase, declared before its execution
+
+The original 810 public-data runs are retained. Their default fixed/adaptive
+Kalman settings often reached validation targets later than the EMA control.
+Inspecting the recurrence shows that a zero initial variance gives a much
+smaller first observation weight, and adaptive Q can cause increasing smoothing.
+
+A second, separately reported phase uses seeds 100–104, the same full grid and
+no parameter search. `KalmanConfig.from_ema(beta_1)` derives `K=1-beta_1`,
+`P=K*R`, `Q=K**2*R/(1-K)` for rho=1. Fixed-noise initialization recovers the
+EMA recurrence; the adaptive variant additionally keeps `K >= 1-beta_1`.
+This is an interpretable calibration and lower-bound safeguard, not evidence of
+acceleration. Defaults are not silently changed. Public benchmark flags are
+`--calibrated --seed-offset 100`. Actual configs are recorded per run.
+
+The new splits reuse the same public datasets, so this is not an independent
+external validation cohort. Target tracking uses validation scores only and each
+model sees its held-out test labels only for the final evaluation. The first
+phase's unfavorable results remain visible alongside the calibrated phase.
