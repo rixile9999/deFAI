@@ -4,7 +4,7 @@ from dataclasses import asdict
 
 import numpy as np
 
-from defai.kalman import KalmanConfig, layer_step
+from defai.kalman import KalmanConfig, LayerState, layer_step
 from defai.strategies.fedopt import FedAdam
 
 
@@ -116,6 +116,64 @@ class FedAdamKalman(FedAdam):
                          "schema": {k: (v.shape, v.dtype.str) for k, v in self._global.items()},
                          "last_round": self._last_round, "m": self._m, "v": self._v,
                          "ema": self._ema, "layers": {k: asdict(v) for k, v in self._layers.items()}})
+
+    def load_state_dict(self, state):
+        """Validate the entire optimizer checkpoint before changing live state."""
+        from copy import deepcopy
+        if self.dp is not None or self._global is None:
+            raise ValueError("optimizer resume needs a configured global model and no DP mechanism")
+        state = deepcopy(state)
+        schema = {k: (v.shape, v.dtype.str) for k, v in self._global.items()}
+        if not isinstance(state, dict) or state.get("version") != 1 or state.get("config") != self._optimizer_config() or state.get("schema") != schema:
+            raise ValueError("incompatible optimizer checkpoint config/schema/version")
+        rnd = state.get("last_round")
+        if isinstance(rnd, bool) or not isinstance(rnd, int) or rnd < 0:
+            raise ValueError("invalid checkpoint round")
+
+        def group(name, required):
+            value = state.get(name)
+            if not required:
+                if value is not None: raise ValueError(f"unexpected checkpoint {name}")
+                return None
+            if not isinstance(value, dict) or value.keys() != schema.keys():
+                raise ValueError(f"invalid checkpoint {name} keys")
+            for k, a in value.items():
+                if not isinstance(a, np.ndarray) or a.dtype.kind != "f" or a.shape != schema[k][0] or not np.isfinite(a).all():
+                    raise ValueError(f"invalid checkpoint {name} array")
+            return value
+
+        moment, variance = group("m", rnd > 0), group("v", rnd > 0)
+        ema = group("ema", rnd > 0 and self.kalman_blend < 1)
+        if variance is not None and any(np.any(v < 0) for v in variance.values()):
+            raise ValueError("negative checkpoint second moment")
+        raw_layers = state.get("layers")
+        expected = schema.keys() if rnd and self.kalman_blend > 0 else {}.keys()
+        if not isinstance(raw_layers, dict) or raw_layers.keys() != expected:
+            raise ValueError("invalid checkpoint layers")
+        layers = {}
+        for k, data in raw_layers.items():
+            try:
+                layer = LayerState(**data)
+                scalars = (layer.variance, layer.process_noise, layer.observation_noise, layer.gain, layer.innovation_mse)
+                if not isinstance(layer.mean, np.ndarray) or layer.mean.dtype.kind != "f" or layer.mean.shape != schema[k][0] or not np.isfinite(layer.mean).all():
+                    raise ValueError("invalid layer mean")
+                if any(isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x) for x in scalars):
+                    raise ValueError("invalid layer scalars")
+                if not (layer.variance >= self.kalman.variance_floor and
+                        0 <= layer.process_noise <= self.kalman.noise_ceiling and
+                        0 < layer.observation_noise <= self.kalman.noise_ceiling and
+                        self.kalman.gain_min <= layer.gain <= self.kalman.gain_max and layer.innovation_mse >= 0):
+                    raise ValueError("invalid layer bounds")
+                layers[k] = layer
+            except (TypeError, KeyError, ValueError) as exc:
+                raise ValueError("invalid checkpoint layer") from exc
+        if rnd:
+            expected_m = (ema if self.kalman_blend == 0 else
+                          {k: s.mean for k, s in layers.items()} if self.kalman_blend == 1 else
+                          {k: (1-self.kalman_blend)*ema[k] + self.kalman_blend*s.mean for k, s in layers.items()})
+            if any(not np.array_equal(moment[k], expected_m[k]) for k in moment):
+                raise ValueError("checkpoint first moment disagrees with filter/EMA state")
+        self._m, self._v, self._ema, self._layers, self._last_round = moment, variance, ema, layers, rnd
 
     def summary(self):
         from logging import INFO
