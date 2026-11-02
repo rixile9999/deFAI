@@ -2288,6 +2288,16 @@
       },
       "source_metadata": [
         {
+          "dataset": "breast-cancer",
+          "source": {
+            "url": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic",
+            "authors": "W. Wolberg, O. Mangasarian and W. Street",
+            "license": "CC BY 4.0",
+            "subset": "scikit-learn 569-row diagnostic dataset"
+          },
+          "dataset_sha256": "25e2eb7b7a8745b1bde5ba18bc4969983d2e2f403291ecd5bde4a29ef30c3859"
+        },
+        {
           "dataset": "digits",
           "source": {
             "url": "https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits",
@@ -4583,6 +4593,16 @@
         "interval_note": "descriptive paired t intervals within fixed conditions; few seeds, no multiple-comparison correction"
       },
       "source_metadata": [
+        {
+          "dataset": "breast-cancer",
+          "source": {
+            "url": "https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic",
+            "authors": "W. Wolberg, O. Mangasarian and W. Street",
+            "license": "CC BY 4.0",
+            "subset": "scikit-learn 569-row diagnostic dataset"
+          },
+          "dataset_sha256": "25e2eb7b7a8745b1bde5ba18bc4969983d2e2f403291ecd5bde4a29ef30c3859"
+        },
         {
           "dataset": "digits",
           "source": {
