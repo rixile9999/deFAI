@@ -94,8 +94,9 @@ the configured model and existing privacy mechanism/accountant.
 
 ## Results and limits
 
-Both 810-run phases, dataset fingerprints, condition-level paired seed
-intervals and all six profile conditions are retained in
+The original, calibrated and matched-control phases (2,430 public-data runs),
+dataset fingerprints, condition-level paired seed intervals and all profile
+conditions are retained in
 [the machine-readable receipt](fedadam_followup_results.json).
 
 In the original public-data phase, adaptive Kalman reached the validation target
@@ -109,12 +110,29 @@ validation/test scores. Bounded adaptive Kalman had the same target round in
 258 jointly attained cases, an earlier round in 3 and a later round in 1;
 both methods missed the diagnostic target in 8 cases. Average held-out scores
 were 95.63% on digits for both methods, and 97.41% adaptive versus 97.43% EMA
-on the diagnostic dataset. Calibration mitigated degradation but does not
-establish general training acceleration on these data/settings.
+on the diagnostic dataset. These results do not establish general training
+acceleration on these data/settings.
 
-The two phases use different splits/seeds; comparing their absolute accuracy
-means is not a paired estimate of the calibration's effect. The useful checks
-are each phase's paired EMA comparison and the fixed-filter equivalence test.
+The first two phases use different splits/seeds; comparing their absolute
+accuracy means is not a paired estimate of calibration's effect. A further
+810 uncalibrated controls therefore reused seeds 100–104 and exactly the same
+data splits and participation schedules. All 810 identities matched and the
+270 EMA control histories/test scores were exactly reproduced. Relative to
+these matched uncalibrated adaptive runs, calibration changed average held-out
+accuracy by +2.21 percentage points on digits and +0.09 on the diagnostic set.
+For fixed Kalman, changes were +0.16 and -0.08 percentage points respectively.
+These are differences against the uncalibrated extension, not gains over EMA.
+Every worse result and target miss remains in the receipt.
+
+The counterbalanced profile also measured the complete optimizer, including
+validation, moments, casting, norm checks and diagnostics. At 17/10,001
+parameters its median call time decreased about 11–19% in this measurement.
+At 1,000,001 parameters fixed mode was about 0.7% slower and adaptive mode about
+1.2% faster; that is not evidence of a general large-model speedup. Estimator
+kernel calls alone decreased about 8–35%; their large-array traced allocation
+peak decreased from about 40 MB to 32 MB. All 12 conditions are reported.
+These are local CPU calls, not distributed training or network measurements.
+
 The normalizer is fit centrally on training rows for this simulation; secure
 distributed estimation of normalization statistics is not implemented.
 Small repaired client partitions make lower-decile client accuracy noisy.
@@ -126,7 +144,7 @@ for the many comparisons; they are descriptive, not an overall superiority test.
 | Numerical overflow, scalar state and diagnostic rollback fixes | A convergence theorem or calibrated uncertainty guarantee |
 | Reduced copies/disabled work, reproducible latency and allocation profiles | General end-to-end training or network acceleration |
 | Numeric snapshots, exact continuation and final-weight equality | Client/sampler/DP complete training resume |
-| 1,620 public-data runs with train-only fitting and final test isolation | Other datasets, nonstationary real streams, parameter search, independent external cohorts |
+| 2,430 public-data runs, matched controls, train-only fitting and final test isolation | Other datasets, nonstationary real streams, parameter search, independent external cohorts |
 
 The package is improved for controlled experiments; real institution deployment
 and clinical use remain outside the validation scope.
