@@ -23,6 +23,24 @@ class KalmanConfig:
     observation_adaptation: float = 0.0
     noise_ceiling: float = 1e6
 
+    @classmethod
+    def from_ema(cls, beta_1=.9, *, observation_noise=.01, process_adaptation=0., gain_floor=False):
+        """Calibrate a rho=1 steady-state filter to an EMA's observation weight.
+
+        K=1-beta, P=K*R and Q=K**2*R/(1-K). Fixed noise then keeps
+        the EMA recurrence. A gain floor prevents adaptive over-smoothing.
+        """
+        if isinstance(beta_1, bool) or not isinstance(beta_1, Real) or not math.isfinite(beta_1) or not 0 <= beta_1 < 1:
+            raise ValueError("beta_1 must be finite and in [0, 1)")
+        if not isinstance(gain_floor, bool): raise ValueError("gain_floor must be boolean")
+        gain = 1-beta_1
+        if beta_1 == 0:
+            return cls(process_noise=0., observation_noise=observation_noise, gain_min=1., gain_max=1.,
+                       process_adaptation=process_adaptation)
+        return cls(process_noise=gain**2*observation_noise/beta_1, observation_noise=observation_noise,
+                   initial_variance=gain*observation_noise, process_adaptation=process_adaptation,
+                   gain_min=gain if gain_floor else 0.)
+
     def __post_init__(self):
         for name, value in vars(self).items():
             if isinstance(value, bool) or not isinstance(value, Real) or not math.isfinite(value):
