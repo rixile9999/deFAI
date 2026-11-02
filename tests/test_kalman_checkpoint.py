@@ -69,3 +69,36 @@ def test_initial_state_and_corrupt_moments():
         bad = s.state_dict()
         bad[group]["w"][:] = value
         with pytest.raises(ValueError): s.load_state_dict(bad)
+
+
+def test_scalar_layers_survive_state_export_and_restart():
+    s = make()
+    s._global = {"w": np.zeros(4), "bias": np.array(0.)}
+    s.update_global(1, {"w": np.ones(4), "bias": np.array(.2)})
+    resumed = make()
+    resumed._global = deepcopy(s._global)
+    resumed.load_state_dict(s.state_dict())
+    delta = {"w": np.full(4, -.1), "bias": np.array(-.3)}
+    actual, expected = resumed.update_global(2, delta), s.update_global(2, delta)
+    for k in actual:
+        np.testing.assert_array_equal(actual[k], expected[k])
+
+
+@pytest.mark.parametrize("mutation", ["boolean-version", "missing-key", "extra-key"])
+def test_checkpoint_envelope_is_exact(mutation):
+    s = make()
+    state = s.state_dict()
+    if mutation == "boolean-version": state["version"] = True
+    if mutation == "missing-key": state.pop("m")
+    if mutation == "extra-key": state["unknown"] = 1
+    with pytest.raises(ValueError): s.load_state_dict(state)
+
+
+def test_model_dtype_change_requires_explicit_optimizer_reset():
+    s = make()
+    s.update_global(1, {"w": np.ones(4)})
+    s._global["w"] = s._global["w"].astype(np.float32)
+    with pytest.raises(ValueError, match="schema"): s.update_global(2, {"w": np.ones(4)})
+    s.reset_optimizer()
+    assert s._last_round == 0 and s._m is None
+    assert s.update_global(1, {"w": np.ones(4)})["w"].dtype == np.float32
