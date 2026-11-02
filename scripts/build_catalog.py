@@ -14,7 +14,7 @@ def build():
     candidates = [*ROOT.glob("disease_research/**/*"), *ROOT.glob("scripts/*.py"),
                   *ROOT.glob("defai/**/*.py"), *ROOT.glob("docs/*.md"), ROOT / "README.md",
                   ROOT / ".gitattributes", ROOT / ".gitignore", ROOT / "pyproject.toml", ROOT / "LICENSE", ROOT / "hatch_build.py",
-                  ROOT / "docs/fedadam_kalman_results.json"]
+                  ROOT / "docs/fedadam_kalman_results.json", ROOT / "docs/fedadam_followup_results.json"]
     for path in sorted(set(candidates), key=lambda p: p.relative_to(ROOT).as_posix()):
         relative = path.relative_to(ROOT).as_posix()
         if not path.is_file() or any(p in {"__pycache__", ".pytest_cache", "_bundle", "build", "bin", ".gradle", ".idea"} for p in path.parts):
