@@ -228,6 +228,7 @@ for the external interfaces and reference implementations used.
 | `qfedavg` | Weights clients by their loss to improve the worst client | `qfedavg-q`, `qfedavg-lipschitz` | Li et al., 2020 |
 | `fedavgm` | Server momentum | `server-momentum`, `server-learning-rate` | Hsu et al., 2019 |
 | `fedadagrad` `fedadam` `fedyogi` | Adaptive server optimisers | `fedopt-learning-rate`, `beta-1`, `beta-2`, `tau` | Reddi et al., 2021 |
+| `fedadam-kalman` | Kalman first moment with raw Adam second moment (research extension) | `kf-blend`, `kf-process-noise`, `kf-observation-noise`, `kf-process-adaptation`, `kf-max-step-norm` | [Design, commands and limits](docs/fedadam_kalman.md) |
 | `fedmedian` | Coordinate-wise median | – | Yin et al., 2018 |
 | `fedtrimmedavg` | Coordinate-wise trimmed mean | `trim-ratio` | Yin et al., 2018 |
 | `krum` `multikrum` | Pick the update(s) closest to their neighbours | `num-byzantine`, `multikrum-select` | Blanchard et al., 2017 |
