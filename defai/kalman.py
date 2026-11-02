@@ -56,6 +56,21 @@ class LayerState:
     innovation_mse: float = 0.0
 
 
+def stable_l2(arrays):
+    """Euclidean norm without overflowing a representable result."""
+    norm = 0.0
+    for a in arrays:
+        peak = max(abs(float(np.min(a))), abs(float(np.max(a))))
+        if not peak:
+            continue
+        if peak <= math.sqrt(np.finfo(np.float64).max / a.size):
+            layer_norm = math.sqrt(float(np.sum(np.square(a, dtype=np.float64))))
+        else:
+            layer_norm = peak * math.sqrt(float(np.sum(np.square(a / peak))))
+        norm = math.hypot(norm, layer_norm)
+    return norm
+
+
 def layer_step(observation: np.ndarray, previous: LayerState | None, config: KalmanConfig) -> LayerState:
     """Return a proposed next state without mutating observations or prior state."""
     if not isinstance(observation, np.ndarray) or observation.dtype.kind not in "fiu" or not observation.size:
