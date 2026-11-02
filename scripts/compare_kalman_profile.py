@@ -8,6 +8,7 @@ import sys
 import tempfile
 import time
 import tracemalloc
+import types
 
 import numpy as np
 
@@ -56,7 +57,43 @@ def compare(root, repeats=40):
                          "reference_traced_peak_bytes": peaks[0], "current_traced_peak_bytes": peaks[1],
                          "reference_seconds": timings[0], "current_seconds": timings[1]})
     return {"reference": REFERENCE, "numpy": np.__version__, "python": platform.python_version(), "results": rows,
+            "optimizer_results": compare_optimizer(root, repeats),
             "limits": "Counterbalanced kernel calls in one process; not training/network acceleration or total RSS"}
+
+
+def compare_optimizer(root, repeats):
+    """Include validation, moments, model casting, trust checks and diagnostics."""
+    from defai.strategies import FedAdamKalman
+    source = subprocess.check_output(["git", "show", REFERENCE+":defai/strategies/kalman_adam.py"], cwd=root).decode()
+    source = source.replace("from defai.kalman import", "from kalman_profile_reference import")
+    module = types.ModuleType("kalman_optimizer_profile_reference")
+    exec(compile(source, "kalman_optimizer_profile_reference", "exec"), module.__dict__)
+    old = sys.modules["kalman_profile_reference"]
+    rows = []
+    for size in (16, 10000, 1000000):
+        for mode in ("fixed", "adaptive"):
+            adaptation = .2 if mode == "adaptive" else 0
+            strategies = [module.FedAdamKalman(kalman=old.KalmanConfig(process_adaptation=adaptation), server_learning_rate=.01),
+                          FedAdamKalman(kalman=kalman.KalmanConfig(process_adaptation=adaptation), server_learning_rate=.01)]
+            delta = {"w": np.random.default_rng(7).normal(0, .01, size), "bias": np.array(.01)}
+            for strategy in strategies: strategy._global = {k: np.zeros_like(v) for k,v in delta.items()}
+            for rnd in range(1, 4):
+                for strategy in strategies: strategy._global = strategy.update_global(rnd, delta)
+            timings = [[], []]
+            for repeat in range(repeats):
+                for index in ((0, 1) if repeat%2 == 0 else (1, 0)):
+                    start = time.perf_counter()
+                    result = strategies[index].update_global(repeat+4, delta)
+                    timings[index].append(time.perf_counter()-start)
+                    strategies[index]._global = result
+            for key in delta:
+                np.testing.assert_allclose(strategies[0]._global[key], strategies[1]._global[key], rtol=1e-12, atol=1e-12)
+            medians = [float(np.median(t)) for t in timings]
+            rows.append({"elements": size+1, "mode": mode, "paired_repeats": repeats,
+                         "reference_median_seconds": medians[0], "current_median_seconds": medians[1],
+                         "latency_reduction_percent": 100*(1-medians[1]/medians[0]),
+                         "reference_seconds": timings[0], "current_seconds": timings[1]})
+    return rows
 
 
 if __name__ == "__main__":
