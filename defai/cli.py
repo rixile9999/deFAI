@@ -73,6 +73,7 @@ def parser():
     run.add_argument("--dataset", default="synthetic")
     run.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     run.add_argument("--threads", type=int, default=1)
+    run.add_argument("--optimizer-checkpoint", type=Path, help="Save final FedAdam Kalman model/optimizer (no DP or full training resume)")
     run.add_argument("--set", action="append", default=[], metavar="KEY=TOML_VALUE")
     research = commands.add_parser("research", help="Discover and run every packaged study in a workspace")
     actions = research.add_subparsers(dest="action", required=True)
@@ -194,7 +195,8 @@ def dispatch(args, forwarded):
             if not separator or not key:
                 raise ValueError("--set needs KEY=TOML_VALUE")
             cfg[key] = tomllib.loads("value=" + value)["value"]
-        summary = run_simulation(args.output, overrides=cfg, clients=args.clients, device=args.device, threads=args.threads)
+        summary = run_simulation(args.output, overrides=cfg, clients=args.clients, device=args.device, threads=args.threads,
+                                 optimizer_checkpoint=args.optimizer_checkpoint)
         _json({"output": str(args.output.resolve()), "completed_rounds": len(summary["history"])-1,
                "elapsed_seconds": summary["elapsed_seconds"], "backend": summary["backend"]})
     elif args.command == "research":
