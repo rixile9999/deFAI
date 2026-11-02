@@ -7,7 +7,7 @@ import time
 import numpy as np
 
 from defai.kalman import KalmanConfig, stable_l2
-from defai.kalman_benchmark import METHODS
+from defai.kalman_benchmark import METHODS, paired_runs, summarize
 from defai.kalman_data import prepare_public_data
 
 
@@ -119,5 +119,38 @@ def run_public_benchmark(*, dataset="public", full=False, rounds=60):
             "axes": {"datasets": list(names), "alpha": list(axes[0]), "local_steps": list(axes[1]),
                      "participation": list(axes[2]), "seeds": list(axes[3])},
             "method_order": "counterbalanced by seed and condition; no test-based tuning",
-            "datasets": metadata, "results": results,
+            "datasets": metadata, "summary": summarize_public(results), "results": results,
             "excluded": ["clinical validation", "real institution splits", "network timing", "hyperparameter tuning"]}
+
+
+def summarize_public(results):
+    """Separate datasets and condition strata; pair uncertainty only across seeds."""
+    from scipy.stats import t
+    paired_runs(results)
+    datasets, strata = {}, []
+    for name in sorted({r["condition"]["dataset"] for r in results}):
+        rows = [r for r in results if r["condition"]["dataset"] == name]
+        summary = summarize(rows)
+        for method in METHODS:
+            selected = [r for r in rows if r["method"] == method]
+            summary[method].update(
+                final_test_accuracy_mean=float(np.mean([r["heldout_test"]["accuracy"] for r in selected])),
+                final_test_loss_mean=float(np.mean([r["heldout_test"]["loss"] for r in selected])),
+                sustained_target_runs=sum(r["sustained_target"] is not None for r in selected))
+        datasets[name] = summary
+        conditions = sorted({(r["condition"]["alpha"], r["condition"]["local_steps"], r["condition"]["participation"]) for r in rows})
+        for alpha, steps, fraction in conditions:
+            matching = [r for r in rows if (r["condition"]["alpha"], r["condition"]["local_steps"], r["condition"]["participation"]) == (alpha, steps, fraction)]
+            aligned = paired_runs(matching)
+            for method in METHODS:
+                differences = np.array([r["heldout_test"]["accuracy"]-b["heldout_test"]["accuracy"]
+                                        for r,b in zip(aligned[method], aligned["ema"])])
+                n = len(differences)
+                mean = float(differences.mean())
+                half = float(t.ppf(.975, n-1)*differences.std(ddof=1)/np.sqrt(n)) if n > 1 else None
+                strata.append({"dataset": name, "alpha": alpha, "local_steps": steps, "participation": fraction,
+                               "method": method, "seeds": n, "paired_test_accuracy_delta": mean,
+                               "paired_t_interval_95": [mean-half, mean+half] if half is not None else None})
+    return {"datasets": datasets, "condition_strata": strata,
+            "accuracy_unit": "fraction; multiply differences by 100 for percentage points",
+            "interval_note": "descriptive paired t intervals within fixed conditions; few seeds, no multiple-comparison correction"}
