@@ -1,5 +1,6 @@
 """Atomic numeric-only model/optimizer snapshots; never loads pickled objects."""
 import hashlib
+from copy import copy
 import json
 import os
 from pathlib import Path
@@ -98,12 +99,13 @@ def load_checkpoint(strategy, path):
         model, state = _read_checkpoint(path)
     except (KeyError, TypeError, ValueError, EOFError, zipfile.BadZipFile) as exc:
         raise ValueError("invalid numeric Kalman checkpoint: " + str(exc)) from exc
-    old_global = strategy._global
-    try:
-        strategy._global = model
-        strategy.load_state_dict(state)
-    except Exception:
-        strategy._global = old_global
-        raise
+    # Validate on an isolated strategy shell rather than temporarily swapping
+    # the running strategy's model while validation/deepcopy can still fail.
+    candidate = copy(strategy)
+    candidate._global = model
+    candidate.load_state_dict(state)
+    strategy._global = model
+    for field in ("_m", "_v", "_ema", "_layers", "_last_round", "_model_schema"):
+        setattr(strategy, field, getattr(candidate, field))
     strategy._round_metrics = {}
     return {key: value.copy() for key,value in model.items()}
