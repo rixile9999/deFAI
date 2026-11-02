@@ -129,6 +129,7 @@ def dispatch(args, forwarded):
     elif args.command == "list":
         _json({"version": __version__, "workflows": {
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
+            "vertical": "defai vertical list | init | run | demo [vertical]",
             "neonatal": "defai research list --domain neonatal [research]",
             "policy": "defai policy --input DIRECTORY --output result.json [analysis]",
             "generation": "defai generation --input intervals.csv --output result.json [analysis]",

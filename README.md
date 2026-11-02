@@ -35,6 +35,15 @@ Benchmark datasets include MNIST, Fashion-MNIST, and CIFAR-10, with plain-file m
 options and an offline `synthetic` dataset. Disease studies use their own documented
 inputs; participant photos, model weights, and private records are not bundled.
 
+## Vertical learning
+
+Feature-partitioned learning now has a separate local research backend: SplitNN,
+linear/logistic FedBCD-p/s, and encrypted histogram boosting, with examples for the
+ten model families in the supplied implementation matrix. See the
+[vertical learning guide](docs/vertical_learning.md) for alignment, model APIs,
+validation, and the limits of the cryptographic and conditional-model prototypes.
+Install `.[vertical]` and start with `defai vertical list`.
+
 ## Start here
 
 Use Python 3.11 or 3.12. Follow the [Korean user guide](docs/user_guide_ko.md) for
