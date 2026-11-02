@@ -10,6 +10,7 @@ import numpy as np
 
 def save_checkpoint(strategy, path, *, model, overwrite=False):
     """Caller supplies the latest returned model, not the last broadcast model."""
+    if not isinstance(overwrite, bool): raise ValueError("overwrite must be a boolean")
     state = strategy.state_dict()
     if not isinstance(model, dict) or set(model) != set(state["schema"]):
         raise ValueError("checkpoint model keys must match optimizer schema")
@@ -62,7 +63,8 @@ def load_checkpoint(strategy, path):
                 metadata["format"] != "defai-kalman" or type(metadata["version"]) is not int or metadata["version"] != 1):
             raise ValueError("unsupported checkpoint format/version")
         descriptors = metadata["arrays"]
-        if not isinstance(descriptors, dict) or set(archive.files) != set(descriptors) | {"metadata"}:
+        if (not isinstance(descriptors, dict) or len(archive.files) != len(descriptors)+1 or
+                set(archive.files) != set(descriptors) | {"metadata"}):
             raise ValueError("checkpoint payload inventory mismatch")
         loaded = {}
         for token, descriptor in descriptors.items():
@@ -75,14 +77,18 @@ def load_checkpoint(strategy, path):
 
         def unpack(value):
             if isinstance(value, dict):
-                if set(value) == {"array"}: return loaded[value["array"]].copy()
+                if set(value) == {"array"} and isinstance(value["array"], str):
+                    return loaded[value["array"]].copy()
                 return {key: unpack(v) for key,v in value.items()}
             if isinstance(value, list): return [unpack(v) for v in value]
             return value
 
         model, state = unpack(metadata["model"]), unpack(metadata["optimizer"])
     state["schema"] = {k: (tuple(shape), dtype) for k,(shape,dtype) in state["schema"].items()}
-    if set(model) != set(state["schema"]): raise ValueError("checkpoint model schema mismatch")
+    if (not isinstance(model, dict) or set(model) != set(state["schema"]) or
+            any(not isinstance(k, str) or not isinstance(a, np.ndarray) or a.dtype.kind not in "fiu" or
+                not a.size or not np.isfinite(a).all() for k,a in model.items())):
+        raise ValueError("checkpoint model schema mismatch")
     old_global = strategy._global
     try:
         strategy._global = model

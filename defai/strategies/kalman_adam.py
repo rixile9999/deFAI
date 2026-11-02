@@ -43,6 +43,16 @@ class FedAdamKalman(FedAdam):
         self._model_schema = None
         self._round_metrics = {}
 
+    def save_checkpoint(self, path, *, model, overwrite=False):
+        """Save latest returned model and optimizer; excludes clients/sampling/DP."""
+        from defai.kalman_checkpoint import save_checkpoint
+        return save_checkpoint(self, path, model=model, overwrite=overwrite)
+
+    def load_checkpoint(self, path):
+        """Restore a numeric snapshot and return its model arrays."""
+        from defai.kalman_checkpoint import load_checkpoint
+        return load_checkpoint(self, path)
+
     def update_global(self, server_round, delta):
         if isinstance(server_round, bool) or not isinstance(server_round, int) or server_round <= self._last_round:
             raise ValueError("server_round must increase strictly from a positive integer")
