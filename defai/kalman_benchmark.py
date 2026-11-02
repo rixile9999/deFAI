@@ -64,9 +64,12 @@ def run_case(*, alpha, local_steps, participation, drift, seed, method, rounds=4
     history, schedule = [], []
     reached = recovery = None
     previous_move = np.zeros(7)
+    shift_start = None
     start = time.perf_counter()
     for rnd in range(1, rounds + 1):
         flipped = drift and rnd > rounds // 2
+        if flipped and shift_start is None:
+            shift_start = time.perf_counter()
         selected = rng.choice(len(clients), size=max(1, int(len(clients)*participation)), replace=False)
         schedule.append(selected.tolist())
         w = strategy._global["w"]
@@ -87,7 +90,8 @@ def run_case(*, alpha, local_steps, participation, drift, seed, method, rounds=4
         elapsed = time.perf_counter()-start
         if metrics["accuracy"] >= target:
             if reached is None and not flipped: reached = {"round": rnd, "seconds": elapsed}
-            if recovery is None and flipped: recovery = {"rounds_after_shift": rnd-rounds//2, "seconds_since_start": elapsed}
+            if recovery is None and flipped:
+                recovery = {"rounds_after_shift": rnd-rounds//2, "seconds_after_shift": time.perf_counter()-shift_start}
         history.append({"round": rnd, **metrics, "elapsed_seconds": elapsed, "server_seconds": server_seconds,
                         "update_oscillation_l2": float(np.linalg.norm(move - previous_move)),
                         "training_payload_bytes": len(selected)*2*w.nbytes,
@@ -109,5 +113,38 @@ def run_benchmark(*, full=False, rounds=40):
             "network_transport_measured": False, "privacy_enabled": False,
             "axes": {"alpha": list(axes[0]), "local_steps": list(axes[1]), "participation": list(axes[2]),
                      "drift": list(axes[3]), "seeds": list(axes[4])}, "rounds": rounds,
-            "results": results, "excluded": ["real datasets", "clinical/manufacturing validation", "Bayesian search",
+            "summary": summarize(results), "results": results, "excluded": ["real datasets", "clinical/manufacturing validation", "Bayesian search",
                                                  "network latency", "hyperparameter tuning", "privacy claims"]}
+
+
+def summarize(results):
+    """Report every method and paired outcome, including non-attainment."""
+    summary = {}
+    for method in METHODS:
+        rows = [r for r in results if r["method"] == method]
+        paired = [r for r in results if r["method"] == "ema"]
+        if not rows: continue
+        comparisons = []
+        for row, baseline in zip(rows, paired):
+            if row["condition"] != baseline["condition"] or row["schedule_sha256"] != baseline["schedule_sha256"]:
+                raise ValueError("benchmark schedules or conditions are not paired")
+            comparisons.append((row["target_reached"], baseline["target_reached"]))
+        final = [r["history"][-1] for r in rows]
+        summary[method] = {"runs": len(rows),
+            "target_reached_runs": sum(r["target_reached"] is not None for r in rows),
+            "paired_both_reached": sum(a is not None and b is not None for a, b in comparisons),
+            "paired_fewer_rounds": sum(a is not None and b is not None and a["round"] < b["round"] for a,b in comparisons),
+            "paired_more_rounds": sum(a is not None and b is not None and a["round"] > b["round"] for a,b in comparisons),
+            "only_method_reached": sum(a is not None and b is None for a,b in comparisons),
+            "only_baseline_reached": sum(a is None and b is not None for a,b in comparisons),
+            "final_accuracy_mean": float(np.mean([r["accuracy"] for r in final])),
+            "final_accuracy_std": float(np.std([r["accuracy"] for r in final])),
+            "final_loss_mean": float(np.mean([r["loss"] for r in final])),
+            "final_client_p10_mean": float(np.mean([r["client_accuracy_p10"] for r in final])),
+            "total_seconds": sum(r["elapsed_seconds"] for r in final),
+            "server_seconds": sum(h["server_seconds"] for r in rows for h in r["history"]),
+            "mean_numeric_state_bytes": float(np.mean([r["optimizer_numeric_bytes"] for r in rows])),
+            "training_payload_bytes": sum(h["training_payload_bytes"] for r in rows for h in r["history"]),
+            "evaluation_payload_bytes": sum(h["evaluation_payload_bytes"] for r in rows for h in r["history"]),
+            "post_shift_recovered_runs": sum(r["post_shift_recovery"] is not None for r in rows if r["condition"]["drift"])}
+    return summary
