@@ -43,3 +43,16 @@ def test_neural_failure_reverts_all_blocks_and_traffic():
     for name, parameter in m.parties[0].model.state_dict().items():
         torch.testing.assert_close(parameter, before[name])
     assert m.steps == m.traffic.exchanges == m.local_steps == 0
+
+
+def test_neural_checkpoint_restores_block_counters_and_rejects_different_q(tmp_path):
+    from defai.vertical.checkpoint import save_checkpoint, load_checkpoint
+    a, b = make(3), make(3)
+    a.step([0, 1, 2])
+    path = tmp_path/'neural.pt'
+    save_checkpoint(a, path)
+    load_checkpoint(b, path)
+    assert b.steps == 1 and b.local_steps == 3
+    with pytest.raises(ValueError, match='configuration'):
+        load_checkpoint(make(2), path)
+    assert a.step([0, 1, 2]) == pytest.approx(b.step([0, 1, 2]), abs=1e-8)

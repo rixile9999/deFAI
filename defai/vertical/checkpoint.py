@@ -19,6 +19,9 @@ def save_checkpoint(trainer, path):
              'bottom_optimizers': [p.optimizer.state_dict() if p.optimizer else None for p in trainer.parties],
              'top': trainer.top.state_dict(), 'optimizer': trainer.optimizer.state_dict(), 'steps': trainer.steps,
              'cpu_rng': torch.random.get_rng_state()}
+    if hasattr(trainer, 'q'):
+        state['block_config'] = {'q': trainer.q, 'mode': trainer.mode, 'owner': trainer.owner}
+        state['local_steps'] = trainer.local_steps
     fd, temporary = tempfile.mkstemp(dir=path.parent, prefix='.checkpoint-')
     try:
         with os.fdopen(fd, 'wb') as stream:
@@ -36,6 +39,11 @@ def load_checkpoint(trainer, path):
         raise ValueError('Checkpoint schema, task or participant names differ')
     if any(p._pending is not None for p in trainer.parties):
         raise RuntimeError('Cannot restore into a pending batch')
+    block = {'q': trainer.q, 'mode': trainer.mode, 'owner': trainer.owner} if hasattr(trainer, 'q') else None
+    if state.get('block_config') != block:
+        raise ValueError('Checkpoint block-update configuration differs')
+    if block and (not isinstance(state.get('local_steps'), int) or state['local_steps'] < 0):
+        raise ValueError('Invalid local block-step count')
     if len(state['bottoms']) != len(trainer.parties) or len(state['bottom_optimizers']) != len(trainer.parties):
         raise ValueError('Checkpoint party count differs')
     # Validate the entire state on copies before touching the live trainer.
@@ -63,4 +71,6 @@ def load_checkpoint(trainer, path):
     trainer.top.load_state_dict(state['top'])
     trainer.optimizer.load_state_dict(state['optimizer'])
     trainer.steps = state['steps']
+    if block:
+        trainer.local_steps = state['local_steps']
     torch.random.set_rng_state(state['cpu_rng'])
