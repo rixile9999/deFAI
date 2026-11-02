@@ -33,12 +33,24 @@ class FedAdamKalman(FedAdam):
         self._layers = {}
         self._ema = None
         self._last_round = 0
+        self._model_schema = None
+
+    def reset_optimizer(self):
+        """Start a new optimizer history while keeping the configured model."""
+        self._m = self._v = self._ema = None
+        self._layers = {}
+        self._last_round = 0
+        self._model_schema = None
+        self._round_metrics = {}
 
     def update_global(self, server_round, delta):
         if isinstance(server_round, bool) or not isinstance(server_round, int) or server_round <= self._last_round:
             raise ValueError("server_round must increase strictly from a positive integer")
         if self._global is None or not delta or delta.keys() != self._global.keys():
             raise ValueError("delta must match the configured global model")
+        schema = {k: (v.shape, v.dtype.str) for k, v in self._global.items()}
+        if self._model_schema is not None and schema != self._model_schema:
+            raise ValueError("global model schema changed; call reset_optimizer for a new history")
         for k, d in delta.items():
             if not isinstance(d, np.ndarray) or d.dtype.kind != "f" or not d.size or d.shape != self._global[k].shape:
                 raise ValueError(f"invalid floating update shape/dtype: {k}")
@@ -93,6 +105,7 @@ class FedAdamKalman(FedAdam):
         # Diagnostics are part of a successful round, not a post-commit failure.
         self._m, self._v, self._ema, self._layers = moment, variance, ema, layers
         self._last_round = server_round
+        self._model_schema = schema
         self._round_metrics.update(metrics)
         return result
 
@@ -122,7 +135,7 @@ class FedAdamKalman(FedAdam):
         return deepcopy({"version": 1, "config": self._optimizer_config(),
                          "schema": {k: (v.shape, v.dtype.str) for k, v in self._global.items()},
                          "last_round": self._last_round, "m": self._m, "v": self._v,
-                         "ema": self._ema, "layers": {k: asdict(v) for k, v in self._layers.items()}})
+                         "ema": self._ema, "layers": {k: vars(v) for k, v in self._layers.items()}})
 
     def load_state_dict(self, state):
         """Validate the entire optimizer checkpoint before changing live state."""
@@ -131,7 +144,9 @@ class FedAdamKalman(FedAdam):
             raise ValueError("optimizer resume needs a configured global model and no DP mechanism")
         state = deepcopy(state)
         schema = {k: (v.shape, v.dtype.str) for k, v in self._global.items()}
-        if not isinstance(state, dict) or state.get("version") != 1 or state.get("config") != self._optimizer_config() or state.get("schema") != schema:
+        fields = {"version", "config", "schema", "last_round", "m", "v", "ema", "layers"}
+        if (not isinstance(state, dict) or set(state) != fields or type(state.get("version")) is not int or
+                state["version"] != 1 or state.get("config") != self._optimizer_config() or state.get("schema") != schema):
             raise ValueError("incompatible optimizer checkpoint config/schema/version")
         rnd = state.get("last_round")
         if isinstance(rnd, bool) or not isinstance(rnd, int) or rnd < 0:
@@ -181,6 +196,7 @@ class FedAdamKalman(FedAdam):
             if any(not np.array_equal(moment[k], expected_m[k]) for k in moment):
                 raise ValueError("checkpoint first moment disagrees with filter/EMA state")
         self._m, self._v, self._ema, self._layers, self._last_round = moment, variance, ema, layers, rnd
+        self._model_schema = schema if rnd else None
 
     def summary(self):
         from logging import INFO
