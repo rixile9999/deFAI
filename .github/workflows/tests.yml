@@ -40,6 +40,8 @@ jobs:
         run: python -m defai demo --output smoke-results
       - name: Exercise vertical model families with default cryptographic keys
         run: python -m defai vertical demo --output vertical-smoke.json
+      - name: Exercise paired FedAdam Kalman benchmark
+        run: python -m defai kalman-benchmark --rounds 4 --output kalman-smoke.json
       - name: Keep test evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,4 +51,5 @@ jobs:
             test-results.xml
             smoke-results/demo.json
             vertical-smoke.json
+            kalman-smoke.json
             dist/*
