@@ -157,3 +157,6 @@ python -m build
 - FedBCD: https://arxiv.org/abs/1912.11187
 - SecureBoost: https://arxiv.org/abs/1901.08755
 - Label leakage and protection: https://arxiv.org/abs/2102.08504
+
+원본 PDF 식별: 모델별 연합학습 구현표, 총 16쪽, 수직형 설명 1–6쪽 및 6-2절 10–11쪽.
+SHA-256: `3b833964f16ba50afff64ba6676c9a438cf62a4d4dff7e26c91024c1469c5d47`.
