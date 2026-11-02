@@ -58,3 +58,23 @@ def test_shape_change_and_overflow_are_rejected():
         layer_step(np.ones(3), state, KalmanConfig())
     with pytest.raises(ValueError, match="arithmetic"):
         layer_step(np.array([1e308]), None, KalmanConfig())
+
+
+@pytest.mark.parametrize("gain", [0., .1, .8, 1.])
+def test_forced_constant_gain_matches_ema_and_joseph_covariance(gain):
+    cfg = KalmanConfig(gain_min=gain, gain_max=gain, process_noise=.1, observation_noise=.2)
+    mean = np.zeros(2)
+    state = None
+    for i in range(1, 6):
+        d = np.array([i, -i], dtype=float)
+        prior = (state.variance if state else 0) + .1
+        state = layer_step(d, state, cfg)
+        mean = (1 - gain) * mean + gain * d
+        np.testing.assert_allclose(state.mean, mean)
+        assert state.variance == pytest.approx(max((1-gain)**2 * prior + gain**2 * .2, cfg.variance_floor))
+
+
+@pytest.mark.parametrize("kwargs", [{"gain_min": -.1}, {"gain_max": 1.1}, {"gain_min": .8, "gain_max": .2}])
+def test_invalid_gain_bounds(kwargs):
+    with pytest.raises(ValueError, match="gain"):
+        KalmanConfig(**kwargs)
