@@ -33,3 +33,10 @@ def test_invalid_benchmark_conditions(kwargs):
     cfg = dict(alpha=.5, local_steps=1, participation=.5, drift=False, seed=3, method="ema", rounds=4)
     cfg.update(kwargs)
     with pytest.raises(ValueError): run_case(**cfg)
+
+
+def test_summary_is_order_independent_and_rejects_missing_or_duplicate_runs():
+    rows = [run_case(alpha=.5, local_steps=1, participation=.5, drift=False, seed=3, method=m, rounds=4) for m in METHODS]
+    assert summarize(rows) == summarize(rows[::-1])
+    with pytest.raises(ValueError, match="incomplete"): summarize(rows[:-1])
+    with pytest.raises(ValueError, match="duplicate"): summarize(rows+rows[:1])
