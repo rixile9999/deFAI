@@ -102,3 +102,13 @@ def test_model_dtype_change_requires_explicit_optimizer_reset():
     s.reset_optimizer()
     assert s._last_round == 0 and s._m is None
     assert s.update_global(1, {"w": np.ones(4)})["w"].dtype == np.float32
+
+
+def test_numpy_noise_scalars_produce_a_restartable_float64_filter():
+    from defai.kalman import KalmanConfig
+    config = KalmanConfig(process_noise=np.float32(.001), observation_noise=np.float32(.01))
+    s = FedAdamKalman(kalman=config); s._global = {"w": np.zeros(4)}
+    s.update_global(1, {"w": np.ones(4)})
+    resumed = FedAdamKalman(kalman=config); resumed._global = {"w": np.zeros(4)}
+    resumed.load_state_dict(s.state_dict())
+    assert all(type(value) is float for value in vars(config).values())
