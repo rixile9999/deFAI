@@ -106,3 +106,19 @@ def test_trust_radius_is_shared_across_all_layers():
                                     {"max_step_norm": -1}, {"max_step_norm": np.inf}, {"tau": np.inf}])
 def test_invalid_strategy_options(kwargs):
     with pytest.raises(ValueError): initialized(**kwargs)
+
+
+def test_large_finite_variance_metrics_do_not_overflow_across_layers():
+    s = FedAdamKalman(kalman=KalmanConfig(process_noise=0, initial_variance=1e308,
+                                        observation_noise=1e308, noise_ceiling=1e308))
+    s._global = {str(i): np.zeros(1) for i in range(4)}
+    s.update_global(1, {k: np.zeros(1) for k in s._global})
+    assert s._round_metrics["kf-variance-mean"] == pytest.approx(5e307)
+    assert all(np.isfinite(v) for v in s._round_metrics.values())
+
+
+def test_unrepresentable_metric_does_not_commit_even_when_output_layers_are_finite():
+    s = FedAdamKalman(server_learning_rate=1e308)
+    s._global = {"w": np.zeros(16)}
+    with pytest.raises(ValueError): s.update_global(1, {"w": np.ones(16)})
+    assert s._last_round == 0 and s._m is None and s._round_metrics == {}
