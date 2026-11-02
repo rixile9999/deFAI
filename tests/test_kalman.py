@@ -35,7 +35,7 @@ def test_hand_calculated_prediction_and_correction():
 def test_small_observation_noise_trusts_new_direction():
     d = np.array([2., -3.])
     low = layer_step(d, None, KalmanConfig(process_noise=1, observation_noise=1e-8))
-    high = layer_step(d, None, KalmanConfig(process_noise=1, observation_noise=1e8))
+    high = layer_step(d, None, KalmanConfig(process_noise=1, observation_noise=1e8, noise_ceiling=1e8))
     assert low.gain > .999 and high.gain < 1e-7
 
 
