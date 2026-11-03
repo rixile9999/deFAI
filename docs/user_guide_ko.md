@@ -233,6 +233,11 @@ wheel은 Python 설치 파일, APK는 Android 설치 파일입니다. HbA1c는 �
 
 ## 구현 출처와 실행 의존성
 
+수직연합학습은 별도의 로컬 연구 실행부로 제공합니다. `defai vertical list`로
+10개 모델 계열과 실행 방법을 확인하고 [수직연합학습 안내](vertical_learning.md)에 따라
+대상자 정렬, 분할 학습, FedBCD, 암호화 트리를 실행합니다. 설치 범위는 `[vertical]`이며
+`[all]`에도 포함됩니다. 대규모 모델·실제 기관 배포·보안 증명의 검증 여부는 해당 안내와 구분합니다.
+
 공통 학습 실행부는 현재 Flower의 Strategy·ClientApp·메시징 인터페이스를 사용하며,
 선택형 분산 실행도 해당 Simulation/Deployment Engine을 사용합니다. 따라서 참고 출처인 동시에
 실제 실행 의존성입니다. 일부 벤치마크 데이터 로더는 Flower Datasets를 사용합니다.
