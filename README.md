@@ -1,66 +1,77 @@
-# deFAI 0.2: packaged algorithms and disease research
+# deFAI — Federated Learning and Disease Research
 
-Common algorithms and all four disease-research source collections are available
-through an installable Python package, a unified CLI, and Python APIs.
-Start with the [Korean user guide](docs/user_guide_ko.md).
+deFAI는 연합학습 알고리즘과 네 가지 질병 연구를 통합한 연구용 소프트웨어입니다.
+알고리즘 구현, 실험 설정, 데이터 준비, 결과 기록과 연구 스크립트 실행을 하나의
+Python 패키지와 명령행 도구로 제공합니다.
+
+deFAI integrates federated-learning algorithms and four disease-research workflows
+in one Python package. It brings together algorithm implementations, validated
+experiment settings, data preparation, result recording, and research execution.
+Established methods are adapted and implemented in this repository; their names
+and research references are retained in the [algorithm reference](#algorithms).
+
+[![tests](https://github.com/haneol815/deFAI/actions/workflows/tests.yml/badge.svg)](https://github.com/haneol815/deFAI/actions/workflows/tests.yml)
+
+## What deFAI provides
+
+- **Common learning algorithms:** FedAvg, FedProx, SCAFFOLD, MOON, FedNova,
+  q-FedAvg, FedAvgM, FedAdagrad, FedAdam, FedYogi, FedMedian, FedTrimmedAvg,
+  Krum, Multi-Krum, and Bulyan.
+- **Disease research:** neonatal jaundice image learning, regional infectious-disease
+  policy analysis, federated generation-interval estimation, and HbA1c cohort learning.
+  A searchable catalog exposes the research modules, their roles, and execution arguments.
+- **Controlled experiments:** IID and Dirichlet partitions, malicious-client simulation,
+  dropout, personalization, update compression, and fixed/adaptive differential privacy
+  with a Rényi-DP accountant. Privacy assumptions and metric coverage are documented below.
+- **Data and reproducibility:** public-source references, explicit downloads with checksums,
+  isolated research workspaces, validated settings, and structured execution records.
+- **Evaluation and reporting:** per-client and centralized evaluation, experiment grids,
+  plots, and comparisons across random seeds. Communication figures account for model
+  payloads; they are not measurements of real network throughput.
+- **Mobile tools:** an Android example client and a NumPy-based parameter coordinator
+  with round validation and persisted state.
+
+Benchmark datasets include MNIST, Fashion-MNIST, and CIFAR-10, with plain-file mirror
+options and an offline `synthetic` dataset. Disease studies use their own documented
+inputs; participant photos, model weights, and private records are not bundled.
+
+## Start here
+
+Use Python 3.11 or 3.12. Follow the [Korean user guide](docs/user_guide_ko.md) for
+installation choices, data prerequisites, complete study workflows, and limitations.
 
 ```powershell
 python -m pip install ".[all]"
 defai doctor
 defai list
 defai demo --output results/demo01
-defai run --strategy fedprox --rounds 3 --output results/prox01
+defai run --strategy fedprox --dataset synthetic --rounds 3 --output results/prox01
 defai init studies/session01
 defai research list
 ```
 
-The default runtime is CPU. Select `--device cuda` explicitly after installing a
-compatible CUDA PyTorch build. Discovery/workspace creation do not import training
-libraries. Optional install groups are `analysis`, `learning`, `flower`, `research`,
-`mobile`, `simulation`, `plot`, `all`, and `test`. Python 3.11/3.12 is recommended;
-Windows Ray simulations need 3.11/3.12, while the in-process backend also runs on 3.13.
+`defai run` trains and evaluates clients sequentially in one process, preserving
+their state between rounds. CPU is the default; select `--device cuda` after
+installing a compatible PyTorch build. Discovery and workspace creation do not
+load training libraries. Additional engine-based execution is documented under
+[Usage](#usage); runtime dependencies and implementation provenance are listed
+[below](#runtime-dependencies-and-implementation-provenance).
 
-The maintained Android app can be built with `defai android --sdk SDK_PATH --output app.apk`.
-It requires an installed Android SDK/JDK; Python dependencies do not install them.
-The mobile parameter coordinator uses explicit rounds, validated client updates,
-atomic persistence and NumPy, without a TensorFlow dependency.
+Build the maintained Android app with `defai android --sdk SDK_PATH --output app.apk`.
+An Android SDK and JDK are required separately. For a locked source environment,
+use `uv sync --locked --extra research --extra mobile --extra test`.
 
-For a locked source-checkout environment use `uv sync --locked --extra research --extra mobile --extra test`.
-`uv.lock` records the resolved dependency graph; `defai doctor` records the active versions.
+**Research status:** synthetic examples and software tests do not establish clinical
+validity, causal policy effects, or real multi-institution performance. Historical
+publication manifests describe the 2026-10-29 snapshot; current package resource
+hashes are in `defai/research/catalog.json`. Unreleased research remains excluded.
 
-Research-stage software: synthetic smoke tests do not establish clinical validity,
-causal policy effects, or distributed network performance. The publication manifests
-from 2026-10-29 are historical snapshots; current resource hashes are in
-`defai/research/catalog.json`. Unreleased research remains outside this package.
-
-## Existing algorithm reference
-
-# deFAI — Federated Learning Assignment
-
-[![tests](https://github.com/haneol815/deFAI/actions/workflows/tests.yml/badge.svg)](https://github.com/haneol815/deFAI/actions/workflows/tests.yml)
-
-A federated learning (FL) assignment template built on [Flower](https://flower.ai).
-It simulates multiple clients (SuperNodes) on a single machine with the Flower Simulation Engine,
-and the same code can be deployed to a real distributed setup with the Deployment Engine.
-
-- Datasets: MNIST, CIFAR-10 (downloaded and partitioned with [Flower Datasets](https://flower.ai/docs/datasets/)),
-  MNIST and Fashion-MNIST from plain-file mirrors (`mnist-mirror`, `fashion-mnist-mirror`, no Hugging Face needed),
-  plus an offline `synthetic` dataset for smoke tests
-- Partitioning: IID, Dirichlet non-IID
-- Algorithms (all implemented in this repo against Flower's `Strategy` interface — see [Algorithms](#algorithms)):
-  - non-IID / heterogeneity: FedProx, SCAFFOLD, MOON, FedNova, q-FedAvg (fairness)
-  - server optimisation: FedAvgM, FedAdagrad, FedAdam, FedYogi
-  - Byzantine-robust aggregation: FedMedian, FedTrimmedAvg, Krum, Multi-Krum, Bulyan
-  - central differential privacy: fixed / adaptive clipping, server- or client-side, with an RDP accountant
-- Malicious-client simulation: label flipping, sign flipping, Gaussian-noise updates
-- Communication: traffic accounting, lossy update compression (top-k, quantisation, error feedback)
-- Evaluation: per-client spread of accuracy, personalised accuracy after local fine-tuning, client dropout
-- Evaluation: federated (on each client's local data) + centralized (on the full test set at the server)
+## Technical reference
 
 ## Structure
 ```
 .
-├── pyproject.toml            # Dependencies + Flower app settings (run config)
+├── pyproject.toml            # Dependencies and execution settings
 ├── defai/
 │   ├── server_app.py         # ServerApp: strategy selection, rounds, centralized eval, result saving
 │   ├── client_app.py         # ClientApp: local training / evaluation, per-client state, attacks, client-side DP
@@ -92,13 +103,16 @@ and the same code can be deployed to a real distributed setup with the Deploymen
 ```
 
 ## Installation
-Requires Python 3.11 or later.
+Requires Python >=3.11,<3.14; Python 3.11/3.12 is recommended.
 ```bash
 python -m venv .venv && source .venv/bin/activate
-pip install -e .            # add ".[plot]" for plotting, ".[test]" for the tests
+pip install -e ".[research,mobile]"  # add ".[test]" for development checks
 ```
 
 ## Usage
+The primary entry point is `defai run` (see [Start here](#start-here)).
+The commands below use the optional engine-backed runtime; install `.[simulation]` first.
+
 ```bash
 # Default run (MNIST, IID, FedAvg, 10 rounds, 10 SuperNodes)
 flwr run . --stream --federation-config "num-supernodes=10"
@@ -113,7 +127,7 @@ flwr run . --stream --federation-config "num-supernodes=10" \
 ```
 
 - All configurable values are listed under `[tool.flwr.app.config]` in `pyproject.toml`.
-- Since Flower 1.32 the default number of simulated SuperNodes is 2, so set it with `--federation-config`.
+- The engine defaults to 2 simulated SuperNodes, so set the intended client count with `--federation-config`.
   To change the default permanently instead:
   `flwr federation simulation-config --num-supernodes 10`
 - Results are saved to `results/<dataset>_<strategy>_<partitioner>[_dp-...][_<attack>x<n>]_<timestamp>/history.json`.
@@ -134,7 +148,7 @@ flwr run . --stream --federation-config "num-supernodes=10" \
   cached in `~/.cache/defai` (`DEFAI_DATA_DIR` changes it). They are the standard 60k/10k splits (Fashion-MNIST is a harder task than
   MNIST) and work where the Hugging Face hub cannot be reached. The files are fetched by the first process that
   needs them, so run once locally before starting a long grid. CIFAR-10 has no such mirror here.
-- Recent Flower versions build a fresh virtual environment per `flwr run` and reinstall the app's dependencies.
+- Engine-based runs build a fresh virtual environment per `flwr run` and reinstall the app's dependencies.
   To reuse the current environment instead (much faster, and works offline), run with
   `FLWR_DISABLE_RUNTIME_DEPENDENCY_INSTALLATION=1`.
 
@@ -190,9 +204,10 @@ python scripts/partition_stats.py --partitioner dirichlet --alpha 0.1 --num-part
 It prints the per-client class counts and the mean share of each client's most frequent class (0.1 = uniform split of 10 classes).
 
 ## Algorithms
-Select with `strategy='<name>'`. Every strategy is implemented in `defai/strategies/` on top of Flower's abstract
-`Strategy` interface; Flower's built-in strategies are not imported. The structure follows Flower's own
-`FedAvg`/`FedOpt`/`Krum`/DP wrappers (Flower 1.40; tested with 1.42).
+Select with `strategy='<name>'` or `defai run --strategy NAME`. Implementations live in
+`defai/strategies/`, with local-training hooks, aggregation rules, server updates, and privacy accounting
+maintained in this repository. See [implementation provenance](#runtime-dependencies-and-implementation-provenance)
+for the external interfaces and reference implementations used.
 
 | `strategy` | Idea | Main settings | Reference |
 |---|---|---|---|
@@ -290,12 +305,12 @@ flwr run . --stream --federation-config "num-supernodes=10" --run-config \
 
 What the guarantee does and does not cover:
 - It is (ε, δ)-DP for the released model updates under add/remove-one-client adjacency, accounted with Rényi DP.
-  **No amplification by client sampling is credited** (Flower samples a fixed number of clients, not Poisson), so ε is a
+  **No amplification by client sampling is credited** (the current sampler selects a fixed number of clients, not Poisson), so ε is a
   conservative upper bound.
 - The server-side optimiser runs *after* the noise, so it is post-processing and the guarantee holds for FedAvgM/FedOpt
   as well. Aggregated training/evaluation metrics and the client-sampling pattern are **not** privatised.
 - `dp-noise-multiplier` is relative to the clipping norm and the noise is divided by `m`. With the handful of clients
-  of a classroom simulation the noise swamps the signal at any meaningful ε — useful privacy needs hundreds of clients
+  of a small simulation the noise swamps the signal at any meaningful ε — useful privacy needs hundreds of clients
   per round. The pipeline is the point here.
 - The noise RNG is seeded with `seed` so experiments are reproducible. That is wrong for real deployments.
 - `scaffold` and the robust rules are rejected together with DP: their sensitivity does not follow from clipping.
@@ -311,7 +326,23 @@ exact Gaussian-mechanism δ(ε)), DP clipping/noise/adaptive-quantile convergenc
 `client_app.train` with a real `Context` (per-client state, attacks, client-side DP, reproducibility), config validation
 and the helper scripts. It needs no network. GitHub Actions runs `ruff check .` and the suite on every push.
 
-## Notes on where this differs from Flower
+## Runtime dependencies and implementation provenance
+
+The common training backend currently uses [Flower](https://flower.ai/)'s abstract
+`Strategy`, `ClientApp`, messaging, and execution interfaces. The optional distributed
+execution path uses its Simulation/Deployment Engine; selected benchmark loaders use
+[Flower Datasets](https://flower.ai/docs/datasets/). These are real dependencies,
+not merely citations. The `flower` and `simulation` installation extras retain their
+technical names. Pure NumPy aggregation and the mobile coordinator do not require
+that runtime.
+
+The strategy structure was adapted with reference to its FedAvg/FedOpt/Krum/DP
+implementations (1.40; tested with 1.42). Built-in strategy classes are not imported;
+the repository contains reconstructed implementations and the choices listed below.
+The cited algorithm papers describe established methods, rather than methods
+invented by this project. Existing licenses and public-data references are retained.
+
+### Implementation choices and reference differences
 - **FedOpt**: following Reddi et al., the second moment starts at `τ²` and there is no Adam bias correction
   (Flower initialises it with zeros and applies a bias correction).
 - **Adaptive clipping**: the clip norm is updated with the fraction of *unclipped* updates, `C ← C·exp(−η(b̃ − γ))`

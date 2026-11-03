@@ -1,13 +1,14 @@
 # deFAI 0.2 사용자 안내
 
-공통 연합학습 알고리즘과 네 질병 연구를 하나의 설치 패키지에서 제공합니다.
+deFAI는 공통 연합학습 알고리즘과 네 질병 연구의 데이터 준비·실험·분석 도구를 통합한 연구용 패키지입니다.
+기존 알고리즘을 참고해 구현을 재구성하고, 통일된 명령행 도구와 Python API로 제공합니다.
 모든 연구는 **연구 단계·실전 미적용**입니다. 작은 합성 예제의 성공은 임상 성능,
 실제 기관 간 네트워크 성능, 실제 정책효과를 입증하지 않습니다.
 
 ## 1. 설치와 첫 실행
 
 Python 3.11 또는 3.12를 권장합니다. 기본 Python 패키지는 3.13도 지원하지만,
-Windows에서 Flower의 Ray 기반 분산 시뮬레이션을 사용할 때는 3.11/3.12가 필요합니다.
+Windows에서 선택 기능인 Ray 기반 분산 시뮬레이션을 사용할 때는 3.11/3.12가 필요합니다.
 `defai run`의 순차 실행은 Ray 없이도 실제 모델을 학습·평가합니다.
 
 ```powershell
@@ -36,7 +37,7 @@ CPU가 기본값입니다. CUDA용 PyTorch 설치는 [공식 호환 안내](http
 | `[flower]` | 공통 15개 알고리즘과 실제 ClientApp 순차 실행 |
 | `[research]` | 네 질병 연구의 Python 의존성, 그림·보고서·동형암호 |
 | `[mobile]` | Android용 모델 집계 서버 |
-| `[simulation]` | Flower/Ray 시뮬레이션 엔진 |
+| `[simulation]` | Ray 기반 엔진 시뮬레이션 |
 | `[all]` | 위 선택 기능 전체; Android SDK/JDK는 별도 설치 |
 
 따라서 처음에는 `[all]`과 합성 예제로 실행 경로를 확인하고, 필요한 실제 자료를 준비하면 됩니다.
@@ -229,3 +230,12 @@ defai android --sdk C:/Users/YOUR_NAME/AppData/Local/Android/Sdk --output artifa
 용어: API는 Python에서 호출하는 함수·클래스 인터페이스, CLI는 명령행 인터페이스,
 wheel은 Python 설치 파일, APK는 Android 설치 파일입니다. HbA1c는 당화혈색소이며,
 값은 %, 값의 차이와 오차는 %p로 구분합니다.
+
+## 구현 출처와 실행 의존성
+
+공통 학습 실행부는 현재 Flower의 Strategy·ClientApp·메시징 인터페이스를 사용하며,
+선택형 분산 실행도 해당 Simulation/Deployment Engine을 사용합니다. 따라서 참고 출처인 동시에
+실제 실행 의존성입니다. 일부 벤치마크 데이터 로더는 Flower Datasets를 사용합니다.
+알고리즘 구현과 실험 제어·검증·패키지화는 이 저장소에서 관리하며, 원 알고리즘 논문과
+참고 구현의 출처는 README의 기술 설명에 유지합니다. 기본 NumPy 집계와 모바일 서버는
+이 실행 엔진을 요구하지 않습니다.
