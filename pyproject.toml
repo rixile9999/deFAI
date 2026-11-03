@@ -78,6 +78,19 @@ fedopt-learning-rate = 0.01 # fedadagrad / fedadam / fedyogi: server step size (
 beta-1 = 0.9                # fedopt first-moment decay
 beta-2 = 0.99               # fedopt second-moment decay (fedadam / fedyogi)
 tau = 1e-3                  # fedopt adaptivity
+# Optional FedAdam first-moment replacement: strategy = "fedadam-kalman"
+kf-blend = 1.0              # 0 = exact original FedAdam EMA, 1 = Kalman first moment
+kf-rho = 1.0
+kf-process-noise = 1e-4
+kf-observation-noise = 1e-2
+kf-initial-variance = 0.0
+kf-variance-floor = 1e-12
+kf-gain-min = 0.0
+kf-gain-max = 1.0
+kf-process-adaptation = 0.0
+kf-observation-adaptation = 0.0
+kf-noise-ceiling = 1e6
+kf-max-step-norm = 0.0      # 0 = disabled; full model displacement before dtype rounding
 # robust aggregation
 trim-ratio = 0.2            # fedtrimmedavg: fraction trimmed from each side
 num-byzantine = 1           # krum / multikrum / bulyan: assumed number f of malicious clients per round (bulyan needs 4f+3 replies)

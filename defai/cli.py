@@ -25,6 +25,17 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List the workflow families and optional install groups")
+    profile = commands.add_parser("kalman-profile", help="Measure local estimator latency and traced allocations")
+    profile.add_argument("--sizes", type=int, nargs="+", default=[16, 10000, 1000000])
+    profile.add_argument("--repeats", type=int, default=20)
+    profile.add_argument("--output", type=Path, required=True)
+    kalman = commands.add_parser("kalman-benchmark", help="Paired FedAdam comparison with synthetic or offline public data")
+    kalman.add_argument("--full", action="store_true", help="Run the complete grid (810 synthetic/both-public runs; 405 for one public dataset)")
+    kalman.add_argument("--rounds", type=int, default=40)
+    kalman.add_argument("--dataset", choices=("synthetic", "digits", "breast-cancer", "public"), default="synthetic")
+    kalman.add_argument("--calibrated", action="store_true", help="Use EMA-matched public-data initialization and adaptive gain floor")
+    kalman.add_argument("--seed-offset", type=int, default=0)
+    kalman.add_argument("--output", type=Path, required=True)
     vertical = commands.add_parser("vertical", help="Feature-partitioned learning (local research protocols)")
     vertical_actions = vertical.add_subparsers(dest="vertical_action", required=True)
     vertical_actions.add_parser("list")
@@ -68,6 +79,7 @@ def parser():
     run.add_argument("--dataset", default="synthetic")
     run.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     run.add_argument("--threads", type=int, default=1)
+    run.add_argument("--optimizer-checkpoint", type=Path, help="Save final FedAdam Kalman model/optimizer (no DP or full training resume)")
     run.add_argument("--set", action="append", default=[], metavar="KEY=TOML_VALUE")
     research = commands.add_parser("research", help="Discover and run every packaged study in a workspace")
     actions = research.add_subparsers(dest="action", required=True)
@@ -105,7 +117,26 @@ def parser():
 def dispatch(args, forwarded):
     if forwarded and (args.command != "research" or args.action != "run"):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
-    if args.command == "vertical":
+    if args.command == "kalman-profile":
+        if args.output.exists(): raise FileExistsError(args.output)
+        from defai.kalman_profile import profile_estimator
+        result = profile_estimator(sizes=args.sizes, repeats=args.repeats)
+        _output(args.output, result)
+        _json({"output": str(args.output.resolve()), "results": result["results"]})
+    elif args.command == "kalman-benchmark":
+        if args.output.exists(): raise FileExistsError(args.output)
+        if args.dataset == "synthetic":
+            if args.calibrated or args.seed_offset: raise ValueError("calibrated/seed-offset apply to public datasets")
+            from defai.kalman_benchmark import run_benchmark
+            result = run_benchmark(full=args.full, rounds=args.rounds)
+        else:
+            from defai.kalman_public import run_public_benchmark
+            result = run_public_benchmark(dataset=args.dataset, full=args.full, rounds=args.rounds,
+                                          calibrated=args.calibrated, seed_offset=args.seed_offset)
+        _output(args.output, result)
+        _json({"output": str(args.output.resolve()), "status": result["status"], "runs": len(result["results"]),
+               "summary": result["summary"].get("datasets", result["summary"])})
+    elif args.command == "vertical":
         from defai.vertical.demo import FAMILIES, init_example, run_demo
         if args.vertical_action == "list":
             _json({"families": FAMILIES, "methods": ["split", "fedbcd-p", "fedbcd-s", "neural-bcd-p", "neural-bcd-s", "secureboost"],
@@ -129,6 +160,7 @@ def dispatch(args, forwarded):
     elif args.command == "list":
         _json({"version": __version__, "workflows": {
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
+            "kalman": "defai run --strategy fedadam-kalman --optimizer-checkpoint FILE | defai kalman-benchmark --dataset public --calibrated | defai kalman-profile [flower]",
             "vertical": "defai vertical list | init | run | demo [vertical]",
             "neonatal": "defai research list --domain neonatal [research]",
             "policy": "defai policy --input DIRECTORY --output result.json [analysis]",
@@ -177,7 +209,8 @@ def dispatch(args, forwarded):
             if not separator or not key:
                 raise ValueError("--set needs KEY=TOML_VALUE")
             cfg[key] = tomllib.loads("value=" + value)["value"]
-        summary = run_simulation(args.output, overrides=cfg, clients=args.clients, device=args.device, threads=args.threads)
+        summary = run_simulation(args.output, overrides=cfg, clients=args.clients, device=args.device, threads=args.threads,
+                                 optimizer_checkpoint=args.optimizer_checkpoint)
         _json({"output": str(args.output.resolve()), "completed_rounds": len(summary["history"])-1,
                "elapsed_seconds": summary["elapsed_seconds"], "backend": summary["backend"]})
     elif args.command == "research":

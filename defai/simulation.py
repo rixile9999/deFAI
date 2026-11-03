@@ -18,7 +18,7 @@ def default_config():
         return tomllib.load(stream)["tool"]["flwr"]["app"]["config"]
 
 
-def run_simulation(output, *, overrides=None, clients=4, device="cpu", threads=1):
+def run_simulation(output, *, overrides=None, clients=4, device="cpu", threads=1, optimizer_checkpoint=None):
     """Train/evaluate with persistent client states and all normal run-config axes."""
     import torch
     from flwr.app import ArrayRecord, ConfigRecord, Context, MessageType, MetricRecord, RecordDict
@@ -36,6 +36,13 @@ def run_simulation(output, *, overrides=None, clients=4, device="cpu", threads=1
         raise ValueError(f"Unknown run-config keys: {', '.join(sorted(unknown))}")
     cfg.update(overrides)
     validate_config(cfg)
+    if optimizer_checkpoint is not None:
+        optimizer_checkpoint = Path(optimizer_checkpoint).resolve()
+        if optimizer_checkpoint == Path(output).resolve():
+            raise ValueError("optimizer checkpoint must be a file distinct from the run directory")
+        if cfg["strategy"] != "fedadam-kalman" or cfg["dp"] != "none":
+            raise ValueError("optimizer snapshots require fedadam-kalman with dp='none'")
+        if optimizer_checkpoint.exists(): raise FileExistsError(optimizer_checkpoint)
     if isinstance(clients, bool) or not isinstance(clients, int) or clients < 2:
         raise ValueError("clients must be an integer >= 2")
     if isinstance(threads, bool) or not isinstance(threads, int) or threads < 1:
@@ -94,6 +101,10 @@ def run_simulation(output, *, overrides=None, clients=4, device="cpu", threads=1
             if strategy.dp is not None:
                 summary["privacy"] = privacy_summary(strategy.dp)
             output.mkdir(parents=True, exist_ok=False)
+            if optimizer_checkpoint is not None:
+                from defai.records import to_arrays
+                snapshot = strategy.save_checkpoint(optimizer_checkpoint, model=to_arrays(final_arrays(result, initial)))
+                summary["optimizer_snapshot"] = str(snapshot)
             write_summary(output / "history.json", summary)
             if cfg["save-model"]:
                 torch.save(final_arrays(result, initial).to_torch_state_dict(), output / "final_model.pt")

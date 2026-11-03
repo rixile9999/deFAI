@@ -1,0 +1,120 @@
+{
+  "status": "research_synthetic_benchmark",
+  "data": "generated synthetic binary logistic clients",
+  "network_transport_measured": false,
+  "privacy_enabled": false,
+  "axes": {
+    "alpha": [
+      0.1,
+      0.5,
+      10.0
+    ],
+    "local_steps": [
+      1,
+      5,
+      20
+    ],
+    "participation": [
+      0.1,
+      0.5,
+      1.0
+    ],
+    "drift": [
+      false,
+      true
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "rounds": 40,
+  "summary": {
+    "ema": {
+      "runs": 270,
+      "target_reached_runs": 270,
+      "paired_both_reached": 270,
+      "paired_fewer_rounds": 0,
+      "paired_more_rounds": 0,
+      "only_method_reached": 0,
+      "only_baseline_reached": 0,
+      "final_accuracy_mean": 0.5900733024691358,
+      "final_accuracy_std": 0.25514388250612124,
+      "final_loss_mean": 0.5933741651873786,
+      "final_client_p10_mean": 0.4848842592592592,
+      "total_seconds": 15.177885999844875,
+      "server_seconds": 0.9837779003428295,
+      "mean_numeric_state_bytes": 112.0,
+      "training_payload_bytes": 6451200,
+      "evaluation_payload_bytes": 7776000,
+      "post_shift_recovered_runs": 0
+    },
+    "kalman": {
+      "runs": 270,
+      "target_reached_runs": 270,
+      "paired_both_reached": 270,
+      "paired_fewer_rounds": 20,
+      "paired_more_rounds": 54,
+      "only_method_reached": 0,
+      "only_baseline_reached": 0,
+      "final_accuracy_mean": 0.6856790123456791,
+      "final_accuracy_std": 0.15901287829070998,
+      "final_loss_mean": 0.5378973308397802,
+      "final_client_p10_mean": 0.5452044753086419,
+      "total_seconds": 16.498074399656616,
+      "server_seconds": 2.1967536052688956,
+      "mean_numeric_state_bytes": 152.0,
+      "training_payload_bytes": 6451200,
+      "evaluation_payload_bytes": 7776000,
+      "post_shift_recovered_runs": 0
+    },
+    "adaptive-kalman": {
+      "runs": 270,
+      "target_reached_runs": 270,
+      "paired_both_reached": 270,
+      "paired_fewer_rounds": 60,
+      "paired_more_rounds": 28,
+      "only_method_reached": 0,
+      "only_baseline_reached": 0,
+      "final_accuracy_mean": 0.7011496913580249,
+      "final_accuracy_std": 0.239219153368584,
+      "final_loss_mean": 0.5361844040714171,
+      "final_client_p10_mean": 0.5938850308641975,
+      "total_seconds": 16.29439210036071,
+      "server_seconds": 2.169808702659793,
+      "mean_numeric_state_bytes": 152.0,
+      "training_payload_bytes": 6451200,
+      "evaluation_payload_bytes": 7776000,
+      "post_shift_recovered_runs": 52
+    }
+  },
+  "excluded": [
+    "real datasets",
+    "clinical/manufacturing validation",
+    "Bayesian search",
+    "network latency",
+    "hyperparameter tuning",
+    "privacy claims"
+  ],
+  "raw_results_sha256": "ef19d9365e654b65602f314246680edad07fb68771c392c9550b7838831e6d2f",
+  "environment": {
+    "python": "3.11.15",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "numpy": "2.4.6",
+    "flwr": "1.42.0"
+  },
+  "run_count": 810,
+  "full_regression_tests": 625,
+  "units": {
+    "accuracy": "fraction (1.0=100%)",
+    "loss": "mean binary cross entropy",
+    "seconds": "local wall seconds (uncontrolled host load)",
+    "bytes": "numeric payload bytes, excludes containers and transport"
+  },
+  "replication_note": "5 seeds per stratum; stationary/drift prefixes overlap; do not infer 810 independent replications",
+  "covariance_denominator_overflow_regression": "passed; gain=0.5 for prior=R=1e308",
+  "runtime_validated_at_commit": "289b539387ef360b4d5f9615a3897d031400d4a0"
+}
