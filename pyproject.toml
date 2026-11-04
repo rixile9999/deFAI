@@ -17,6 +17,7 @@ dependencies = [
 defai = "defai.cli:main"
 
 [project.optional-dependencies]
+transport = ["cryptography>=45,<51"]
 vertical = ["torch>=2.6,<2.7", "scipy>=1.14,<2", "pycryptodome>=3.21,<4"]
 analysis = ["scipy>=1.14,<2", "pandas>=2.2,<4", "openpyxl>=3.1,<4"]
 learning = ["torch>=2.6,<2.7", "torchvision>=0.21,<0.22", "scikit-learn>=1.5,<2", "pillow>=10,<13", "psutil>=6,<8", "opencv-python-headless>=4.10,<6", "tqdm>=4.66,<5"]
@@ -25,8 +26,8 @@ simulation = ["flwr[simulation]==1.42.0", "defai[flower]"]
 plot = ["matplotlib>=3.9,<4", "python-pptx>=1,<2"]
 research = ["defai[analysis,learning,flower,plot]", "tenseal==0.3.18", "statsmodels>=0.14,<0.16"]
 mobile = ["flask>=3.1,<4", "waitress>=3,<4"]
-all = ["defai[research,mobile,simulation,vertical]"]
-test = ["pytest>=8,<10", "pytest-cov", "dp-accounting>=0.5,<0.7", "ruff", "build", "hatchling"]
+all = ["defai[research,mobile,simulation,vertical,transport]"]
+test = ["pytest>=8,<10", "pytest-cov", "dp-accounting>=0.5,<0.7", "ruff", "build", "hatchling", "cryptography>=45,<51"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["defai"]

@@ -11,6 +11,7 @@ References: Lian et al., NeurIPS 2017; Xiao, Boyd & Lall, 2005 Metropolis consen
 from __future__ import annotations
 
 import hashlib
+import ipaddress
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
@@ -29,7 +30,7 @@ import numpy as np
 from defai.io import write_json
 
 
-def config(path):
+def config(path, *, transport="http", allow_network=False):
     path = Path(path)
     if path.stat().st_size > 1024 * 1024:
         raise ValueError("Peer configuration exceeds 1 MiB")
@@ -57,16 +58,28 @@ def config(path):
             raise ValueError("Invalid peer name")
         endpoint = peer.get("endpoint", "")
         address = urlparse(endpoint)
+        try:
+            valid_host = (
+                address.hostname == "127.0.0.1"
+                if transport == "http"
+                else bool(
+                    ipaddress.ip_address(address.hostname).is_loopback or allow_network
+                )
+            )
+        except (ValueError, TypeError):
+            valid_host = False
         if (
-            address.scheme != "http"
-            or address.hostname != "127.0.0.1"
+            address.scheme != transport
+            or not valid_host
             or not address.port
             or address.path not in ("", "/")
             or address.query
             or address.fragment
             or address.username
         ):
-            raise ValueError("Research HTTP peers require loopback endpoints")
+            raise ValueError(
+                "Invalid peer endpoint or non-loopback network not enabled"
+            )
         if endpoint.rstrip("/") in endpoints:
             raise ValueError("Duplicate peer endpoint")
         endpoints.add(endpoint.rstrip("/"))

@@ -29,7 +29,7 @@ def parser():
     udt_actions = udt.add_subparsers(dest="udt_action", required=True)
     udt_build = udt_actions.add_parser("build")
     udt_build.add_argument("--output", type=Path, required=True)
-    p2p = commands.add_parser("p2p", help="Decentralized local-train/neighbor-mix research peers")
+    p2p = commands.add_parser("p2p", help="Decentralized HTTP reference or encrypted, resumable UDT peers")
     p2p_actions = p2p.add_subparsers(dest="p2p_action", required=True)
     p2p_demo = p2p_actions.add_parser("demo")
     p2p_demo.add_argument("--output", type=Path, required=True)
@@ -42,6 +42,26 @@ def parser():
     p2p_peer.add_argument("--data", type=Path, required=True)
     p2p_peer.add_argument("--output", type=Path, required=True)
     p2p_peer.add_argument("--timeout", type=float, default=30)
+    udt_demo = p2p_actions.add_parser("udt-demo", help="Resumable peer learning over actual Java UDT")
+    udt_demo.add_argument("--output", type=Path, required=True)
+    udt_demo.add_argument("--peers", type=int, default=3)
+    udt_demo.add_argument("--rounds", type=int, default=3)
+    udt_demo.add_argument("--topology", choices=["ring", "full", "star"], default="ring")
+    udt_demo.add_argument("--jar", type=Path)
+    udt_demo.add_argument("--round-timeout", type=float, default=120)
+    udt_demo.add_argument("--attempt-timeout", type=float, default=5)
+    udt_peer = p2p_actions.add_parser("udt-peer", help="Run or resume one authenticated UDT peer")
+    udt_peer.add_argument("manifest", type=Path)
+    udt_peer.add_argument("--peer", required=True)
+    udt_peer.add_argument("--data", type=Path, required=True)
+    udt_peer.add_argument("--output", type=Path, required=True)
+    udt_peer.add_argument("--jar", type=Path, required=True)
+    udt_peer.add_argument("--key-file", type=Path, required=True)
+    udt_peer.add_argument("--resume", action="store_true")
+    udt_peer.add_argument("--allow-network", action="store_true")
+    udt_peer.add_argument("--round-timeout", type=float, default=120)
+    udt_peer.add_argument("--attempt-timeout", type=float, default=5)
+    udt_peer.add_argument("--linger", type=float)
     profile = commands.add_parser("kalman-profile", help="Measure local estimator latency and traced allocations")
     profile.add_argument("--sizes", type=int, nargs="+", default=[16, 10000, 1000000])
     profile.add_argument("--repeats", type=int, default=20)
@@ -134,9 +154,21 @@ def parser():
 def dispatch(args, forwarded):
     if args.command == "udt":
         from defai.udt import build
-        _json({"jar": build(args.output), "stage": "research_lab", "p2p_connected": False})
+        _json({"jar": build(args.output), "stage": "research_lab", "peer_runtime": "defai p2p udt-demo | udt-peer"})
         return 0
     if args.command == "p2p":
+        if args.p2p_action == "udt-demo":
+            from defai.p2p_udt import run_demo
+            _json(run_demo(args.output, peers=args.peers, rounds=args.rounds, topology=args.topology,
+                           jar=args.jar, round_timeout=args.round_timeout, attempt_timeout=args.attempt_timeout))
+            return 0
+        if args.p2p_action == "udt-peer":
+            from defai.p2p_udt import run_peer
+            result = run_peer(args.manifest,args.peer,args.data,args.output,args.jar,args.key_file,
+                              resume=args.resume,round_timeout=args.round_timeout,attempt_timeout=args.attempt_timeout,
+                              allow_network=args.allow_network,linger=args.linger)
+            _json({"peer":result["peer"],"round":result["round"],"status":result["status"],"transport":"java-udt"})
+            return 0
         from defai.p2p import run_demo, run_peer
         if args.p2p_action == "demo":
             _json(run_demo(args.output, peers=args.peers, rounds=args.rounds, topology=args.topology))
@@ -190,7 +222,7 @@ def dispatch(args, forwarded):
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
             "kalman": "defai run --strategy fedadam-kalman --optimizer-checkpoint FILE | defai kalman-benchmark --dataset public --calibrated | defai kalman-profile [flower]",
             "vertical": "defai vertical list | init | run | demo [vertical]",
-            "p2p": "defai p2p demo | peer (independent HTTP peers; UDT not connected)",
+            "p2p": "defai p2p udt-demo | udt-peer [transport]; HTTP reference: demo | peer",
             "udt": "defai udt build --output FILE.jar [JDK 17+]",
             "neonatal": "defai research list --domain neonatal [research]",
             "policy": "defai policy --input DIRECTORY --output result.json [analysis]",
@@ -200,7 +232,7 @@ def dispatch(args, forwarded):
             "python_api": ["defai.strategies", "defai.aggregation", "defai.privacy", "defai.compression",
                            "defai.research.neonatal", "defai.research.policy", "defai.research.generation", "defai.research.hba1c"]})
     elif args.command == "doctor":
-        packages = ("numpy", "scipy", "pandas", "torch", "torchvision", "flwr", "flwr-datasets", "tenseal", "flask", "waitress")
+        packages = ("numpy", "scipy", "pandas", "torch", "torchvision", "flwr", "flwr-datasets", "tenseal", "flask", "waitress", "cryptography")
         versions = {}
         for name in packages:
             try:
