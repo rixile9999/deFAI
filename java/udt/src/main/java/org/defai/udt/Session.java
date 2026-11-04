@@ -11,18 +11,25 @@ public final class Session implements AutoCloseable {
         EndPoint(DatagramSocket socket) { super(socket); }
         UDTSession take() throws InterruptedException { return accept(100, TimeUnit.MILLISECONDS); }
     }
-    private final EndPoint endpoint;
+    private final UDPEndPoint endpoint;
+    private final boolean ownsEndpoint;
     private volatile UDTSocket socket;
     private final ScheduledExecutorService timer;
     private final ScheduledFuture<?> deadline;
     private volatile boolean expired;
 
     public Session(String bind, int port, long timeoutMillis) throws IOException {
+        this(new EndPoint(new DatagramSocket(new InetSocketAddress(bind, port))), null, true, timeoutMillis);
+    }
+    static Session attached(UDTSocket socket, long timeoutMillis) {
+        return new Session(socket.getEndpoint(), socket, false, timeoutMillis);
+    }
+    private Session(UDPEndPoint endpoint, UDTSocket socket, boolean ownsEndpoint, long timeoutMillis) {
         if (timeoutMillis < 100 || timeoutMillis > 3600000) throw new IllegalArgumentException("Timeout must be 100..3600000 ms");
-        endpoint = new EndPoint(new DatagramSocket(new InetSocketAddress(bind, port)));
+        this.endpoint = endpoint; this.socket = socket; this.ownsEndpoint = ownsEndpoint;
         Thread owner = Thread.currentThread();
         timer = Executors.newSingleThreadScheduledExecutor(r -> { Thread t = new Thread(r, "defai-udt-deadline"); t.setDaemon(true); return t; });
-        deadline = timer.schedule(() -> { expired = true; owner.interrupt(); closeSocket(); endpoint.stop(); }, timeoutMillis, TimeUnit.MILLISECONDS);
+        deadline = timer.schedule(() -> { expired = true; owner.interrupt(); closeSocket(); if (ownsEndpoint) endpoint.stop(); }, timeoutMillis, TimeUnit.MILLISECONDS);
     }
     public void connect(String host, int port) throws Exception {
         UDTClient client = new UDTClient(endpoint);
@@ -32,7 +39,7 @@ public final class Session implements AutoCloseable {
     public void accept() throws Exception {
         endpoint.start(true);
         UDTSession accepted;
-        do { accepted = endpoint.take(); } while (accepted == null);
+        do { accepted = ((EndPoint)endpoint).take(); } while (accepted == null);
         while (!accepted.isReady() || accepted.getSocket() == null) Thread.sleep(5);
         socket = accepted.getSocket();
     }
@@ -72,11 +79,14 @@ public final class Session implements AutoCloseable {
     private void closeSocket() {
         for (UDTSession session : endpoint.getSessions()) {
             UDTSocket current = session.getSocket();
+            if (!ownsEndpoint && current != socket) continue;
             if (current != null) try { current.getReceiver().stop(); } catch (IOException ignored) { /* best effort after cancellation */ }
         }
     }
     public void close() {
-        deadline.cancel(false); timer.shutdownNow(); closeSocket(); endpoint.stop();
+        deadline.cancel(false); timer.shutdownNow(); closeSocket();
+        if (ownsEndpoint) endpoint.stop();
+        else if (socket != null) endpoint.removeSession(socket.getSession());
         if (expired) Thread.interrupted();
     }
 }

@@ -10,7 +10,15 @@ public final class Main {
     public static void main(String[] args) throws Exception {
         if (!Boolean.getBoolean("defai.udt.verbose")) Logger.getLogger("udt").setLevel(Level.OFF);
         if (args.length < 1) throw new IllegalArgumentException("receive STORE BIND PORT TIMEOUT_MS | send FILE ID MODEL_VERSION HOST PORT TIMEOUT_MS [--allow-insecure-network]");
-        if (args[0].equals("receive") && (args.length == 5 || args.length == 6)) {
+        if (args[0].equals("serve") && args.length >= 5) {
+            checkAddress(args[2], args);
+            File lease=null;
+            for(int i=5;i<args.length;i++) {
+                if(args[i].equals("--lease") && i+1<args.length) lease=new File(args[++i]);
+                else if(!args[i].equals("--allow-insecure-network")) throw new IllegalArgumentException("Unknown serve option");
+            }
+            InboxServer.serve(new File(args[1]),args[2],Integer.parseInt(args[3]),Long.parseLong(args[4]),lease);
+        } else if (args[0].equals("receive") && (args.length == 5 || args.length == 6)) {
             checkAddress(args[2], args);
             try (Session session = new Session(args[2], Integer.parseInt(args[3]), Long.parseLong(args[4]))) {
                 System.out.println("READY " + session.port()); System.out.flush();
@@ -30,7 +38,7 @@ public final class Main {
         } else throw new IllegalArgumentException("Invalid command arguments");
     }
     static void checkAddress(String address, String[] args) throws Exception {
-        if (!InetAddress.getByName(address).isLoopbackAddress() && !args[args.length-1].equals("--allow-insecure-network"))
+        if (!InetAddress.getByName(address).isLoopbackAddress() && !java.util.Arrays.asList(args).contains("--allow-insecure-network"))
             throw new IllegalArgumentException("Non-loopback lab use requires --allow-insecure-network; no authentication/encryption is provided");
     }
 }

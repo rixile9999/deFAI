@@ -217,6 +217,10 @@ public class UDPEndPoint {
 		return sessions.values();
 	}
 
+	public void removeSession(UDTSession session){
+		sessions.remove(session.getSocketID(),session);
+	}
+
 	/**
 	 * wait the given time for a new connection
 	 * @param timeout - the time to wait
