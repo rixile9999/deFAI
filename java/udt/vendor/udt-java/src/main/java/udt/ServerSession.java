@@ -82,9 +82,12 @@ public class ServerSession extends UDTSession {
 					handleHandShake(connectionHandshake);
 					n_handshake++;
 					try{
+						if(socket==null){
+							setState(ready);
+							socket=new UDTSocket(endPoint, this);
+							cc.init();
+						}
 						setState(ready);
-						socket=new UDTSocket(endPoint, this);
-						cc.init();
 					}catch(Exception uhe){
 						//session is invalid
 						logger.log(Level.SEVERE,"",uhe);

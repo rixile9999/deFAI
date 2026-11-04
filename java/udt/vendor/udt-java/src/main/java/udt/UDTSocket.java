@@ -166,8 +166,8 @@ public class UDTSocket {
 		while(bb.remaining()>0){
 			try{
 				sender.sendUdtPacket(bb, timeout, units);
-			}catch(Exception ex){
-				ex.printStackTrace();
+			}catch(InterruptedException ex){
+				throw ex;
 			}
 		}
 		if(length>0)active=true;

@@ -168,7 +168,7 @@ public class UDTSender {
 						senderAlgorithm();
 					}
 				}catch(InterruptedException ie){
-					ie.printStackTrace();
+					if(!stopped)logger.log(Level.WARNING,"Sender interrupted",ie);
 				}
 				catch(IOException ex){
 					ex.printStackTrace();
@@ -524,6 +524,8 @@ public class UDTSender {
 
 	public void stop(){
 		stopped=true;
+		startLatch.countDown();
+		if(senderThread!=null)senderThread.interrupt();
 	}
 
 	public void pause(){

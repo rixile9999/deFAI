@@ -75,6 +75,10 @@ public class UDTStatistics {
 	public int getNumberOfSentDataPackets() {
 		return numberOfSentDataPackets.get();
 	}
+
+	public long getRoundTripTimeMicros() {
+		return roundTripTime;
+	}
 	public int getNumberOfReceivedDataPackets() {
 		return numberOfReceivedDataPackets.get();
 	}

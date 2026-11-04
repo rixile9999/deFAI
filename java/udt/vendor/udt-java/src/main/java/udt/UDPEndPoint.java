@@ -266,6 +266,17 @@ public class UDPEndPoint {
 							Long id=Long.valueOf(packet.getDestinationID());
 							UDTSession session=sessions.get(id);
 							if(session==null){
+								long remoteID=((ConnectionHandshake)packet).getSocketID();
+								for(UDTSession candidate:sessions.values()){
+									Destination remote=candidate.getDestination();
+									if(candidate instanceof ServerSession && remote.getSocketID()==remoteID &&
+										remote.getPort()==dp.getPort() && remote.getAddress().equals(dp.getAddress())){
+										session=candidate;
+										break;
+									}
+								}
+							}
+							if(session==null){
 								session=new ServerSession(dp,this);
 								addSession(session.getSocketID(),session);
 								//TODO need to check peer to avoid duplicate server session

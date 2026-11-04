@@ -67,6 +67,7 @@ public class ClientSession extends UDTSession {
 
 	public void connect() throws InterruptedException,IOException{
 		int n=0;
+		setInitialSequenceNumber(SequenceNumber.random());
 		while(getState()!=ready){
 			sendHandShake();
 			if(getState()==invalid)throw new IOException("Can't connect!");
@@ -146,8 +147,7 @@ public class ClientSession extends UDTSession {
 		ConnectionHandshake handshake = new ConnectionHandshake();
 		handshake.setConnectionType(ConnectionHandshake.CONNECTION_TYPE_REGULAR);
 		handshake.setSocketType(ConnectionHandshake.SOCKET_TYPE_DGRAM);
-		long initialSequenceNo=SequenceNumber.random();
-		setInitialSequenceNumber(initialSequenceNo);
+		long initialSequenceNo=getInitialSequenceNumber();
 		handshake.setInitialSeqNo(initialSequenceNo);
 		handshake.setPacketSize(getDatagramSize());
 		handshake.setSocketID(mySocketID);
