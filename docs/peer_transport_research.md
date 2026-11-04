@@ -1,7 +1,9 @@
 # Separate UDT transport and decentralized learning backends
 
 Both features are **research implementations, not production deployments**.
-UDT and P2P are independently usable. Neither calls the other in this version.
+Standalone UDT and HTTP reference peers remain independently usable.
+The [encrypted, resumable UDT peer mode](udt_p2p.md) combines them for actual
+neighbor learning over UDP and is the primary fault-recovery workflow.
 No GV-HE code or unpublished cryptographic work is included.
 
 ## Java UDT transport
@@ -111,15 +113,13 @@ implemented. Do not equate decentralization with model confidentiality.
 not Ethernet/IP/HTTP headers, all retries or actual wire traffic. Synthetic local
 loss and model spread are functional diagnostics, not clinical evaluations.
 
-## Future combination boundary
+## Integrated UDT mode
 
-UDT transfers opaque model bytes with durable transfer ID/model version. P2P
-validates peer/job/round/model identity independently of how bytes arrive. Future
-integration can serialize the immutable peer snapshot as UTF-8 and derive a
-64-character transfer ID from job+sender+recipient+round; a transport adapter
-would supply bytes to the existing snapshot validation/mixing path. No such
-adapter is enabled now. The completed-result interchange format, if installed,
-remains distinct from these live peer snapshots.
+The integrated mode serializes and encrypts immutable peer snapshots, derives
+stable transfer IDs from job/sender/recipient/kind/round, and supplies validated
+UDT inbox bytes to neighbor mixing. Signed checkpoints and outboxes preserve
+exact round semantics across restart. See [run and recovery instructions](udt_p2p.md).
+Completed-result interchange remains distinct from these live peer messages.
 
 ## Verification and references
 

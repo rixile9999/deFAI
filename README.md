@@ -30,9 +30,10 @@ and research references are retained in the [algorithm reference](#algorithms).
   payloads; they are not measurements of real network throughput.
 - **Mobile tools:** an Android example client and a NumPy-based parameter coordinator
   with round validation and persisted state.
-- **Independent transport and peer learning:** a resumable Java UDT file adapter
-  and decentralized local-train/Metropolis-mix peers. The two research backends
-  are tested separately; see the [transport and P2P guide](docs/peer_transport_research.md).
+- **Resilient UDT peer learning:** decentralized neighbor training over Java UDT,
+  with encrypted messages, retry, immutable outboxes and checkpoint resume.
+  See the [UDT peer guide](docs/udt_p2p.md). Standalone file transfer and the HTTP
+  reference remain available in the [transport guide](docs/peer_transport_research.md).
 
 Benchmark datasets include MNIST, Fashion-MNIST, and CIFAR-10, with plain-file mirror
 options and an offline `synthetic` dataset. Disease studies use their own documented

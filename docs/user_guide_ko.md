@@ -29,11 +29,11 @@ CPU가 기본값입니다. CUDA용 PyTorch 설치는 [공식 호환 안내](http
 따르고 `defai doctor --probe-gpu`로 확인한 뒤 `--device cuda`를 명시합니다.
 특정 GPU 모델을 요구하지 않습니다.
 
-UDT 통신과 중앙 집계 없는 P2P 학습은 별도의 연구용 기능입니다. 두 기능은 아직
-연결하지 않았습니다. JDK 17 이상에서 `defai udt build --output defai-udt.jar`로
-Java 전송 라이브러리를 만들고, `defai p2p demo --output results/p2p01`로
-독립 프로세스의 이웃 모델 교환·혼합을 실행할 수 있습니다.
-[실행 방법과 검증 범위](peer_transport_research.md)를 먼저 확인합니다.
+UDT 기반 P2P 통합 기능은 `pip install ".[transport]"`와 JDK 17 이상이 필요합니다.
+`defai p2p udt-demo --output results/udt-peer01`로 암호화된 이웃 모델 교환·혼합을
+실행합니다. 참여자별로 `defai p2p udt-peer ... --resume`을 사용해 체크포인트에서
+재개할 수 있습니다. [실행·복구 방법](udt_p2p.md)을 먼저 확인합니다.
+독립 Java 전송과 HTTP 비교 구현도 [별도 명령](peer_transport_research.md)으로 유지합니다.
 
 | 설치 범위 | 포함 내용 |
 |---|---|
