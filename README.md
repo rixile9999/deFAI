@@ -30,6 +30,9 @@ and research references are retained in the [algorithm reference](#algorithms).
   payloads; they are not measurements of real network throughput.
 - **Mobile tools:** an Android example client and a NumPy-based parameter coordinator
   with round validation and persisted state.
+- **Result interchange:** export completed common-model runs as an engine-independent
+  [numeric result and TorchScript bundle](docs/result_interchange.md) for external
+  model registries, without changing the training algorithm.
 
 Benchmark datasets include MNIST, Fashion-MNIST, and CIFAR-10, with plain-file mirror
 options and an offline `synthetic` dataset. Disease studies use their own documented

@@ -29,6 +29,11 @@ CPU가 기본값입니다. CUDA용 PyTorch 설치는 [공식 호환 안내](http
 따르고 `defai doctor --probe-gpu`로 확인한 뒤 `--device cuda`를 명시합니다.
 특정 GPU 모델을 요구하지 않습니다.
 
+완료된 공통 모델 실험은 `defai export-result RUN_DIRECTORY --output NEW_DIRECTORY`로
+외부 플랫폼용 결과·수치 가중치·TorchScript 묶음으로 내보낼 수 있습니다(`[flower]` 필요).
+자세한 규격과 입력 전처리·검증 범위는 [결과 교환 안내](result_interchange.md)를 참고하세요.
+학습 재개 파일이나 기관 간 통신 구현을 뜻하지 않습니다.
+
 | 설치 범위 | 포함 내용 |
 |---|---|
 | 기본 설치 | 기능 탐색, 작업 폴더 생성, NumPy 집계, 공공 데이터 참조·확인 |
