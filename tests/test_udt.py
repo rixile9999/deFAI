@@ -65,6 +65,9 @@ class Relay:
         self.back.bind(("127.0.0.1", 0))
         self.port, self.server = self.front.getsockname()[1], ("127.0.0.1", server_port)
         self.client, self.stop = None, threading.Event()
+        self.backends = {self.back: None}
+        self.blackout = threading.Event()
+        self.jitter, self.duplicate_every = 0, 0
         self.loss_every, self.delay, self.drop_handshake = (
             loss_every,
             delay,
@@ -78,6 +81,7 @@ class Relay:
         selector = selectors.DefaultSelector()
         selector.register(self.front, selectors.EVENT_READ)
         selector.register(self.back, selectors.EVENT_READ)
+        client_sockets = {}
         queue, count, order = [], 0, 0
         try:
             while not self.stop.is_set():
@@ -86,11 +90,25 @@ class Relay:
                         data, address = key.fileobj.recvfrom(65535)
                     except ConnectionResetError:
                         continue  # Windows reports ICMP from a peer that already exited.
+                    if self.blackout.is_set():
+                        self.dropped += 1
+                        continue
                     if key.fileobj is self.front:
                         self.client = address
-                        output, destination = self.back, self.server
+                        if address not in client_sockets:
+                            if not client_sockets:
+                                output = self.back
+                            else:
+                                output = socket.socket(
+                                    socket.AF_INET, socket.SOCK_DGRAM
+                                )
+                                output.bind(("127.0.0.1", 0))
+                                selector.register(output, selectors.EVENT_READ)
+                            client_sockets[address] = output
+                            self.backends[output] = address
+                        output, destination = client_sockets[address], self.server
                     else:
-                        output, destination = self.front, self.client
+                        output, destination = self.front, self.backends[key.fileobj]
                     if destination is None:
                         continue
                     if (
@@ -111,16 +129,31 @@ class Relay:
                     heapq.heappush(
                         queue,
                         (
-                            time.monotonic() + self.delay,
+                            time.monotonic() + self.delay + self.jitter * (order % 3),
                             order,
                             output,
                             destination,
                             data,
                         ),
                     )
+                    if self.duplicate_every and order % self.duplicate_every == 0:
+                        order += 1
+                        heapq.heappush(
+                            queue,
+                            (
+                                time.monotonic() + self.delay + 0.001,
+                                order,
+                                output,
+                                destination,
+                                data,
+                            ),
+                        )
                 while queue and queue[0][0] <= time.monotonic():
                     _, _, output, destination, data = heapq.heappop(queue)
-                    output.sendto(data, destination)
+                    if self.blackout.is_set():
+                        self.dropped += 1
+                    else:
+                        output.sendto(data, destination)
         finally:
             selector.close()
 
@@ -128,7 +161,8 @@ class Relay:
         self.stop.set()
         self.thread.join(timeout=2)
         self.front.close()
-        self.back.close()
+        for backend in self.backends:
+            backend.close()
 
 
 @pytest.mark.parametrize(
