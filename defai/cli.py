@@ -25,6 +25,23 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List the workflow families and optional install groups")
+    udt = commands.add_parser("udt", help="Build the separate Java UDT transport adapter")
+    udt_actions = udt.add_subparsers(dest="udt_action", required=True)
+    udt_build = udt_actions.add_parser("build")
+    udt_build.add_argument("--output", type=Path, required=True)
+    p2p = commands.add_parser("p2p", help="Decentralized local-train/neighbor-mix research peers")
+    p2p_actions = p2p.add_subparsers(dest="p2p_action", required=True)
+    p2p_demo = p2p_actions.add_parser("demo")
+    p2p_demo.add_argument("--output", type=Path, required=True)
+    p2p_demo.add_argument("--peers", type=int, default=4)
+    p2p_demo.add_argument("--rounds", type=int, default=20)
+    p2p_demo.add_argument("--topology", choices=["ring", "full", "star"], default="ring")
+    p2p_peer = p2p_actions.add_parser("peer")
+    p2p_peer.add_argument("manifest", type=Path)
+    p2p_peer.add_argument("--peer", required=True)
+    p2p_peer.add_argument("--data", type=Path, required=True)
+    p2p_peer.add_argument("--output", type=Path, required=True)
+    p2p_peer.add_argument("--timeout", type=float, default=30)
     profile = commands.add_parser("kalman-profile", help="Measure local estimator latency and traced allocations")
     profile.add_argument("--sizes", type=int, nargs="+", default=[16, 10000, 1000000])
     profile.add_argument("--repeats", type=int, default=20)
@@ -115,6 +132,17 @@ def parser():
 
 
 def dispatch(args, forwarded):
+    if args.command == "udt":
+        from defai.udt import build
+        _json({"jar": build(args.output), "stage": "research_lab", "p2p_connected": False})
+        return 0
+    if args.command == "p2p":
+        from defai.p2p import run_demo, run_peer
+        if args.p2p_action == "demo":
+            _json(run_demo(args.output, peers=args.peers, rounds=args.rounds, topology=args.topology))
+        else:
+            _json(run_peer(args.manifest, args.peer, args.data, args.output, timeout=args.timeout))
+        return 0
     if forwarded and (args.command != "research" or args.action != "run"):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
     if args.command == "kalman-profile":
@@ -162,6 +190,8 @@ def dispatch(args, forwarded):
             "common": "defai run --strategy NAME --set KEY=VALUE [flower]",
             "kalman": "defai run --strategy fedadam-kalman --optimizer-checkpoint FILE | defai kalman-benchmark --dataset public --calibrated | defai kalman-profile [flower]",
             "vertical": "defai vertical list | init | run | demo [vertical]",
+            "p2p": "defai p2p demo | peer (independent HTTP peers; UDT not connected)",
+            "udt": "defai udt build --output FILE.jar [JDK 17+]",
             "neonatal": "defai research list --domain neonatal [research]",
             "policy": "defai policy --input DIRECTORY --output result.json [analysis]",
             "generation": "defai generation --input intervals.csv --output result.json [analysis]",
