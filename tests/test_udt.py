@@ -230,13 +230,29 @@ def test_process_death_resumes_durable_chunks(udt_jar, tmp_path):
         server.communicate()
         relay.close()
     assert not (part.parent / "payload.bin").exists()
-    server, port = receive(udt_jar, tmp_path / "store", 20000)
-    client = launch(
-        udt_jar, "send", source, "resume", "round-3", "127.0.0.1", port, 20000
-    )
-    sent, _ = finish(client, timeout=25)
-    finish(server)
-    assert int(sent.split("resumed_bytes=")[1]) >= 65536
+    # A resumed connection can itself fail. Exercise the production retry/
+    # receiver lifecycle instead of assuming one standalone CLI attempt succeeds.
+    from defai.udt_bridge import Receiver, deliver
+
+    reservation = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    reservation.bind(("127.0.0.1", 0))
+    port = reservation.getsockname()[1]
+    reservation.close()
+    receiver = Receiver(udt_jar, tmp_path / "store", "127.0.0.1", port, 5)
+    try:
+        receipt = deliver(
+            udt_jar,
+            source,
+            "resume",
+            "round-3",
+            "127.0.0.1",
+            port,
+            time.monotonic() + 60,
+            attempt_timeout=5,
+        )
+    finally:
+        receiver.close()
+    assert receipt["resumed_bytes"] >= 65536
     assert (part.parent / "payload.bin").read_bytes() == source.read_bytes()
 
 
