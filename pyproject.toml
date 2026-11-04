@@ -34,7 +34,7 @@ packages = ["defai"]
 [tool.hatch.build.hooks.custom]
 
 [tool.hatch.build.targets.sdist]
-include = ["/defai", "/disease_research", "/scripts", "/tests", "/docs", "/pyproject.toml", "/hatch_build.py", "/LICENSE", "/README.md", "/.gitattributes"]
+include = ["/defai", "/disease_research", "/java", "/scripts", "/tests", "/docs", "/pyproject.toml", "/hatch_build.py", "/LICENSE", "/README.md", "/.gitattributes"]
 exclude = ["**/__pycache__", "**/.pytest_cache", "**/*.pyc"]
 
 [tool.flwr.app]

@@ -11,7 +11,7 @@ TOPICS = {"01": "neonatal", "02": "policy", "03": "generation", "04": "hba1c"}
 
 def build():
     resources, modules = [], []
-    candidates = [*ROOT.glob("disease_research/**/*"), *ROOT.glob("scripts/*.py"),
+    candidates = [*ROOT.glob("disease_research/**/*"), *ROOT.glob("java/udt/**/*"), *ROOT.glob("scripts/*.py"),
                   *ROOT.glob("defai/**/*.py"), *ROOT.glob("docs/*.md"), ROOT / "README.md",
                   ROOT / ".gitattributes", ROOT / ".gitignore", ROOT / "pyproject.toml", ROOT / "LICENSE", ROOT / "hatch_build.py",
                   ROOT / "docs/fedadam_kalman_results.json", ROOT / "docs/fedadam_followup_results.json"]
