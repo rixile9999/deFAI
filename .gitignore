@@ -20,3 +20,4 @@ runs/
 # coverage
 .coverage
 htmlcov/
+java/udt/build/

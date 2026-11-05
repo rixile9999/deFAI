@@ -33,6 +33,10 @@ and research references are retained in the [algorithm reference](#algorithms).
 - **Result interchange:** export completed common-model runs as an engine-independent
   [numeric result and TorchScript bundle](docs/result_interchange.md) for external
   model registries, without changing the training algorithm.
+- **Resilient UDT peer learning:** decentralized neighbor training over Java UDT,
+  with encrypted messages, retry, immutable outboxes and checkpoint resume.
+  See the [UDT peer guide](docs/udt_p2p.md). Standalone file transfer and the HTTP
+  reference remain available in the [transport guide](docs/peer_transport_research.md).
 
 Benchmark datasets include MNIST, Fashion-MNIST, and CIFAR-10, with plain-file mirror
 options and an offline `synthetic` dataset. Disease studies use their own documented

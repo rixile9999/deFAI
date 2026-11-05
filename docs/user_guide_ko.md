@@ -34,6 +34,12 @@ CPU가 기본값입니다. CUDA용 PyTorch 설치는 [공식 호환 안내](http
 자세한 규격과 입력 전처리·검증 범위는 [결과 교환 안내](result_interchange.md)를 참고하세요.
 학습 재개 파일이나 기관 간 통신 구현을 뜻하지 않습니다.
 
+UDT 기반 P2P 통합 기능은 `pip install ".[transport]"`와 JDK 17 이상이 필요합니다.
+`defai p2p udt-demo --output results/udt-peer01`로 암호화된 이웃 모델 교환·혼합을
+실행합니다. 참여자별로 `defai p2p udt-peer ... --resume`을 사용해 체크포인트에서
+재개할 수 있습니다. [실행·복구 방법](udt_p2p.md)을 먼저 확인합니다.
+독립 Java 전송과 HTTP 비교 구현도 [별도 명령](peer_transport_research.md)으로 유지합니다.
+
 | 설치 범위 | 포함 내용 |
 |---|---|
 | 기본 설치 | 기능 탐색, 작업 폴더 생성, NumPy 집계, 공공 데이터 참조·확인 |
