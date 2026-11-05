@@ -30,6 +30,9 @@ and research references are retained in the [algorithm reference](#algorithms).
   payloads; they are not measurements of real network throughput.
 - **Mobile tools:** an Android example client and a NumPy-based parameter coordinator
   with round validation and persisted state.
+- **Result interchange:** export completed common-model runs as an engine-independent
+  [numeric result and TorchScript bundle](docs/result_interchange.md) for external
+  model registries, without changing the training algorithm.
 - **Resilient UDT peer learning:** decentralized neighbor training over Java UDT,
   with encrypted messages, retry, immutable outboxes and checkpoint resume.
   See the [UDT peer guide](docs/udt_p2p.md). Standalone file transfer and the HTTP

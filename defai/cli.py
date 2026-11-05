@@ -25,6 +25,9 @@ def parser():
     root.add_argument("--version", action="version", version=__version__)
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List the workflow families and optional install groups")
+    export = commands.add_parser("export-result", help="Export a completed common-model run for external platforms [flower]")
+    export.add_argument("run_directory", type=Path)
+    export.add_argument("--output", type=Path, required=True)
     udt = commands.add_parser("udt", help="Build the separate Java UDT transport adapter")
     udt_actions = udt.add_subparsers(dest="udt_action", required=True)
     udt_build = udt_actions.add_parser("build")
@@ -177,7 +180,10 @@ def dispatch(args, forwarded):
         return 0
     if forwarded and (args.command != "research" or args.action != "run"):
         raise ValueError("Additional arguments are supported only after 'research run ... --'")
-    if args.command == "kalman-profile":
+    if args.command == "export-result":
+        from defai.exchange import export_result
+        _json(export_result(args.run_directory, args.output))
+    elif args.command == "kalman-profile":
         if args.output.exists(): raise FileExistsError(args.output)
         from defai.kalman_profile import profile_estimator
         result = profile_estimator(sizes=args.sizes, repeats=args.repeats)
