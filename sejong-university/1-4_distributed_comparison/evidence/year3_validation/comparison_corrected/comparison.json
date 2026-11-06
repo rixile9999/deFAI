@@ -1,0 +1,1179 @@
+{
+ "config": {
+  "dataset": "mnist",
+  "n_sites": 5,
+  "partition": "label_groups",
+  "classes_per_client": 2,
+  "alpha": 0.3,
+  "quantity_sigma": 0.0,
+  "encrypt_updates": true,
+  "max_train": 20000,
+  "missing_rate": 0.02,
+  "outlier_rate": 0.005,
+  "epochs": 15,
+  "local_epochs": 1,
+  "lr": 0.05,
+  "batch_size": 32,
+  "hidden": [
+   128,
+   64
+  ],
+  "use_pca": true,
+  "mu": 0.01,
+  "dp_noise": 0.3,
+  "dp_clip": 2.0,
+  "bandwidth_mbps": 10.0,
+  "seed": 0,
+  "envs": [
+   "ld_independent",
+   "ld_sync",
+   "ld_central",
+   "fl_fedavg",
+   "fl_fedavg_dp"
+  ]
+ },
+ "results": [
+  {
+   "key": "ld_independent",
+   "name": "지역분산 (독립 학습+결과 공유)",
+   "kind": "local_distributed",
+   "global": {
+    "accuracy": 0.3051,
+    "precision": 0.502337,
+    "recall": 0.294105,
+    "f1": 0.219105
+   },
+   "local": [
+    {
+     "accuracy": 0.997674,
+     "precision": 0.997368,
+     "recall": 0.997925,
+     "f1": 0.997641,
+     "site": 0
+    },
+    {
+     "accuracy": 0.981227,
+     "precision": 0.981115,
+     "recall": 0.981332,
+     "f1": 0.98121,
+     "site": 1
+    },
+    {
+     "accuracy": 0.986468,
+     "precision": 0.986493,
+     "recall": 0.986457,
+     "f1": 0.986468,
+     "site": 2
+    },
+    {
+     "accuracy": 0.998758,
+     "precision": 0.998674,
+     "recall": 0.998834,
+     "f1": 0.998753,
+     "site": 3
+    },
+    {
+     "accuracy": 0.974843,
+     "precision": 0.974749,
+     "recall": 0.974899,
+     "f1": 0.974818,
+     "site": 4
+    }
+   ],
+   "local_mean": {
+    "accuracy": 0.987794,
+    "precision": 0.98768,
+    "recall": 0.98789,
+    "f1": 0.987778
+   },
+   "local_min_f1": 0.974818,
+   "cost": {
+    "raw_bytes": 0,
+    "stat_bytes": 0,
+    "model_bytes": 2000000,
+    "comm_ms": 330.0,
+    "compute_s": 34.142749
+   },
+   "privacy": {
+    "raw_data_leaves_site": false,
+    "secure_agg": false,
+    "dp": null
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "accuracy": 0.477,
+     "precision": 0.576517,
+     "recall": 0.466761,
+     "f1": 0.425744,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 2,
+     "accuracy": 0.4191,
+     "precision": 0.557925,
+     "recall": 0.40839,
+     "f1": 0.358287,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 3,
+     "accuracy": 0.3893,
+     "precision": 0.528644,
+     "recall": 0.378459,
+     "f1": 0.323588,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 4,
+     "accuracy": 0.3701,
+     "precision": 0.501242,
+     "recall": 0.359246,
+     "f1": 0.300756,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 5,
+     "accuracy": 0.3565,
+     "precision": 0.502895,
+     "recall": 0.345558,
+     "f1": 0.285624,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 6,
+     "accuracy": 0.3447,
+     "precision": 0.533853,
+     "recall": 0.33372,
+     "f1": 0.270272,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 7,
+     "accuracy": 0.3372,
+     "precision": 0.529181,
+     "recall": 0.326224,
+     "f1": 0.260802,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 8,
+     "accuracy": 0.331,
+     "precision": 0.524107,
+     "recall": 0.319958,
+     "f1": 0.252934,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 9,
+     "accuracy": 0.3257,
+     "precision": 0.520789,
+     "recall": 0.314649,
+     "f1": 0.246053,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 10,
+     "accuracy": 0.3213,
+     "precision": 0.517233,
+     "recall": 0.310263,
+     "f1": 0.240226,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 11,
+     "accuracy": 0.3172,
+     "precision": 0.510987,
+     "recall": 0.306129,
+     "f1": 0.234646,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 12,
+     "accuracy": 0.3141,
+     "precision": 0.509141,
+     "recall": 0.303044,
+     "f1": 0.230637,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 13,
+     "accuracy": 0.3112,
+     "precision": 0.508298,
+     "recall": 0.300157,
+     "f1": 0.227012,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 14,
+     "accuracy": 0.308,
+     "precision": 0.504649,
+     "recall": 0.296976,
+     "f1": 0.222723,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 15,
+     "accuracy": 0.3051,
+     "precision": 0.502337,
+     "recall": 0.294105,
+     "f1": 0.219105,
+     "raw_mb": 0.0,
+     "comm_mb": 0.0
+    }
+   ],
+   "secure_agg_error": null
+  },
+  {
+   "key": "ld_sync",
+   "name": "지역분산 (데이터 재분할+동기화)",
+   "kind": "local_distributed",
+   "global": {
+    "accuracy": 0.8942,
+    "precision": 0.894839,
+    "recall": 0.893696,
+    "f1": 0.894059
+   },
+   "local": [
+    {
+     "accuracy": 0.972093,
+     "precision": 1.0,
+     "recall": 0.97225,
+     "f1": 0.985929,
+     "site": 0
+    },
+    {
+     "accuracy": 0.922403,
+     "precision": 0.992044,
+     "recall": 0.921891,
+     "f1": 0.955598,
+     "site": 1
+    },
+    {
+     "accuracy": 0.913396,
+     "precision": 0.997085,
+     "recall": 0.913373,
+     "f1": 0.953375,
+     "site": 2
+    },
+    {
+     "accuracy": 0.951553,
+     "precision": 1.0,
+     "recall": 0.952903,
+     "f1": 0.975771,
+     "site": 3
+    },
+    {
+     "accuracy": 0.88805,
+     "precision": 0.991695,
+     "recall": 0.888563,
+     "f1": 0.93727,
+     "site": 4
+    }
+   ],
+   "local_mean": {
+    "accuracy": 0.929499,
+    "precision": 0.996165,
+    "recall": 0.929796,
+    "f1": 0.961588
+   },
+   "local_min_f1": 0.93727,
+   "cost": {
+    "raw_bytes": 39946368,
+    "stat_bytes": 0,
+    "model_bytes": 22905531900,
+    "comm_ms": 3713142.198401,
+    "compute_s": 46.01549
+   },
+   "privacy": {
+    "raw_data_leaves_site": true,
+    "secure_agg": false,
+    "dp": null
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "accuracy": 0.8698,
+     "precision": 0.870948,
+     "recall": 0.869203,
+     "f1": 0.86921,
+     "raw_mb": 38.095825,
+     "comm_mb": 1456.294498
+    },
+    {
+     "epoch": 2,
+     "accuracy": 0.8846,
+     "precision": 0.885541,
+     "recall": 0.884636,
+     "f1": 0.884405,
+     "raw_mb": 38.095825,
+     "comm_mb": 2912.588997
+    },
+    {
+     "epoch": 3,
+     "accuracy": 0.8906,
+     "precision": 0.89196,
+     "recall": 0.889832,
+     "f1": 0.890352,
+     "raw_mb": 38.095825,
+     "comm_mb": 4368.883495
+    },
+    {
+     "epoch": 4,
+     "accuracy": 0.8908,
+     "precision": 0.892404,
+     "recall": 0.890098,
+     "f1": 0.890606,
+     "raw_mb": 38.095825,
+     "comm_mb": 5825.177994
+    },
+    {
+     "epoch": 5,
+     "accuracy": 0.8893,
+     "precision": 0.890608,
+     "recall": 0.888828,
+     "f1": 0.889231,
+     "raw_mb": 38.095825,
+     "comm_mb": 7281.472492
+    },
+    {
+     "epoch": 6,
+     "accuracy": 0.8911,
+     "precision": 0.891668,
+     "recall": 0.890577,
+     "f1": 0.890819,
+     "raw_mb": 38.095825,
+     "comm_mb": 8737.766991
+    },
+    {
+     "epoch": 7,
+     "accuracy": 0.8925,
+     "precision": 0.892683,
+     "recall": 0.892043,
+     "f1": 0.892146,
+     "raw_mb": 38.095825,
+     "comm_mb": 10194.061489
+    },
+    {
+     "epoch": 8,
+     "accuracy": 0.8919,
+     "precision": 0.892874,
+     "recall": 0.891587,
+     "f1": 0.89184,
+     "raw_mb": 38.095825,
+     "comm_mb": 11650.355988
+    },
+    {
+     "epoch": 9,
+     "accuracy": 0.8921,
+     "precision": 0.892516,
+     "recall": 0.891584,
+     "f1": 0.891867,
+     "raw_mb": 38.095825,
+     "comm_mb": 13106.650486
+    },
+    {
+     "epoch": 10,
+     "accuracy": 0.8933,
+     "precision": 0.893912,
+     "recall": 0.892811,
+     "f1": 0.893128,
+     "raw_mb": 38.095825,
+     "comm_mb": 14562.944984
+    },
+    {
+     "epoch": 11,
+     "accuracy": 0.8933,
+     "precision": 0.893669,
+     "recall": 0.89285,
+     "f1": 0.893068,
+     "raw_mb": 38.095825,
+     "comm_mb": 16019.239483
+    },
+    {
+     "epoch": 12,
+     "accuracy": 0.8943,
+     "precision": 0.894953,
+     "recall": 0.893813,
+     "f1": 0.894163,
+     "raw_mb": 38.095825,
+     "comm_mb": 17475.533981
+    },
+    {
+     "epoch": 13,
+     "accuracy": 0.8944,
+     "precision": 0.89507,
+     "recall": 0.893891,
+     "f1": 0.894239,
+     "raw_mb": 38.095825,
+     "comm_mb": 18931.82848
+    },
+    {
+     "epoch": 14,
+     "accuracy": 0.8945,
+     "precision": 0.895251,
+     "recall": 0.893969,
+     "f1": 0.894365,
+     "raw_mb": 38.095825,
+     "comm_mb": 20388.122978
+    },
+    {
+     "epoch": 15,
+     "accuracy": 0.8942,
+     "precision": 0.894839,
+     "recall": 0.893696,
+     "f1": 0.894059,
+     "raw_mb": 38.095825,
+     "comm_mb": 21844.417477
+    }
+   ],
+   "secure_agg_error": null
+  },
+  {
+   "key": "ld_central",
+   "name": "지역분산 (중앙 집중)",
+   "kind": "local_distributed",
+   "global": {
+    "accuracy": 0.8947,
+    "precision": 0.894755,
+    "recall": 0.894167,
+    "f1": 0.894268
+   },
+   "local": [
+    {
+     "accuracy": 0.972093,
+     "precision": 1.0,
+     "recall": 0.97225,
+     "f1": 0.985929,
+     "site": 0
+    },
+    {
+     "accuracy": 0.91239,
+     "precision": 0.990424,
+     "recall": 0.912206,
+     "f1": 0.949703,
+     "site": 1
+    },
+    {
+     "accuracy": 0.909337,
+     "precision": 0.997085,
+     "recall": 0.909297,
+     "f1": 0.951125,
+     "site": 2
+    },
+    {
+     "accuracy": 0.949068,
+     "precision": 1.0,
+     "recall": 0.950407,
+     "f1": 0.974462,
+     "site": 3
+    },
+    {
+     "accuracy": 0.884277,
+     "precision": 0.991638,
+     "recall": 0.884913,
+     "f1": 0.935184,
+     "site": 4
+    }
+   ],
+   "local_mean": {
+    "accuracy": 0.925433,
+    "precision": 0.995829,
+    "recall": 0.925815,
+    "f1": 0.95928
+   },
+   "local_min_f1": 0.935184,
+   "cost": {
+    "raw_bytes": 39394432,
+    "stat_bytes": 0,
+    "model_bytes": 0,
+    "comm_ms": 31525.5456,
+    "compute_s": 13.469732
+   },
+   "privacy": {
+    "raw_data_leaves_site": true,
+    "secure_agg": false,
+    "dp": null
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "accuracy": 0.8028,
+     "precision": 0.860805,
+     "recall": 0.795024,
+     "f1": 0.793638,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 2,
+     "accuracy": 0.8849,
+     "precision": 0.886078,
+     "recall": 0.883833,
+     "f1": 0.88426,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 3,
+     "accuracy": 0.8002,
+     "precision": 0.863515,
+     "recall": 0.796543,
+     "f1": 0.801351,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 4,
+     "accuracy": 0.8887,
+     "precision": 0.889392,
+     "recall": 0.888208,
+     "f1": 0.888179,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 5,
+     "accuracy": 0.8927,
+     "precision": 0.892723,
+     "recall": 0.892287,
+     "f1": 0.892267,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 6,
+     "accuracy": 0.8941,
+     "precision": 0.894298,
+     "recall": 0.893575,
+     "f1": 0.893634,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 7,
+     "accuracy": 0.8931,
+     "precision": 0.893537,
+     "recall": 0.892547,
+     "f1": 0.892619,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 8,
+     "accuracy": 0.8955,
+     "precision": 0.895462,
+     "recall": 0.894926,
+     "f1": 0.895,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 9,
+     "accuracy": 0.8934,
+     "precision": 0.893586,
+     "recall": 0.892861,
+     "f1": 0.893014,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 10,
+     "accuracy": 0.8953,
+     "precision": 0.895357,
+     "recall": 0.894694,
+     "f1": 0.894869,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 11,
+     "accuracy": 0.8947,
+     "precision": 0.89486,
+     "recall": 0.894109,
+     "f1": 0.894231,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 12,
+     "accuracy": 0.8943,
+     "precision": 0.894279,
+     "recall": 0.893762,
+     "f1": 0.893851,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 13,
+     "accuracy": 0.8951,
+     "precision": 0.895144,
+     "recall": 0.894496,
+     "f1": 0.894636,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 14,
+     "accuracy": 0.8946,
+     "precision": 0.894641,
+     "recall": 0.894042,
+     "f1": 0.894171,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    },
+    {
+     "epoch": 15,
+     "accuracy": 0.8947,
+     "precision": 0.894755,
+     "recall": 0.894167,
+     "f1": 0.894268,
+     "raw_mb": 37.569458,
+     "comm_mb": 0.0
+    }
+   ],
+   "secure_agg_error": null
+  },
+  {
+   "key": "fl_fedavg",
+   "name": "연합 (FedAvg+보안집계)",
+   "kind": "federated",
+   "global": {
+    "accuracy": 0.7984,
+    "precision": 0.798928,
+    "recall": 0.79617,
+    "f1": 0.796507
+   },
+   "local": [
+    {
+     "accuracy": 0.937209,
+     "precision": 1.0,
+     "recall": 0.935421,
+     "f1": 0.966573,
+     "site": 0
+    },
+    {
+     "accuracy": 0.831039,
+     "precision": 0.989604,
+     "recall": 0.831142,
+     "f1": 0.903476,
+     "site": 1
+    },
+    {
+     "accuracy": 0.7023,
+     "precision": 1.0,
+     "recall": 0.702339,
+     "f1": 0.825109,
+     "site": 2
+    },
+    {
+     "accuracy": 0.86087,
+     "precision": 1.0,
+     "recall": 0.863221,
+     "f1": 0.926195,
+     "site": 3
+    },
+    {
+     "accuracy": 0.783648,
+     "precision": 0.996825,
+     "recall": 0.784424,
+     "f1": 0.877815,
+     "site": 4
+    }
+   ],
+   "local_mean": {
+    "accuracy": 0.823013,
+    "precision": 0.997286,
+    "recall": 0.82331,
+    "f1": 0.899834
+   },
+   "local_min_f1": 0.825109,
+   "cost": {
+    "raw_bytes": 0,
+    "stat_bytes": 12387220,
+    "model_bytes": 75649500,
+    "comm_ms": 12402.384,
+    "compute_s": 14.828938,
+    "encryption_bytes": 2100
+   },
+   "privacy": {
+    "raw_data_leaves_site": false,
+    "secure_agg": true,
+    "dp": null,
+    "framework": "flwr",
+    "update_encryption": "AES-256-GCM",
+    "execution": "in_process_simulation",
+    "secure_agg_scope": "pairwise_mask_simulation",
+    "encryption_scope": "client_update_payload_only",
+    "preprocessing_dp": false
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "accuracy": 0.3655,
+     "precision": 0.526102,
+     "recall": 0.363153,
+     "f1": 0.338239,
+     "raw_mb": 0.0,
+     "comm_mb": 16.623039
+    },
+    {
+     "epoch": 2,
+     "accuracy": 0.6038,
+     "precision": 0.645165,
+     "recall": 0.600859,
+     "f1": 0.608995,
+     "raw_mb": 0.0,
+     "comm_mb": 21.432705
+    },
+    {
+     "epoch": 3,
+     "accuracy": 0.6861,
+     "precision": 0.696306,
+     "recall": 0.682763,
+     "f1": 0.685863,
+     "raw_mb": 0.0,
+     "comm_mb": 26.242371
+    },
+    {
+     "epoch": 4,
+     "accuracy": 0.719,
+     "precision": 0.72719,
+     "recall": 0.715927,
+     "f1": 0.717658,
+     "raw_mb": 0.0,
+     "comm_mb": 31.052036
+    },
+    {
+     "epoch": 5,
+     "accuracy": 0.7386,
+     "precision": 0.742549,
+     "recall": 0.735327,
+     "f1": 0.736215,
+     "raw_mb": 0.0,
+     "comm_mb": 35.861702
+    },
+    {
+     "epoch": 6,
+     "accuracy": 0.7518,
+     "precision": 0.755923,
+     "recall": 0.748695,
+     "f1": 0.749559,
+     "raw_mb": 0.0,
+     "comm_mb": 40.671368
+    },
+    {
+     "epoch": 7,
+     "accuracy": 0.7636,
+     "precision": 0.766973,
+     "recall": 0.760473,
+     "f1": 0.761089,
+     "raw_mb": 0.0,
+     "comm_mb": 45.481033
+    },
+    {
+     "epoch": 8,
+     "accuracy": 0.7696,
+     "precision": 0.773282,
+     "recall": 0.766865,
+     "f1": 0.767655,
+     "raw_mb": 0.0,
+     "comm_mb": 50.290699
+    },
+    {
+     "epoch": 9,
+     "accuracy": 0.7748,
+     "precision": 0.776578,
+     "recall": 0.77218,
+     "f1": 0.772605,
+     "raw_mb": 0.0,
+     "comm_mb": 55.100365
+    },
+    {
+     "epoch": 10,
+     "accuracy": 0.782,
+     "precision": 0.783009,
+     "recall": 0.779468,
+     "f1": 0.779794,
+     "raw_mb": 0.0,
+     "comm_mb": 59.91003
+    },
+    {
+     "epoch": 11,
+     "accuracy": 0.7844,
+     "precision": 0.786636,
+     "recall": 0.781871,
+     "f1": 0.782444,
+     "raw_mb": 0.0,
+     "comm_mb": 64.719696
+    },
+    {
+     "epoch": 12,
+     "accuracy": 0.787,
+     "precision": 0.788261,
+     "recall": 0.784487,
+     "f1": 0.784753,
+     "raw_mb": 0.0,
+     "comm_mb": 69.529362
+    },
+    {
+     "epoch": 13,
+     "accuracy": 0.7909,
+     "precision": 0.79152,
+     "recall": 0.788528,
+     "f1": 0.788464,
+     "raw_mb": 0.0,
+     "comm_mb": 74.339027
+    },
+    {
+     "epoch": 14,
+     "accuracy": 0.7939,
+     "precision": 0.793634,
+     "recall": 0.791737,
+     "f1": 0.791917,
+     "raw_mb": 0.0,
+     "comm_mb": 79.148693
+    },
+    {
+     "epoch": 15,
+     "accuracy": 0.7984,
+     "precision": 0.798928,
+     "recall": 0.79617,
+     "f1": 0.796507,
+     "raw_mb": 0.0,
+     "comm_mb": 83.958359
+    }
+   ],
+   "secure_agg_error": 0.0
+  },
+  {
+   "key": "fl_fedavg_dp",
+   "name": "연합 (FedAvg+보안집계+DP)",
+   "kind": "federated",
+   "global": {
+    "accuracy": 0.1741,
+    "precision": 0.181364,
+    "recall": 0.170324,
+    "f1": 0.156398
+   },
+   "local": [
+    {
+     "accuracy": 0.401163,
+     "precision": 0.783134,
+     "recall": 0.400695,
+     "f1": 0.530048,
+     "site": 0
+    },
+    {
+     "accuracy": 0.092616,
+     "precision": 0.53824,
+     "recall": 0.092468,
+     "f1": 0.157468,
+     "site": 1
+    },
+    {
+     "accuracy": 0.023004,
+     "precision": 0.587931,
+     "recall": 0.022999,
+     "f1": 0.043773,
+     "site": 2
+    },
+    {
+     "accuracy": 0.119255,
+     "precision": 0.86391,
+     "recall": 0.122074,
+     "f1": 0.211666,
+     "site": 3
+    },
+    {
+     "accuracy": 0.226415,
+     "precision": 0.590256,
+     "recall": 0.225479,
+     "f1": 0.326124,
+     "site": 4
+    }
+   ],
+   "local_mean": {
+    "accuracy": 0.17249,
+    "precision": 0.672694,
+    "recall": 0.172743,
+    "f1": 0.253816
+   },
+   "local_min_f1": 0.043773,
+   "cost": {
+    "raw_bytes": 0,
+    "stat_bytes": 12387220,
+    "model_bytes": 75649500,
+    "comm_ms": 12402.384,
+    "compute_s": 16.534995,
+    "encryption_bytes": 2100
+   },
+   "privacy": {
+    "raw_data_leaves_site": false,
+    "secure_agg": true,
+    "dp": {
+     "noise_multiplier": 0.3,
+     "clip": 2.0,
+     "delta": 1e-05,
+     "epsilon": 148.025851,
+     "adjacency": "replace_one_client_fixed_public_weights",
+     "sensitivity": 0.859893,
+     "scope": "model_updates_conditional_on_fixed_preprocessing",
+     "noise_source": "seeded_simulation_not_production"
+    },
+    "framework": "flwr",
+    "update_encryption": "AES-256-GCM",
+    "execution": "in_process_simulation",
+    "secure_agg_scope": "pairwise_mask_simulation",
+    "encryption_scope": "client_update_payload_only",
+    "preprocessing_dp": false
+   },
+   "history": [
+    {
+     "epoch": 1,
+     "accuracy": 0.1171,
+     "precision": 0.091387,
+     "recall": 0.117295,
+     "f1": 0.071823,
+     "raw_mb": 0.0,
+     "comm_mb": 16.623039
+    },
+    {
+     "epoch": 2,
+     "accuracy": 0.1184,
+     "precision": 0.100086,
+     "recall": 0.117739,
+     "f1": 0.072709,
+     "raw_mb": 0.0,
+     "comm_mb": 21.432705
+    },
+    {
+     "epoch": 3,
+     "accuracy": 0.0969,
+     "precision": 0.092939,
+     "recall": 0.098986,
+     "f1": 0.068921,
+     "raw_mb": 0.0,
+     "comm_mb": 26.242371
+    },
+    {
+     "epoch": 4,
+     "accuracy": 0.1143,
+     "precision": 0.115704,
+     "recall": 0.116086,
+     "f1": 0.099763,
+     "raw_mb": 0.0,
+     "comm_mb": 31.052036
+    },
+    {
+     "epoch": 5,
+     "accuracy": 0.0944,
+     "precision": 0.10026,
+     "recall": 0.09594,
+     "f1": 0.082614,
+     "raw_mb": 0.0,
+     "comm_mb": 35.861702
+    },
+    {
+     "epoch": 6,
+     "accuracy": 0.1184,
+     "precision": 0.100067,
+     "recall": 0.119136,
+     "f1": 0.094002,
+     "raw_mb": 0.0,
+     "comm_mb": 40.671368
+    },
+    {
+     "epoch": 7,
+     "accuracy": 0.0986,
+     "precision": 0.103084,
+     "recall": 0.099121,
+     "f1": 0.085015,
+     "raw_mb": 0.0,
+     "comm_mb": 45.481033
+    },
+    {
+     "epoch": 8,
+     "accuracy": 0.102,
+     "precision": 0.118307,
+     "recall": 0.101702,
+     "f1": 0.088106,
+     "raw_mb": 0.0,
+     "comm_mb": 50.290699
+    },
+    {
+     "epoch": 9,
+     "accuracy": 0.1096,
+     "precision": 0.111992,
+     "recall": 0.108371,
+     "f1": 0.092833,
+     "raw_mb": 0.0,
+     "comm_mb": 55.100365
+    },
+    {
+     "epoch": 10,
+     "accuracy": 0.1226,
+     "precision": 0.12196,
+     "recall": 0.122468,
+     "f1": 0.117186,
+     "raw_mb": 0.0,
+     "comm_mb": 59.91003
+    },
+    {
+     "epoch": 11,
+     "accuracy": 0.1442,
+     "precision": 0.153492,
+     "recall": 0.142153,
+     "f1": 0.136423,
+     "raw_mb": 0.0,
+     "comm_mb": 64.719696
+    },
+    {
+     "epoch": 12,
+     "accuracy": 0.1432,
+     "precision": 0.145161,
+     "recall": 0.142092,
+     "f1": 0.127383,
+     "raw_mb": 0.0,
+     "comm_mb": 69.529362
+    },
+    {
+     "epoch": 13,
+     "accuracy": 0.1568,
+     "precision": 0.151399,
+     "recall": 0.157175,
+     "f1": 0.138412,
+     "raw_mb": 0.0,
+     "comm_mb": 74.339027
+    },
+    {
+     "epoch": 14,
+     "accuracy": 0.1871,
+     "precision": 0.182867,
+     "recall": 0.184826,
+     "f1": 0.171021,
+     "raw_mb": 0.0,
+     "comm_mb": 79.148693
+    },
+    {
+     "epoch": 15,
+     "accuracy": 0.1741,
+     "precision": 0.181364,
+     "recall": 0.170324,
+     "f1": 0.156398,
+     "raw_mb": 0.0,
+     "comm_mb": 83.958359
+    }
+   ],
+   "secure_agg_error": 0.0
+  }
+ ],
+ "f1_diff_vs_ref": [
+  {
+   "ref": "fl_fedavg",
+   "other": "ld_independent",
+   "mean": 0.577472,
+   "lo": 0.566939,
+   "hi": 0.58787
+  },
+  {
+   "ref": "fl_fedavg",
+   "other": "ld_sync",
+   "mean": -0.097856,
+   "lo": -0.105869,
+   "hi": -0.090455
+  },
+  {
+   "ref": "fl_fedavg",
+   "other": "ld_central",
+   "mean": -0.098127,
+   "lo": -0.105306,
+   "hi": -0.090318
+  },
+  {
+   "ref": "fl_fedavg",
+   "other": "fl_fedavg_dp",
+   "mean": 0.639884,
+   "lo": 0.629902,
+   "hi": 0.648945
+  }
+ ],
+ "partition": [
+  [
+   2016.0,
+   2284.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1961.0,
+   2037.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   1920.0,
+   1777.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   1953.0,
+   2076.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   1995.0,
+   1981.0
+  ]
+ ],
+ "n_test": 10000,
+ "n_classes": 10
+}
