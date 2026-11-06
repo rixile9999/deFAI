@@ -1,0 +1,39 @@
+{
+  "device": "cuda",
+  "torch": "1.10.1",
+  "python": "3.8.20",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "generation": [],
+  "context": [
+    {
+      "tokens": 128,
+      "updates": 350,
+      "training_lengths": [
+        128
+      ],
+      "test_samples": 512,
+      "first_token_recall_accuracy": 1.0,
+      "first_token_changed_accuracy_on_original_labels": 0.0,
+      "chance": 0.25,
+      "elapsed_s": 6.9203510999999995,
+      "peak_gpu_mb": 44.2919921875,
+      "scope": "same_encoder_component_synthetic_recall_not_real_multimodal_long_context"
+    },
+    {
+      "tokens": 512,
+      "updates": 700,
+      "training_lengths": [
+        128,
+        512
+      ],
+      "test_samples": 512,
+      "first_token_recall_accuracy": 1.0,
+      "first_token_changed_accuracy_on_original_labels": 0.0,
+      "chance": 0.25,
+      "elapsed_s": 7.958882099999997,
+      "peak_gpu_mb": 656.5263671875,
+      "scope": "same_encoder_component_synthetic_recall_not_real_multimodal_long_context"
+    }
+  ],
+  "scale": []
+}
