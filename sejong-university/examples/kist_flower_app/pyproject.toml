@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "defai-sejong-plugins"
+version = "1.1.0"
+description = "KIST deFAI Flower app with Sejong plugins"
+license = {file = "LICENSE"}
+dependencies = ["flwr>=1.42.0,<1.43", "defai[flower]", "sejong-defai"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.flwr.app]
+publisher = "dvl-sejong"
+fab-format-version = 1
+flwr-version-target = "1.42.0"
+
+[tool.flwr.app.components]
+serverapp = "fl_core.kist_apps:server_app"
+clientapp = "fl_core.kist_apps:client_app"
+
+[tool.flwr.app.config]
+num-server-rounds = 10
+strategy = "fedavg"
+fraction-train = 0.5
+fraction-evaluate = 0.5
+dataset = "synthetic"
+partitioner = "iid"
+dirichlet-alpha = 0.5
+seed = 42
+local-epochs = 1
+batch-size = 32
+learning-rate = 0.01
+lr-decay = 1.0
+proximal-mu = 0.01
+moon-mu = 1.0
+moon-temperature = 0.5
+qfedavg-q = 0.1
+qfedavg-lipschitz = 0.0
+server-learning-rate = 1.0
+server-momentum = 0.9
+fedopt-learning-rate = 0.01
+beta-1 = 0.9
+beta-2 = 0.99
+tau = 1e-3
+trim-ratio = 0.2
+num-byzantine = 1
+multikrum-select = 3
+attack = "none"
+num-malicious = 0
+attack-scale = 1.0
+personalize-epochs = 0
+compression = "none"
+compression-ratio = 0.1
+compression-bits = 8
+error-feedback = false
+dropout-rate = 0.0
+dp = "none"
+dp-side = "server"
+dp-noise-multiplier = 1.0
+dp-clip-norm = 1.0
+dp-delta = 1e-5
+dp-max-epsilon = 0.0
+dp-target-quantile = 0.5
+dp-clip-lr = 0.2
+dp-clipped-count-stddev = 0.0
+output-dir = "results"
+save-model = false
+sejong-plugins = '[{"target": "security_sim.plugin:SecurityPlugin", "config": {"attack": "none", "defense": ["hmac", "stat"]}}, {"target": "network_cost.plugin:NetworkCostPlugin", "config": {}}]'

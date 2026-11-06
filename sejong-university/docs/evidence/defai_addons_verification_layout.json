@@ -1,0 +1,147 @@
+{
+
+  "checks": [
+
+    {
+
+      "module": "defai_addons.monitor.server",
+
+      "path": "01_visualization/defai_addons/monitor/server.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.monitor.simulator",
+
+      "path": "01_visualization/defai_addons/monitor/simulator.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.monitor.matching",
+
+      "path": "01_visualization/defai_addons/monitor/matching.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.compare.runner",
+
+      "path": "02_comparison/defai_addons/compare/runner.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.compare.transport",
+
+      "path": "02_comparison/defai_addons/compare/transport.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.multimodal.models",
+
+      "path": "03_multimodal/defai_addons/multimodal/models.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.multimodal.baselines.models",
+
+      "path": "03_multimodal/defai_addons/multimodal/baselines/models.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.common.metrics",
+
+      "path": "shared/defai_addons/common/metrics.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "module": "defai_addons.fl.flower",
+
+      "path": "shared/defai_addons/fl/flower.py",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "check": "latest default and isolated historical baselines",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "route": "/",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "route": "/api/defaults",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "route": "/api/runs",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "route": "/static/dashboard.js",
+
+      "status": "PASS"
+
+    },
+
+    {
+
+      "check": "VS Code workspace folder references",
+
+      "status": "PASS"
+
+    }
+
+  ],
+
+  "status": "PASS"
+
+}
