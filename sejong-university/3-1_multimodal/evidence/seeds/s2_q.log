@@ -1,0 +1,62 @@
+device: cuda
+[federated] qfedavg_flat
+  round  1  acc 0.1625  f1 0.0868  group_w {0: 1.0}
+  round  2  acc 0.2245  f1 0.1186  group_w {0: 1.0}
+  round  3  acc 0.2595  f1 0.1583  group_w {0: 1.0}
+  round  4  acc 0.3710  f1 0.3000  group_w {0: 1.0}
+  round  5  acc 0.4650  f1 0.3831  group_w {0: 1.0}
+  round  6  acc 0.5010  f1 0.4520  group_w {0: 1.0}
+  round  7  acc 0.4390  f1 0.3597  group_w {0: 1.0}
+  round  8  acc 0.4945  f1 0.4380  group_w {0: 1.0}
+  round  9  acc 0.5620  f1 0.4992  group_w {0: 1.0}
+  round 10  acc 0.5440  f1 0.4895  group_w {0: 1.0}
+  round 11  acc 0.5495  f1 0.5050  group_w {0: 1.0}
+  round 12  acc 0.6100  f1 0.5764  group_w {0: 1.0}
+  round 13  acc 0.6200  f1 0.5772  group_w {0: 1.0}
+  round 14  acc 0.5935  f1 0.5719  group_w {0: 1.0}
+  round 15  acc 0.5530  f1 0.5143  group_w {0: 1.0}
+  round 16  acc 0.6430  f1 0.6289  group_w {0: 1.0}
+  round 17  acc 0.5715  f1 0.5355  group_w {0: 1.0}
+  round 18  acc 0.6430  f1 0.6301  group_w {0: 1.0}
+  round 19  acc 0.4345  f1 0.3683  group_w {0: 1.0}
+  round 20  acc 0.4345  f1 0.3665  group_w {0: 1.0}
+  round 21  acc 0.6780  f1 0.6680  group_w {0: 1.0}
+  round 22  acc 0.6665  f1 0.6541  group_w {0: 1.0}
+  round 23  acc 0.6615  f1 0.6462  group_w {0: 1.0}
+  round 24  acc 0.6630  f1 0.6574  group_w {0: 1.0}
+  round 25  acc 0.6065  f1 0.5965  group_w {0: 1.0}
+  round 26  acc 0.6690  f1 0.6655  group_w {0: 1.0}
+  round 27  acc 0.6735  f1 0.6759  group_w {0: 1.0}
+  round 28  acc 0.6855  f1 0.6842  group_w {0: 1.0}
+  round 29  acc 0.6195  f1 0.6135  group_w {0: 1.0}
+  round 30  acc 0.6905  f1 0.6891  group_w {0: 1.0}
+  round 31  acc 0.6215  f1 0.6113  group_w {0: 1.0}
+  round 32  acc 0.6295  f1 0.6132  group_w {0: 1.0}
+  round 33  acc 0.6820  f1 0.6738  group_w {0: 1.0}
+  round 34  acc 0.6805  f1 0.6787  group_w {0: 1.0}
+  round 35  acc 0.6760  f1 0.6746  group_w {0: 1.0}
+  round 36  acc 0.6735  f1 0.6634  group_w {0: 1.0}
+  round 37  acc 0.6715  f1 0.6652  group_w {0: 1.0}
+  round 38  acc 0.6035  f1 0.5943  group_w {0: 1.0}
+  round 39  acc 0.6090  f1 0.5881  group_w {0: 1.0}
+  round 40  acc 0.6455  f1 0.6238  group_w {0: 1.0}
+  round 41  acc 0.6145  f1 0.5867  group_w {0: 1.0}
+  round 42  acc 0.6125  f1 0.5748  group_w {0: 1.0}
+  round 43  acc 0.6855  f1 0.6849  group_w {0: 1.0}
+  round 44  acc 0.6485  f1 0.6365  group_w {0: 1.0}
+  round 45  acc 0.6020  f1 0.5961  group_w {0: 1.0}
+  round 46  acc 0.6490  f1 0.6490  group_w {0: 1.0}
+  round 47  acc 0.6790  f1 0.6771  group_w {0: 1.0}
+  round 48  acc 0.6035  f1 0.5851  group_w {0: 1.0}
+  round 49  acc 0.5995  f1 0.5810  group_w {0: 1.0}
+  round 50  acc 0.6380  f1 0.6206  group_w {0: 1.0}
+   acc 0.6380  f1 0.6206  missing30 0.5150  group {0: 0.468, 1: 0.406, 2: 0.638}  server_in 827.67 MB  analysis None  (2103s)
+# 트랜스포머 기반 멀티모달 학습 모델 실험 결과
+
+설정: `{"part": "federated", "models": ["image_only", "text_only", "audio_only", "y1_joint_embedding", "y2_attention_fusion", "y3_mm_transformer", "y3_no_integration", "y3_no_decoder", "y3_mean_fusion"], "fed_model": "y3_mm_transformer", "fed_configs": ["qfedavg_flat"], "n_train": 6000, "n_test": 2000, "epochs": 15, "lr": 0.002, "batch_size": 64, "n_clients": 9, "n_per_client": 400, "alpha": 0.5, "rounds": 50, "local_epochs": 2, "fed_lr": 0.001, "q": 0.2, "qffl_lr": 10.0, "seed": 2, "device": "cuda", "out": "results/seeds/s2_q", "quick": false, "verbose": true}`
+
+## 2. 연합 학습: FedAvg vs FedATC (다계층) vs FedATC + Transformer Compression
+
+| 방식 | 정확도 | F1 | 결측30% | 그룹0 (이미지+텍스트) | 그룹1 (텍스트+오디오) | 그룹2 (전체) | 서버 수신 MB | 업데이트 압축률 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| qfedavg_flat | 0.6380 | 0.6206 | 0.5150 | 0.4680 | 0.4060 | 0.6380 | 827.67 | - |
