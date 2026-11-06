@@ -1,0 +1,127 @@
+{
+  "license": "MIT",
+  "scope": "Implementation provenance, not annual-development history; frozen source files remain outside the public package",
+  "adaptations": [
+    "Consolidated shared primitives and package-relative imports",
+    "Latest default configurations replace obsolete standalone runners",
+    "Retained independent statistics, control comparisons and numerical verification",
+    "Extracted prediction quality calculations from report generation",
+    "Separated installed sources from generated workspace artifacts",
+    "Three module directories under Federated_Learning; one install and namespace without copying shared implementations"
+  ],
+  "origins": {
+    "federated/graph.py": [
+      {
+        "source": "experiments/graph_dedup.py",
+        "sha256": "c0a9eb05cee8a8a350e8adb1058f998752951dcb7d8003cd741d6ab7e698556a"
+      }
+    ],
+    "federated/cache.py": [
+      {
+        "source": "experiments/graphsage_cached_adapter.py",
+        "sha256": "557ea8e56cda73bd5cfe1b671d8c5fcaba6641d4b509f048963f371ba3bd6b28"
+      }
+    ],
+    "federated/snapshots.py": [
+      {
+        "source": "experiments/incremental_graph.py",
+        "sha256": "574c9945b1b23ea47b15a6427e728c04e70081058aa2dc489dae932bf2a5e4ca"
+      },
+      {
+        "source": "experiments/adaptive_graph.py",
+        "sha256": "b93c0e885daf900d5e6848582a20d2805923a5989bfcd94c90a0b3ca426a53ef"
+      }
+    ],
+    "federated/learning.py": [
+      {
+        "source": "experiments/run_experiments.py",
+        "sha256": "e00a09e896a2ed99613018d15bf81d99023051ce0d787309122e4c30adc4760f"
+      },
+      {
+        "source": "experiments/extended_benchmark.py",
+        "sha256": "c7aaf92f97f7802fa928942079fef57b65f224775d4f819548b9c338b29d2841"
+      }
+    ],
+    "federated/data.py": [
+      {
+        "source": "experiments/transformer_data.py",
+        "sha256": "751e0f8f64fc9ec1162244952232edce6aaed291b82dd3acdc3b463544584b6e"
+      }
+    ],
+    "compression/model.py": [
+      {
+        "source": "experiments/transformer_update_codec.py",
+        "sha256": "42480601579d3e3372f925be533fb9c98b17359684632c52b91fbccd180c937b"
+      },
+      {
+        "source": "experiments/export_transformer_inference_artifacts.py",
+        "sha256": "f9e8767ffdde750c571a0220e6e6fc7600d99a05b84e21247f3c79aca2dd7769"
+      }
+    ],
+    "compression/transformer.py": [
+      {
+        "source": "experiments/transformer_compact_codec.py",
+        "sha256": "563daf990129f4bacf5cebf74bdeab5355f53d76e649156ebd59101c2d01b7ce"
+      }
+    ],
+    "compression/lossless.py": [
+      {
+        "source": "experiments/compact_lossless_codec.py",
+        "sha256": "39e6e2de888c69a7ad2444a6ba52aefd668ffd374b67bb1f6419cacb6b3213c0"
+      }
+    ],
+    "compression/legacy.py": [
+      {
+        "source": "experiments/graphsage_wire_codec.py",
+        "sha256": "0a021f1a11b61f150eb0c6e97c91b947879186b2e1b923b6e8ead92337f8fc38"
+      }
+    ],
+    "compression/_wire.py": [
+      {
+        "source": "experiments/graphsage_wire_codec.py",
+        "sha256": "0a021f1a11b61f150eb0c6e97c91b947879186b2e1b923b6e8ead92337f8fc38"
+      }
+    ],
+    "compression/calibration.py": [
+      {
+        "source": "experiments/collect_transformer_calibration.py",
+        "sha256": "751c545bd51af46b7444471dad5ee474635f34341a090460503432ed286d807d"
+      }
+    ],
+    "compression/runner.py": [
+      {
+        "source": "experiments/transformer_compression_study.py",
+        "sha256": "11e598a23c48acde84be8e87fc6cefe8f9afe7fba4ef2652130cf6823cd5ca43"
+      },
+      {
+        "source": "experiments/transformer_optimized_study.py",
+        "sha256": "41cafbb0f742ddc0321dc6f88ea1aee39816ca1fd12886aa03388b658cd4ccfc"
+      }
+    ],
+    "metrics/api.py": [
+      {
+        "source": "experiments/adaptive_metrics.py",
+        "sha256": "275c5254c53ced40285335afa13cb28caf0257953b35d5f7042d74bc1a8085a8"
+      },
+      {
+        "source": "experiments/purpose_metric_contract.json",
+        "sha256": "fe32f05817e95b8b8af2b5b65c4823b70c7b5997cc595c1a40800720b1bd8def"
+      },
+      {
+        "source": "experiments/assemble_purpose_report.py",
+        "sha256": "6c9e5e3ac8a350548264274efe1344e7a57c91bc748392425aa8229b7b1b9a7e"
+      }
+    ],
+    "aggregation.py": [
+      {
+        "source": "experiments/run_experiments.py",
+        "sha256": "e00a09e896a2ed99613018d15bf81d99023051ce0d787309122e4c30adc4760f"
+      },
+      {
+        "source": "experiments/mapreduce_scaling.py",
+        "sha256": "a812857f79cb5bdcce89d7f73e1665b60b17082bb5e0f8aa5cf7d03f0fda5410"
+      }
+    ]
+  },
+  "purpose_study_detail": "Federated_Learning_Metrics/src/defai/metrics/STUDY_PROVENANCE.json"
+}
