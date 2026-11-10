@@ -1,0 +1,145 @@
+[
+  {
+    "file": "purpose_multimodal_study.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_multimodal_study.py",
+    "source_sha256": "62df74be67ff9b221a8be9b558bb7bb4607101b1eb890224413317becd077f43",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "verify_purpose_multimodal.py",
+    "source": "output/purpose_metrics_source/experiments/verify_purpose_multimodal.py",
+    "source_sha256": "0aaf9ada5194f011d4a9ff4edbfb83ee71a60906e34176fe9a57172152b25bf4",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "supplement_crossnode_information.py",
+    "source": "output/purpose_metrics_source/experiments/supplement_crossnode_information.py",
+    "source_sha256": "5661423a1b69cc2206b2dfaaa66c9303559077972ed71f5da5781d04301eb88c",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "cross_verify_purpose_multimodal.py",
+    "source": "output/purpose_metrics_source/experiments/cross_verify_purpose_multimodal.py",
+    "source_sha256": "3d30c212508ff27526aef57597d8377a192a72f91d8c38a824bd82ba6e08551c",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_system_study.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_system_study.py",
+    "source_sha256": "cd9e7da1c90e5c0edc1499847dbc72426520ab39325c286f46fef9d60c66559e",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_transport_echo.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_transport_echo.py",
+    "source_sha256": "40b3fab5fd8370690a16dd5f6322df9114965879383d9f2e5562c0bb88fde3ba",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "verify_purpose_system.py",
+    "source": "output/purpose_metrics_source/experiments/verify_purpose_system.py",
+    "source_sha256": "9d3bcfdf7a43d620182351b1201be21a1f3f9197450bdcd93adf1bcd4cb96cee",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_system_export.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_system_export.py",
+    "source_sha256": "307e3211b9f7a26ce1f93740c90e68316d39a774fca0733ebe987fbd637f6519",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_recovery_stress.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_recovery_stress.py",
+    "source_sha256": "6e5da9d394ff84a63779e76aa30b5429fbaba0b2a4d439c590941850d9fb5b73",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_privacy_study.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_privacy_study.py",
+    "source_sha256": "6849eaee750952a6420bf4e85f4c2fb37e7edecb6877da3a6372734a5c028f2c",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_privacy_attack_control.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_privacy_attack_control.py",
+    "source_sha256": "f5f2e32ba2e7005167ad3def8da5f432b53a05c8fa9f57a4e730841fc97f6983",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "verify_purpose_privacy_study.py",
+    "source": "output/purpose_metrics_source/experiments/verify_purpose_privacy_study.py",
+    "source_sha256": "0e53a0c7cf6e00d2636b5b2d892c9db1dc9d1c10a79b3dc7a4899a68e162be76",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  },
+  {
+    "file": "purpose_privacy_export.py",
+    "source": "output/purpose_metrics_source/experiments/purpose_privacy_export.py",
+    "source_sha256": "9312c42ac23a86fcc8454ffbbf64cbf521261b3a4f4f8bda7f22982e5cffd603",
+    "adaptations": [
+      "package-relative imports",
+      "workspace output root",
+      "canonical source resolution",
+      "module subprocess entry point"
+    ]
+  }
+]
