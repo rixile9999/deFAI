@@ -1,0 +1,32 @@
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1d2330;--muted:#6b7280;--line:#e5e7eb;--a:#2563eb;--b:#dc2626;--c:#16a34a;--d:#d97706}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:var(--ink);color:#fff}
+header a{color:#fff;text-decoration:none;font-weight:600}
+header span{color:#cbd5e1;font-size:12px}
+main{padding:16px;max-width:1400px;margin:0 auto}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.card.wide{grid-column:1/-1}
+h2,h3{margin:0 0 10px}
+h3{font-size:14px;color:var(--muted)}
+.chart{width:100%;height:auto;display:block}
+.scroll{overflow:auto;max-height:340px}
+table.grid{border-collapse:collapse;width:100%;font-size:12px}
+table.grid th,table.grid td{border:1px solid var(--line);padding:3px 6px;text-align:center;white-space:nowrap}
+table.grid th{background:#f3f4f6}
+.tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;background:#e5e7eb}
+.tag.finished{background:#dcfce7}.tag.running{background:#dbeafe}.tag.failed{background:#fee2e2}
+.kpis{display:flex;flex-wrap:wrap;gap:12px}
+.kpi{border:1px solid var(--line);border-radius:6px;padding:8px 12px;min-width:120px}
+.kpi b{display:block;font-size:18px}
+.kpi span{color:var(--muted);font-size:12px}
+.form{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.form label{display:flex;flex-direction:column;font-size:12px;color:var(--muted)}
+.form input,.form select{padding:4px;min-width:110px}
+button{padding:6px 16px;background:var(--a);color:#fff;border:0;border-radius:4px;cursor:pointer}
+.log{font-family:Consolas,monospace;font-size:12px}
+.log div{border-bottom:1px solid var(--line);padding:2px 0}
+.lv-warning{color:var(--d)}.lv-alert{color:var(--b);font-weight:600}.lv-info{color:var(--muted)}
+.st-matched{background:#dcfce7}.st-late{background:#fef3c7}.st-dropped{background:#fee2e2}.st-unmatched{background:#e5e7eb}.st-idle{background:#fff}
+@media (max-width:600px){.row{grid-template-columns:1fr}main{padding:8px}}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deFAI 연합 학습 모니터</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+<script>
+  if (!window.d3) {
+    document.write('<script src="{{ url_for("static", filename="vendor/d3.min.js") }}"><\/script>');
+    document.write('<script src="{{ url_for("static", filename="vendor/d3-sankey.min.js") }}"><\/script>');
+  }
+</script>
+</head>
+<body>
+<header>
+  <h1>deFAI 연합 학습 환경 평가</h1>
+  <label class="inl">실행 <select id="runSelect"></select></label><span id="runStatus"></span>
+  <label class="inl">알고리즘 비교 <select id="groupSel"></select></label>
+  <label class="inl">지역분산 vs 연합 <select id="jobSel"></select></label><span id="jobStatus"></span>
+  <div class="spacer"></div>
+  <button id="stopBtn" disabled>중지</button>
+  <button id="saveBtn" disabled>저장</button>
+  <button id="drawerBtn">⚙ 설정 · 실행</button>
+  <button class="primary" id="runBtn">▶ 실행</button>
+</header>
+
+<main id="view">
+  <div class="kpis" id="kpis"></div>
+  <div class="lgwrap"><div class="legendbar" id="legendStrip"></div><div class="selchip" id="selChip"></div></div>
+
+  <div class="regions">
+  <section class="region">
+    <h3>① 계층 구조 · 매칭 <span>누가 어느 엣지에 배정되고, 그 매칭이 잘 되고 있나</span></h3>
+    <div class="card s2"><div class="ch"><h2>계층적 학습 환경 tree</h2></div>
+      <p class="d">서버→엣지→클라이언트 배정, 엣지별 반영/배정 수, 진회색 = 타임아웃 · 빨강 = 이상치 → 병목이 생긴 엣지</p><div class="cb" id="treeChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>우선순위 rank</h2></div>
+      <p class="d">품질 Q 순위의 라운드별 변화 → 꾸준한 상위 클라이언트, 순위가 급락한 클라이언트</p><div class="cb" id="rankChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>매칭 training trend</h2></div>
+      <p class="d">재매칭(세로선, ↺ 재배정 수) 뒤 엣지별 평균 품질 → 매칭 효과, 뒤처진 엣지 (클라이언트 강조 = 그 클라이언트 품질)</p><div class="cb" id="matchTrendChart"></div></div>
+    <div class="card s4"><div class="ch"><h2>매칭 행렬 (faceted grid)</h2>
+      <div class="seg" data-view="facet"><button data-v="profit" class="on">이익 π</button><button data-v="score">선호 s</button></div></div>
+      <p class="d">재매칭 라운드별 클라이언트 × 엣지: 점 = 배정(엣지 색), 검은 테두리 = 재배정, 파랑 농도 = 이익 → 재배정이 줄며 수렴하는지, 이익이 낮은데 배정된 클라이언트</p><div class="cb" id="facetChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>매칭 outlier detection</h2></div>
+      <p class="d">엣지 동료 대비 품질 저하 z, 빨강 = z&gt;3 → 재매칭·제외 후보 클라이언트</p><div class="cb" id="matchOutlierChart"></div></div>
+  </section>
+
+  <section class="region">
+    <h3>② 통신 상태 <span>어느 링크가 느리거나 끊기고, 트래픽은 어디로 흐르나</span></h3>
+    <div class="card s2"><div class="ch"><h2>통신 환경 hyperbolic</h2></div>
+      <p class="d">tree 와 같은 구조를 링크 지연(파랑 농도)으로, 진회색 = 타임아웃 → 느리거나 끊긴 경로 (클릭 = 초점 이동)</p><div class="cb" id="hyperChart"></div></div>
+    <div class="card s4"><div class="ch"><h2>서버 통신 상태 (pixel-based)</h2></div>
+      <p class="d">엣지·클라이언트 × 라운드의 지연·상태·업로드 → 지연이 점점 커지는 클라이언트, 타임아웃이 반복되는 구간과 엣지</p><div class="cb" id="pixelChart"></div></div>
+    <div class="card s4"><div class="ch"><h2>서버 통신 상태 (parallel)</h2></div>
+      <p class="d">클라이언트별 대역폭·지연·타임아웃·참여율·이상치·품질의 관계, 빨간 선 = 이상치가 나온 클라이언트 → 축을 끌어 '느리고 자주 끊기는' 집단 선택</p><div class="cb" id="parallelChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>네트워크 트래픽 (sankey)</h2></div>
+      <p class="d">클라이언트→엣지→서버 누적 전송량 → 트래픽이 몰리는 엣지, 못 보내는 클라이언트</p><div class="cb" id="sankeyChart"></div></div>
+  </section>
+
+  <section class="region">
+    <h3>③ 데이터 · 클라이언트 학습 <span>데이터 분포 차이가 클라이언트 학습 결과로 어떻게 이어지나</span></h3>
+    <div class="card s2"><div class="ch"><h2>데이터 비율 · 엔트로피 heatmap</h2></div>
+      <p class="d">숫자 구성비(파랑 농도)·데이터 비율 p·엔트로피 H → 데이터가 치우치거나 적은 클라이언트</p><div class="cb" id="heatChart"></div></div>
+    <div class="card s4"><div class="ch"><h2>클라이언트 학습 비교 (cluster · matrix)</h2>
+      <select id="cmpMetric" title="행렬 값"><option value="global_acc">전역 모델 정확도</option><option value="val_acc">로컬 모델 정확도</option><option value="train_loss">로컬 손실</option><option value="quality">품질 Q</option></select></div>
+      <p class="d">업데이트가 비슷한 클라이언트 군집(왼쪽)과 군집별 라운드 학습 진행(오른쪽) → 같은 데이터 분포 집단, 학습이 느리거나 불안정한 집단</p><div class="cb" id="clientCmpChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>연합 모델 평가</h2>
+      <div class="seg" data-view="sim"><button data-v="dendro" class="on">dendrogram</button><button data-v="socio">sociogram</button></div></div>
+      <p class="d">업데이트 코사인 유사도 군집·연결망 → 비슷한 분포 집단, 고립된(이질적인) 클라이언트</p><div class="cb" id="simChart"></div></div>
+    <div class="card s4"><div class="ch"><h2>클라이언트 로그 (sparklines table)</h2></div>
+      <p class="d">클라이언트별 정확도·지연·품질 추이와 타임아웃·이상치 횟수 → 문제를 반복하는 클라이언트를 표에서 바로 찾는다</p><div class="cb scroll" id="logChart"></div></div>
+  </section>
+
+  <section class="region">
+    <h3>④ 전역 모델 · 알고리즘 비교 · 비용 <span>전체 성능, 알고리즘 간 차이, 자원·통신 비용</span></h3>
+    <div class="card s2"><div class="ch"><h2>training trend · outlier</h2>
+      <div class="seg" data-view="gtrend"><button data-v="trend" class="on">추세</button><button data-v="digit">숫자별</button></div></div>
+      <p class="d">전역 정확도·하위10% 클라이언트와 라운드별 이상치(빨강)·타임아웃(진회색) 수 → 하락 원인, 정체</p><div class="cb" id="gtrendChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>알고리즘 정확도 비교</h2>
+      <div class="seg" data-view="malgo"><button data-v="cmp" class="on">3개</button><button data-v="delta">차이</button></div></div>
+      <p class="d" id="monAlgoInfo">세 알고리즘 곡선(띠 = seed 범위) → 더 빨리·높게 수렴하는 쪽</p><div class="cb" id="monAlgoCurve"></div></div>
+    <div class="card s2"><div class="ch"><h2>알고리즘 지표 비교</h2>
+      <div class="seg" data-view="mbar"><button data-v="sum" class="on">요약</button><button data-v="digit">숫자별</button></div></div>
+      <p class="d">평균·하위10% 클라이언트·최저 숫자 정확도 → 성능과 공정성 차이</p><div class="cb" id="monAlgoBars"></div></div>
+    <div class="card s2"><div class="ch"><h2>클라이언트 기여도</h2>
+      <div class="seg" data-view="contrib"><button data-v="pareto" class="on">pareto</button><button data-v="stream">stream</button></div></div>
+      <p class="d">전역 모델에 반영된 기여 → 소수가 학습을 좌우하는지(80% 선), 기여가 끊긴 클라이언트</p><div class="cb" id="contribChart"></div></div>
+    <div class="card s2"><div class="ch"><h2>리소스</h2>
+      <div class="seg" data-view="res"><button data-v="cpu" class="on">환경 CPU</button><button data-v="mem">메모리</button><button data-v="comp">클라 계산</button><button data-v="comm">엣지 통신</button></div></div>
+      <p class="d" id="resInfo"></p><div class="cb" id="resChart"></div></div>
+    <div class="card s2"><div class="ch ldfl-controls"><h2>지역분산 vs 연합</h2>
+      <select id="ldflMetric" aria-label="지역분산 연합 비교 지표" title="글로벌·로컬 성능 및 학습 추세에 적용할 지표">
+        <option value="f1">F1</option><option value="precision">정밀도</option><option value="recall">재현율</option><option value="accuracy">정확도</option>
+      </select>
+      <div class="seg" data-view="ldfl"><button data-v="f1" class="on">성능</button><button data-v="prog">진행</button><button data-v="cost">비용</button></div></div>
+      <p class="d">같은 데이터·지표 → 데이터 이동 없이 연합이 얼마나 근접하는지, 비용</p><div class="cb" id="ldflChart"></div></div>
+  </section>
+  </div>
+</main>
+
+<div class="drawer" id="drawer">
+  <div class="ch"><h2>설정 · 실행</h2><div class="spacer"></div><button id="drawerClose">✕</button></div>
+  <form id="simForm">
+    <fieldset><legend>학습</legend>
+      <label>알고리즘 <select name="algorithm"><option>fedavg</option><option>fedprox</option><option>qfedavg</option></select></label>
+      <label>라운드 <input type="number" name="rounds" min="1" max="500"></label>
+      <label>클라이언트 수 <input type="number" name="n_clients" min="4" max="200"></label>
+      <label>엣지 서버 수 <input type="number" name="n_edges" min="1" max="10"></label>
+      <label>로컬 epoch <input type="number" name="local_epochs" min="1"></label>
+      <label>학습률 <input type="number" name="lr" step="0.01"></label>
+      <label>FedProx μ <input type="number" name="mu" step="0.01" min="0"></label>
+      <label>q-FedAvg q <input type="number" name="q" step="0.1" min="0"></label>
+      <label>seed <input type="number" name="seed"></label>
+    </fieldset>
+    <fieldset><legend>데이터</legend>
+      <label>데이터셋 <select name="dataset"><option>mnist</option><option>digits</option><option>synthetic</option></select></label>
+      <label>분할 <select name="partition"><option value="label_groups">숫자 묶음</option><option>dirichlet</option><option>iid</option><option>shard</option></select></label>
+      <label>클라이언트당 숫자 <input type="number" name="classes_per_client" min="1" max="10"></label>
+      <label>Dirichlet α <input type="number" name="alpha" step="0.05" min="0.01"></label>
+      <label>할당량 편차 σ <input type="number" name="quantity_sigma" step="0.1" min="0"></label>
+    </fieldset>
+    <fieldset><legend>매칭 · 시나리오</legend>
+      <label>재매칭 주기 <input type="number" name="rematch_every" min="1"></label>
+      <label>EMA β <input type="number" name="ema_beta" step="0.05" min="0" max="0.99"></label>
+      <label>참여 방식 <select name="participation_mode"><option value="fixed">고정</option><option value="random">무작위</option></select></label>
+      <label>참여 비율 <input type="number" name="participation" step="0.05" min="0.05" max="1"></label>
+      <label>지연 증가 ms/R <input type="number" name="delay_growth_ms" step="5" min="0"></label>
+      <label>지연 대상 비율 <input type="number" name="delay_frac" step="0.1" min="0" max="1"></label>
+      <label>타임아웃 ms <input type="number" name="timeout_ms" min="0" placeholder="없음"></label>
+      <label>악성 클라이언트 <input type="number" name="n_malicious" min="0"></label>
+      <label>공격 유형 <select name="attack"><option>signflip</option><option>noise</option><option>scale</option></select></label>
+      <label>이상치 배제 방어 <input type="checkbox" name="defense"></label>
+      <label>라운드 간 지연 s <input type="number" name="sleep" step="0.1" min="0"></label>
+    </fieldset>
+  </form>
+  <div class="btns">
+    <button class="primary" id="runBtn2">▶ 시뮬레이션 실행</button>
+    <div class="inl">seed 수 <input type="number" id="seedCount" min="1" max="10" value="3"><button id="cmpBtn">⇄ FedAvg · FedProx · q-FedAvg 비교 실행</button></div>
+  </div>
+  <form id="cmpForm">
+    <fieldset><legend>지역분산 vs 연합</legend>
+      <label>데이터 <select name="dataset"><option>mnist</option><option>digits</option><option>synthetic</option></select></label>
+      <label>분할 <select name="partition"><option value="label_groups">숫자 묶음</option><option>dirichlet</option><option>iid</option></select></label>
+      <label>사이트 수 <input type="number" name="n_sites" min="2" max="20"></label>
+      <label>α <input type="number" name="alpha" step="0.05"></label>
+      <label>epoch <input type="number" name="epochs" min="1"></label>
+      <label>결측률 <input type="number" name="missing_rate" step="0.01"></label>
+      <label>DP σ <input type="number" name="dp_noise" step="0.1"></label>
+      <label>PCA <input type="checkbox" name="use_pca"></label>
+      <div id="envChecks" class="envs"></div>
+    </fieldset>
+  </form>
+  <div class="btns"><button id="cmpRunBtn">지역분산 vs 연합 비교 실행</button></div>
+</div>
+<div class="tooltip" id="tip"></div>
+<script src="{{ url_for('static', filename='charts.js') }}"></script>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

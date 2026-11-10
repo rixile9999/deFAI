@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+<h2>실험 목록</h2>
+<table class="grid">
+<thead><tr><th>run</th><th>상태</th><th>최종 정확도</th><th>최근 3R 평균</th><th>가상 시간(s)</th><th>전송량(MB)</th></tr></thead>
+<tbody>
+{% for r in runs %}
+<tr>
+<td><a href="{{ url_for('run_page', run_id=r.run_id) }}">{{ r.run_id }}</a></td>
+<td><span class="tag {{ r.status }}">{{ r.status }}</span></td>
+<td>{{ '%.4f'|format(r.summary.final_acc) if r.summary.final_acc is not none else '-' }}</td>
+<td>{{ '%.4f'|format(r.summary.P_last3) if r.summary.P_last3 is not none else '-' }}</td>
+<td>{{ '%.1f'|format(r.summary.virtual_ms_total / 1000) if r.summary.virtual_ms_total is not none else '-' }}</td>
+<td>{{ '%.1f'|format(r.summary.bytes_total / 1048576) if r.summary.bytes_total is not none else '-' }}</td>
+</tr>
+{% else %}
+<tr><td colspan="6">결과 폴더에 실행 기록이 없습니다.</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</section>
+<section class="card">
+<h2>실험 설정 및 실행</h2>
+<form method="post" action="{{ url_for('launch') }}" class="form">
+<label>backend<select name="backend"><option>builtin</option><option>kist</option></select></label>
+<label>dataset<select name="dataset"><option>synthetic</option><option>mnist</option><option>fashion-mnist</option><option>cifar10</option></select></label>
+<label>partitioner<select name="partitioner"><option>iid</option><option>dirichlet</option><option>quantity</option></select></label>
+<label>clients<input name="num-clients" type="number" value="12"></label>
+<label>edges<input name="num-edges" type="number" value="3"></label>
+<label>global rounds<input name="global-rounds" type="number" value="5"></label>
+<label>edge rounds<input name="edge-rounds" type="number" value="2"></label>
+<label>edge strategy<select name="edge-strategy"><option>fedavg</option><option>fedprox</option><option>qfedavg</option></select></label>
+<label>matching<select name="matching"><option>matching</option><option>static</option><option>random</option></select></label>
+<label>deadline<select name="deadline"><option>none</option><option>fixed</option><option>adaptive</option></select></label>
+<label>transport<select name="transport"><option>local</option><option>http</option></select></label>
+<button type="submit">실행</button>
+</form>
+{% if launched %}
+<ul class="log">{% for l in launched %}<li>pid {{ l.pid }} · {{ l.cmd }} · {{ l.log }}</li>{% endfor %}</ul>
+{% endif %}
+</section>
+{% endblock %}

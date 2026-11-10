@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "name": "계층형 연합학습 평가 시각화 도구",
+      "path": "."
+    },
+    {
+      "name": "공통 기반",
+      "path": "../../common"
+    }
+  ],
+  "settings": {
+    "python.analysis.extraPaths": [
+      "../../common/src"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "실행",
+        "type": "process",
+        "command": "${command:python.interpreterPath}",
+        "args": [
+          "${workspaceFolder}/run.py"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": []
+      }
+    ]
+  }
+}
