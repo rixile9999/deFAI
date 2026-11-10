@@ -1,0 +1,23 @@
+{
+
+  "defai_path": "<LOCAL_WORKSPACE>\\work\\upstream_defai_reference\\defai\\__init__.py",
+
+  "addon_path": "<LOCAL_WORKSPACE>\\work\\installed_addons\\defai_addons\\__init__.py",
+
+  "defai_version": "0.2.0",
+
+  "addon_version": "3.2.0",
+
+  "installed_dashboard_and_assets": "PASS",
+
+  "unchanged_upstream_result_writer_to_addon_cli": "PASS (fixture metrics; no host training)",
+
+  "installed_comparison_cli_five_environments": "PASS (small smoke run)",
+
+  "installed_multimodal_cli": "PASS (untrained weights; no accuracy claim)",
+
+  "host_full_training_and_flower_1_42": "NOT RUN: installed environment is Python 3.10 / Flower 1.30",
+
+  "status": "PASS"
+
+}

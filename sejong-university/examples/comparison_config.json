@@ -1,0 +1,16 @@
+{
+  "dataset": "digits",
+  "max_train": 120,
+  "n_sites": 2,
+  "partition": "iid",
+  "epochs": 1,
+  "local_epochs": 1,
+  "batch_size": 16,
+  "hidden": [16],
+  "use_pca": false,
+  "encrypt_updates": true,
+  "dp_noise": 0.3,
+  "dp_clip": 2.0,
+  "envs": ["ld_independent", "ld_sync", "ld_central", "fl_fedavg", "fl_fedavg_dp"],
+  "seed": 0
+}

@@ -1,0 +1,25 @@
+항목,이전 또는 현재 개발 내용,PDF 인쇄 쪽수,처리,최종 통합 내용,통합본 파일
+시각화,전역 및 클라이언트 학습 모니터링,1차 36~37쪽; 2차 58쪽; 3차 81쪽,최신 항목으로 통합,계층형 학습 평가 및 알고리즘 비교,01_visualization/defai_addons/monitor/analytics.py
+시각화,training trend 및 outlier detection,2차 58쪽; 3차 81쪽,"중복 통합, 적용 대상 유지",글로벌 학습 및 매칭 과정의 추세와 이상치 분석,01_visualization/defai_addons/monitor/static/charts.js
+시각화,FedAvg / FedProx / q-FedAvg 비교,3차 81쪽,유지,3개 알고리즘 성능 비교,shared/defai_addons/fl/flower.py
+시각화,tree / rank / 서버 통신 / 매칭 행렬,3차 81쪽,유지,계층 구조 및 매칭 환경 평가,01_visualization/defai_addons/monitor/static/charts.js
+시각화,hyperbolic / 데이터 비율 및 엔트로피 heatmap,2차 58쪽,독립 기능 유지,통신 연결 및 데이터 분포 분석,01_visualization/defai_addons/monitor/analytics.py
+시각화,pareto / stream / dendrogram / sociogram / matrix,1차 37쪽,독립 기능 유지,모델 및 기여도 관계 분석,01_visualization/defai_addons/monitor/analytics.py
+시각화,CPU 및 메모리 / sparklines / sankey,1차 37쪽,독립 기능 유지,"자원, 실행 기록, 트래픽 모니터링",01_visualization/defai_addons/monitor/static/charts.js
+비교,"데이터 정제, 정규화, 특징 추출",1차 36쪽; 3차 81쪽,설계를 최신 구현으로 통합,공통 전처리 파이프라인,shared/defai_addons/common/preprocessing.py
+비교,학습 및 시험 데이터 구성,1차 36쪽,유지,학습/시험 분리 및 사이트별 분할,shared/defai_addons/common/data.py
+비교,독립 로컬 분석 / 결과 공유 / 동기화,1차 36쪽; 3차 81~82쪽,확장 통합,지역 분산 환경의 시나리오별 학습 및 결과 비교,02_comparison/defai_addons/compare/envs.py
+비교,원본 로컬 유지 / 글로벌 모델 집계,3차 81~82쪽,유지,Flower 로컬 학습 및 글로벌 모델 집계,02_comparison/defai_addons/compare/envs.py
+비교,암호화 및 차분 프라이버시,3차 81쪽,유지,업로드 AES-GCM / 클리핑 및 가우시안 노이즈,02_comparison/defai_addons/compare/transport.py; 02_comparison/defai_addons/compare/privacy.py
+비교,"정밀도, 재현율, F1 및 로컬/글로벌 평가",1차 36쪽; 3차 82쪽,최신 항목으로 통합,공통 평가 모듈,02_comparison/defai_addons/compare/runner.py
+비교,실시간 사용자 맞춤 평가 시각화,3차 82쪽,공유 모듈 참조,첫 번째 작업 공간의 비교 카드 재사용,01_visualization/defai_addons/monitor/static/dashboard.js
+비교,로컬 DB 저장 / 클라이언트 간 통신 차단,1차 36쪽,"범위 기록, 구현과 구분",JSON 저장 및 논리적 사이트 분리로만 확인; DB/방화벽 구현으로 주장하지 않음,통합_개발항목.txt
+멀티모달,"이미지, 텍스트, 오디오 피처 생성",1차 46쪽; 3차 91쪽,최신 모델 기반으로 유지,모달리티별 인코더,03_multimodal/defai_addons/multimodal/encoders.py
+멀티모달,공통 공간 매핑 및 차원 축소,1차 46쪽,독립 기반 기능 유지,JointProjection 및 대조 정렬,03_multimodal/defai_addons/multimodal/joint.py
+멀티모달,동적 코어텐션 / 모달리티 중요도 / 가중합,1차 47쪽; 2차 69쪽; 3차 92쪽,최신 구조 중심으로 통합,학습가능 가중합 및 Transformer 상호작용; 초기 완성 모델은 기준선 분리,03_multimodal/defai_addons/multimodal/transformer.py
+멀티모달,셀프어텐션 인코더 및 크로스어텐션 디코더,2차 69쪽; 3차 91~92쪽,최신 구현만 기본 실행,"위치 인코딩, MHA, FFN, Q/K/V 크로스모달 디코더",03_multimodal/defai_addons/multimodal/transformer.py
+멀티모달,코어텐션 퓨전 완성 모델,2차 69쪽; 3차 92쪽,"기본 모델에서 제외, 재현용 보존",최신 기본 융합은 GMU; 초기 모델은 baselines로 분리,03_multimodal/defai_addons/multimodal/baselines/models.py
+멀티모달,계층적 피처 융합,1차 47쪽,독립 보완 기능 유지,저수준 및 고수준 특징 결합,03_multimodal/defai_addons/multimodal/fusion.py
+멀티모달,어텐션 행렬 정규화 기반 정렬,2차 69~70쪽,독립 기능 유지,"CrossModalAligner, 최신 기본 순전파에는 미연결",03_multimodal/defai_addons/multimodal/fusion.py
+멀티모달,그래프 어텐션 연결,2차 69~70쪽,독립 기능 유지,"ModalityGAT, 최신 기본 순전파에는 미연결",03_multimodal/defai_addons/multimodal/fusion.py
+멀티모달,"예측 확률, 표현 벡터, 생성 시퀀스",3차 91쪽 그림 83,유지,분류 출력 및 선택형 자기회귀 디코더,03_multimodal/defai_addons/multimodal/models.py; 03_multimodal/defai_addons/multimodal/generation.py
