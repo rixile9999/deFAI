@@ -1,0 +1,33 @@
+<USER_PROFILE>\anaconda3\envs\py310\lib\site-packages\torch\nn\modules\transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+
+  warnings.warn(
+
+<USER_PROFILE>\anaconda3\envs\py310\lib\site-packages\torch\nn\modules\transformer.py:508: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\NestedTensorImpl.cpp:182.)
+
+  output = torch._nested_tensor_from_mask(
+
+device: cpu
+
+[central] y3_mm_transformer
+
+   acc 0.1000  f1 0.0312  missing30 0.1000  no_img 0.1333  no_txt 0.1333  no_aud 0.1333  (0s)
+
+   attention: {'integration_weight': [0.373, 0.28, 0.347], 'gate': [0.333, 0.318, 0.349]}
+
+# 트랜스포머 기반 멀티모달 학습 모델 실험 결과
+
+
+
+설정: `{"part": "central", "models": ["y3_mm_transformer"], "fed_model": "y3_mm_transformer", "fed_configs": ["central_ref", "fedavg_flat", "qfedavg_flat", "fedatc", "fedatc_compress"], "n_train": 60, "n_test": 30, "epochs": 1, "lr": 0.002, "batch_size": 64, "n_clients": 9, "n_per_client": 400, "alpha": 0.5, "rounds": 20, "local_epochs": 2, "fed_lr": 0.001, "q": 0.2, "qffl_lr": 10.0, "seed": 0, "device": "cpu", "out": "results/workspace_smoke", "quick": false, "verbose": false}`
+
+
+
+## 1. 중앙 학습: 최신 멀티모달 트랜스포머 평가
+
+
+
+| 모델 | 파라미터 | 정확도 | F1 | 결측30% | 이미지 결측 | 텍스트 결측 | 오디오 결측 | 이미지→텍스트 검색 R@1 |
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+
+| y3_mm_transformer | 480234 | 0.1000 | 0.0312 | 0.1000 | 0.1333 | 0.1333 | 0.1333 | 0.100 |

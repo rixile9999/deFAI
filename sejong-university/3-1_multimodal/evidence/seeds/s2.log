@@ -1,0 +1,178 @@
+device: cuda
+[federated] fedavg_flat
+[93mWARNING [0m:   No fit_metrics_aggregation_fn provided
+  round  1  acc 0.1710  f1 0.0504  group_w {0: 1.0}
+  round  2  acc 0.2600  f1 0.1681  group_w {0: 1.0}
+  round  3  acc 0.3785  f1 0.3362  group_w {0: 1.0}
+  round  4  acc 0.4705  f1 0.4083  group_w {0: 1.0}
+  round  5  acc 0.4260  f1 0.3647  group_w {0: 1.0}
+  round  6  acc 0.5730  f1 0.5037  group_w {0: 1.0}
+  round  7  acc 0.4980  f1 0.4311  group_w {0: 1.0}
+  round  8  acc 0.5805  f1 0.5290  group_w {0: 1.0}
+  round  9  acc 0.6335  f1 0.6068  group_w {0: 1.0}
+  round 10  acc 0.4015  f1 0.3321  group_w {0: 1.0}
+  round 11  acc 0.6170  f1 0.5669  group_w {0: 1.0}
+  round 12  acc 0.4405  f1 0.3798  group_w {0: 1.0}
+  round 13  acc 0.4045  f1 0.3222  group_w {0: 1.0}
+  round 14  acc 0.6685  f1 0.6619  group_w {0: 1.0}
+  round 15  acc 0.6150  f1 0.6074  group_w {0: 1.0}
+  round 16  acc 0.6310  f1 0.6189  group_w {0: 1.0}
+  round 17  acc 0.6845  f1 0.6646  group_w {0: 1.0}
+  round 18  acc 0.6230  f1 0.6170  group_w {0: 1.0}
+  round 19  acc 0.7055  f1 0.7024  group_w {0: 1.0}
+  round 20  acc 0.5190  f1 0.4688  group_w {0: 1.0}
+  round 21  acc 0.5150  f1 0.4631  group_w {0: 1.0}
+  round 22  acc 0.5325  f1 0.5149  group_w {0: 1.0}
+  round 23  acc 0.3945  f1 0.3253  group_w {0: 1.0}
+  round 24  acc 0.5380  f1 0.4794  group_w {0: 1.0}
+  round 25  acc 0.5880  f1 0.5769  group_w {0: 1.0}
+  round 26  acc 0.5980  f1 0.5802  group_w {0: 1.0}
+  round 27  acc 0.6835  f1 0.6872  group_w {0: 1.0}
+  round 28  acc 0.4320  f1 0.3871  group_w {0: 1.0}
+  round 29  acc 0.5350  f1 0.4799  group_w {0: 1.0}
+  round 30  acc 0.6915  f1 0.6897  group_w {0: 1.0}
+  round 31  acc 0.5980  f1 0.5767  group_w {0: 1.0}
+  round 32  acc 0.4985  f1 0.4607  group_w {0: 1.0}
+  round 33  acc 0.5615  f1 0.4756  group_w {0: 1.0}
+  round 34  acc 0.5870  f1 0.5570  group_w {0: 1.0}
+  round 35  acc 0.3925  f1 0.3017  group_w {0: 1.0}
+  round 36  acc 0.4870  f1 0.4332  group_w {0: 1.0}
+  round 37  acc 0.5630  f1 0.4942  group_w {0: 1.0}
+  round 38  acc 0.3450  f1 0.2313  group_w {0: 1.0}
+  round 39  acc 0.6705  f1 0.6668  group_w {0: 1.0}
+  round 40  acc 0.4730  f1 0.4103  group_w {0: 1.0}
+  round 41  acc 0.5650  f1 0.5431  group_w {0: 1.0}
+  round 42  acc 0.4115  f1 0.3281  group_w {0: 1.0}
+  round 43  acc 0.5010  f1 0.4882  group_w {0: 1.0}
+  round 44  acc 0.5535  f1 0.5186  group_w {0: 1.0}
+  round 45  acc 0.5575  f1 0.4953  group_w {0: 1.0}
+  round 46  acc 0.4430  f1 0.3696  group_w {0: 1.0}
+  round 47  acc 0.4115  f1 0.3460  group_w {0: 1.0}
+  round 48  acc 0.5805  f1 0.5362  group_w {0: 1.0}
+  round 49  acc 0.6370  f1 0.6229  group_w {0: 1.0}
+  round 50  acc 0.4285  f1 0.3884  group_w {0: 1.0}
+   acc 0.4285  f1 0.3884  missing30 0.3490  group {0: 0.259, 1: 0.395, 2: 0.428}  server_in 827.67 MB  analysis None  (1569s)
+[federated] fedatc
+  round  1  acc 0.1700  f1 0.0484  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  2  acc 0.2440  f1 0.1237  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  3  acc 0.4235  f1 0.3626  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  4  acc 0.4770  f1 0.3964  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  5  acc 0.4905  f1 0.4412  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  6  acc 0.5295  f1 0.4488  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  7  acc 0.4330  f1 0.3605  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  8  acc 0.5155  f1 0.4531  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round  9  acc 0.4475  f1 0.3906  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 10  acc 0.6380  f1 0.6047  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 11  acc 0.6320  f1 0.6128  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 12  acc 0.5660  f1 0.5420  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 13  acc 0.5540  f1 0.5226  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 14  acc 0.4620  f1 0.4161  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 15  acc 0.6050  f1 0.5954  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 16  acc 0.6670  f1 0.6593  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 17  acc 0.6380  f1 0.6031  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 18  acc 0.6180  f1 0.6065  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 19  acc 0.6475  f1 0.6181  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 20  acc 0.6910  f1 0.6885  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 21  acc 0.5910  f1 0.5678  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 22  acc 0.6070  f1 0.5688  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 23  acc 0.6790  f1 0.6722  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 24  acc 0.5365  f1 0.4877  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 25  acc 0.6685  f1 0.6675  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 26  acc 0.3475  f1 0.2326  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 27  acc 0.5700  f1 0.5561  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 28  acc 0.3815  f1 0.2888  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 29  acc 0.5920  f1 0.5516  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 30  acc 0.5825  f1 0.5572  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 31  acc 0.4880  f1 0.4503  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 32  acc 0.4550  f1 0.3827  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 33  acc 0.6775  f1 0.6765  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 34  acc 0.4865  f1 0.4407  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 35  acc 0.4255  f1 0.3622  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 36  acc 0.5800  f1 0.5678  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 37  acc 0.5835  f1 0.5295  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 38  acc 0.3865  f1 0.3381  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 39  acc 0.5945  f1 0.5448  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 40  acc 0.4870  f1 0.4803  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 41  acc 0.4955  f1 0.4396  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 42  acc 0.5945  f1 0.5784  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 43  acc 0.6275  f1 0.6294  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 44  acc 0.6065  f1 0.5722  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 45  acc 0.6215  f1 0.6107  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 46  acc 0.5590  f1 0.5451  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 47  acc 0.6155  f1 0.5995  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 48  acc 0.5430  f1 0.5185  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 49  acc 0.4065  f1 0.3464  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+  round 50  acc 0.6105  f1 0.5710  group_w {0: 0.329, 1: 0.336, 2: 0.334}
+   acc 0.6105  f1 0.5710  missing30 0.4835  group {0: 0.419, 1: 0.391, 2: 0.611}  server_in 275.89 MB  analysis None  (1761s)
+[federated] fedatc_compress
+  round  1  acc 0.1700  f1 0.0831  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0204
+  round  2  acc 0.2795  f1 0.1792  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.570
+  round  3  acc 0.3070  f1 0.2222  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.711
+  round  4  acc 0.4030  f1 0.3253  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.745
+  round  5  acc 0.4730  f1 0.4023  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.765
+  round  6  acc 0.4860  f1 0.4187  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0207
+  round  7  acc 0.5290  f1 0.4604  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.236
+  round  8  acc 0.4350  f1 0.3649  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.310
+  round  9  acc 0.5940  f1 0.5386  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.374
+  round 10  acc 0.5965  f1 0.5364  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.428
+  round 11  acc 0.6045  f1 0.5558  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0318
+  round 12  acc 0.6285  f1 0.5921  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.362
+  round 13  acc 0.5520  f1 0.5216  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.388
+  round 14  acc 0.6380  f1 0.6048  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.436
+  round 15  acc 0.6375  f1 0.6281  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.454
+  round 16  acc 0.6650  f1 0.6546  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0349
+  round 17  acc 0.4950  f1 0.4479  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.475
+  round 18  acc 0.4920  f1 0.4484  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.556
+  round 19  acc 0.6860  f1 0.6811  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.536
+  round 20  acc 0.6420  f1 0.6361  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.514
+  round 21  acc 0.3915  f1 0.3248  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0375
+  round 22  acc 0.4670  f1 0.4267  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.488
+  round 23  acc 0.5815  f1 0.5601  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.502
+  round 24  acc 0.5615  f1 0.5397  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.517
+  round 25  acc 0.6160  f1 0.6075  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.576
+  round 26  acc 0.6440  f1 0.6402  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0440
+  round 27  acc 0.5970  f1 0.5880  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.548
+  round 28  acc 0.5565  f1 0.5343  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.561
+  round 29  acc 0.6740  f1 0.6589  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.606
+  round 30  acc 0.6575  f1 0.6425  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.595
+  round 31  acc 0.5890  f1 0.5765  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0480
+  round 32  acc 0.5915  f1 0.5647  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.612
+  round 33  acc 0.6615  f1 0.6644  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.625
+  round 34  acc 0.6865  f1 0.6877  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.617
+  round 35  acc 0.6260  f1 0.6214  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.630
+  round 36  acc 0.5725  f1 0.5158  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0545
+  round 37  acc 0.6545  f1 0.6323  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.678
+  round 38  acc 0.6175  f1 0.6153  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.622
+  round 39  acc 0.6675  f1 0.6666  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.645
+  round 40  acc 0.6675  f1 0.6577  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.622
+  round 41  acc 0.5920  f1 0.5558  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0603
+  round 42  acc 0.4085  f1 0.3230  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.724
+  round 43  acc 0.6480  f1 0.6389  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.653
+  round 44  acc 0.5805  f1 0.5413  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.685
+  round 45  acc 0.5985  f1 0.5472  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.781
+  round 46  acc 0.4375  f1 0.3730  group_w {0: 0.329, 1: 0.336, 2: 0.334}  comp_mse 0.0683
+  round 47  acc 0.4500  f1 0.3895  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.718
+  round 48  acc 0.6350  f1 0.6221  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.715
+  round 49  acc 0.5855  f1 0.5861  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.689
+  round 50  acc 0.6795  f1 0.6765  group_w {0: 0.329, 1: 0.336, 2: 0.334}  analysis_rel_err 0.824
+   acc 0.6795  f1 0.6765  missing30 0.5140  group {0: 0.496, 1: 0.414, 2: 0.679}  server_in 42.32 MB  analysis {'proto_acc_compressed': 0.5555, 'proto_acc_raw': 0.567}  (1278s)
+# 트랜스포머 기반 멀티모달 학습 모델 실험 결과
+
+설정: `{"part": "federated", "models": ["image_only", "text_only", "audio_only", "y1_joint_embedding", "y2_attention_fusion", "y3_mm_transformer", "y3_no_integration", "y3_no_decoder", "y3_mean_fusion"], "fed_model": "y3_mm_transformer", "fed_configs": ["fedavg_flat", "fedatc", "fedatc_compress"], "n_train": 6000, "n_test": 2000, "epochs": 15, "lr": 0.002, "batch_size": 64, "n_clients": 9, "n_per_client": 400, "alpha": 0.5, "rounds": 50, "local_epochs": 2, "fed_lr": 0.001, "seed": 2, "device": "cuda", "out": "results/seeds/s2", "quick": false, "verbose": true}`
+
+## 2. 연합 학습: FedAvg vs FedATC (다계층) vs FedATC + Transformer Compression
+
+| 방식 | 정확도 | F1 | 결측30% | 그룹0 (이미지+텍스트) | 그룹1 (텍스트+오디오) | 그룹2 (전체) | 서버 수신 MB | 업데이트 압축률 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| fedavg_flat | 0.4285 | 0.3884 | 0.3490 | 0.2585 | 0.3950 | 0.4285 | 827.67 | - |
+| fedatc | 0.6105 | 0.5710 | 0.4835 | 0.4190 | 0.3910 | 0.6105 | 275.89 | 1.0x |
+| fedatc_compress | 0.6795 | 0.6765 | 0.5140 | 0.4960 | 0.4145 | 0.6795 | 42.32 | 6.5x |
+
+### FedATC 다계층 연합 분석 (Transformer Compression 된 분석 결과 → 서버 프로토타입 분류)
+
+| 항목 | 값 |
+|---|---:|
+| 프로토타입 분류 정확도 (원본 분석 결과) | 0.5670 |
+| 프로토타입 분류 정확도 (압축→복원 분석 결과) | 0.5555 |
+| 분석 결과 누적 압축률 (재학습 라운드의 원본 전송 포함) | 3.96x |
+| 압축 라운드 평균 상대 복원 오차 | 0.577 |
